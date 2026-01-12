@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "收敛理论"
+title: "Probability Theory I 收敛理论"
 permalink: /posts/convergence-theory/
 tags: probability-theory
 use_math: true
 ---
 
 本文档整理概率论中随机变量序列的各种收敛方式及其相互关系，这是理解大数定律和中心极限定理的基础。
+
+**上一篇**：[常用概率分布](/posts/common-probability-distributions/)
 
 ## 一、收敛方式
 
@@ -130,7 +132,7 @@ $$\alpha_n X_n + \beta_n \implies aX + b$$
 
 **定义** 随机变量集合 $\{X_i, i \in I\}$ 是一致可积的（UI），如果
 
-$$\sup_i \mathbb{E}[\|X_i\|\mathbb{1}\_{\{\|X_i\| \ge \alpha\}}] \to 0 \quad \text{当 } \alpha \to \infty$$
+$$\sup_i \mathbb{E}[\|X_i\|\mathbb{1}_{\{\|X_i\| \ge \alpha\}}] \to 0 \quad \text{当 } \alpha \to \infty$$
 
 ### 4.2 重要结论
 
@@ -243,3 +245,7 @@ $$Y_n \to Y \text{ a.s.}, \quad \mathcal{L}(Y_n) = \mathcal{L}(X_n), \quad \math
 2. **证明依概率收敛**：使用切比雪夫不等式或直接估计
 3. **证明 $L^1$ 收敛**：验证一致可积性 + 依概率收敛
 4. **证明依分布收敛**：使用特征函数或矩母函数
+
+---
+
+**下一篇**：[大数定律专题](/posts/law-large-numbers/)

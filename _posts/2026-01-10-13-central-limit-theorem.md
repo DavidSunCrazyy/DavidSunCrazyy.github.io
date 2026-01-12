@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "中心极限定理专题"
+title: "Probability Theory I 中心极限定理专题"
 permalink: /posts/central-limit-theorem/
 tags: probability-theory
 use_math: true
 ---
 
 本文档整理中心极限定理理论，包括特征函数理论、经典中心极限定理、林德伯格-费勒定理及其推论。
+
+**上一篇**：[鞅论专题](/posts/martingale-theory/)
 
 ## 一、特征函数
 
@@ -320,3 +322,7 @@ $$\mathbb{P}[S_n = k] \approx \frac{1}{\sqrt{2\pi np(1-p)}} \exp\left(-\frac{(k-
 2. **偏态分布**：对于严重偏斜的分布，可能需要更大的样本量
 3. **离散分布**：连续性修正可以改善近似效果
 4. **重尾分布**：方差不存在时，CLT 不适用（可能需要稳定分布理论）
+
+---
+
+**系列完** | **返回首页**：[概率论系列](/)

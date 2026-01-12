@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "概率论基本不等式"
+title: "Probability Theory I 概率论基本不等式"
 permalink: /posts/probability-basic-inequalities/
 tags: probability-theory
 use_math: true
 ---
 
 本文档整理概率论中的基本不等式，这些不等式是深入理解概率论的基础工具。
+
+**上一篇**：[渐进评估](/posts/statistical-inference-asymptotic-evaluation/)
 
 ## 1. 切比雪夫不等式 (Chebyshev Inequality)
 
@@ -123,3 +125,7 @@ Doob极大不等式 (下鞅)
 | 詹森 | 证明凸性性质，导出其他不等式 |
 | Kolmogorov | 研究独立随机变量和的收敛性 |
 | Doob | 研究鞅的极大值和大数定律 |
+
+---
+
+**下一篇**：[期望与积分理论](/posts/expectation-integration-theory/)

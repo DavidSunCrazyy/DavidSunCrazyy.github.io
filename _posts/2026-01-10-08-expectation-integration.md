@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "期望与积分理论"
+title: "Probability Theory I 期望与积分理论"
 permalink: /posts/expectation-integration-theory/
 tags: probability-theory
 use_math: true
 ---
 
 本文档整理期望理论中的核心内容，包括极限定理、矩的概念以及期望的基本性质。
+
+**上一篇**：[概率论基本不等式](/posts/probability-basic-inequalities/)
 
 ## 1. 收敛定理
 
@@ -100,32 +102,7 @@ $$\mathbb{E}[aX + bY] = a\mathbb{E}[X] + b\mathbb{E}[Y]$$
 - **塔式性质**：若 $\mathcal{A}\_1 \subset \mathcal{A}\_2$，则 $\mathbb{E}[\mathbb{E}[X\|\mathcal{A}\_2]\|\mathcal{A}\_1] = \mathbb{E}[X\|\mathcal{A}\_1]$
 - **独立性的简化**：若 $X$ 与 $\mathcal{A}$ 独立，则 $\mathbb{E}[X\|\mathcal{A}] = \mathbb{E}[X]$
 
-## 5. 可积性与控制
-
-### 5.1 一致可积性 (Uniform Integrability)
-
-**定义** 随机变量集合 $\{X_i, i \in I\}$ 是一致可积的（UI），如果
-
-$$\sup_i \mathbb{E}[\|X_i\|\mathbb{1}\_{\{\|X_i\|\ge \alpha\}}] \to 0 \quad \text{当 } \alpha \to \infty$$
-
-**重要引理**：
-1. UI 族在 $L^1$ 中有界
-2. 若随机变量族在某个 $L^p$（$p>1$）中有界，则它是 UI 的
-3. $L^p$ 中有界 $\implies$ UI $\implies$ 在 $L^1$ 中有界
-
-**重要性质**：设 $Z \in L^1$，则对任意 $\epsilon > 0$，存在 $\delta > 0$ 使得
-
-若 $\mathbb{P}(A) \le \delta$，则 $\mathbb{E}[Z \mathbb{1}\_A] \le \epsilon$
-
-这是可积函数的重要控制性质，体现了 $L^1$ 函数的绝对连续性。
-
-### 5.2 UI族的判定
-
-**引理**：若该族包含 $L^1$ 中的有限个随机变量，则它是 UI 的。
-
-**定理**：设 $\mathcal{F}$ 为 $\sigma$-代数，$X \in L^1$，则 $\{\mathbb{E}[X\|\mathcal{A}]: \mathcal{A} \text{ 是 } \mathcal{F} \text{ 的子 } \sigma\text{-代数}\}$ 是 UI 的。
-
-## 6. 收敛定理关系图
+## 5. 收敛定理关系图
 
 ```
                         极限与期望可交换性
@@ -149,12 +126,14 @@ $$\sup_i \mathbb{E}[\|X_i\|\mathbb{1}\_{\{\|X_i\|\ge \alpha\}}] \to 0 \quad \tex
 | DCT | 有界随机变量序列，有控制函数的收敛 |
 | MCT | 单调递增的非负序列 |
 | 法图引理 | 证明期望下界的估计 |
-| 一致可积性 | 鞅收敛理论，证明 $L^1$ 收敛 |
 | 条件期望 | 鞅论， filtrations，平滑化 |
 
 ## 8. 重要提示
 
 1. **交换极限和期望的式子很常用**：在 $L^1$ 的理论里更是经常看到。
 2. **控制函数的存在性**：在应用 DCT 时，关键是找到合适的控制函数。
-3. **UI 与收敛性**：一致可积性是连接依概率收敛和 $L^1$ 收敛的桥梁。
-4. **矩的存在性**：高阶矩存在蕴含低阶矩存在，但反之不成立。
+3. **矩的存在性**：高阶矩存在蕴含低阶矩存在，但反之不成立。
+
+---
+
+**下一篇**：[常用概率分布](/posts/common-probability-distributions/)

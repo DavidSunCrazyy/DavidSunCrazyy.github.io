@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "鞅论专题"
+title: "Probability Theory I 鞅论专题"
 permalink: /posts/martingale-theory/
 tags: probability-theory
 use_math: true
 ---
 
 本文档整理鞅论的核心内容，包括鞅的定义、性质、收敛定理、可选停时定理以及相关的极大不等式。
+
+**上一篇**：[大数定律专题](/posts/law-large-numbers/)
 
 ## 一、鞅的基本概念
 
@@ -138,11 +140,11 @@ $$\|X_n^*\|_p \le \frac{p}{p-1}\|X_n\|_p$$
 **证明要点**：
 $$
 \begin{aligned}
-\mathbb{E}[\|\mathbb{E}[X\|\mathcal{A}]\|\mathbb{1}\_{\|\mathbb{E}[X\|\mathcal{A}]\|>\epsilon}]
-&\le \mathbb{E}[\|X\|\mathbb{1}\_{\|\mathbb{E}[X\|\mathcal{A}]\|>\epsilon}] \\
-&= \mathbb{E}[\|X\|\mathbb{1}\_{\|X\|>\delta}\mathbb{1}\_{\|\mathbb{E}[X\|\mathcal{A}]\|>\epsilon}] + \mathbb{E}[\|X\|\mathbb{1}\_{\|X\|\le\delta}\mathbb{1}\_{\|\mathbb{E}[X\|\mathcal{A}]\|>\epsilon}] \\
-&\le \mathbb{E}[\|X\|\mathbb{1}\_{\|X\|>\delta}] + \delta \mathbb{P}(\|\mathbb{E}[X\|\mathcal{A}]\|>\epsilon) \\
-&\le \mathbb{E}[\|X\|\mathbb{1}\_{\|X\|>\delta}] + \frac{\delta}{\epsilon}\mathbb{E}[\|X\|]
+\mathbb{E}[\|\mathbb{E}[X\|\mathcal{A}]\|\mathbb{1}_{\|\mathbb{E}[X\|\mathcal{A}]\|>\epsilon}]
+&\le \mathbb{E}[\|X\|\mathbb{1}_{\|\mathbb{E}[X\|\mathcal{A}]\|>\epsilon}] \\
+&= \mathbb{E}[\|X\|\mathbb{1}_{\|X\|>\delta}\mathbb{1}_{\|\mathbb{E}[X\|\mathcal{A}]\|>\epsilon}] + \mathbb{E}[\|X\|\mathbb{1}_{\|X\|\le\delta}\mathbb{1}_{\|\mathbb{E}[X\|\mathcal{A}]\|>\epsilon}] \\
+&\le \mathbb{E}[\|X\|\mathbb{1}_{\|X\|>\delta}] + \delta \mathbb{P}(\|\mathbb{E}[X\|\mathcal{A}]\|>\epsilon) \\
+&\le \mathbb{E}[\|X\|\mathbb{1}_{\|X\|>\delta}] + \frac{\delta}{\epsilon}\mathbb{E}[\|X\|]
 \end{aligned}
 $$
 
@@ -306,3 +308,7 @@ $$\mathbb{E}[X_T \| \mathcal{F}\_S] = X_S \quad \text{a.s.}$$
    - $p > 1$：$L^p$ 有界即可
    - $p = 1$：需要更强的 UI 条件
    - a.s. 收敛：只需 $L^1$ 有界（对上鞅）
+
+---
+
+**下一篇**：[中心极限定理专题](/posts/central-limit-theorem/)

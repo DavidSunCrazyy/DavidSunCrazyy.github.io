@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "大数定律专题"
+title: "Probability Theory I 大数定律专题"
 permalink: /posts/law-large-numbers/
 tags: probability-theory
 use_math: true
 ---
 
 本文档整理大数定律理论，包括 Borel-Cantelli 引理、弱大数定律、强大数定律以及相关的证明工具。
+
+**上一篇**：[收敛理论](/posts/convergence-theory/)
 
 ## 一、Borel-Cantelli 引理
 
@@ -279,3 +281,7 @@ $$
 3. **截断方法**：在处理无界随机变量时，截断是标准技巧，配合等价随机变量理论使用。
 
 4. **方差的作用**：方差控制了随机变量的波动，Kolmogorov 不等式和收敛准则都依赖于方差的可和性。
+
+---
+
+**下一篇**：[鞅论专题](/posts/martingale-theory/)

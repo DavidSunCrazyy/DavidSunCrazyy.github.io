@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "常用概率分布"
+title: "Probability Theory I 常用概率分布"
 permalink: /posts/common-probability-distributions/
 tags: probability-theory
 use_math: true
 ---
 
 本文档整理概率论中常用的概率分布，包括离散分布和连续分布的定义、性质和应用。
+
+**上一篇**：[期望与积分理论](/posts/expectation-integration-theory/)
 
 ## 一、离散分布
 
@@ -209,3 +211,7 @@ $$p(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-m)^2}{2\sigma^2}\right
 | 自然现象 | 正态 | 中心极限定理 |
 | 均匀随机抽样 | 均匀 | 最大熵原则 |
 | 寿命/可靠性 | 伽马/韦布尔 | 灵活的形状参数 |
+
+---
+
+**下一篇**：[收敛理论](/posts/convergence-theory/)
