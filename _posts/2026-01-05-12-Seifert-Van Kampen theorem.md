@@ -6,6 +6,11 @@ tags: topology
 use_math: true
 ---
 
+本文档介绍代数拓扑中最重要的计算工具之一——Seifert-Van Kampen定理。该定理将复杂空间的基本群分解为较简单空间基本群的自由积，并考虑交集部分的约束关系。我们首先建立积空间和一点并的基本群，然后引入群论中的自由积、正规闭包和群表示等概念。通过Seifert-Van Kampen定理，可以计算大量重要空间的基本群，包括环面、Klein瓶、楔形空间等。这个定理展示了如何通过"分而治之"的策略计算拓扑不变量。
+
+**前置知识**：基本群、群论（自由积）、同伦理论
+**核心思想**：将空间分解为简单部分，通过群论的自由积构造计算基本群，是计算代数拓扑的基本工具
+
 # Seifert-Van Kampen theorem
 
 ## 积的基本群
@@ -13,16 +18,16 @@ use_math: true
 ## <span style="color:blue">定理</span>
 
 $$
-    \pi_1(\bigsqcap_{\alpha\in S}X_\alpha, (x_\alpha)) = \bigsqcap_{\alpha\in S}\pi_1(X_\alpha,x_\alpha).
+    \pi_1(\sqcap_{\alpha\in S}X_\alpha, (x_\alpha)) = \sqcap_{\alpha\in S}\pi_1(X_\alpha,x_\alpha).
 $$
 
 **证明**：令 $\pi_\beta:\prod_{\alpha\in S}X_\alpha \to X_\beta$为投影映射。
 
 由积空间的泛性质，有双射
 $$
-    \{\text{loops in } \prod_{\alpha\in S} X_\alpha \text{ based at } (x_\alpha)\}
+    \\{\text{loops in } \prod_{\alpha\in S} X_\alpha \text{ based at } (x_\alpha)\\}
     \leftrightarrow
-    \prod_{\alpha\in S} \{\text{loops in } X_\alpha \text{ based at } X_\alpha\}
+    \prod_{\alpha\in S} \\{\text{loops in } X_\alpha \text{ based at } X_\alpha\\}
 $$
 由$\gamma\leftrightarrow (\pi_\alpha\circ \gamma)_{\alpha\in S}$给出。
 
@@ -34,9 +39,9 @@ $\pi_1(T^n)\cong \pi_1(S^1)\times \cdots \times \pi_1(S^1)\cong \mathbb{Z}^n$
 
 ### <span style="color:cyan">定义</span> [一点并 (one point union)]
 
-令$\{X_\alpha,x_\alpha\}_{\alpha\in S}$为带点空间的族。则它们的**一点并**定义为
+令$\\{X_\alpha,x_\alpha\\}\_{\alpha\in S}$为带点空间的族。则它们的**一点并**定义为
 $$
-    \bigvee_{\alpha\in S}X_\alpha := (\bigsqcup_{\alpha\in S}X_\alpha)/\sim
+    \bigvee_{\alpha\in S}X_\alpha := (\sqcup_{\alpha\in S}X_\alpha)/\sim
 $$
 其中$\sim$有$x_\alpha\sim x_\beta$对任意$\alpha,\beta$生成。而$\bigwedge_{\alpha\in S}X_\alpha$的基点取为$[x_\alpha]$
 
@@ -44,46 +49,47 @@ $$
 
 ### <span style="color:cyan">定义</span> [单词 (word)]
 
-令$\{G_\alpha\}_{\alpha\in S}$为群的族。作如下定义：
-1. $\{G_\alpha\}_{\alpha\in S}$的**单词**定义为有限序列$(g_1,\cdots,g_n)$使得$g_i\in \bigsqcup_{\alpha\in S}G_\alpha$对任意$i$均成立。其中$n$称为该单词的**长度** (length)。
+令$\\{G_\alpha\\}\_{\alpha\in S}$为群的族。作如下定义：
+1. $\\{G_\alpha\\}\_{\alpha\in S}$的**单词**定义为有限序列$(g_1,\cdots,g_n)$使得$g_i\in \sqcup_{\alpha\in S}G_\alpha$对任意$i$均成立。其中$n$称为该单词的**长度** (length)。
 
 ## <span style="color:violet">引理</span> [自由积的泛性质]
 
-令$H$为群并令$\{f_\alpha:G_\alpha\to H\}_{\alpha\in S}$为群同态的族。则存在唯一的群同态
-$$\bigast_{\alpha\in S}f_\alpha:\bigast_{\alpha\in S}G_\alpha\to H$$
+令$H$为群并令$\\{f_\alpha:G_\alpha\to H\\}_{\alpha\in S}$为群同态的族。则存在唯一的群同态
+$$\ast_{\alpha\in S}f_\alpha:\ast_{\alpha\in S}G_\alpha\to H$$
 使得如下交换图对任意$\beta\in S$成立
-$$
+
+<script type="text/tikz">
     \begin{tikzcd}
-        {\bigast_{\alpha\in S}G_\alpha} \\
+        {\ast_{\alpha\in S}G_\alpha} \\
         {G_\beta} & H
-        \arrow["{\bigast_{\alpha\in S}f_\alpha}", from=1-1, to=2-2]
+        \arrow["{\ast_{\alpha\in S}f_\alpha}", from=1-1, to=2-2]
         \arrow["{i_\beta}", from=2-1, to=1-1]
         \arrow["{f_\beta}"', from=2-1, to=2-2]
     \end{tikzcd}
-$$
+</script>
 
 ### <span style="color:cyan">定义</span> [正规闭包]
 
 令$A$为群$G$的子集。定义$A$在$G$中的**正规闭包 (normal closure)** $N_G(A)$ 为包含以下集合中有限个元素的积的子群
-$$\{e\}\cup\{gag^{-1}:g\in G,a\in A\}\cup \{g a^{-1}g^{-1}:g\in A,a\in A\}$$
+$$\\{e\\}\cup\\{gag^{-1}:g\in G,a\in A\\}\cup \\{g a^{-1}g^{-1}:g\in A,a\in A\\}$$
 注意$N_G(A)$为所有包含$A$的$G$的正规子群的交。特别的，$N_G(A)$本身也是一个正规子群。
 
 ### <span style="color:cyan">定义</span>
 
 给定集合$S$和自由群$F_S$的子集$R$，定义由关系$R$生成在$S$上的群为 (the group generated over $S$ with relation $R$) 一商群：
 $$
-    \langle S|R\rangle:=F_S/(N_{F_S}(R))
+    \langle S\|R\rangle:=F_S/(N_{F_S}(R))
 $$
 
 ### <span style="color:darkgray">例</span> [(1)]
 
-1. $\langle a,b|aba^{-1}b^{-1}\rangle\cong \mathbb{Z}\oplus \mathbb{Z}$
-2. $\langle a,b|a^2,b^2\rangle \cong \mathbb{Z}/2\ast \mathbb{Z}/2$
-3. $\langle a,b| ab,aba\rangle\cong \{e\}$
+1. $\langle a,b\|aba^{-1}b^{-1}\rangle\cong \mathbb{Z}\oplus \mathbb{Z}$
+2. $\langle a,b\|a^2,b^2\rangle \cong \mathbb{Z}/2\ast \mathbb{Z}/2$
+3. $\langle a,b\| ab,aba\rangle\cong \\{e\\}$
 
 ### <span style="color:cyan">定义</span> [表示 (presentation)]
 
-群$G$的一个**表示**为一同构$G\cong\langle S|R\rangle$对某些$S$以及$R$。若$S,R$均有限，称其为有限表示。$G$的阶是$S$的最小大小使得$G\cong\langle S|R\rangle$。称$G$为有限生成若阶是有限的，称$G$为有限表示的若其有有限表示。
+群$G$的一个**表示**为一同构$G\cong\langle S\|R\rangle$对某些$S$以及$R$。若$S,R$均有限，称其为有限表示。$G$的阶是$S$的最小大小使得$G\cong\langle S\|R\rangle$。称$G$为有限生成若阶是有限的，称$G$为有限表示的若其有有限表示。
 
 ## Seifert-Van Kampen 定理的证明
 
@@ -98,9 +104,9 @@ $$f_{\alpha,\beta}:\pi_1(A_\alpha\cap A_\beta,x_0)\to \pi_1(A_\alpha,x_0)$$
 
 考虑集合
 $$
-    B=\bigcup_{\beta,\beta'\in S}\{ f_{\beta,\beta'}(g)\cdot (f_{\beta',\beta}(g))^{-1}:g\in \pi_1(A_\beta\cap A_{\beta'},x_0)\}
+    B=\bigcup_{\beta,\beta'\in S}\\{ f_{\beta,\beta'}(g)\cdot (f_{\beta',\beta}(g))^{-1}:g\in \pi_1(A_\beta\cap A_{\beta'},x_0)\\}
 $$
-则$B\subset \ker(\bigast_{\alpha\in S}f_\alpha)$
+则$B\subset \ker(\ast_{\alpha\in S}f_\alpha)$
 
 ## <span style="color:blue">定理</span> (Seifert-Van Kampen)
 
@@ -119,16 +125,22 @@ $$
 
 1. 所有流形上的点都是"nice"的。
 2. Hawaiinn earring 中的原点不是 "nice" 的
-   $$X:=\bigcup_{n\in \mathbb{N}^+} \{(x,y)\in \mathbb{R}^2:x^2+(y-\frac{1}{n})^2 = \frac{1}{n^2}\}$$
+  $$X:=\bigcup_{n\in \mathbb{N}^+} \\{(x,y)\in \mathbb{R}^2:x^2+(y-\frac{1}{n})^2 = \frac{1}{n^2}\\}$$
 
 ## <span style="color:olive">命题</span> [Wedge]
 
-令$\{(X_\alpha,x_\alpha)\}_{\alpha\in S}$为带点空间的族。假设 $x_\alpha$ 对所有$\alpha$都是 "nice" 的
+令$\\{(X_\alpha,x_\alpha)\\}\_{\alpha\in S}$为带点空间的族。假设 $x_\alpha$ 对所有$\alpha$都是 "nice" 的
 则
 $$
-    \pi_1(\bigvee_{\alpha\in S} X_\alpha, [x_\alpha]) \cong \bigast_{\alpha\in S} \pi_1(X_\alpha,x_\alpha)
+    \pi_1(\bigvee_{\alpha\in S} X_\alpha, [x_\alpha]) \cong \ast_{\alpha\in S} \pi_1(X_\alpha,x_\alpha)
 $$
 
 ### <span style="color:darkgray">例</span>
 
 1. $$\pi_1(\bigvee_n S^1) \cong F_n.$$
+
+
+----
+
+下一节：[CW复形](/posts/topology-cw-complexes/)
+
