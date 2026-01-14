@@ -38,7 +38,7 @@ $$
 
 Proof (for discrete case):
 
-Part 1: Show $ T(\mathbf{X}) $ sufficient $\mathrm{Im}plies f(\mathbf{x} \mid \theta) = g(T(\mathbf{x}) \mid \theta) h(\mathbf{x}) $
+Part 1: Show $ T(\mathbf{X}) $ sufficient $\implies f(\mathbf{x} \mid \theta) = g(T(\mathbf{x}) \mid \theta) h(\mathbf{x}) $
 
 1. Start with the joint probability:
 $$
@@ -61,7 +61,7 @@ $$
 f(\mathbf{x} \mid \theta) = g(T(\mathbf{x}) \mid \theta) h(\mathbf{x})
 $$
 
-Part 2: Show $ f(\mathbf{x} \mid \theta) = g(T(\mathbf{x}) \mid \theta) h(\mathbf{x}) \mathrm{Im}plies T(\mathbf{X}) $ sufficient
+Part 2: Show $ f(\mathbf{x} \mid \theta) = g(T(\mathbf{x}) \mid \theta) h(\mathbf{x}) \implies T(\mathbf{X}) $ sufficient
 
 1. Assume the factorization exists:
 $$
@@ -116,7 +116,7 @@ Note that $ d \leq k $ includes curved exponential families like $ \text{N}(\the
 **定义 极小充分统计量 (minimal sufficient statistic)**
 
 如果对于任何其他充分统计量 $T'(X)$，$T(x)$ 是 $T'(x)$ 的函数，则称充分统计量 $T(X)$ 为极小充分统计量。
-$\forall \mathbf{x}, \mathbf{y}$ as long as $T'(\mathbf{x}) = T'(\mathbf{y})$ $\mathrm{Im}plies$ $T(\mathbf{x}) = T(\mathbf{y})$.
+$\forall \mathbf{x}, \mathbf{y}$ as long as $T'(\mathbf{x}) = T'(\mathbf{y})$ $\implies$ $T(\mathbf{x}) = T(\mathbf{y})$.
 
 
 **定理 极小充分统计量判定**
@@ -175,7 +175,7 @@ $$
 
 设 $T(X)$ 是一个基于样本 $X = (X_1, X_2, \dots, X_n)$ 的统计量，其分布依赖于参数 $\theta$。如果对于所有函数 $g(\cdot)$，满足以下条件：
 $$
-\mathbb{E}\_\theta[g(T)] = 0 \quad \text{对所有 } \theta \mathrm{Im}plies g(T) = 0 \quad \text{几乎处处成立},
+\mathbb{E}\_\theta[g(T)] = 0 \quad \text{对所有 } \theta \implies g(T) = 0 \quad \text{几乎处处成立},
 $$
 则称统计量 $T(X)$ 是**完全统计量**。
 

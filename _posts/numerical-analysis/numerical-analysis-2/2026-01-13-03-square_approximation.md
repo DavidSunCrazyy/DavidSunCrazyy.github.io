@@ -379,7 +379,8 @@ $$f(x_0) = \sum_{k=0}^{\infty} \langle f, \overline{Q}_k \rangle \overline{Q}_k(
 :::
 
 
-*Proof.* $$\begin{aligned}
+*Proof.* 
+$$\begin{aligned}
     \lambda_n^2 =& \langle Q_n, Q_n \rangle \\
     =& \langle Q_n, xQ_{n-1} - a_nQ_{n-1} - b_nQ_{n-2} \rangle \\
     =& \langle Q_n, xQ_{n-1} \rangle \\
@@ -388,6 +389,7 @@ $$f(x_0) = \sum_{k=0}^{\infty} \langle f, \overline{Q}_k \rangle \overline{Q}_k(
     \leq & \max\{|a|, |b|\} ||Q_n|| ||Q_{n-1}|| \\
     = & \max\{|a|, |b|\} \lambda_n \lambda_{n-1} \\
 \end{aligned}$$
+
 
 $$\Rightarrow \lambda_n \lambda_{n-1}^{-1} \leq \max\{|a|, |b|\}$$
 
@@ -500,11 +502,13 @@ $$||P_n - f||_w \leq ||P_n - f||_\infty \left( \int_a^b w(x) \, dx \right)^{1/2}
 
 并且
 
+
 $$\begin{aligned}
 ||L_n f - P_n||^2_w & = ||L_n (f - P_n)||^2_w  \\
 &= \int_a^b \left( \sum_{i=0}^n (f(x_i) - P_n(x_i)) l_i(x) \right)^2 w(x) \, dx \\
 &= \sum_{i=0}^n (f(x_i) - P_n(x_i))^2 \int_a^b l_i(x) w(x) \, dx  \\
 &\leq ||f - P_n||^2_\infty \sum_{i=0}^n \int_a^b l_i(x) w(x) \, dx \\
 &= ||f - P_n||^2_\infty \int_a^b w(x) \, dx \to 0\\
-\end{aligned}$$ ◻
+\end{aligned}$$
+ ◻
 :::

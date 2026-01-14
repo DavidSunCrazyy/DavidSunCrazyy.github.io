@@ -25,10 +25,12 @@ $$\|f(x)-p_n(x)\|_\infty\leqslant \epsilon$$
 
 不妨设 $f(x) \in C[0, 1]$。
 
-注意到： $$\begin{aligned}
+注意到： 
+$$\begin{aligned}
 \sum_{k=0}^{n} \binom{n}{k} x^k (1-x)^{n-k} &= 1 \\
 \sum_{k=0}^{n} (nx - k)^2 \binom{n}{k} x^k (1-x)^{n-k} &= nx(1-x)
 \end{aligned}$$
+
 
 令
 $$E_n(x) = \max_{|x - \frac{k}{n}| < n^{-\frac{1}{4}}} |f(x) - f(\frac{k}{n})|$$
@@ -42,6 +44,7 @@ $$|f(x) - f(y)| < \varepsilon$$
 $$E_n = \max_{x \in [0, 1]} E_n(x) \leq \varepsilon$$ 即
 $$\lim_{n \to \infty} E_n = 0$$
 
+
 $$\begin{aligned}
     \left| f(x) - B_n f(x) \right| &= \left| \sum_{k=0}^{n} \left( f(x) - f\left(\frac{k}{n}\right) \right) \lambda_{n,k}(x) \right| \\
     &\leq \sum_{|x - \frac{k}{n}| < n^{-\frac{1}{4}}} \left| f(x) - f\left(\frac{k}{n}\right) \right| \lambda_{n,k}(x) \\
@@ -50,8 +53,11 @@ $$\begin{aligned}
     &\leq E_n + 2M n^{-\frac{3}{2}} \sum_{k=0}^{n} (nx - k)^2 \lambda_{n,k}(x) \\
     &= E_n + 2M n^{-\frac{3}{2}} nx(1-x) \\
     &\leq E_n + \frac{1}{2} M n^{-\frac{1}{2}} \to 0 \quad (\text{对 } x \text{ 一致收敛})
-\end{aligned}$$ ◻
-:::
+\end{aligned}$$
+ 
+
+◻
+
 
 我们定义几个记号.
 
@@ -89,7 +95,7 @@ $$|f(\arccos y) - \sum_{k=0}^{n} c_k y^k| < \varepsilon, \quad y \in [-1, 1].$$
 $$|f(x) - \sum_{k=0}^{n} c_k \cos^k x| < \varepsilon, \quad \forall x \in [0, \pi].$$
 $\sum_{k=0}^{n} c_k \cos^k x$ 为偶的三角多项式。
 
-### 第一定理 $\Rightarrow$ 第二定理： {#第一定理-rightarrow-第二定理 .unnumbered}
+- 第一定理 $\Rightarrow$ 第二定理： 
 
 $f(x) \in C_{2\pi}$，由引理 1，存在偶的三角多项式
 $T_1(x)$、$T_2(x)$，使得
@@ -117,7 +123,7 @@ $$f(x) \sin^2 \left( x + \frac{\pi}{2} \right) = f(x) \cos^2 x = T_4(x + \frac{\
 $$f(x) = T_3(x) + T_4(x + \frac{\pi}{2}) + b(x) + C(x + \frac{\pi}{2}),$$
 即 $$|f(x) - T_3(x) - T_4(x + \frac{\pi}{2})| \leq \varepsilon.$$
 
-### 第二定理 $\Rightarrow$ 第一定理： {#第二定理-rightarrow-第一定理 .unnumbered}
+- 第二定理 $\Rightarrow$ 第一定理： 
 
 设 $f(x) \in C[-\pi, \pi]$，令
 $$g(x) = f(x) + \frac{f(-\pi) - f(\pi)}{2\pi} x, \quad x \in [-\pi, \pi].$$
@@ -163,18 +169,23 @@ $\mathcal{X}$ 称为一个代数，如果满足以下条件：
 
 \(2\) $\mathcal{X}$
 上有乘法运算，且满足：$\forall f, g, h \in \mathcal{X}$，$\alpha \in \mathbb{R}$，
+
+
 $$\begin{aligned}
 f(g + h) &= fg + fh \\
 (f + g)h &= fh + gh \\
 f(gh) &= (fg)h \\
 \alpha(fg) &= (\alpha f)g = f(\alpha g)
 \end{aligned}$$
-:::
+
+
 
 **Theorem**
 设 $X$ 是紧距离空间, $A$ 是 $C(X)$ 的子代数. 若$1\in A$,
 且$A$分离$X$中的点, 则$A$在$C(X)$中稠密.
 :::
+
+---
 
 ## Chebyshev 定理
 
@@ -184,7 +195,7 @@ f(gh) &= (fg)h \\
 $\Delta(p) = \max_{x\in [a,b]} |f(x) - p(x)|$.
 :::
 
-::: remark
+**Remark**
 偏差是指一个特定的多项式到原函数$f$的距离 (最大差值).
 :::
 
@@ -192,7 +203,7 @@ $\Delta(p) = \max_{x\in [a,b]} |f(x) - p(x)|$.
 $E_n = \inf_{p\in P_n} \Delta(p)$, 其中 $P_n$ 是至多 $n$ 次多项式的集合.
 :::
 
-::: remark
+**Remark**
 最小偏差是$P_n$中所有多项式的偏差的最小值.
 :::
 
@@ -201,44 +212,44 @@ $E_n = \inf_{p\in P_n} \Delta(p)$, 其中 $P_n$ 是至多 $n$ 次多项式的集
 $$\Delta (p^*) = E_n$$
 :::
 
-::: remark
+**Remark**
 Borel 定理告诉我们确实存在一个多项式可以取到最小偏差.
 :::
 
-::: remark
+**Remark**
 证明使用了泛函分析中的思想.
 :::
 
 
 *Proof.* 定理 Borel 对于$\forall f(x) \in C[a,b]$,
-存在$n$次多项式$p^*(x)$使得: $$\Delta (p^*) = E_n$$
+存在$n$次多项式$p^\ast(x)$使得: $$\Delta (p^\ast) = E_n$$
 
 证明: (deepseek)
 
-Borel定理断言，对于任意连续函数$f \in C[a,b]$，存在次数不超过$n$的多项式$p^*(x)$，使得其偏差$\Delta(p^*) = E_n$，即达到最小偏差。以下是该定理的核心证明步骤：
+Borel定理断言，对于任意连续函数$f \in C[a,b]$，存在次数不超过$n$的多项式$p^\ast(x)$，使得其偏差$\Delta(p^\ast) = E_n$，即达到最小偏差。以下是该定理的核心证明步骤：
 
 1.  **极小化序列的存在性**
 
-    根据$E_n$的定义（$\inf_{p \in P_n} \Delta(p)$），存在一列多项式$\{p_k\} \subset P_n$，使得$\Delta(p_k) \to E_n$。此序列称为极小化序列。
+    根据$E_n$的定义（$\inf_{p \in P_n} \Delta(p)$），存在一列多项式$\\{p_k\\} \subset P_n$，使得$\Delta(p_k) \to E_n$。此序列称为极小化序列。
 
 2.  **系数有界性的证明**
 
-    假设极小化序列的系数无界，则存在子列$\{p_k\}$的系数向量$\mathbf{a}_k = (a_0^{(k)}, \dots, a_n^{(k)})$满足$\|\mathbf{a}_k\| \to \infty$。考虑标准化向量$\mathbf{v}_k = \mathbf{a}_k / \|\mathbf{a}_k\|$，由Heine-Borel定理，存在收敛子列$\mathbf{v}_{k_m} \to \mathbf{v} \neq \mathbf{0}$。对应的多项式$q_{k_m}(x) = \mathbf{v}_{k_m} \cdot (1, x, \dots, x^n)$收敛到非零多项式$q(x)$。此时，$p_{k_m}(x) = \|\mathbf{a}_{k_m}\| q_{k_m}(x)$在$[a,b]$上某点的值趋于无穷，导致$\Delta(p_{k_m}) \to \infty$，与$\Delta(p_k) \to E_n$矛盾。故系数必有界。
+    假设极小化序列的系数无界，则存在子列$\\{p_k\\}$的系数向量 $\mathbf{a}\_k = (a_0^{(k)}, \dots, a_n^{(k)})$ 满足$\|\mathbf{a}\_k\| \to \infty$。考虑标准化向量 $\mathbf{v}\_k = \mathbf{a}\_k / \|\mathbf{a}\_k\|$ ，由Heine-Borel定理，存在收敛子列$\mathbf{v}\_{k_m} \to \mathbf{v} \neq \mathbf{0}$。对应的多项式$q_{k_m}(x) = \mathbf{v}\_{k_m} \cdot (1, x, \dots, x^n)$收敛到非零多项式$q(x)$。此时，$p_{k_m}(x) = \|\mathbf{a}\_{k_m}\| q_{k_m}(x)$在$[a,b]$上某点的值趋于无穷，导致$\Delta(p_{k_m}) \to \infty$，与$\Delta(p_k) \to E_n$矛盾。故系数必有界。
 
 3.  **紧性与收敛性**
 
-    由于$P_n$是有限维空间，系数向量有界序列存在收敛子列$\mathbf{a}_{k_m} \to \mathbf{a}^*$，对应多项式$p_{k_m} \to p^* \in P_n$（系数收敛蕴含多项式一致收敛）。
+    由于$P_n$是有限维空间，系数向量有界序列存在收敛子列$\mathbf{a}\_{k_m} \to \mathbf{a}^\ast$，对应多项式$p_{k_m} \to p^\ast \in P_n$（系数收敛蕴含多项式一致收敛）。
 
 4.  **连续性与极值达成**
 
-    偏差函数$\Delta(p) = \|f - p\|_\infty$是连续的。因此，$$\Delta(p^*) = \lim_{m \to \infty} \Delta(p_{k_m}) = E_n,$$
+    偏差函数$\Delta(p) = \|f - p\|_\infty$是连续的。因此，$$\Delta(p^\ast) = \lim_{m \to \infty} \Delta(p_{k_m}) = E_n,$$
     即$p^*$是最优逼近多项式。
 
 5.  **结论**
 
-    利用有限维空间的紧性及偏差函数的连续性，确保了极小化序列的极限$p^* \in P_n$存在，并达到最小偏差$E_n$。因此，Borel定理得证。
+    利用有限维空间的紧性及偏差函数的连续性，确保了极小化序列的极限$p^\ast \in P_n$存在，并达到最小偏差$E_n$。因此，Borel定理得证。
 
-$\boxed{\text{存在这样的多项式 } p^* \text{ 使得 } \Delta(p^*) = E_n}$ ◻
+$\boxed{\text{存在这样的多项式 } p^\ast \text{ 使得 } \Delta(p^\ast) = E_n}$ ◻
 :::
 
 **Definition**
@@ -264,10 +275,12 @@ $\Delta(Q) \ge \min_{1\le i\le N} \lambda_i.$
 $\Delta (Q) < \min_{1\le i \le N} \lambda_i$. 令
 $\eta(x) = P(x) - Q(x) = (P(x) - f(x)) - (Q(x) - f(x))$
 
-则 $$\begin{aligned}
+则 
+$$\begin{aligned}
 \operatorname{sgn}(\eta(x_j)) &= \operatorname{sgn}(P(x_j) - f(x_j)) \\
 &= \operatorname{sgn}(\varepsilon(x_j)) = (-1)^{j-1}, \quad j = 1, 2, \ldots, N
 \end{aligned}$$
+
 
 则 $\eta$ 存在至少 $N-1 \geq n+1$ 个零点。
 
@@ -282,11 +295,11 @@ $E(x_j) = (-1)^{j-1}E(x_1), j=1,2,\cdots,N$.
 :::
 
 
-*Proof.* **充分性\"$\mathrm{Im}pliedby$\"**
+*Proof.* **充分性\"$\impliedby$\"**
 
 由 Vallée-Poussin 定理可得.
 
-**必要性: \"$\mathrm{Im}plies$\"**
+**必要性: \"$\implies$\"**
 
 (反证法) 设 $P(x)$ 交错偏离点数 $N' \leq n+1$, 则存在 $\alpha > 0$ 和
 $\xi_1, \ldots, \xi_{N'-1} \in [a,b]$ 将 $[a,b]$ 分割为
@@ -337,6 +350,8 @@ $k+2$ 个根;
 $\eta \equiv 0$. ◻
 :::
 
+---
+
 ## Jackson 定理
 
 最小偏差的估计
@@ -359,7 +374,7 @@ $\omega(t) = \omega(t,f) = \sup_{|x-y|\le t, x,y\in [a,b]} |f(x) - f(y)|$
 
 **Definition**
 若$\omega(t,f) \le M t^\alpha$, $0<\alpha\le 1$, 则称 $f(x)$ 在 $[a,b]$
-上 满足 $\alpha$ 阶 Lipschitz 条件. 记作 $f(x) \in \Lip \alpha$.
+上 满足 $\alpha$ 阶 Lipschitz 条件. 记作 $f(x) \in \mathrm{Lip} \alpha$.
 :::
 
 **Theorem**
@@ -392,19 +407,21 @@ $$E_n(f) = \inf_{T_n} \max_x |f(x) - T_n(x)|,$$
     $$|f(x) - T_n(x)| \leq \frac{1}{\pi} \int_{-\pi}^{\pi} |f(x) - f(x+t)| K_n(t) dt.$$
     利用连续模$\omega(t, f)$的性质，将积分分为两部分：
 
-    -   当$|t| \leq \frac{1}{n}$时：
+    -   当$\|t\| \leq \frac{1}{n}$时：
         $$|f(x) - f(x+t)| \leq \omega\left(|t|, f\right) \leq \omega\left(\frac{1}{n}, f\right).$$
 
-    -   当$|t| > \frac{1}{n}$时，利用核的快速衰减性进行估计。
+    -   当$\|t\| > \frac{1}{n}$时，利用核的快速衰减性进行估计。
 
 4.  **积分估计与归一化常数**
 
     通过计算归一化常数$c_n$和积分性质：
 
     -   归一化常数满足：
+    
         $$\frac{1}{\pi} \int_{-\pi}^{\pi} K_n(t) dt = 1, \quad K_n(t) \geq 0.$$
 
-    -   对于$|t| > \frac{1}{n}$，利用核的估计：
+    -   对于$\|t\| > \frac{1}{n}$，利用核的估计：
+
         $$\int_{|t| > 1/n} K_n(t) dt \leq C n^3 \int_{1/n}^{\pi} t^{-4} dt = O(1).$$
 
 5.  **综合误差上界**
@@ -511,7 +528,7 @@ $$E_n(f) \leq \| L_n \phi - \phi \|_\infty + \| \phi - f \|_\infty$$
 $$\leq \frac{3}{2} \omega\left(\frac{\pi}{n+1}\right)$$ ◻
 :::
 
-::: remark
+**Remark**
 更精细的结果为
 $E_n(f) \leq \omega\left(\frac{\pi}{n+1}\right)$，并且该结果中常数为最优。
 :::

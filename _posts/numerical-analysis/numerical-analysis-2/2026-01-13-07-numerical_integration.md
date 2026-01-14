@@ -40,16 +40,20 @@ $$\int_0^1 f(x)\,dx \approx c_0 f(0) + c_1 f(x_1)$$ 求 $x_1$, $c_0$,
 $c_1$，使得求积公式代数精度最高。
 
 解：未知数为 3 个，故至少可要求对于 $1$, $x$, $x^2$
-求积公式精确成立。由此可得： $$\begin{aligned}
+求积公式精确成立。由此可得： 
+$$\begin{aligned}
 \int_0^1 1\,dx &= 1 = c_0 + c_1 \\
 \int_0^1 x\,dx &= \frac{1}{2} = c_1 x_1 \\
 \int_0^1 x^2\,dx &= \frac{1}{3} = c_1 x_1^2
-\end{aligned}$$ 由此可解得：
+\end{aligned}$$
+ 由此可解得：
 $$x_1 = \frac{2}{3}, \quad c_1 = \frac{3}{4}, \quad c_0 = \frac{1}{4}$$
 对于 $x^3$ 有：
 $$\int_0^1 x^3\,dx = \frac{1}{4} \neq \frac{3}{4} \left(\frac{2}{3}\right)^3 = \frac{2}{9}$$
 故代数精度为 2。
 :::
+
+---
 
 ## 插值型求积公式
 
@@ -57,7 +61,8 @@ $$\int_0^1 x^3\,dx = \frac{1}{4} \neq \frac{3}{4} \left(\frac{2}{3}\right)^3 = \
 插值多项式： $$L_n(x) = \sum_{k=0}^n f(x_k) l_k(x)$$ 其中：
 $$l_k(x) = \prod_{\substack{j=0 \\ j \neq k}}^n \frac{x-x_j}{x_k-x_j}, \quad k=0,1,\dots,n$$
 
-于是： $$\begin{aligned}
+于是： 
+$$\begin{aligned}
 \int_a^b p(x)f(x)\,dx &= \int_a^b p(x)L_n(x)\,dx + \int_a^b p(x)R_n(x)\,dx \\
 &= \sum_{k=0}^n \int_a^b p(x)l_k(x)\,dx \cdot f(x_k) + \int_a^b p(x)R_n(x)\,dx  
 \end{aligned}
@@ -75,6 +80,8 @@ $\Rightarrow$ 求积公式 (7.1.1) 代数精度至少为 $n$。
 $$\int_a^b p(x)l_k(x)\,dx = \sum_{j=0}^n A_j l_k(x_j) = A_k, \quad k=0,1,\dots,n$$
 $\Rightarrow$ 该求积公式为插值型求积公式。
 
+---
+
 ## Newton-Cotes 求积公式
 
 在 $[a,b]$ 取端点 $a$, $b$ 为求积节点，则可得梯形求积公式：
@@ -87,10 +94,12 @@ $$\int_a^b f(x)g(x)\,dx = f(\xi) \int_a^b g(x)\,dx$$
 :::
 
 **Theorem**
-$f \in C^2[a,b]$，梯形求积公式的误差为： $$\begin{aligned}
+$f \in C^2[a,b]$，梯形求积公式的误差为： 
+$$\begin{aligned}
 E_1(f) &= \int_a^b f(x)\,dx - \frac{b-a}{2} \left[f(a) + f(b)\right] \\
 &= -\frac{(b-a)^3}{12} f''(\eta), \quad \eta \in [a,b]
 \end{aligned}$$
+
 :::
 
 
@@ -116,11 +125,13 @@ $$w_3(x) = (x-a)\left(x-\frac{a+b}{2}\right)(x-b).$$ 于是有
 $$E_2(f) = \int_a^b R_2(x) \, dx = \int_a^b f[a, \frac{a+b}{2}, b, x] w_3(x) \, dx.$$
 注意到
 $$x - \frac{1}{2}(a+b) = \frac{1}{2} \frac{d}{dx} \left((x-a)(x-b)\right),$$
-从而有 $$\begin{aligned}
+从而有 
+$$\begin{aligned}
 E_2(f) &= \frac{1}{2} \int_a^b f[a, \frac{a+b}{2}, b, x] (x-a)(x-b) \, d\left((x-a)(x-b)\right) \\
 &= \frac{1}{4} \int_a^b f[a, \frac{a+b}{2}, b, x] \, d\left[(x-a)^2(x-b)^2\right] \\
 &= -\frac{1}{4} \int_a^b (x-a)^2(x-b)^2 f[a, \frac{a+b}{2}, b, x] \, dx.
-\end{aligned}$$ 利用重节点均差的性质，可以进一步化简为
+\end{aligned}$$
+ 利用重节点均差的性质，可以进一步化简为
 $$E_2(f) = -\frac{(b-a)^5}{2880} f^{(4)}(\eta), \quad \eta \in [a,b].$$ ◻
 :::
 
@@ -160,12 +171,12 @@ $n$ 阶 Newton-Cotes 求积公式的误差为：
 为奇数时，具有 $n$ 次代数精度。
 :::
 
-### Newton-Cotes 求积公式的数值稳定性 {#newton-cotes-求积公式的数值稳定性 .unnumbered}
+### Newton-Cotes 求积公式的数值稳定性
 
 设 $f(x_k)$, $k=0,1,\dots,n$ 有误差，记为 $\widetilde{f}(x_k)$，则有
 $$\left| \sum_{k=0}^n C_k^{(n)} \widetilde{f}(x_k) - \sum_{k=0}^n C_k^{(n)} f(x_k) \right| \leq \max_{0 \leq k \leq n} |\widetilde{f}(x_k) - f(x_k)| \sum_{k=0}^n |C_k^{(n)}|.$$
 另一方面，Newton-Cotes 求积公式至少具有 1 次代数精度，故有
-$$\int_a^b 1 \, dx = (b-a) \sum_{k=0}^n C_k^{(n)} \mathrm{Im}plies \sum_{k=0}^n C_k^{(n)} = 1.$$
+$$\int_a^b 1 \, dx = (b-a) \sum_{k=0}^n C_k^{(n)} \implies \sum_{k=0}^n C_k^{(n)} = 1.$$
 若 $C_k^{(n)} \geq 0$，则
 $$\sum_{k=0}^n |C_k^{(n)}| = \sum_{k=0}^n C_k^{(n)} = 1,$$ 因此
 $$\left| \sum_{k=0}^n C_k^{(n)} \widetilde{f}(x_k) - \sum_{k=0}^n C_k^{(n)} f(x_k) \right| \leq \max_{0 \leq k \leq n} |\widetilde{f}(x_k) - f(x_k)|.$$
@@ -176,9 +187,11 @@ $$\left| \sum_{k=0}^n C_k^{(n)} \widetilde{f}(x_k) - \sum_{k=0}^n C_k^{(n)} f(x_
 $$\sum_{k=0}^n |C_k^{(n)}| > \sum_{k=0}^n C_k^{(n)} = 1,$$
 求积公式可能不稳定。
 
+---
+
 ## 复合求积公式
 
-### 复合梯形求积公式 {#复合梯形求积公式 .unnumbered}
+### 复合梯形求积公式
 
 将区间 $[a,b]$ 分为 $n$ 等份，令 $x_k = a + kh$, $h = \frac{b-a}{n}$,
 $k=0,1,\dots,n$。在每个子区间 $[x_{k-1}, x_k]$ 均采用梯形公式，则有
@@ -196,7 +209,7 @@ $$f''(\eta) = \frac{1}{n} \sum_{k=1}^n f''(\eta_k).$$ 由此可得
 $$E_n(f) = -\frac{b-a}{12} h^2 f''(\eta),$$ 从而
 $$\lim_{n \to \infty} E_n(f) = 0.$$
 
-### 复合 Simpson 求积公式 {#复合-simpson-求积公式 .unnumbered}
+### 复合 Simpson 求积公式
 
 在每个子区间 $[x_{k-1}, x_k]$ 上采用 Simpson 求积公式可得
 $$\int_a^b f(x) \, dx = \sum_{k=1}^n \int_{x_{k-1}}^{x_k} f(x) \, dx.$$
@@ -207,7 +220,7 @@ $$S_n(f) = \frac{h}{6} \sum_{k=1}^n \left[ f(x_{k-1}) + 4f(x_{k-\frac{1}{2}}) + 
 设 $f \in C^4[a,b]$，利用 Simpson 公式的误差可得
 $$E_n(f) = -\frac{1}{2880} (b-a) h^4 f^{(4)}(\eta), \quad \eta \in [a,b].$$
 
-### Hermite 插值对应的求积公式 {#hermite-插值对应的求积公式 .unnumbered}
+### Hermite 插值对应的求积公式
 
 设 $f \in C^1[a,b]$，$H_3(x)$ 为 $[a,b]$ 上 $f$ 的三次 Hermite
 插值多项式，即 $H_3$ 满足 $$H_3(a) = f(a), \quad H_3(b) = f(b),$$
@@ -222,8 +235,11 @@ $$E(f) = \frac{1}{720} (b-a)^5 f^{(4)}(\eta), \quad \eta \in [a,b].$$
 作复合求积时有
 $$\int_a^b f(x) \, dx = \sum_{k=1}^n \int_{x_{k-1}}^{x_k} f(x) \, dx,$$
 $$= h \left[ \frac{1}{2} \left( f(a) + f(b) \right) + \sum_{k=1}^{n-1} f(x_k) \right] + \frac{h^2}{12} \left( f'(a) - f'(b) \right) + E_n(f),$$
+
 $$= \underbrace{h \left[ \frac{1}{2} \left( f(a) + f(b) \right) + \sum_{k=1}^{n-1} f(x_k) \right]}_{\text{复合梯形求积公式}} + \underbrace{\frac{h^2}{12} \left( f'(a) - f'(b) \right)}_{\text{端点修正}}
 + \frac{1}{720} h^4 (b-a) f^{(4)}(\eta), \quad \eta \in [a,b].$$
+
+---
 
 ## Gauss 求积公式
 
@@ -251,14 +267,20 @@ $$\int_a^b p(x) l_k(x) \, dx = \sum_{j=0}^n A_j l_k(x_j) = A_k.$$
 **(充分性)** 设 $f \in P_{2n+1}$ 则有 $$f(x) = q(x) w_{n+1}(x) + r(x),$$
 其中 $q, r \in P_n$。
 
-于是 $$\begin{aligned}
+于是 
+
+
+$$\begin{aligned}
 \int_a^b p(x) f(x) \, dx &= \int_a^b p(x) q(x) w_{n+1}(x) \, dx + \int_a^b p(x) r(x) \, dx \\
 &= \int_a^b p(x) r(x) \, dx \\
 &= \sum_{k=0}^n A_k r(x_k) = \sum_{k=0}^n A_k f(x_k).
-\end{aligned}$$ ◻
+\end{aligned}$$
+ 
+
+◻
 :::
 
-::: remark
+**Remark**
 若 $f(x) = \prod_{j=0}^n (x - x_j)^2$，则 $f \in P_{2n+2}$ 且
 $$\int_a^b p(x) f(x) \, dx > 0 = \sum_{k=0}^n A_k f(x_k).$$ 因此求积公式
 $\sum_{k=0}^n A_k f(x_k)$ 的代数精度最高为 $2n+1$。
@@ -275,11 +297,16 @@ $$A_k = \frac{1}{[w'_{n+1}(x_k)]^2} \int_a^b p(x) \left[\frac{w_{n+1}(x)}{x - x_
 
 *Proof.* 令
 $f(x) = [l_k(x)]^2 = \left[\frac{w_{n+1}(x)}{x - x_k}\right]^2$，则有
-$f \in P_{2n}$ 且 $$f(x_j) =
+$f \in P_{2n}$ 且 
+
+
+$$f(x_j) =
 \begin{cases}
 0, & j \neq k \\
 [w'_{n+1}(x_k)]^2, & j = k
-\end{cases}$$ Gauss 型求积公式代数精度为 $2n+1$，所以
+\end{cases}$$ 
+
+Gauss 型求积公式代数精度为 $2n+1$，所以
 $$\int_a^b p(x) f(x) \, dx = \sum_{j=0}^n A_j f(x_j) = A_k [w'_{n+1}(x_k)]^2.$$
 从而 $$A_k = \frac{\int_a^b p(x) l_k^2(x) \, dx}{[w'_{n+1}(x_k)]^2}.$$ ◻
 :::
@@ -299,24 +326,28 @@ $$E_n(f) = \frac{1}{(2n+2)!} f^{(2n+2)}(\eta) \int_a^b p(x) [w_{n+1}(x)]^2 \, dx
 $$H_{2n+1}(x_j) = f(x_j), \quad H'_{2n+1}(x_j) = f'(x_j), \quad j = 0, 1, \dots, n,$$
 且
 $$f(x) = H_{2n+1}(x) + f[x_0, x_0, \dots, x_n, x_n, x] w_{n+1}^2(x).$$
-所以 $$\begin{aligned}
+所以 
+$$\begin{aligned}
 \int_a^b p(x) f(x) \, dx &= \int_a^b p(x) H_{2n+1}(x) \, dx + \int_a^b p(x) f[x_0, x_0, \dots, x_n, x_n, x] w_{n+1}^2(x) \, dx \\
 &= \sum_{k=0}^n A_k f(x_k) + \frac{1}{(2n+2)!} f^{(2n+2)}(\eta) \int_a^b p(x) w_{n+1}^2(x) \, dx.
-\end{aligned}$$ ◻
+\end{aligned}$$
+ ◻
 :::
 
-### Gauss 求积公式的收敛性 {#gauss-求积公式的收敛性 .unnumbered}
+### Gauss 求积公式的收敛性 
 
 **Theorem**
 $$|Q_n(f) - Q_n(g)| \leq \max_{0 \leq k \leq n} |f(x_k) - g(x_k)| \int_a^b p(x) \, dx.$$
 :::
 
 
-*Proof.* $$\begin{aligned}
+*Proof.* 
+$$\begin{aligned}
 |Q_n(f) - Q_n(g)| &= \left| \sum_{k=0}^n A_k (f(x_k) - g(x_k)) \right| \\
 &\leq \left( \sum_{k=0}^n A_k \right) \max_{0 \leq k \leq n} |f(x_k) - g(x_k)| \\
 &= \max_{0 \leq k \leq n} |f(x_k) - g(x_k)| \int_a^b p(x) \, dx.
-\end{aligned}$$ ◻
+\end{aligned}$$
+ ◻
 :::
 
 **Theorem**
@@ -329,16 +360,20 @@ $Q_n(f) = \sum_{k=0}^n A_k f(x_k)$ 为 Gauss 型求积公式。
 *Proof.* $f \in C[a, b]$，所以 $\forall \varepsilon > 0$ 存在多项式
 $P$（设为 $m$ 次）使得
 $$\|f - P\|_\infty < \frac{\varepsilon}{2 \int_a^b p(x) \, dx}.$$ 那么
+
 $$\begin{aligned}
 |Q_n(f) - \int_a^b p(x) f(x) \, dx| &\leq \left| \int_a^b p(x) f(x) \, dx - \int_a^b p(x) P(x) \, dx \right| \\
 &\quad + \left| \int_a^b p(x) P(x) \, dx - Q_n(P) \right| + |Q_n(P) - Q_n(f)| \\
 &\leq \frac{\varepsilon}{2} + \|f - P\|_\infty \int_a^b p(x) \, dx \\
 &= \frac{\varepsilon}{2} + \|f - P\|_\infty \int_a^b p(x) \, dx \\
 &< \varepsilon.
-\end{aligned}$$ 即 $\forall \varepsilon > 0$，存在
+\end{aligned}$$
+ 即 $\forall \varepsilon > 0$，存在
 $N > 0$，$\forall n > N$ 有
 $$|Q_n(f) - \int_a^b p(x) f(x) \, dx| < \varepsilon.$$ ◻
 :::
+
+---
 
 ## Romberg 求积方法
 
@@ -360,6 +395,7 @@ $$B_n(x) = (-1)^n B_n(1-x), \quad n = 0, 1, 2, \dots$$
 1\. 当 $n = 0$ 时，显然成立，因为 $B_0(x) = 1$。
 
 2\. 假设对于 $n$ 成立，即 $$B_n(x) = (-1)^n B_n(1-x).$$ 则有
+
 $$\begin{aligned}
    B_{n+1}(x) &= \int_0^x B_n(y) \, dy + C \\
                &= \int_0^x (-1)^n B_n(1-y) \, dy + C \\
@@ -367,8 +403,10 @@ $$\begin{aligned}
                &= (-1)^{n+1} \int_0^{1-x} B_n(z) \, dz + C \\
                &= (-1)^{n+1} \left[ B_{n+1}(1-x) - C \right] + C \\
                &= (-1)^{n+1} B_{n+1}(1-x) + (1 - (-1)^{n+1})C.
-   
-\end{aligned}$$ 由 $\int_0^1 B_{n+1}(x) \, dx = 0$ 得
+\end{aligned}$$
+ 
+
+由 $\int_0^1 B_{n+1}(x) \, dx = 0$ 得
 $(1 - (-1)^{n+1})C = 0$，因此 $$B_{n+1}(x) = (-1)^{n+1} B_{n+1}(1-x).$$
 归纳完毕。 ◻
 :::
@@ -388,28 +426,34 @@ $$B_{2m+1}(1) = B_{2m+1}(0), \quad m = 1, 2, \dots$$ ◻
 $$x_k = a + kh, \quad h = \frac{b-a}{n}, \quad k = 0, 1, 2, \dots, n,$$
 则
 $$T_h(f) = \frac{h}{2} \sum_{k=0}^{n-1} \left[ f(x_k) + f(x_{k+1}) \right].$$
-则有 $$\begin{aligned}
+则有 
+$$\begin{aligned}
 \int_a^b f(x) \, dx &= T_h(f) - \sum_{j=1}^{\lfloor \frac{m}{2} \rfloor} \frac{b_{2j} h^{2j}}{(2j)!} \left[ f^{(2j-1)}(b) - f^{(2j-1)}(a) \right] \\
 &\quad + (-1)^m h^m \int_a^b \widetilde{B}_m\left(\frac{x-a}{h}\right) f^{(m)}(x) \, dx,
-\end{aligned}$$ 其中 $b_n = n! B_n(0)$，$\widetilde{B}_n$ 为 $B_n$
+\end{aligned}$$
+ 其中 $b_n = n! B_n(0)$，$\widetilde{B}_n$ 为 $B_n$
 的周期延拓，即
 $$\widetilde{B}_n(x) = B_n(x), \quad x \in [0, 1], \quad \widetilde{B}_n(x+1) = \widetilde{B}_n(x).$$
 :::
 
 
-*Proof.* 设 $g(x) \in C^m[0, 1]$，由分部积分得 $$\begin{aligned}
+*Proof.* 设 $g(x) \in C^m[0, 1]$，由分部积分得 
+$$\begin{aligned}
 \int_0^1 g(z) \, dz &= \int_0^1 B_0(z) g(z) \, dz \\
 &= \frac{1}{2} \left[ g(0) + g(1) \right] - \sum_{j=2}^m (-1)^j B_j(0) \left[ g^{(j-1)}(1) - g^{(j-1)}(0) \right] \\
 &\quad + (-1)^m \int_0^1 B_m(z) g^{(m)}(z) \, dz.
-\end{aligned}$$ 令 $x = x_k + hz$，$g(z) = f(x_k + hz)$，得
+\end{aligned}$$
+ 令 $x = x_k + hz$，$g(z) = f(x_k + hz)$，得
+
 $$\begin{aligned}
 \int_{x_k}^{x_{k+1}} f(x) \, dx &= \frac{h}{2} \left[ f(x_k) + f(x_{k+1}) \right] \\
 &\quad - \sum_{j=1}^{\lfloor \frac{m}{2} \rfloor} \frac{b_{2j}}{(2j)!} \left[ f^{(2j-1)}(x_{k+1}) - f^{(2j-1)}(x_k) \right] \\
 &\quad + (-1)^m h^m \int_{x_k}^{x_{k+1}} B_m\left(\frac{x-x_k}{h}\right) f^{(m)}(x) \, dx.
-\end{aligned}$$ 对 $k = 0, 1, 2, \dots, n-1$ 求和即得定理结论。 ◻
+\end{aligned}$$
+ 对 $k = 0, 1, 2, \dots, n-1$ 求和即得定理结论。 ◻
 :::
 
-### Romberg 求积方法 {#romberg-求积方法-1 .unnumbered}
+### Romberg 求积方法
 
 设
 $f \in C^{2m+2}[a, b]$，$x_k = a + kh$，$h = \frac{b-a}{n}$，$k = 0, 1, \dots, n$，令
@@ -438,7 +482,7 @@ $$(T_{k+1} f)(h) = \frac{4^k (T_k f)\left(\frac{h}{2}\right) - (T_k f)(h)}{4^k -
 
 ## 奇异积分的数值方法
 
-### 区间截断 {#区间截断 .unnumbered}
+### 区间截断
 
 若 $\int_a^b f(x) \, dx$ 且
 $\lim_{x \to a} f(x) = \infty$，则可对区间进行分割计算积分。
@@ -449,11 +493,13 @@ $$\int_0^1 \frac{g(x)}{x^{1/2} + x^{3/2}} \, dx.$$
 :::
 
 
-*解.* 在 $[0, 1]$ 上有 $$\begin{aligned}
+*解.* 在 $[0, 1]$ 上有 
+$$\begin{aligned}
 \left| \frac{g(x)}{x^{1/2} + x^{3/2}} \right| &\leq \frac{1}{2x^{1/2}}, \\
 \Rightarrow \left| \int_0^\varepsilon \frac{g(x)}{x^{1/2} + x^{3/2}} \, dx \right| &\leq \frac{1}{2} \int_0^\varepsilon x^{-1/2} \, dx = \varepsilon^{1/2}, \\
 \Rightarrow \left| \int_0^1 \frac{g(x)}{x^{1/2} + x^{3/2}} \, dx - \int_\varepsilon^1 \frac{g(x)}{x^{1/2} + x^{3/2}} \, dx \right| &\leq \varepsilon^{1/2}.
-\end{aligned}$$ ◻
+\end{aligned}$$
+ ◻
 :::
 
 **Example**
@@ -473,14 +519,16 @@ $$\int_0^\varepsilon \sqrt{x} \sin x \, dx = \int_0^\varepsilon \sqrt{x} \left( 
 取前几项计算积分。 ◻
 :::
 
-### 变量替换 {#变量替换 .unnumbered}
+### 变量替换
 
 计算定积分 $$\int_0^1 x^{-n} f(x) \, dx, \quad n \geq 2.$$
 
-令 $t^n = x$，则有 $$\begin{aligned}
+令 $t^n = x$，则有 
+$$\begin{aligned}
 \int_0^1 x^{-n} f(x) \, dx &= \int_0^1 f(x) \, dx \\
 &= n \int_0^1 f(t^n) t^{n-2} \, dt.
 \end{aligned}$$
+
 
 **Example**
 计算 $$\int_0^1 \frac{e^x}{\sqrt{x}} \, dx.$$
@@ -489,17 +537,19 @@ $$\int_0^\varepsilon \sqrt{x} \sin x \, dx = \int_0^\varepsilon \sqrt{x} \left( 
 $$\int_0^1 \frac{e^x}{\sqrt{x}} \, dx = 2 \int_0^1 e^{t^2} \, dt.$$
 :::
 
-### Kontorovich 奇点分离法 {#kontorovich-奇点分离法 .unnumbered}
+### Kontorovich 奇点分离法
 
 **Example**
 计算 $$\int_0^1 \frac{\cos x}{x^{1/2}} \, dx.$$
 :::
 
-**解：** $$\begin{aligned}
+**解：** 
+$$\begin{aligned}
 \int_0^1 \frac{\cos x}{x^{1/2}} \, dx &= \int_0^1 \frac{1}{\sqrt{x}} \, dx + \int_0^1 \frac{\cos x - 1}{\sqrt{x}} \, dx \\
 &= 2 + \int_0^1 \frac{\cos x - 1}{\sqrt{x}} \, dx \\
 &= 2 - \int_0^1 \frac{1}{2} x^{3/2} \, dx + \int_0^1 \frac{\cos x - 1 + \frac{1}{2} x^2}{\sqrt{x}} \, dx.
 \end{aligned}$$
+
 
 一般方法为：
 $$\int_a^b f(x) \, dx, \quad f(x) \text{ 在 } [a, b] \text{ 上有奇点.}$$
@@ -548,13 +598,15 @@ $$\frac{S_N}{N} \xrightarrow{P} \mathbb{E}X_1.$$
 $$I_N(f) = \frac{1}{N} \sum_{i=1}^N f(X_i)$$ 依概率收敛到
 $$I(f) = \int_0^1 f(x) \, dx.$$
 
-令 $\epsilon_N = I_N(f) - I(f)$，则 $$\begin{aligned}
+令 $\epsilon_N = I_N(f) - I(f)$，则 
+$$\begin{aligned}
 \mathbb{E}|\epsilon_N|^2 &= \mathbb{E}\left[I_N(f) - I(f)\right]^2 \\
 &= \mathbb{E}\left[\frac{1}{N} \sum_{i=1}^N (f(X_i) - I(f))\right]^2 \\
 &= \frac{1}{N^2} \sum_{i,j=1}^N \mathbb{E}\left[(f(X_i) - I(f))(f(X_j) - I(f))\right] \\
 &= \frac{1}{N} \mathbb{E}\left[f(X_i) - I(f)\right]^2 \\
 &= \frac{1}{N} \text{Var}(f),
-\end{aligned}$$ 其中
+\end{aligned}$$
+ 其中
 $\text{Var}(f) = \mathbb{E}\left[f(X) - I(f)\right]^2$ 为 $f(X)$
 的方差。
 
@@ -565,7 +617,7 @@ $$\mathbb{E}|\epsilon_N| \leq \sqrt{\mathbb{E}|\epsilon_N|^2} = \sqrt{\frac{\tex
 方法具有半阶收敛性（与维数无关）。 ◻
 :::
 
-### 重要性抽样法 {#重要性抽样法 .unnumbered}
+### 重要性抽样法
 
 **Definition**
 令
@@ -575,11 +627,13 @@ $$I(f) \approx \frac{1}{N} \sum_{i=1}^N \frac{f(Y_i)}{p(Y_i)},$$ 其中
 $Y_i$, $i = 1, 2, \dots, N$ 为独立同分布于 $p$ 的随机变量。
 :::
 
-此时有 $$\begin{aligned}
+此时有 
+$$\begin{aligned}
 \text{Var}_Y\left(\frac{f}{p}\right) &= \int_0^1 \left(\frac{f}{p} - I(f)\right)^2 p \, dy \\
 &= \int_0^1 \left(\frac{f}{p}\right)^2 p \, dy - [I(f)]^2 \\
 \text{Var}_X(f) &= \int_0^1 f^2 \, dx - [I(f)]^2.
 \end{aligned}$$
+
 
 选取适当的 $p$，使得
 $$\int_0^1 \frac{f^2}{p} \, dy < \int_0^1 f^2 \, dx.$$
@@ -593,15 +647,17 @@ $$p^* = \frac{|f(x)|}{\int_0^1 |f(y)| \, dy}.$$
 :::
 
 
-*Proof.* $$\begin{aligned}
+*Proof.* 
+$$\begin{aligned}
 \left(\int_0^1 |f(x)| \, dx\right)^2 &= \int_0^1 \frac{|f(x)|}{p(x)} p(x) \, dx \\
 &\leq \int_0^1 \left(\frac{f(x)}{p(x)}\right)^2 p(x) \, dx.
-\end{aligned}$$ 等号在 $p = p^*$ 时取到。 ◻
+\end{aligned}$$
+ 等号在 $p = p^*$ 时取到。 ◻
 :::
 
 ## 采样方法
 
-### 非负矩阵基本理论 {#非负矩阵基本理论 .unnumbered}
+### 非负矩阵基本理论
 
 **Definition**
 设 $A = [a_{ij}]$, $B = [b_{ij}] \in \mathbb{R}^{n \times r}$。如果
@@ -678,22 +734,36 @@ $D = \text{diag}(d_j)$，$d_j \in \mathbb{C}$，$|d_j| = 1$，$j = 1, 2, \dots, 
 *Proof.* 设 $\beta$ 为 $B$ 的特征值，即存在 $y \neq \mathbf{0}$，使得
 $$By_i = \sum_{j=1}^n b_{ij} y_j.$$
 
-于是 $$|\beta||y| \leq |B||y| \leq A|y|.$$
+于是 
 
-若 $|\beta| = r$，则 $$\lambda(|y|) \geq |\beta| = r.$$
+$$|\beta||y| \leq |B||y| \leq A|y|.$$
 
-由引理 7.8.2，$\lambda(|y|) = r|y| = A|y|$，且 $|y| > \mathbf{0}$。
+若 $\|\beta\| = r$，则 
+
+$$\lambda(|y|) \geq |\beta| = r.$$
+
+由引理 7.8.2，$\lambda(\|y\|) = r\|y\| = A\|y\|$，且 $\|y\| > \mathbf{0}$。
 
 令
 $$D = \text{diag}\left(\frac{y_i}{|y_i|}\right), \quad i = 1, \dots, n.$$
 
-则 $$y = D|y|.$$
+则 $$y = D\|y\|.$$
 
-记 $\beta = re^{i\phi}$，则 $$\beta y = re^{i\phi} D|y| = By = BD|y|.$$
+记 $\beta = re^{i\phi}$，则 
 
-于是 $$C|y| = r|y|, \quad C = e^{-i\phi} D^{-1}BD.$$
+$$\beta y = re^{i\phi} D|y| = By = BD|y|.$$
 
-另一方面， $$C|y| = r|y| = A|y| = |C||y|,$$ 故 $$C = |C| = A.$$
+于是 
+
+$$C|y| = r|y|, \quad C = e^{-i\phi} D^{-1}BD.$$
+
+另一方面， 
+
+$$C|y| = r|y| = A|y| = |C||y|,$$ 
+
+故 
+
+$$C = |C| = A.$$
 
 因此 $$B = e^{i\phi} DAD^{-1}.$$
 
@@ -772,7 +842,7 @@ $$\sum_{j=1}^n b_{kj} = \min_{1 \leq i \leq n} \left( \sum_{j=1}^n a_{ij} \right
 同样可证 $$\rho(A) < \alpha_{\text{max}}.$$ ◻
 :::
 
-### 反变换法 {#反变换法 .unnumbered}
+### 反变换法 
 
 **Definition**
 设 $F: \mathbb{R} \to [0, 1]$ 是非减函数。令
@@ -812,7 +882,7 @@ $$X_1 = \sqrt{-2\log U_1} \cos(2\pi U_2), \quad X_2 = \sqrt{-2\log U_1} \sin(2\p
 于是 $X_1, X_2 \overset{\text{iid}}{\sim} N(0, 1)$。
 :::
 
-### 接受-拒绝方法 {#接受-拒绝方法 .unnumbered}
+### 接受-拒绝方法 
 
 **Theorem**
 设 $X, U$ 为随机变量，$X$ 的取值范围为 $(0, 1)$。若
@@ -820,10 +890,12 @@ $(X, U) \sim U\{(x, u): 0 < u < f(x), 0 < x < 1\}$，则 $X \sim f(x)$。
 :::
 
 
-*Proof.* $$\begin{aligned}
+*Proof.* 
+$$\begin{aligned}
 P(X < x) &= \int_0^x \left( \int_0^{f(y)} \frac{du}{\int_0^1 f(z) dz} \right) dy \\
 &= \frac{1}{\int_0^1 f(z) dz} \int_0^x f(y) dy.
-\end{aligned}$$ 因此，$X \sim f(x)$。 ◻
+\end{aligned}$$
+ 因此，$X \sim f(x)$。 ◻
 :::
 
 ### 算法 1 {#算法-1 .unnumbered}

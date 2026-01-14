@@ -65,7 +65,7 @@ use_math: true
 等价定义:$A,B$ideal of $R$,$$AB\subset P\Longrightarrow A\subset P | B\subset P$$
 :::
 
-::: remark
+**Remark**
 素理想的在同态映射下的逆像是素理想。
 :::
 

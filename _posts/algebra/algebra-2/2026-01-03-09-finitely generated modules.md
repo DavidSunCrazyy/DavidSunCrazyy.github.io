@@ -70,7 +70,7 @@ R be a ring. An $R$-module $V$ is called a noetherian R-module, if the following
 **Example**
 1.  $R=\mathbb{Z}$ noetherian ring., $\mathbb{Z}/n$ is a noetherian rings
 
-2.  $R$ is a PID $\mathrm{Im}plies$ notherian ring (1. holds)
+2.  $R$ is a PID $\implies$ notherian ring (1. holds)
 
 3.  If $R$ is a neotherian ring the every quotient ring $R/I$ is a noetherian ring.
 
@@ -79,7 +79,7 @@ R be a ring. An $R$-module $V$ is called a noetherian R-module, if the following
 5.  $R=K[x_n]_{n\ge 1}=K[x_1,x_2,\ldots]$
 :::
 
-::: remark
+**Remark**
 note $R$ integral domain $R\subset \mathrm{Frac} R$ which is a field thus a noetherian ring. note A subring of a noetherian ring may not be noetherian.
 :::
 
@@ -112,11 +112,11 @@ Let $0\to M' \xrightarrow{f} M \xrightarrow{g} M'' \to 0$ be a SES of $R$-mod. T
 :::
 
 
-*Proof.* ($\mathrm{Im}plies$) take any submodules $N'\subset M'$ or $N''\subset M''$ $\to N'\subset M' \subset M$ R-module $\mathrm{Im}plies$ $N'$ f.g. R-module.
+*Proof.* ($\implies$) take any submodules $N'\subset M'$ or $N''\subset M''$ $\to N'\subset M' \subset M$ R-module $\implies$ $N'$ f.g. R-module.
 
-$g^{-1}(N'')\subset g^{-1}(M') \subset M$ $\mathrm{Im}plies$ $N''$ f.g.
+$g^{-1}(N'')\subset g^{-1}(M') \subset M$ $\implies$ $N''$ f.g.
 
-($\mathrm{Im}pliedby$)
+($\impliedby$)
 
 take ac. $M_0\subset M_1\subset M_2 \subset \cdots$ of $M$
 

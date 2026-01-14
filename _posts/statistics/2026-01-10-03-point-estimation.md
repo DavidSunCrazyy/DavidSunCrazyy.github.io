@@ -59,7 +59,7 @@ $$L(\theta \| x) = f(x \| \theta)$$
 
 $$\frac{\partial}{\partial \theta_i} L(\theta \| x) = 0, \, i = 1, ..., k$$
 
-一阶导数等于零 $\mathrm{Im}plies$
+一阶导数等于零 $\implies$
 局部或全局最小值/最大值, 拐点
 
 但是，极值可能出现在边界上，因此必须单独检查边界。
@@ -370,7 +370,7 @@ $$
 考虑 $Y = X_{(n)}$（最大顺序统计量）。
 
 $$
-\operatorname{E}\_\theta(Y) = \int_0^\theta y \frac{n y^{n-1}}{\theta^n} \, dy = \int_0^\theta \frac{n y^n}{\theta^n} \, dy = \frac{n}{n+1} \theta \mathrm{Im}plies \operatorname{E}\_\theta \left[ \frac{n+1}{n} Y \right] = \theta.
+\operatorname{E}\_\theta(Y) = \int_0^\theta y \frac{n y^{n-1}}{\theta^n} \, dy = \int_0^\theta \frac{n y^n}{\theta^n} \, dy = \frac{n}{n+1} \theta \implies \operatorname{E}\_\theta \left[ \frac{n+1}{n} Y \right] = \theta.
 $$
 
 $\operatorname{E}\_\theta \left[ \frac{n+1}{n} Y \right]$ 是一个无偏估计量。

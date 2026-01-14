@@ -56,22 +56,34 @@ $f$ 在 $D$ 上连续并对 $y$ 满足 Lipschitz 条件， 那么初值问题 (8
 引入对 $x$ 的离散化：$x_n = a + nh$, $n = 0, 1, 2, \dots$
 
 对于 $\frac{dy}{dx} = f(x, y)$ 在 $[x_n, x_{n+1}]$ 上积分得：
+
 $$\begin{aligned}
 y(x_{n+1}) &= y(x_n) + \int_{x_n}^{x_{n+1}} f(x, y(x)) \, dx \\
 &\approx y(x_n) + f(x_n, y(x_n)) h.
-\end{aligned}$$ 由此可得离散方法： $$y_{n+1} = y_n + f(x_n, y_n) h,$$
+\end{aligned}$$
+ 由此可得离散方法： $$y_{n+1} = y_n + f(x_n, y_n) h,$$
 称为显式 Euler 方法。
 
 类似地，可以得到隐式 Euler 方法：
 $$y_{n+1} = y_n + f(x_{n+1}, y_{n+1}) h.$$
 
-梯形方法： $$\begin{aligned}
+梯形方法： 
+
+
+$$\begin{aligned}
 y(x_{n+1}) &= y(x_n) + \int_{x_n}^{x_{n+1}} f(x, y(x)) \, dx \\
 &\approx y(x_n) + \frac{1}{2} h \left[ f(x_n, y(x_n)) + f(x_{n+1}, y(x_{n+1})) \right].
-\end{aligned}$$ 改进 Euler 法： $$\begin{aligned}
+\end{aligned}$$
+ 
+
+改进 Euler 法： 
+
+
+$$\begin{aligned}
 \text{(预估)} \quad & \widetilde{y}_{n+1} = y_n + f(x_n, y_n) h, \\
 \text{(校正)} \quad & y_{n+1} = y_n + \frac{1}{2} h \left[ f(x_n, y_n) + f(x_{n+1}, \widetilde{y}_{n+1}) \right].
 \end{aligned}$$
+
 
 ## 显式单步法
 
@@ -95,11 +107,13 @@ $$T(x, y; h) = y(x+h) - y(x) - h \varphi(x, y(x); h)$$
 :::
 
 **Example**
+
 $$\begin{aligned}
 T_{n+1} &= y(x_{n+1}) - y(x_n) - h f(x_n, y(x_n)) \\
 &= y(x_{n+1}) - y(x_n) - h y'(x_n) \\
 &= \frac{h^2}{2} y''(\xi_n), \quad \xi_n \in [x_n, x_{n+1}].
-\end{aligned}$$ 若 $y \in C^2[a, b]$，令
+\end{aligned}$$
+ 若 $y \in C^2[a, b]$，令
 $$M = \max_{a \leq x \leq b} |y''(x)|,$$ 则有
 $$|T_{n+1}| \leq \frac{1}{2} M h^2.$$
 :::
@@ -119,32 +133,50 @@ $$|T_{n+1}| \leq \frac{1}{2} M h^2.$$
 :::
 
 
-*Proof.* $$\begin{aligned}
+*Proof.* 
+
+
+$$\begin{aligned}
 0 &= \lim_{h \to 0} \frac{1}{h} T(x, y; h) \\
 &= \lim_{h \to 0} \frac{y(x+h) - y(x)}{h} - \varphi(x, y; h) \\
 &= y'(x) - \lim_{h \to 0} \varphi(x, y; h) \\
 &= f(x, y) - \lim_{h \to 0} \varphi(x, y; h).
-\end{aligned}$$ 因此，$\lim_{h \to 0} \varphi(x, y; h) = f(x, y)$。 ◻
+\end{aligned}$$
+ 
+
+因此，$\lim_{h \to 0} \varphi(x, y; h) = f(x, y)$。 ◻
 :::
 
 **Example**
 Euler 法：
 
-考虑 Euler 法的局部截断误差： $$\begin{aligned}
+考虑 Euler 法的局部截断误差： 
+
+
+$$\begin{aligned}
 T(x, y; h) &= y(x+h) - y(x) - h f(x, y) \\
 &= y'(x)h + \frac{1}{2}y''(x)h^2 + O(h^3) - h y'(x) \\
 &= O(h^2).
-\end{aligned}$$ 因此，Euler 法是 1 阶相容的。
+\end{aligned}$$
+ 
+
+因此，Euler 法是 1 阶相容的。
 
 改进 Euler 法
 
-考虑改进 Euler 法的局部截断误差： $$\begin{aligned}
+考虑改进 Euler 法的局部截断误差：
+
+
+$$\begin{aligned}
 T(x, y; h) &= y(x+h) - y(x) - \frac{1}{2}h \left[ f(x, y) + f(x+h, y+hf(x, y)) \right] \\
 &= y'(x)h + \frac{1}{2}y''(x)h^2 + O(h^3) \\
 &\quad - \frac{1}{2}h \left[ f(x, y) + f(x+h, y+hf(x, y)) \right] \\
 &= \frac{1}{2}y''(x)h^2 - \frac{1}{2}h^2 \left( \frac{\partial f}{\partial x} + \frac{dy}{dx}\frac{\partial f}{\partial y} \right) + O(h^3) \\
 &= O(h^3).
-\end{aligned}$$ 因此，改进 Euler 法是 2 阶相容的。
+\end{aligned}$$
+ 
+
+因此，改进 Euler 法是 2 阶相容的。
 :::
 
 ### 收敛性 {#收敛性 .unnumbered}
@@ -161,12 +193,22 @@ $$|\varepsilon_j| \leq |\varepsilon_0| e^{jA} + \frac{B}{A}(e^{jA} - 1), \quad j
 :::
 
 
-*Proof.* 用归纳法证明。 - 当 $j = 0$ 时显然成立。 - 假设对于 $j$
-成立，则有 $$\begin{aligned}
+*Proof.* 用归纳法证明。 
+
+- 当 $j = 0$ 时显然成立。 
+
+- 假设对于 $j$
+成立，则有 
+
+
+$$\begin{aligned}
 |\varepsilon_{j+1}| &\leq (1+A)|\varepsilon_j| + B \\
 &\leq (1+A)\left(|\varepsilon_0| e^{jA} + \frac{B}{A}(e^{jA} - 1)\right) + B \\
 &= |\varepsilon_0| e^{(j+1)A} + \frac{B}{A}(e^{(j+1)A} - 1).
-\end{aligned}$$ 因此结论成立。 ◻
+\end{aligned}$$
+ 
+
+因此结论成立。 ◻
 :::
 
 **Theorem**
@@ -178,10 +220,12 @@ $$|\varphi(x, y; h) - \varphi(x, z; h)| \leq L|y-z|.$$
 
 
 *Proof.* 设单步法相容。由单步法的定义和局部截断误差的定义，有
+
 $$\begin{aligned}
 y_{n+1} &= y_n + h \varphi(x_n, y_n; h), \\
 y(x_{n+1}) &= y(x_n) + h \varphi(x_n, y(x_n); h) + T(x_n, y(x_n); h).
-\end{aligned}$$ 两式相减得
+\end{aligned}$$
+ 两式相减得
 $$e_{n+1} = e_n + h \left[ \varphi(x_n, y(x_n); h) - \varphi(x_n, y_n; h) \right] + T(x_n, y(x_n); h).$$
 由于 $\varphi(x, y; h)$ 对 $y$ 满足 Lipschitz 条件，有
 $$|e_{n+1}| \leq (1+hL)|e_n| + h \alpha(h),$$ 其中
@@ -220,16 +264,29 @@ $$|\varphi(x, y_1; h) - \varphi(x, y_2; h)| \leq L |y_1 - y_2|,$$
 :::
 
 
-*Proof.* 考虑两个解序列 $y_n$ 和 $z_n$，它们满足 $$\begin{aligned}
+*Proof.* 考虑两个解序列 $y_n$ 和 $z_n$，它们满足 
+
+
+$$\begin{aligned}
         y_{n+1} &= y_n + h \varphi(x_n, y_n; h), \\
-        z_{n+1} &= z_n + h \varphi(x_n, z_n; h).
-    
-\end{aligned}$$ 两式相减，令 $E_n = y_n - z_n$，则有
-$$|E_{n+1}| \leq |E_n| + h L |E_n|.$$ 递推可得 $$\begin{aligned}
+        z_{n+1} &= z_n + h \varphi(x_n, z_n; h).    
+\end{aligned}$$
+ 
+
+两式相减，令 $E_n = y_n - z_n$，则有
+
+$$|E_{n+1}| \leq |E_n| + h L |E_n|.$$ 
+
+递推可得 
+
+
+$$\begin{aligned}
         |E_{n+1}| &\leq (1 + hL)^{n+1} |E_0| \\
-                  &\leq e^{(n+1)hL} |E_0| \leq e^{L(b-a)} |E_0|.
-    
-\end{aligned}$$ 因此，单步法是稳定的. ◻
+                  &\leq e^{(n+1)hL} |E_0| \leq e^{L(b-a)} |E_0|.    
+\end{aligned}$$
+ 
+
+因此，单步法是稳定的. ◻
 :::
 
 考虑试验方程 $$y'(x) = \lambda y, \quad \text{Re}(\lambda) < 0.$$
@@ -238,9 +295,9 @@ $$|E_{n+1}| \leq |E_n| + h L |E_n|.$$ 递推可得 $$\begin{aligned}
 **Definition**
 如果 $|E(\lambda h)| < 1$，称单步法是绝对稳定的.
 
--   $\{\lambda h \in \mathbb{C}: |E(\lambda h)| < 1\}$：绝对稳定区域
+-   $\\{\lambda h \in \mathbb{C}: \|E(\lambda h)\| < 1\\}$：绝对稳定区域
 
--   $\{\lambda h \in \mathbb{R}: |E(\lambda h)| < 1\}$：绝对稳定区间
+-   $\\{\lambda h \in \mathbb{R}: \|E(\lambda h)\| < 1\\}$：绝对稳定区间
 :::
 
 **Example**
@@ -293,7 +350,10 @@ $$|E(\lambda h)| = \left|\frac{1 + \frac{1}{2} \lambda h}{1 - \frac{1}{2} \lambd
 
 设 $y$ 为初值问题的解，并且充分光滑，由 Taylor 展开得
 $$y(x+h) = y(x) + h y'(x) + \frac{1}{2} h^2 y''(x) + \frac{1}{3!} h^3 y'''(x) + \cdots$$
-其中 $$\begin{aligned}
+其中 
+
+
+$$\begin{aligned}
 y'(x) &= f(x, y(x)) \\
 y''(x) &= \frac{\partial}{\partial x} \left( f(x, y(x)) \right) \\
 &= \frac{\partial f}{\partial x} + \frac{\partial f}{\partial y} f \\
@@ -301,6 +361,7 @@ y'''(x) &= \frac{\partial}{\partial x} \left( \frac{\partial f}{\partial x} + \f
 &= \frac{\partial^2 f}{\partial x^2} + 2 \frac{\partial^2 f}{\partial x \partial y} f + \frac{\partial^2 f}{\partial y^2} f^2 \\
 &\quad + \frac{\partial f}{\partial x} \frac{\partial f}{\partial y} + \left( \frac{\partial f}{\partial y} \right)^2 f
 \end{aligned}$$
+
 
 由此可得各阶方法：
 
@@ -413,10 +474,12 @@ $$y_{n+1} = y_n + h \varphi(x_n, y_n; h)$$
 $$\varphi(x_n, y_n; h) = b_1 k_1 + b_2 k_2$$ $$k_1 = f(x_n, y_n),$$
 $$k_2 = f(x_n + c_2 h, y_n + h a_{21} f(x_n, y_n))$$
 
-将 $f(x, y) = \lambda y$ 代入得 $$\begin{aligned}
+将 $f(x, y) = \lambda y$ 代入得 
+$$\begin{aligned}
 y_{n+1} &= y_n \left( 1 + (b_1 + b_2) \lambda h + b_2 a_{21} (\lambda h)^2 \right) \\
 &= y_n \left( 1 + \lambda h + \frac{1}{2} (\lambda h)^2 \right)
 \end{aligned}$$
+
 
 $\Rightarrow$ 绝对稳定区间为 $(-2, 0)$
 
@@ -493,7 +556,8 @@ $$T_{n+k} = \sum_{j=0}^{k} \alpha_j y(x_{n+j}) - h \sum_{j=0}^{k} \beta_j f(x_{n
 :::
 
 **Example**
-Simpson 方法的局部截断误差 $$\begin{aligned}
+Simpson 方法的局部截断误差 
+$$\begin{aligned}
 y_{n+1} &= y_{n-1} + \frac{h}{3} \left[ f(x_{n+1}, y_{n+1}) + 4 f(x_n, y_n) + f(x_{n-1}, y_{n-1}) \right] \\
 T_{n+1} &= y(x_{n+1}) - y(x_{n-1}) - \frac{h}{3} \left[ f(x_{n+1}, y(x_{n+1})) + 4 f(x_n, y(x_n)) \right. \\
 &\quad \left. + f(x_{n-1}, y(x_{n-1})) \right] \\
@@ -502,10 +566,10 @@ T_{n+1} &= y(x_{n+1}) - y(x_{n-1}) - \frac{h}{3} \left[ f(x_{n+1}, y(x_{n+1})) +
 &\quad + 4 y'(x_n) \\
 &= -\frac{1}{90} h^5 y^{(5)}(x_n) + O(h^7)
 \end{aligned}$$
+
 :::
 
-### 数值积分构造线性多步法 {#数值积分构造线性多步法 .unnumbered}
-
+### 数值积分构造线性多步法 
 将 $y' = f(x, y)$ 在 $[x_{n+1-\ell}, x_{n+1}]$ 上积分：
 $$y(x_{n+1}) = y(x_{n+1-\ell}) + \int_{x_{n+1-\ell}}^{x_{n+1}} f(x, y(x)) \, dx$$
 用等距节点 $x_{n+1}$, $x_n$, $\dots$, $x_{n-r}$
@@ -517,11 +581,14 @@ $$y(x_{n+1}) = y(x_{n+1-\ell}) + \int_{x_{n+1-\ell}}^{x_{n+1}} f(x, y(x)) \, dx$
     $$\ell_i(x) = \prod_{\substack{j=0 \\ j \neq i}}^{2} \frac{x - x_{n-2+j}}{x_{n-2+i} - x_{n-2+j}}$$
     由此可得多步法（Milne 方法）：
     $$y_{n+1} = y_{n-3} + \frac{4}{3} h \left[ 2 f(x_{n-2}, y_{n-2}) - f(x_{n-1}, y_{n-1}) + 2 f(x_n, y_n) \right]$$
-    其局部截断误差为 $$\begin{aligned}
+    其局部截断误差为 
+    
+    
+$$\begin{aligned}
         T_{n+1} &= y(x_{n+1}) - y(x_{n-3}) - \frac{4}{3} h \left[ 2 y'(x_{n-2}) - y'(x_{n-1}) + 2 y'(x_n) \right] \\
-        &= \frac{14}{45} h^5 y^{(5)}(x_n) + O(h^6)
-        
+        &= \frac{14}{45} h^5 y^{(5)}(x_n) + O(h^6)    
     \end{aligned}$$
+
 
 2.  取 $\ell = 2$，插值节点取为 $x_n$, $x_{n-1}$, $\dots$, $x_{n-r}$：
     $$L_r(x) = \sum_{j=1}^{r+1} f(x_{n+1-j}, y(x_{n+1-j})) \ell_j(x)$$
@@ -552,11 +619,14 @@ $$y(x_{n+1}) = y(x_{n+1-\ell}) + \int_{x_{n+1-\ell}}^{x_{n+1}} f(x, y(x)) \, dx$
     **Example**
     取 $r=2$ 有
     $$y_{n+1} = y_n + \frac{h}{2} \left[ 3 f(x_n, y_n) - f(x_{n-1}, y_{n-1}) \right]$$
-    局部截断误差为 $$\begin{aligned}
+    局部截断误差为 
+    
+    
+$$\begin{aligned}
         T_{n+1} &= y(x_{n+1}) - y(x_n) - \frac{h}{2} \left[ 3 y'(x_n) - y'(x_{n-1}) \right] \\
-        &= \frac{5}{12} h^3 y'''(x_n) + O(h^4)
-        
+        &= \frac{5}{12} h^3 y'''(x_n) + O(h^4)    
     \end{aligned}$$
+
     :::
 
 4.  取插值节点为 $x_{n+1}$, $x_n$, $\dots$, $x_{n+1-r}$ 可得隐式方法
@@ -566,11 +636,14 @@ $$y(x_{n+1}) = y(x_{n+1-\ell}) + \int_{x_{n+1-\ell}}^{x_{n+1}} f(x, y(x)) \, dx$
     **Example**
     取 $r=2$
     $$y_{n+1} = y_n + \frac{h}{12} \left[ 5 f(x_{n+1}, y_{n+1}) + 8 f(x_n, y_n) - f(x_{n-1}, y_{n-1}) \right]$$
-    相应的局部截断误差为 $$\begin{aligned}
+    相应的局部截断误差为 
+    
+    
+$$\begin{aligned}
         T_{n+1} &= y(x_{n+1}) - y(x_n) - \frac{h}{12} \left[ 5 y'(x_{n+1}) + 8 y'(x_n) - y'(x_{n-1}) \right] \\
-        &= -\frac{1}{24} h^4 y^{(4)}(x_n) + O(h^5)
-        
+        &= -\frac{1}{24} h^4 y^{(4)}(x_n) + O(h^5)    
     \end{aligned}$$
+
     :::
 
 ## 线性差分方程
@@ -654,7 +727,7 @@ $$\{\xi_j^n\}, \{n \xi_j^n\}, \ldots, \{n^{r_j-1} \xi_j^n\}, \quad j = 1, \ldots
 
 ## 线性多步法的相容性、收敛性及稳定性
 
-### 相容性 {#相容性-1 .unnumbered}
+### 相容性 
 
 **Definition**
 若线性多步法的局部截断误差满足 $$\lim_{h \to 0} \frac{T_{n+k}}{h} = 0$$
@@ -663,23 +736,27 @@ $$\{\xi_j^n\}, \{n \xi_j^n\}, \ldots, \{n^{r_j-1} \xi_j^n\}, \quad j = 1, \ldots
 
 对于线性多步法
 $$\sum_{j=0}^{k} \alpha_j y_{n+j} = h \sum_{j=0}^{k} \beta_j f(x_{n+j}, y_{n+j}),$$
-引入多项式 $$\begin{aligned}
-p(x) &= \sum_{j=0}^{k} \alpha_j x^j \tag{第一特征多项式}, \\
-\sigma(x) &= \sum_{j=0}^{k} \beta_j x^j \tag{第二特征多项式}.
+引入多项式 
+$$\begin{aligned}
+p(x) &= \sum_{j=0}^{k} \alpha_j x^j \quad \text{第一特征多项式}, \\
+\sigma(x) &= \sum_{j=0}^{k} \beta_j x^j \quad \text{第二特征多项式}.
 \end{aligned}$$
+
 
 **Theorem**
 线性多步法相容当且仅当 $$p(1) = 0, \quad p'(1) = \sigma(1).$$
 :::
 
 
-*Proof.* $$\begin{aligned}
+*Proof.* 
+$$\begin{aligned}
 T_{n+k} &= \sum_{j=0}^{k} \alpha_j y(x_{n+j}) - h \sum_{j=0}^{k} \beta_j f(x_{n+j}, y(x_{n+j})) \\
 &= \left( \sum_{j=0}^{k} \alpha_j \right) y(x_n) + \sum_{j=0}^{k} \alpha_j \cdot jh \, y'(x_n) + O(h^2) \\
 &\quad - h \sum_{j=0}^{k} \beta_j y'(x_{n+j}) \\
 &= p(1) y(x_n) + h \sum_{j=0}^{k} (j \alpha_j - \beta_j) y'(x_n) + O(h^2) \\
 &= p(1) y(x_n) + h \big( p'(1) - \sigma(1) \big) y'(x_n) + O(h^2).
-\end{aligned}$$ 所以
+\end{aligned}$$
+ 所以
 $$\lim_{h \to 0} \frac{T_{n+k}}{h} = 0 \iff p(1) = 0, \quad p'(1) = \sigma(1).$$ ◻
 :::
 
@@ -688,10 +765,12 @@ $$\lim_{h \to 0} \frac{T_{n+k}}{h} = 0 \iff p(1) = 0, \quad p'(1) = \sigma(1).$$
 $$p(\omega) - \sigma(\omega)\ln(\omega) = C(\omega - 1)^{P+1} + O(|\omega - 1|^{P+2})$$
 :::
 
-采用多步法计算需给出适当的离散初始条件： $$\begin{aligned}
+采用多步法计算需给出适当的离散初始条件： 
+$$\begin{aligned}
 \sum_{j=0}^{k} \alpha_{j} y_{n+j} &= h \sum_{j=0}^{k} \beta_{j} f(x_{n+j}, y_{n+j}) \\
 y_{\mu} &= \eta_{\mu}(h), \quad \mu = 0, 1, \dots, k-1
 \end{aligned}$$
+
 
 ### 收敛性 {#收敛性-1 .unnumbered}
 
@@ -706,19 +785,25 @@ $$\lim_{h \to 0} y_n = y(x), \quad \forall x \in [a, b]$$ 则称线性多步法
 **Example**
 考虑两步法：
 $$y_{n+2} - 3y_{n+1} + 2y_n = h \left[ \frac{13}{12} f(x_{n+2}, y_{n+2}) - \frac{5}{2} f(x_{n+1}, y_{n+1}) - \frac{5}{12} f(x_n, y_n) \right]$$
-该方法二阶相容. 求解初值问题： $$\begin{aligned}
+该方法二阶相容. 求解初值问题： 
+$$\begin{aligned}
 y' &= 0 \\
 y(0) &= 1.
 \end{aligned}$$
+
 :::
 
-此时两步法变为 $$\begin{aligned}
+此时两步法变为 
+$$\begin{aligned}
 y_{n+2} - 3y_{n+1} + 2y_n = 0
 \end{aligned}$$
 
-该齐次差分方程特征方程为 $$\begin{aligned}
+
+该齐次差分方程特征方程为 
+$$\begin{aligned}
 x^2 - 3x + 2 = 0
 \end{aligned}$$
+
 
 $\Rightarrow \lambda_1 = 1$, $\lambda_2 = 2$.
 
@@ -732,9 +817,11 @@ $\Rightarrow C_1 = 1 - h$, $C_2 = h$
 
 $\Rightarrow y_n = 1 + h(2^n - 1)$
 
+
 $$\begin{aligned}
 \lim_{h \to 0} y_n = \lim_{n \to \infty} 1 + \frac{2^n - 1}{n} \cdot x = \infty \neq y(x) = 1
 \end{aligned}$$
+
 
 故两步法不收敛.
 
@@ -746,11 +833,15 @@ $$\begin{aligned}
 
 
 *引理 (Gronwall 不等式).* 设 $\{\varepsilon_j\}$ 是 $\mathbb{R}$
-中数列，并满足 $$\begin{aligned}
+中数列，并满足 
+$$\begin{aligned}
 |\varepsilon_j| \leq A \sum_{m=0}^{j-1} |\varepsilon_m| + B, \quad j = 1, 2, \dots
-\end{aligned}$$ 其中 $A > 0$, $B \geq 0$. 那么有 $$\begin{aligned}
+\end{aligned}$$
+ 其中 $A > 0$, $B \geq 0$. 那么有 
+$$\begin{aligned}
 |\varepsilon_j| \leq \big( A |\varepsilon_0| + B \big) e^{(j-1)A}, \quad j = 1, 2, \dots
-\end{aligned}$$ ◻
+\end{aligned}$$
+ ◻
 :::
 
 
@@ -759,12 +850,18 @@ $|\varepsilon_j| \leq (A|\varepsilon_0| + B)(1 + A)^{j-1}$。
 
 当 $j = 1$ 时，显然成立。
 
-假设对于 $j$ 成立： $$\begin{aligned}
+假设对于 $j$ 成立： 
+
+
+$$\begin{aligned}
 |\varepsilon_{j+1}| &\leq A \sum_{m=0}^j |\varepsilon_m| + B \\
 &\leq (A|\varepsilon_0| + B) + A \sum_{m=1}^j (A|\varepsilon_0| + B)(1 + A)^{m-1} \\
 &= (A|\varepsilon_0| + B) \left[1 + A \sum_{m=1}^j (1 + A)^{m-1}\right] \\
 &= (A|\varepsilon_0| + B)(1 + A)^j
-\end{aligned}$$ ◻
+\end{aligned}$$
+ 
+
+◻
 :::
 
 **Theorem**
@@ -787,50 +884,73 @@ $$e_n = \sum_{\nu=0}^{k-1} e_{\nu} z_n^{(\nu)} + \frac{1}{\alpha_k} \sum_{j=0}^{
 其中 $z_{n}^{(\nu)}$, $\nu = 0, 1, \dots, k-1$ 是齐次差分方程
 $$\sum_{j=0}^{k} \alpha_j z_{n+j} = 0$$ 的基本解组.
 
-由[根条件]{style="color: red"}可得，存在 $Q$ 不依赖于 $n$ 和 $\nu$ 使得
+由根条件可得，存在 $Q$ 不依赖于 $n$ 和 $\nu$ 使得
 $$|z_{n}^{(\nu)}| \leq Q, \quad \forall n, \nu$$
 
-另一方面， $$\begin{aligned}
+另一方面， 
+
+
+$$\begin{aligned}
 |C_{j+k}| &\leq h \sum_{\nu=0}^{k} |\beta_\nu| \left| f(x_{j+\nu}, y(x_{j+\nu})) - f(x_{j+\nu}, y_{j+\nu}) \right| \\
 &\qquad\qquad + |T_{j+k}| \\
 &\leq h L \sum_{\nu=0}^{k} |\beta_\nu| |e_{j+\nu}| + h \tau(h).
 \end{aligned}$$
 
--   [Lipschitz 条件]{style="color: red"}: $L$ 是 $f$ 的 Lipschitz 常数.
 
--   [相容]{style="color: red"}: $|T_{j+k}| \leq h \tau(h)$, 其中
+-   Lipschitz 条件: $L$ 是 $f$ 的 Lipschitz 常数.
+
+-   相容: $\|T_{j+k}\| \leq h \tau(h)$, 其中
     $\tau(h) \to 0$ as $h \to 0$.
 
-设 $B = L \cdot \max_{0 \leq \nu \leq k} |\beta_\nu|$, 则
+设 $B = L \cdot \max_{0 \leq \nu \leq k} \|\beta_\nu\|$, 则
+
 $$|C_{j+k}| \leq h B \sum_{\nu=0}^{k} |e_{j+\nu}| + h \tau(h).$$
 
-由 $(8.7.1)$ 得 $$\begin{aligned}
+由 $(8.7.1)$ 得 
+
+
+$$\begin{aligned}
 |e_n| &\leq Q k \max_{0 \leq \nu \leq k-1} |e_\nu| + \frac{h}{|\alpha_k|} Q \sum_{j=0}^{n-k} |C_{j+k}| \\
 &= Q k \max_{0 \leq \nu \leq k-1} |e_\nu| + \frac{h}{|\alpha_k|} Q \sum_{j=0}^{n-k} \left[ h B \sum_{\nu=0}^{k} |e_{j+\nu}| + h \tau(h) \right] \\
 &= Q k \max_{0 \leq \nu \leq k-1} |e_\nu| + \frac{h}{|\alpha_k|} Q B \sum_{j=0}^{n-k} \sum_{\nu=0}^{k} |e_{j+\nu}| \\
 &\qquad + \frac{h Q}{|\alpha_k|} (n-k+1) \tau(h) \\
 &= Q k \max_{0 \leq \nu \leq k-1} |e_\nu| + \frac{h}{|\alpha_k|} Q B (k+1) \sum_{j=0}^{n} |e_j| \\
 &\qquad + \frac{Q}{|\alpha_k|} (b-a) \tau(h),
-\end{aligned}$$ 其中 $b-a$ 是区间长度.
+\end{aligned}$$
+ 
+
+其中 $b-a$ 是区间长度.
 
 $$\Rightarrow \quad |e_n| \leq R(h) + P(h) h \sum_{j=0}^{n-1} |e_j|$$
-其中 $$\begin{aligned}
+其中 
+
+
+$$\begin{aligned}
 R &= \frac{1}{1 - \frac{1}{|\alpha_k|} Q B h (k+1)} \left[ k Q \max_{0 \leq j \leq k-1} |e_j| + \frac{1}{|\alpha_k|} Q (b-a) \tau(h) \right], \\
 P &= \frac{1}{1 - \frac{1}{|\alpha_k|} Q B h (k+1)} \frac{1}{|\alpha_k|} Q B (k+1).
 \end{aligned}$$
 
+
 取 $h$ 充分小，使得
 $$1 - \frac{1}{|\alpha_k|} Q B h (k+1) > \frac{1}{2}.$$
 
-则有 $$\begin{aligned}
+则有 
+
+
+$$\begin{aligned}
 0 < R &\leq 2 \left[ k Q \max_{0 \leq j \leq k-1} |e_j| + \frac{1}{|\alpha_k|} Q (b-a) \tau(h) \right], \\
 0 < P &\leq \frac{2}{|\alpha_k|} Q B (k+1).
 \end{aligned}$$
 
-由 Gronwall 不等式得 $$\begin{aligned}
+
+由 Gronwall 不等式得 
+
+
+$$\begin{aligned}
 |e_n| &\leq (P h |e_0| + R) e^{(n-1)h P} \\
 &\leq (P h |e_0| + R) e^{P(b-a)}.
 \end{aligned}$$
+
 
 由初始条件收敛性可得
 $$\lim_{h \to 0} \max_{0 \leq j \leq k-1} |e_j| = 0.$$
@@ -843,15 +963,25 @@ $$\Rightarrow \quad \lim_{h \to 0} |e_n| = 0.$$
 
 必要性：
 
-设线性多步法是收敛的，考虑初值问题 $$\begin{aligned}
+设线性多步法是收敛的，考虑初值问题 
+
+
+$$\begin{aligned}
         y' &= 0 \\
         y(a) &= 0
-    
-\end{aligned}$$ 相应的线性多步法为 $$\begin{aligned}
+\end{aligned}$$
+ 
+
+相应的线性多步法为 
+
+
+$$\begin{aligned}
         \sum_{j=0}^k \alpha_j y_{n+j} &= 0 \\
-        y_0 &= v_0, \, y_1 = v_1, \dots, y_{k-1} = v_{k-1}
-    
-\end{aligned}$$ 初值条件满足
+        y_0 &= v_0, \, y_1 = v_1, \dots, y_{k-1} = v_{k-1}    
+\end{aligned}$$
+ 
+
+初值条件满足
 $$\max_{0 \leq j \leq k-1} |v_j| \to 0 \quad \text{as} \quad h \to 0.$$
 由收敛性得
 $$\lim_{\substack{h \to 0 \\ x = a + nh}} y_n = y(x) = 0, \quad \forall x \in [a, b].$$
@@ -875,64 +1005,99 @@ y(0) = 1
 
 相应的线性多步法为 $$\sum_{j=0}^{k} \alpha_j y_{n+j} = 0$$
 
-由收敛性得 $$\begin{aligned}
+由收敛性得 
+$$\begin{aligned}
 \lim_{h \to 0} y_n & = \lim_{h \to 0} y_n = 1 \\
 & \Rightarrow 0 = \lim_{n \to \infty} \sum_{j=0}^{k} \alpha_j y_{n+j} = \sum_{j=0}^{k} \alpha_j \\
 & \Rightarrow p(1) = 0
 \end{aligned}$$
 
-为证明 $p'(1) = \sigma(1)$，考虑初值问题 $$\begin{aligned}
+
+为证明 $p'(1) = \sigma(1)$，考虑初值问题 
+$$\begin{aligned}
   \begin{cases}
     y' = 1 \\
     y(0) = 0
   \end{cases}
 \end{aligned}$$
 
+
 由于线性多步法收敛，故满足根条件。由于 $p(1) = 0$ 且 $p'(1) \neq 0$，令
+
+
 $$\begin{aligned}
   c = \sigma(1) / p'(1)
-\end{aligned}$$ 构造线性多步法 $$\begin{aligned}
+\end{aligned}$$
+ 
+
+构造线性多步法 
+
+
+$$\begin{aligned}
   \begin{cases}
     \sum_{j=0}^k \alpha_j y_{n+j} = h \sum_{j=0}^k \beta_j \\
     y_m = mhc \quad (m = 0, 1, \dots, k-1)
   \end{cases}
 \end{aligned}$$
 
+
 利用数学归纳法证明 $y_n = nhc$。
 
-设 $y_{n+k} = (n+k)hc$，则有 $$\begin{aligned}
+设 $y_{n+k} = (n+k)hc$，则有 
+
+
+$$\begin{aligned}
   \sum_{j=0}^k \alpha_j y_{n+1+j} = h \sum_{j=0}^k \beta_j = h \sigma(1)
-\end{aligned}$$ $$\begin{aligned}
-  \mathrm{Im}plies \quad \alpha_k y_{n+k+1} &= h \sigma(1) - \sum_{j=0}^{k-1} \alpha_j y_{n+1+j} \\
+\end{aligned}$$
+ 
+
+
+$$\begin{aligned}
+  \implies \quad \alpha_k y_{n+k+1} &= h \sigma(1) - \sum_{j=0}^{k-1} \alpha_j y_{n+1+j} \\
   \text{归纳假设} \rightarrow &= h \sigma(1) - \sum_{j=0}^{k-1} \alpha_j h c (n+1+j) \\
                                &= h \sigma(1) - h c (n+1) \sum_{j=0}^{k-1} \alpha_j - h c \sum_{j=0}^k j \alpha_j + \alpha_k h c (n+1+k) 
-\end{aligned}$$ 由
+\end{aligned}$$
+ 
+
+由
 $\sum_{j=0}^k \alpha_j = 0, \sum_{j=0}^k j \alpha_j = p'(1), c = \sigma(1)/p'(1)$
 可证.
 
-由收敛性 $$\begin{aligned}
+由收敛性 
+
+
+$$\begin{aligned}
   x = y(x) = \lim_{\substack{n \to \infty \\ x = nh}} nhc = xc
-\end{aligned}$$ $$\begin{aligned}
+\end{aligned}$$
+ 
+
+
+$$\begin{aligned}
   \Rightarrow \quad c = 1 \quad \Rightarrow \quad p'(1) = \sigma(1)
-\end{aligned}$$ ◻
+\end{aligned}$$
+ 
+
+◻
 :::
 
-### 稳定性 {#稳定性-1 .unnumbered}
+### 稳定性 
 
 考虑对线性多步法进行扰动
+
 
 $$\begin{aligned}
 \sum_{j=0}^k \alpha_j z_{n+j} &= h \left[ \sum_{j=0}^k \beta_j f(x_{n+j}, z_{n+j}) + s_{n+k} \right] \\
 z_\mu &= y_\mu(h) + s_\mu, \quad \mu = 0, 1, \dots, k-1
 \end{aligned}$$
 
+
 其中 $s_n$, $n = 0, 1, \dots$ 是线性多步法的扰动.
 
 **Definition**
-设 $s_n$ 和 $s_n^*$, $n = 0, 1, \dots$ 是线性多步法的两个扰动, 并设
+设 $s_n$ 和 $s_n^\ast$, $n = 0, 1, \dots$ 是线性多步法的两个扰动, 并设
 $z_n$, $z_n^*$ 是相应的扰动解. 若存在常数 $S$ 和 $h_0$, 使得对于任意
-$h \leq h_0$ 当 $$|s_n - s_n^*| \leq \varepsilon$$ 有
-$$|z_n - z_n^*| \leq S \varepsilon$$ 则称线性多步法是稳定的.
+$h \leq h_0$ 当 $$|s_n - s_n^\ast| \leq \varepsilon$$ 有
+$$|z_n - z_n^\ast| \leq S \varepsilon$$ 则称线性多步法是稳定的.
 :::
 
 **Theorem**
@@ -944,24 +1109,28 @@ $$|z_n - z_n^*| \leq S \varepsilon$$ 则称线性多步法是稳定的.
 
 设线性多步法满足根条件，我们来证明它是稳定的。
 
-考虑线性多步法的两个扰动方程和相应的扰动解 $z_n$ 和 $z_n^*$：
+考虑线性多步法的两个扰动方程和相应的扰动解 $z_n$ 和 $z_n^\ast$：
+
 $$\begin{aligned}
 \sum_{j=0}^k \alpha_j z_{n+j} &= h \left[ \sum_{j=0}^k \beta_j f(x_{n+j}, z_{n+j}) + s_{n+k} \right] \\
 z_\mu &= y_\mu(h) + s_\mu, \quad \mu = 0, 1, \dots, k-1
-\end{aligned}$$ 以及 $$\begin{aligned}
-\sum_{j=0}^k \alpha_j z_{n+j}^* &= h \left[ \sum_{j=0}^k \beta_j f(x_{n+j}, z_{n+j}^*) + s_{n+k}^* \right] \\
-z_\mu^* &= y_\mu(h) + s_\mu^*, \quad \mu = 0, 1, \dots, k-1
-\end{aligned}$$ 令误差
-$e_n = z_n - z_n^*$。将两个方程相减，得到误差方程：
-$$\sum_{j=0}^k \alpha_j (z_{n+j} - z_{n+j}^*) = h \left[ \sum_{j=0}^k \beta_j (f(x_{n+j}, z_{n+j}) - f(x_{n+j}, z_{n+j}^*)) + (s_{n+k} - s_{n+k}^*) \right]$$
+\end{aligned}$$
+ 以及 
+$$\begin{aligned}
+\sum_{j=0}^k \alpha_j z_{n+j}^\ast &= h \left[ \sum_{j=0}^k \beta_j f(x_{n+j}, z_{n+j}^\ast) + s_{n+k}^\ast \right] \\
+z_\mu^\ast &= y_\mu(h) + s_\mu^\ast, \quad \mu = 0, 1, \dots, k-1
+\end{aligned}$$
+ 令误差
+$e_n = z_n - z_n^\ast$。将两个方程相减，得到误差方程：
+$$\sum_{j=0}^k \alpha_j (z_{n+j} - z_{n+j}^\ast) = h \left[ \sum_{j=0}^k \beta_j (f(x_{n+j}, z_{n+j}) - f(x_{n+j}, z_{n+j}^\ast)) + (s_{n+k} - s_{n+k}^\ast) \right]$$
 即
-$$\sum_{j=0}^k \alpha_j e_{n+j} = h \sum_{j=0}^k \beta_j (f(x_{n+j}, z_{n+j}) - f(x_{n+j}, z_{n+j}^*)) + h (s_{n+k} - s_{n+k}^*)$$
+$$\sum_{j=0}^k \alpha_j e_{n+j} = h \sum_{j=0}^k \beta_j (f(x_{n+j}, z_{n+j}) - f(x_{n+j}, z_{n+j}^\ast)) + h (s_{n+k} - s_{n+k}^\ast)$$
 我们定义
-$F_{n+k} = h \sum_{j=0}^k \beta_j (f(x_{n+j}, z_{n+j}) - f(x_{n+j}, z_{n+j}^*)) + h (s_{n+k} - s_{n+k}^*)$。
+$F_{n+k} = h \sum_{j=0}^k \beta_j (f(x_{n+j}, z_{n+j}) - f(x_{n+j}, z_{n+j}^\ast)) + h (s_{n+k} - s_{n+k}^\ast)$。
 利用 $f$ 的 **Lipschitz 条件**
 $|f(x, y_1) - f(x, y_2)| \leq L |y_1 - y_2|$，以及扰动条件
-$|s_n - s_n^*| \leq \varepsilon$，我们有：
-$$|F_{n+k}| \leq h L \sum_{j=0}^k |\beta_j| |e_{n+j}| + h |s_{n+k} - s_{n+k}^*|$$
+$|s_n - s_n^\ast| \leq \varepsilon$，我们有：
+$$|F_{n+k}| \leq h L \sum_{j=0}^k |\beta_j| |e_{n+j}| + h |s_{n+k} - s_{n+k}^\ast|$$
 令 $M_\beta = \sum_{j=0}^k |\beta_j|$，则
 $$|F_{n+k}| \leq h L M_\beta \max_{0 \leq \nu \leq k} |e_{n+\nu}| + h \varepsilon$$
 误差方程 $\sum_{j=0}^k \alpha_j e_{n+j} = F_{n+k}$ 的解可以表示为：
@@ -975,8 +1144,8 @@ $|z_n^{(\nu)}| \leq Q$ 对所有 $n \geq 0$ 和 $\nu = 0, \dots, k-1$ 成立。
 取 $e_n$ 表达式的绝对值并放缩：
 $$|e_n| \leq \sum_{\nu=0}^{k-1} |e_{\nu}| |z_n^{(\nu)}| + \frac{1}{|\alpha_k|} \sum_{j=0}^{n-k} |F_{j+k}| |z_{n-j-1}^{(k-1)}|$$
 $$|e_n| \leq Q \sum_{\nu=0}^{k-1} |e_{\nu}| + \frac{Q}{|\alpha_k|} \sum_{j=0}^{n-k} |F_{j+k}|$$
-由初始条件 $e_\mu = z_\mu - z_\mu^* = s_\mu - s_\mu^*$，因此
-$\max_{0 \leq \mu \leq k-1} |e_\mu| = \max_{0 \leq \mu \leq k-1} |s_\mu - s_\mu^*| \leq \varepsilon$。
+由初始条件 $e_\mu = z_\mu - z_\mu^\ast = s_\mu - s_\mu^\ast$，因此
+$\max_{0 \leq \mu \leq k-1} |e_\mu| = \max_{0 \leq \mu \leq k-1} |s_\mu - s_\mu^\ast| \leq \varepsilon$。
 代入 $|F_{j+k}|$ 的上界：
 $$|e_n| \leq Q k \varepsilon + \frac{Q}{|\alpha_k|} \sum_{j=0}^{n-k} \left( h L M_\beta \max_{0 \leq \nu \leq k} |e_{j+\nu}| + h \varepsilon \right)$$
 $$|e_n| \leq Q k \varepsilon + \frac{Q h L M_\beta}{|\alpha_k|} \sum_{j=0}^{n-k} \max_{0 \leq \nu \leq k} |e_{j+\nu}| + \frac{Q h (n-k+1)}{|\alpha_k|} \varepsilon$$
@@ -1010,37 +1179,71 @@ $$|e_n| \leq S \varepsilon$$ 这正是线性多步法稳定的定义。
 所以，如果线性多步法满足根条件，那么它是稳定的。
 
 *(必要性)* 考虑微分方程 $y' = 0$. 相应的多步法为
-$$\sum_{j=0}^k \alpha_j y_{n+j} = 0$$ 考虑扰动 $s_n$, $s_n^*$, 满足
-$s_n = s_n^* = 0$, $n = k, k+1, \dots$. 则 $z_n$, $z_n^*$ 均满足
+$$\sum_{j=0}^k \alpha_j y_{n+j} = 0$$ 考虑扰动 $s_n$, $s_n^\ast$, 满足
+$s_n = s_n^\ast = 0$, $n = k, k+1, \dots$. 则 $z_n$, $z_n^\ast$ 均满足
 $$\sum_{j=0}^k \alpha_j y_{n+j} = 0$$
 
-设 $e_n = z_n - z_n^*$ 满足 $$\begin{aligned}
+设 $e_n = z_n - z_n^\ast$ 满足 
+$$\begin{aligned}
 \sum_{j=0}^k \alpha_j e_{n+j} = 0
-\end{aligned}$$ 则 $$\begin{aligned}
+\end{aligned}$$
+ 则 
+$$\begin{aligned}
 e_n = \sum_{j=1}^{k_0} \sum_{\ell=1}^{r_j} c_{j,\ell} n^{\ell-1} \lambda_j^n
-\end{aligned}$$ 其中 $\lambda_j$ 为特征方程 $p(\lambda) = 0$ 的根，$r_j$
+\end{aligned}$$
+ 其中 $\lambda_j$ 为特征方程 $p(\lambda) = 0$ 的根，$r_j$
 为 $\lambda_j$ 的重数。 ◻
 :::
 
-由稳定性得 $$\begin{aligned}
-|e_n| \leq S \max_{0 \leq j \leq k-1} |s_j - s_j^*|
-\end{aligned}$$ 从而 $$\begin{aligned}
+由稳定性得 
+
+
+$$\begin{aligned}
+|e_n| \leq S \max_{0 \leq j \leq k-1} |s_j - s_j^\ast|
+\end{aligned}$$
+ 
+
+从而 
+
+
+$$\begin{aligned}
 |\lambda_j| < 1 \quad \text{或者} \quad |\lambda_j| = 1, \, r_j = 1
 \end{aligned}$$
 
+
 ### 绝对稳定性 {#绝对稳定性 .unnumbered}
 
-考虑试验方程 $$\begin{aligned}
+考虑试验方程 
+
+
+$$\begin{aligned}
 y' = \lambda y
-\end{aligned}$$ 代入多步法得 $$\begin{aligned}
+\end{aligned}$$
+ 
+
+代入多步法得 
+
+
+$$\begin{aligned}
 \sum_{j=0}^k \alpha_j y_{n+j} = \lambda h \sum_{j=0}^k \beta_j y_{n+j}
 \end{aligned}$$
 
-差分方程的特征方程为 $$\begin{aligned}
+
+差分方程的特征方程为 
+
+
+$$\begin{aligned}
 p(r) - \lambda h q(r) = 0
-\end{aligned}$$ 令 $$\begin{aligned}
+\end{aligned}$$
+ 
+
+令 
+$$\begin{aligned}
 \pi(r, \lambda h) = p(r) - \lambda h q(r)
-\end{aligned}$$ 稳定性多项式
+\end{aligned}$$
+ 
+
+稳定性多项式
 
 **Definition**
 对于给定的 $\lambda h$，如果 $\pi(r, \lambda h)$ 的根满足
@@ -1049,10 +1252,12 @@ $\lambda h$ 绝对稳定.
 :::
 
 **Definition**
+
 $$\begin{aligned}
 \{ \lambda h \in \mathbb{C}: \, & \text{线性多步法关于 } \lambda h \text{ 绝对稳定} \} & \textbf{绝对稳定性区域}\\
 \{ \lambda h \in \mathbb{R}: \, & \text{线性多步法关于 } \lambda h \text{ 绝对稳定} \} & \textbf{绝对稳定性区间}
 \end{aligned}$$
+
 :::
 
 **Example**
@@ -1238,7 +1443,7 @@ I & -\Delta t \frac{\partial^2 H}{\partial \mathcal{Q}^2} \\
 \end{pmatrix}$$直接计算可验证$$\Phi_{\Delta t}'(P^k, \mathcal{Q}^k)^T J \Phi_{\Delta t}'(P^k, \mathcal{Q}^k) = J \quad \text{证毕.}$$ ◻
 :::
 
-::: remark
+**Remark**
 $$\begin{cases}
 P^{k+1} = P^k - \Delta t \frac{\partial H}{\partial \mathcal{Q}} (P^k, \mathcal{Q}^k) \\
 \mathcal{Q}^{k+1} = \mathcal{Q}^k + \Delta t \frac{\partial H}{\partial P} (P^k, \mathcal{Q}^k)
@@ -1274,7 +1479,7 @@ $$\Phi_{\Delta t} = \Phi_{-\Delta t}^{-1} \doteq \Phi_{\Delta t}^* \quad (\text{
 Leap-frog 是对称的.
 :::
 
-::: remark
+**Remark**
 $(8.8.4)$ $(8.8.5)$ 互为对偶算法.
 :::
 
@@ -1299,15 +1504,17 @@ $$b^T \frac{\partial H}{\partial P} (P, \mathcal{Q}) - c^T \frac{\partial H}{\pa
 
 对于二次守恒量 $F(P, \mathcal{Q}) = P^T(B\mathcal{Q}+b)$
 $$\frac{dF}{dt} = -(\frac{\partial H}{\partial \mathcal{Q}})^T (B\mathcal{Q}+b) + P^T(B \frac{\partial H}{\partial P}) = 0$$
-Leap-frog 为 $(8.8.4)$ $(8.8.5)$ 复合. 且 $$\begin{aligned}
+Leap-frog 为 $(8.8.4)$ $(8.8.5)$ 复合. 且 
+$$\begin{aligned}
 (P^{k+1})^T (B\mathcal{Q}^{k+1}+b) &= (P^{k+\frac{1}{2}} - \frac{\Delta t}{2} \frac{\partial H}{\partial \mathcal{Q}} (P^{k+\frac{1}{2}}, \mathcal{Q}^{k+1}))^T (B(\mathcal{Q}^{k+\frac{1}{2}} + \frac{\Delta t}{2} B \frac{\partial H}{\partial P} (P^{k+\frac{1}{2}}, \mathcal{Q}^{k+1}))+b) \\
 &= (P^{k+\frac{1}{2}})^T (B\mathcal{Q}^{k+\frac{1}{2}}+b) + \frac{\Delta t}{2} (P^{k+\frac{1}{2}})^T B \frac{\partial H}{\partial P} (P^{k+\frac{1}{2}}, \mathcal{Q}^{k+1}) \\
 &- \frac{\Delta t}{2} (\frac{\partial H}{\partial \mathcal{Q}} (P^{k+\frac{1}{2}}, \mathcal{Q}^{k+1}))^T (B\mathcal{Q}^{k+\frac{1}{2}}+b) \\
 &= (P^{k+\frac{1}{2}})^T (B\mathcal{Q}^{k+\frac{1}{2}}+b) \quad \text{证毕.}
-\end{aligned}$$ ◻
+\end{aligned}$$
+ ◻
 :::
 
-::: remark
+**Remark**
 Leap-frog 对于一般 Hamilton 量不守恒
 $H(P, \mathcal{Q}) = \frac{1}{2} (P^2+\mathcal{Q}^2)$ $$\begin{pmatrix}
 P^{k+1} \\
@@ -1331,11 +1538,13 @@ $Vol(\Phi(\Omega)) = Vol(\Omega)$, $\forall \Omega \subset U$.
 :::
 
 
-*Proof.* 由 $(\Phi_t')^T J \Phi_t' = J$ 可得 $$\begin{aligned}
+*Proof.* 由 $(\Phi_t')^T J \Phi_t' = J$ 可得 
+$$\begin{aligned}
 1 &= \det(J) \\
 &= \det((\Phi_t')^T J \Phi_t') \\
 &= |\det(\Phi_t')|^2
-\end{aligned}$$ $\mathrm{Im}plies |\det(\Phi_t')| = 1$.
+\end{aligned}$$
+ $\implies |\det(\Phi_t')| = 1$.
 
 另一方面
 $$Vol(\Phi(\Omega)) = \int_\Omega |\det(\Phi_t'(y))| dy = Vol(\Omega).$$
@@ -1350,13 +1559,13 @@ $\phi_t$ 保体积.
 
 
 *Proof.* 首先
-$$\frac{d\phi_t(y)}{dt} = f(\phi_t(y))$$则$$\frac{d}{dt} \phi_t'(y) = f'(\phi_t(y)) \phi_t'(y)$$$$\mathrm{Im}plies \left(\frac{d}{dt} \phi_t'(y)\right) \phi_t'(y)^{-1} = f'(\phi_t(y))$$$$\mathrm{Im}plies 0 = tr(f'(\phi_t(y))) = tr\left(\left(\frac{d}{dt} \phi_t'(y)\right) \phi_t'(y)^{-1}\right)$$Jacobi
+$$\frac{d\phi_t(y)}{dt} = f(\phi_t(y))$$则$$\frac{d}{dt} \phi_t'(y) = f'(\phi_t(y)) \phi_t'(y)$$$$\implies \left(\frac{d}{dt} \phi_t'(y)\right) \phi_t'(y)^{-1} = f'(\phi_t(y))$$$$\implies 0 = tr(f'(\phi_t(y))) = tr\left(\left(\frac{d}{dt} \phi_t'(y)\right) \phi_t'(y)^{-1}\right)$$Jacobi
 公式：
-$\frac{d}{dt} (\det \phi_t'(y)) = \det \phi_t'(y) tr\left(\left(\frac{d}{dt} \phi_t'(y)\right) \phi_t'(y)^{-1}\right)$$$\mathrm{Im}plies \det \phi_t'(y) = \det \phi_{t=0}'(y) = I$$
+$\frac{d}{dt} (\det \phi_t'(y)) = \det \phi_t'(y) tr\left(\left(\frac{d}{dt} \phi_t'(y)\right) \phi_t'(y)^{-1}\right)$$$\implies \det \phi_t'(y) = \det \phi_{t=0}'(y) = I$$
 证毕. ◻
 :::
 
-::: remark
+**Remark**
 Hamilton 系统保体积. 保体积系统不一定是 Hamilton 系统. 对于 Hamilton
 系统, 辛格式保体积. 对于一般保体积系统, 没有一般能保体积算法.
 :::
@@ -1422,11 +1631,13 @@ $F(\Phi_{\Delta t}(x^k)) = C^T (x^k + \Delta t \sum_{j=1}^m b_j f(x_{j,k})) = C^
 设 $F(x) = x^T C x$ 为二次不变量, $C \in \mathbb{R}^{d \times d}$
 为对称矩阵. 则
 $$\frac{dF}{dt} = x^T C \frac{dx}{dt} + \frac{dx^T}{dt} C x = 2x^T C f(x) = 0$$
-$$\mathrm{Im}plies x^T C f(x) = 0$$ $$\begin{aligned}
+$$\implies x^T C f(x) = 0$$ 
+$$\begin{aligned}
 F(\Phi_{\Delta t}(x^k)) &= (x^k + \Delta t \sum_{j=1}^m b_j f(x_{j,k}))^T C (x^k + \Delta t \sum_{j=1}^m b_j f(x_{j,k})) \\
 &= (x^k)^T C x^k + \Delta t \sum_{j=1}^m b_j (x^k)^T C f(x_{j,k}) + \Delta t \sum_{j=1}^m b_j f(x_{j,k})^T C x^k \\
 &+ (\Delta t)^2 \sum_{i=1}^m \sum_{j=1}^m b_i b_j f(x_{i,k})^T C f(x_{j,k})
-\end{aligned}$$ 另一方面
+\end{aligned}$$
+ 另一方面
 $x^k = x_{i,k} - \Delta t \sum_{j=1}^m a_{ij} f(x_{j,k})$. 由此可得
 $$F(\Phi_{\Delta t}(x^k)) = (x^k)^T C x^k - (\Delta t)^2 \sum_{i=1}^m \sum_{j=1}^m (b_i a_{ij} + b_j a_{ji} - b_i b_j) f(x_{i,k})^T C f(x_{j,k}) = (x^k)^T C x^k$$
 证毕. ◻

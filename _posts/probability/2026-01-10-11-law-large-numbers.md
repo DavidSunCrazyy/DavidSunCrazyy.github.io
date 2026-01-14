@@ -18,7 +18,7 @@ Borel-Cantelli 引理是研究事件无穷次发生概率的核心工具，在�
 
 **定理** 对于任意事件序列 $\{E_n\}$，有
 
-$$\sum_n \mathbb{P}[E_n] < \infty \mathrm{Im}plies \mathbb{P}[E_n \text{ i.o.}] = 0$$
+$$\sum_n \mathbb{P}[E_n] < \infty \implies \mathbb{P}[E_n \text{ i.o.}] = 0$$
 
 其中 "i.o." 表示 "infinitely often"（无穷次发生）。
 
@@ -28,7 +28,7 @@ $$\sum_n \mathbb{P}[E_n] < \infty \mathrm{Im}plies \mathbb{P}[E_n \text{ i.o.}] 
 
 **定理** 若事件 $\{E_n\}$ **独立**，则
 
-$$\sum_n \mathbb{P}[E_n] = \infty \mathrm{Im}plies \mathbb{P}[E_n \text{ i.o.}] = 1$$
+$$\sum_n \mathbb{P}[E_n] = \infty \implies \mathbb{P}[E_n \text{ i.o.}] = 1$$
 
 **注意**：独立性条件至关重要。没有独立性时结论不成立。
 
@@ -74,7 +74,7 @@ $$\mathbb{P}\left[\max_{1 \le j \le n} \|S_j\| \le B\right] \le \frac{(2B+A)^2}{
 
 **定理** 设 $\{x_n\}$ 为实数序列，$\{a_n\}$ 为满足 $0 < a_n \uparrow \infty$ 的数列。则
 
-$$\sum_n \frac{x_n}{a_n} \text{ 收敛} \mathrm{Im}plies \frac{1}{a_n} \sum_{j=1}^n x_j \to 0$$
+$$\sum_n \frac{x_n}{a_n} \text{ 收敛} \implies \frac{1}{a_n} \sum_{j=1}^n x_j \to 0$$
 
 **意义**：将级数收敛转化为平均收敛，是从强大数定律到弱大数定律的关键步骤。
 
@@ -119,8 +119,8 @@ $$\frac{S_n - \mathbb{E}[S_n]}{n} \to 0 \quad \text{依概率}$$
 
 **定理** 设 $\{X_n\}$ 为独立同分布。定义 $S_n = \sum_{j=1}^n X_j$。则有：
 
-- $\mathbb{E}[\|X_1\|] < \infty \mathrm{Im}plies \frac{S_n}{n} \to \mathbb{E}[X_1]$ 几乎必然
-- $\mathbb{E}[\|X_1\|] = \infty \mathrm{Im}plies \limsup_n \frac{\|S_n\|}{n} = \infty$ 几乎必然
+- $\mathbb{E}[\|X_1\|] < \infty \implies \frac{S_n}{n} \to \mathbb{E}[X_1]$ 几乎必然
+- $\mathbb{E}[\|X_1\|] = \infty \implies \limsup_n \frac{\|S_n\|}{n} = \infty$ 几乎必然
 
 **意义**：第一个结论是经典的强大数定律；第二个结论说明如果期望不存在，平均不会收敛到任何有限值。
 

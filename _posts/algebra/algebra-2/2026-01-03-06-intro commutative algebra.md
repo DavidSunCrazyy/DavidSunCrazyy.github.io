@@ -57,7 +57,7 @@ $\operatorname{Spec}(\mathbb{C}[x,y])$ $$\operatorname{Spec}(\mathbb{C}[x,y])=\{
 $R$的**局部化**（通过$S$） (localization of $R$ by $S$): $$S^{-1}R:=\{(r,s)\in R\times S\}/\sim$$ 其中$(r,s)\sim (r',s')$当且仅当$\exists t\in S$使得$t(rs'-r's)=0$。
 :::
 
-::: remark
+**Remark**
 1.  $\sim$ 是等价关系
 
 2.  $S^{-1}R$是一个环
@@ -66,7 +66,7 @@ $R$的**局部化**（通过$S$） (localization of $R$ by $S$): $$S^{-1}R:=\{(r
 :::
 
 **Proposition**
-$R$无zero divisor $\mathrm{Im}plies S^{-1}R$是整环。
+$R$无zero divisor $\implies S^{-1}R$是整环。
 :::
 
 **Proposition**

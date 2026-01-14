@@ -22,6 +22,8 @@ $$\varphi^{(k)}(x_i) = f^{(k)}(x_i), \quad i = 0, \ldots, n, \quad k = 0, \ldots
 
 -   $x_0, \ldots, x_n$: 插值节点
 
+---
+
 ## Lagrange 插值
 
 存在唯一的 (不超过) $n+1$次多项式恰好经过$n$个点.
@@ -67,16 +69,30 @@ $$R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} w_{n+1}(x)$$ ◻
 设 $a=x_0 < x_1 < \cdots < x_n = b$,
 $h = \max_{1\le j \le n} (x_j - x_{j-1})$, $f \in C^{n+1} [a,b]$, $L_n$
 为 $f$ 的 $n$ 次 插值多项式, 则有
-$\|f-L_n\|_\infty \le \frac{h^{n+1}}{4(n+1)} \|f^{(n+1)}\|_\infty$
-:::
+
+$$\|f-L_n\|_\infty \le \frac{h^{n+1}}{4(n+1)} \|f^{(n+1)}\|_\infty$$
 
 
-*Proof.* 设 $x \in [x_k, x_{k+1}]$， $$\begin{aligned}
+*Proof.* 设 $x \in [x_k, x_{k+1}]$， 
+
+
+$$\begin{aligned}
 |(x - x_k)(x - x_{k+1})| &\leq \frac{1}{4}h^2 \\
 |x - x_{k+2}| &\leq 2h, \dots, |x - x_n| \leq (n-k)h \\
 |x - x_{k-1}| &\leq 2h, \dots, |x - x_0| \leq (k+1)h
-\end{aligned}$$ 从而 $$|w_{n+1}(x)| \leq \frac{n!}{4} h^{n+1}$$ ◻
+\end{aligned}$$
+ 
+
+从而 
+
+$$ 
+    |w_{n+1}(x)| \leq \frac{n!}{4} h^{n+1}
+$$ 
+
+◻
 :::
+
+---
 
 ## 均差和 Newton 插值多项式
 
@@ -107,26 +123,36 @@ $$f[x_k, x_{k+1}, \dots, x_{k+j}] = \frac{f[x_{k+1}, \dots, x_{k+j}] - f[x_k, \d
 
 Newton 插值多项式
 
-利用均差定义有 $$\begin{aligned}
+利用均差定义有 
+
+
+$$\begin{aligned}
 f[x] &= f[x_0] \\
 f[x, x_0] &= f[x_0] + f[x, x_0](x - x_0) \\
 f[x, x_0, x_1] &= f[x_0, x_1] + f[x, x_0, x_1](x - x_1) \\
 f[x, x_0, \dots, x_n] &= f[x_0, \dots, x_n] + f[x, x_0, \dots, x_n](x - x_n)
 \end{aligned}$$
 
-$$f(x) = 
+
+$$
+\begin{aligned}
+f(x) = 
 \underbrace{
 f(x_0) + f[x, x_0](x - x_0) + \cdots + f[x_0, \dots, x_n](x - x_0)\cdots(x - x_{n-1})
-}_{N_n(x)}$$ $$+
+}_{N_n(x)}+ \\
 \underbrace{
 f[x, x_0, \dots, x_n](x - x_0)\cdots(x - x_n)
-}_{R_n(x)}$$
+}_{R_n(x)}
+\end{aligned}
+$$
 
 则有 $N_n(x) \in P_n$ 且 $N_n(x_i) = f(x_i), \quad i = 0, \dots, n$.
 
 故 $$N_n(x) = L_n(x) \quad \textbf{ n  次 Newton 插值多项式}$$
 
 $$R_n(x) = f[x, x_0, \dots, x_n](x - x_0)\cdots(x - x_n) \quad \textbf{均差形式余项}$$
+
+---
 
 ## Hermite 插值
 
@@ -271,14 +297,16 @@ $$\lambda_n > \frac{4}{\pi^2} \log n$$
 :::
 
 
-*Proof.* $$\begin{aligned}
+*Proof.* 
+$$\begin{aligned}
 \lambda_n &= \frac{2}{\pi} \int_{0}^{\frac{\pi}{2}} \frac{|\sin(2n+1)x|}{\sin x} \, dx \\
  &\geq \frac{2}{\pi} \int_{0}^{\frac{\pi}{2}} \frac{|\sin(2n+1)x|}{x} \, dx \\
  &= \frac{2}{\pi} \sum_{k=0}^{n-1} \int_{k}^{k+1} \frac{|\sin(2n+1)x|}{x} \, dx \\
  &= \frac{2}{\pi} \sum_{k=0}^{n-1} \int_{0}^{1} \frac{1}{z+k} \sin \pi z \, dz \\
  &\geq \frac{2}{\pi} \int_{0}^{1} \left( \sum_{k=0}^{n-1} \frac{1}{k+1} \right) \sin \pi z \, dz \\
  &\geq \frac{2}{\pi} \log n \int_{0}^{1} \sin \pi z \, dz \\
- &= \frac{4}{\pi^2} \log n \end{aligned}$$ ◻
+ &= \frac{4}{\pi^2} \log n \end{aligned}$$
+ ◻
 :::
 
 我们的目的是为了得到如下定理.
@@ -294,7 +322,7 @@ $$\lim_{n \to \infty} \| L_n f \| = \infty$$
 $\| L_n f \|$ 对所有 $f$ 有界，则由定理 2.4.2 $\| L_n \|$ 有界，矛盾。 ◻
 :::
 
-::: remark
+**Remark**
 当我们试图用 $M_n$ 中的函数去逼近 $f$ 时，投影算子 $L_n$
 的结果可能变得极其"振荡"或"剧烈变化"，导致其范数趋于无穷大。这表明，即使是简单的连续函数，也可能存在无法通过简单的投影方法稳定逼近的情况。
 :::
@@ -420,9 +448,9 @@ $$\lim_{n \to \infty} \| L_n f - f \|_{\infty} = 0, \quad \forall f \in C_{2\pi}
 :::
 
 
-*Proof.* $"\mathrm{Im}plies"$ 显然成立.
+*Proof.* $"\implies"$ 显然成立.
 
-$"\mathrm{Im}pliedby"$
+$"\impliedby"$
 
 对于$C_{2\pi}$上的连续函数, 存在三角多项式逼近: $\forall \epsilon >0$,
 存在三角多项式$S(f)$ 满足 $$\|S(f) - f\|_{\infty} < \epsilon$$
@@ -430,10 +458,12 @@ $"\mathrm{Im}pliedby"$
 因为$\|L_n f - f\|_{\infty} \to 0$对于$1,\sin x, \cos x$成立,
 所以对于$f$为三角多项式的情形也成立.
 
+
 $$\begin{aligned}
     \|L_n f - f\|_\infty  &= \|L_nf - L_n S(f) + L_n S(f) - S(f) + S(f) - f\|_\infty \\ 
     & \le \|L_nf - L_n S(f)\|_\infty + \|L_n S(f) - S(f)\|_\infty + \|S(f) - f\|_\infty \\
     \end{aligned}$$
+
 
 后两项都$\to 0$.
 
@@ -825,6 +855,7 @@ $$||q||_{\infty} \leq ||A^{-1}||_{\infty} ||\mathbf{c}||_{\infty} \leq ||\mathbf
 
 由于 $f \in C^{4}[a,b]$，利用 Taylor 展开可得
 
+
 $$\begin{aligned}
     c_j  = &  3\mu_j \frac{1}{h_j} (f_{j+1} - f_j) + 3\lambda_j \frac{1}{h_{j-1}} (f_j - f_{j-1}) -\lambda_j f_{j-1}' - 2f_j' - \mu_j f_{j+1}' \\
     = & 3\mu_j [f_j' + \frac{1}{2} h_j f_j'' + \frac{1}{6} h_j^2 f_j''' + \frac{1}{6h_j} \int_{x_j}^{x_{j+1}} (x_{j+1} - v)^3 f^{(4)} (v) dv] \\
@@ -837,15 +868,18 @@ $$\begin{aligned}
     &+ \frac{1}{2} \lambda_j h_{j-1}^3 \int_0^1 z^2 (1-z) f^{(4)}(x_{j-1} + zh_{j-1}) \, dz \\
 \end{aligned}$$
 
+
+
 $$\begin{aligned}
     \Rightarrow \quad &|c_j| \leq \frac{1}{2} \mu_j h_j^3 \|f^{(4)}\|_\infty \int_0^1 z (1-z)^2 \, dz \\
     &+ \frac{1}{2} \lambda_j h_{j-1}^3 \|f^{(4)}\|_\infty \int_0^1 z^2 (1-z) \, dz \\
     &= \frac{1}{2} \|f^{(4)}\|_\infty \left( \frac{1}{12} \mu_j h_j^3 + \frac{1}{12} \lambda_j h_{j-1}^3 \right) \\
     &\leq \frac{1}{24} h^3 \|f^{(4)}\|_\infty
-\end{aligned}$$ ◻
+\end{aligned}$$
+ ◻
 :::
 
-::: remark
+**Remark**
 $$\alpha_i(x) = \left(\frac{x-x_{i+1}}{h_i}\right)^2 \left(1+2\frac{x-x_i}{h_i}\right),\quad \alpha_{i+1}(x) = \left(\frac{x-x_i}{h_i}\right)^2 \left(1+2\frac{x_{i+1}-x}{h_i}\right)$$
 $$\beta_i(x) = (x-x_i) \left(\frac{x-x_{i+1}}{h_i}\right)^2, \quad \beta_{i+1}(x) = (x-x_{i+1}) \left(\frac{x-x_i}{h_i}\right)^2$$
 导数值
@@ -899,13 +933,13 @@ $$\sum_{k=0}^3 \alpha_k u_k(x) + \sum_{k=1}^{n-1} \beta_k v_k(x) = 0$$
 对于 $x \in [x_0, x_1]$，$v_k(x) = 0$，$k=1,\cdots,n-1$
 
 故
-$$\sum_{k=0}^3 \alpha_k u_k(x) = \sum_{k=0}^3 \alpha_k x^k = 0 \mathrm{Im}plies \alpha_k = 0$$
+$$\sum_{k=0}^3 \alpha_k u_k(x) = \sum_{k=0}^3 \alpha_k x^k = 0 \implies \alpha_k = 0$$
 
 $$\Rightarrow \sum_{k=1}^{n-1} \beta_k v_k(x) = 0$$
 
 对于 $x \in [x_1, x_2]$，$v_k(x) = 0$，$k=2,\cdots,n-1$
 
-$$\Rightarrow \beta_1 v_1(x) = 0 \mathrm{Im}plies \beta_1 = 0$$
+$$\Rightarrow \beta_1 v_1(x) = 0 \implies \beta_1 = 0$$
 
 依次类推可得 $\beta_k = 0$，$k=1,\cdots,n-1$
 
@@ -977,7 +1011,7 @@ $$B_3 \left( \frac{x-a-kh}{h} \right), \, k = -1, 0, \cdots n + 1$$
 是 $S_3^n$ 的一组基。
 :::
 
-::: remark
+**Remark**
 利用这组基可以计算等距剖分上的三次样条插值函数。
 :::
 
@@ -1095,12 +1129,14 @@ $$\Omega(\delta) = \max_{1 \leq i \leq n} \max_{d(x,y) \leq \delta} |g_i(x) - g_
 考虑，$P = \sum_{i=1}^{n} c_i g_i$，取 $x \in X$，使得
 $$|P(x)| = ||P||_X.$$
 
-则对 $\forall y \in Y, d(x, y) < \delta$ 有 $$\begin{aligned}
+则对 $\forall y \in Y, d(x, y) < \delta$ 有 
+$$\begin{aligned}
 \theta \sum_{i=1}^{n} |c_i| & \leq ||P||_X = |P(x)| \\
 &\leq |P(x) - P(y)| + |P(y)| \\
 &\leq \sum_i |c_i||g_i(x) - g_i(y)| + ||P||_Y \\
 &\leq \Omega(\delta) \sum_i |c_i| + ||P||_Y 
 \end{aligned}$$
+
 $$\Rightarrow \sum_i |c_i| \leq \frac{||P||_Y}{\theta - \Omega(\delta)}$$
 
 $$||P||_X \leq \Omega(\delta) \frac{||P||_Y}{\theta - \Omega(\delta)} + ||P||_Y= (1- \frac{\Omega(\delta)}{\theta - \Omega(\delta)}) ||P||_Y$$ ◻

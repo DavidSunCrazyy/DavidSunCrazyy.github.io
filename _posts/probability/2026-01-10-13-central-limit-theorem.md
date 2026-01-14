@@ -72,7 +72,7 @@ $$\lim_{T \to \infty} \frac{1}{2T} \int_{-T}^T \|f(t)\|^2 \, dt = \sum_{x \in \m
 
 ### 1.7 特征函数与收敛
 
-**连续性定理**：$\mu_n \mathrm{Im}plies \mu$ 当且仅当 $f_n(t) \to f(t)$ 对所有 $t$，其中 $f_n, f$ 是对应的特征函数。
+**连续性定理**：$\mu_n \implies \mu$ 当且仅当 $f_n(t) \to f(t)$ 对所有 $t$，其中 $f_n, f$ 是对应的特征函数。
 
 ---
 
@@ -84,13 +84,13 @@ $$\lim_{T \to \infty} \frac{1}{2T} \int_{-T}^T \|f(t)\|^2 \, dt = \sum_{x \in \m
 
 则
 
-$$\frac{S_n - nm}{\sqrt{n}} \mathrm{Im}plies \mathcal{N}(0, \sigma^2)$$
+$$\frac{S_n - nm}{\sqrt{n}} \implies \mathcal{N}(0, \sigma^2)$$
 
 **等价形式**：设 $\bar{X}\_n = \frac{1}{n}\sum_{j=1}^n X_j$，则
 
-$$\sqrt{n}(\bar{X}\_n - m) \mathrm{Im}plies \mathcal{N}(0, \sigma^2)$$
+$$\sqrt{n}(\bar{X}\_n - m) \implies \mathcal{N}(0, \sigma^2)$$
 
-**标准化形式**：设 $Y_n = \frac{S_n - nm}{\sigma\sqrt{n}}$，则 $Y_n \mathrm{Im}plies \mathcal{N}(0,1)$。
+**标准化形式**：设 $Y_n = \frac{S_n - nm}{\sigma\sqrt{n}}$，则 $Y_n \implies \mathcal{N}(0,1)$。
 
 ### 2.2 直观理解
 
@@ -125,7 +125,7 @@ $$\sum_{m=1}^n \mathbb{E}[X_{n,m}^2] \to \sigma^2 < \infty \quad \text{当 } n \
 
 则
 
-$$\sum_{m=1}^n X_{n,m} \mathrm{Im}plies \mathcal{N}(0, \sigma^2)$$
+$$\sum_{m=1}^n X_{n,m} \implies \mathcal{N}(0, \sigma^2)$$
 
 ### 3.2 林德伯格条件的直观理解
 
@@ -155,7 +155,7 @@ $$\lim_{n \to \infty} \alpha_n^{-2-\delta} \sum_{m=1}^n \mathbb{E}[\|Y_m - \math
 
 则
 
-$$\frac{S_n - \mathbb{E}[S_n]}{\alpha_n} \mathrm{Im}plies \mathcal{N}(0,1)$$
+$$\frac{S_n - \mathbb{E}[S_n]}{\alpha_n} \implies \mathcal{N}(0,1)$$
 
 ### 4.2 常用情形：$\delta = 1$
 
@@ -177,7 +177,7 @@ De Moivre-Laplace 定理是中心极限定理的最早形式，专门针对二�
 
 **定理** 设 $S_n \sim \text{Binomial}(n, p)$，则
 
-$$\frac{S_n - np}{\sqrt{np(1-p)}} \mathrm{Im}plies \mathcal{N}(0,1)$$
+$$\frac{S_n - np}{\sqrt{np(1-p)}} \implies \mathcal{N}(0,1)$$
 
 **等价形式**：对于整数 $k$，当 $n \to \infty$ 时，
 
@@ -258,13 +258,13 @@ $$\mathbb{P}[S_n = k] \approx \frac{1}{\sqrt{2\pi np(1-p)}} \exp\left(-\frac{(k-
 
 设 $X_1, X_2, \ldots$ i.i.d.，$\mathbb{E}[X_1] = 0$，$\mathbb{E}[X_1^2] = 1$。
 
-则 $\frac{1}{\sqrt{n}}\sum_{j=1}^n X_j \mathrm{Im}plies \mathcal{N}(0,1)$。
+则 $\frac{1}{\sqrt{n}}\sum_{j=1}^n X_j \implies \mathcal{N}(0,1)$。
 
 ### 9.2 例2：独立非同分布
 
 设 $X_{n,m}$ 满足 $\mathbb{E}[X_{n,m}] = 0$，$\mathbb{E}[X_{n,m}^2] = \sigma_m^2$，且 $\max_m \sigma_m^2 / \sum_m \sigma_m^2 \to 0$。
 
-则林德伯格条件满足，$\sum_{m=1}^n X_{n,m} \mathrm{Im}plies \mathcal{N}(0, \sum_m \sigma_m^2)$。
+则林德伯格条件满足，$\sum_{m=1}^n X_{n,m} \implies \mathcal{N}(0, \sum_m \sigma_m^2)$。
 
 ### 9.3 例3：李雅普诺夫条件
 
@@ -310,7 +310,7 @@ $$\mathbb{P}[S_n = k] \approx \frac{1}{\sqrt{2\pi np(1-p)}} \exp\left(-\frac{(k-
 
 **定理** 设 $\{X_n\}$ 为 $\mathbb{R}^d$ 值 i.i.d. 随机向量，$\mathbb{E}[X_1] = \mu$，$\operatorname{Cov}(X_1) = \Sigma$（正定）。
 
-则 $\sqrt{n}(\bar{X}\_n - \mu) \mathrm{Im}plies \mathcal{N}\_d(0, \Sigma)$。
+则 $\sqrt{n}(\bar{X}\_n - \mu) \implies \mathcal{N}\_d(0, \Sigma)$。
 
 其中 $\mathcal{N}\_d(0, \Sigma)$ 是 $d$ 维正态分布。
 

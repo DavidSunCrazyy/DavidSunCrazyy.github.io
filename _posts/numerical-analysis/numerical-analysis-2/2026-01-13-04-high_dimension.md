@@ -8,6 +8,8 @@ use_math: true
 
 # 高维（二维）分片多项式逼近
 
+---
+
 ## 有限元空间（分片多项式空间）
 
 有限元空间有以下要求：
@@ -27,6 +29,8 @@ use_math: true
 
 (3) $V_h$ 有一组支集 "小"的基.
 
+---
+
 ### 一维有限元空间
 
 $\Omega = (a, b)$，剖分 $\Omega$: $a = x_0 < x_1 < \cdots < x_N = b$
@@ -43,28 +47,37 @@ $\Omega = (a, b)$，剖分 $\Omega$: $a = x_0 < x_1 < \cdots < x_N = b$
 -   二次元
     $$V_h = \left\{ v \in C_0(\overline{\Omega}) : v|_{[x_{i-1}, x_i]} \text{ 为二次多项式 } \right\}_{i=1,\dots,N}$$
     在区间 $[x_{i-1}, x_i]$ 上插值节点取为 $x_{i-1}$,
-    $\frac{1}{2}(x_{i-1} + x_i)$, $x_i$. 插值条件为 $$\begin{aligned}
+    $\frac{1}{2}(x_{i-1} + x_i)$, $x_i$. 插值条件为 
+    
+    
+$$\begin{aligned}
             I(f)(x_{i-1}) &= f(x_{i-1}) \\
             I(f)(x_i) &= f(x_i) \\
             I(f)\left(\frac{1}{2}(x_{i-1} + x_i)\right) &= f\left(\frac{1}{2}(x_{i-1} + x_i)\right)
-
     \end{aligned}$$
+
 
 -   三次 Hermite 元
     $$V_h = \left\{ v \in C_0^1(\overline{\Omega}) : v|_K \text{ 为三次多项式, } K \in \mathcal{T}_h \right\}$$
-    插值节点取为三个顶点及重心. 插值条件为 $$\begin{aligned}
+    插值节点取为三个顶点及重心. 插值条件为 
+    
+    
+$$\begin{aligned}
             I(f)(x_{i-1}) &= f(x_{i-1}), \quad I(f)(x_i) = f(x_i) \\
             I(f)'(x_{i-1}) &= f'(x_{i-1}), \quad I(f)'(x_i) = f'(x_i)
-
     \end{aligned}$$
 
-![一维有限元的基函数示意图](images/一位有限元.png){width="80%"}
+
+<!-- ![一维有限元的基函数示意图](images/一位有限元.png){width="80%"} -->
+
+---
+
 
 ### 二维有限元空间
 
 首先对区域 $\Omega$ 进行三角剖分，此时每个单元为三角形.
 
-![二维有限元的三角形单元示意图](images/二维有限元.png){width="80%"}
+<!-- ![二维有限元的三角形单元示意图](images/二维有限元.png){width="80%"} -->
 
 -   线性元
     $$V_h = \left\{ v \in C_0(\Omega) : v|_K \text{ 为一次多项式 } \right\}$$
@@ -123,6 +136,8 @@ $\Omega = (a, b)$，剖分 $\Omega$: $a = x_0 < x_1 < \cdots < x_N = b$
     插值节点取为 4 个顶点，每个顶点上的插值条件为：
     $$f(A_i), \quad \frac{\partial f}{\partial x}(A_i), \quad \frac{\partial f}{\partial y}(A_i), \quad \frac{\partial^2 f}{\partial x \partial y}(A_i), \quad i = 1, 2, 3, 4.$$
 
+---
+
 ## Sobolev 空间插值
 
 **Definition**
@@ -157,6 +172,7 @@ $$\Pi_K(v) = \sum_{i=1}^N \varphi_i(v) P_i, \quad \forall v \in C^\infty(K).$$
 
 定义等价类 $$[v] = \{w \in W^{k+1,p}: w - v \in P_k\}.$$ 等价类的范数
 $$\| [v] \|_{k+1,p} = \inf_{w \in P_k(\Omega)} \| v + w \|_{k+1,p}.$$
+
 半范
 $$| [v] |_{k+1,p} = \inf_{w \in P_k(\Omega)} \| v + w \|_{k+1,p} = |v|_{k+1,p}.$$
 :::
@@ -168,22 +184,23 @@ $$\| [v] \|_{k+1,p} \leq C |v|_{k+1,p}, \quad \forall v \in W^{k+1,p}.$$
 
 **证明：** 设 $P_1, \dots, P_N$ 是 $P_k(\Omega)$ 的一组基，即
 $f_i(P_j) = \delta_{ij}$。则有 $\forall w \in P_k(\Omega)$，
-$$f_i(w) = 0, \quad i = 1, \dots, N \mathrm{Im}plies w = 0.$$ 由 Hahn-Banach
+$$f_i(w) = 0, \quad i = 1, \dots, N \implies w = 0.$$ 由 Hahn-Banach
 定理，$f_i$, $i = 1, \dots, N$ 可以延拓为 $W^{k+1,p}$ 上的有界线性泛函。
 
 下面证明存在 $C$ 使得
 $$\| v \|_{k+1,p} \leq C \left( |v|_{k+1,p} + \sum_{i=1}^N |f_i(v)| \right), \quad \forall v \in W^{k+1,p}.$$
-采用反证法。若结论非真，则有 $\{v_j\}_{j=1}^\infty \subset W^{k+1,p}$
+采用反证法。若结论非真，则有 $$\{v_j\}_{j=1}^\infty \subset W^{k+1,p}$$
 满足 $$\| v_j \|_{k+1,p} = 1, \quad \forall j \geq 1,$$
 $$\lim_{j \to \infty} \left( |v_j|_{k+1,p} + \sum_{i=1}^N |f_i(v_j)| \right) = 0.$$
+
 由 Sobolev 空间的嵌入定理
 $$W^{k+1,p}(\Omega) \hookrightarrow W^{k,p}(\Omega),$$ 即存在
-$\{v_j\}_{j=1}^\infty$ 的子列（不妨仍记为 $\{v_j\}_{j=1}^\infty$）和
+$\\{v_j\\}\_{j=1}^\infty$ 的子列（不妨仍记为 $\{v_j\}\_{j=1}^\infty$）和
 $v \in W^{k,p}(\Omega)$ 使得
 $$\lim_{j \to \infty} \| v_j - v \|_{k,p} = 0.$$ 则
-$\{v_j\}_{j=1}^\infty$ 是 $W^{k,p}$ 中的 Cauchy 列。
+$\\{v_j\\}_{j=1}^\infty$ 是 $W^{k,p}$ 中的 Cauchy 列。
 
-由 (4.2.2) 得 $\{v_j\}_{j=1}^\infty$ 也是 $W^{k+1,p}$ 中的 Cauchy 列，且
+由 (4.2.2) 得 $\\{v_j\\}_{j=1}^\infty$ 也是 $W^{k+1,p}$ 中的 Cauchy 列，且
 $$\lim_{j \to \infty} \| v_j - v \|_{k+1,p} = 0.$$
 
 特别有
