@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Numerical Analysis II 多项式插值"
-permalink: /posts/numerical-analysis-2-02-多项式插值/
+permalink: /posts/numerical-analysis-2/02-多项式插值/
 tags: numerical-analysis
 use_math: true
 ---
@@ -34,13 +34,13 @@ $$\varphi^{(k)}(x_i) = f^{(k)}(x_i), \quad i = 0, \ldots, n, \quad k = 0, \ldots
 记$$l_i (x) = \prod_{j=0, j\ne i}^n \frac{(x-x_j)}{(x_i-x_j)}$$
 
 $$L_n(x) = \sum_{i=0}^n f(x_i) l_i(x).$$ $L_n$为Lagrange插值多项式.
-:::
+
 
 **Theorem**
 给定 $n+1$ 个互异节点 $x_0, x_1, \cdots, x_n \in [a, b]$ 和相应的
 $f(x_0), \cdots, f(x_n)$，则存在唯一 $n$ 次多项式 $p \in P_n$
 满足插值条件： $$p(x_i) = f(x_i), \quad i = 0, 1, \cdots, n$$
-:::
+
 
 Lagrange 插值多项式的误差估计.
 
@@ -50,7 +50,7 @@ $x_0, \cdots, x_n$ 为 $[a, b]$ 上互异节点，$f \in C^{n+1}[a, b]$。$L_n$
 $\forall x \in [a, b]$，$\exists \xi = \xi(x) \in [a, b]$ 使得：
 $$R_n(x) = f(x) - L_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} w_{n+1}(x)$$
 其中 $w_{n+1}(x) = (x - x_0) \cdots (x - x_n)$ （微分形式余项）
-:::
+
 
 
 *Proof.* 取定 $x \in [a, b]$，$x \neq x_i$，$i = 0, 1, \cdots, n$，令
@@ -63,7 +63,7 @@ $$\exists \xi \in [a, b] \text{ 使得 } G^{(n+1)}(\xi) = 0$$ 另一方面
 $$G^{(n+1)}(\xi) = R_n^{(n+1)}(\xi) - \frac{w_{n+1}^{(n+1)}(\xi)}{w_{n+1}(x)} R_n(x)$$
 $$= f^{(n+1)}(\xi) - \frac{(n+1)!}{w_{n+1}(x)} R_n(x)$$ 由此可得
 $$R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} w_{n+1}(x)$$ ◻
-:::
+
 
 **Corollary**
 设 $a=x_0 < x_1 < \cdots < x_n = b$,
@@ -90,7 +90,7 @@ $$
 $$ 
 
 ◻
-:::
+
 
 ---
 
@@ -181,7 +181,7 @@ $x_0, \ldots, x_n \in [a, b]$ 互异
 $H_{2n+1}$ 为 $2n+1$ 次 Hermite 插值多项式，则
 $\forall x \in [a, b]$，存在 $\xi = \xi(x) \in [a, b]$ 使得
 $$R_{2n+1}(x) = f(x) - H_{2n+1}(x) = \frac{f^{(2n+2)}(\xi)}{(2n+2)!} \omega_{n+1}^2(x)$$
-:::
+
 
 
 *Proof.* 固定$x\in [a,b]$,
@@ -199,13 +199,13 @@ $\exists \xi_i, G'(\xi_i) = 0, \forall 1\le i\le n+1$,
 而$G^{(2n+2)}(\xi) = f_{2n+1}^{(2n+2)}(\xi) - (2n+2)!/(\omega_{n+1}^2(\xi)) R_{2n+1}(\xi)$
 
 故得证. ◻
-:::
+
 
 ## 插值的收敛性
 
 **Theorem**
 若完备距离空间表示为可数个闭集之并，则至少有一个闭集包含一个球。
-:::
+
 
 
 *Proof.* （反证法） 若不成立，则存在一个完备距离空间
@@ -223,14 +223,14 @@ $\lim_{n \to \infty} x_n = x^*$。
 注意到 $\forall n$，若 $i > n$ 则 $x_i \in S_n$。 $S_n$ 为闭球，故
 $x^* \in S_n$。 所以 $x^*$ 为 $S_n$ 的公共点，也为 $O_n$
 的公共点，矛盾。 ◻
-:::
+
 
 **Theorem**
 $X, Y$ 为 Banach 空间，$\{ L_\alpha \}$ 为 $X \to Y$
 的一族有界线性算子。若 $\forall f \in X$
 $$\sup_{\alpha} \| L_\alpha f \| < \infty$$ 则
 $$\sup_{\alpha} \| L_\alpha \| < \infty$$
-:::
+
 
 
 *Proof.* 令
@@ -244,7 +244,7 @@ $$\| L_\alpha u \| = \| \varepsilon^{-1} L_\alpha (g + \varepsilon u - g) \|$$
 $$\leq \| L_\alpha (g + \varepsilon u) \| + \| L_\alpha g \|$$
 $$\leq \frac{2N}{\varepsilon}$$
 $$\Rightarrow \| L_\alpha \| \leq \frac{2N}{\varepsilon}$$ ◻
-:::
+
 
 ### 投影算子和Fourier级数投影 {#投影算子和fourier级数投影 .unnumbered}
 
@@ -257,7 +257,7 @@ $$b_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(s) \sin ks \, ds$$
 **Theorem**
 设 $L$ 是 $C_{2\pi}$ 到 $M_n$ 上的投影。 其中$M_n$ 为 $\leq n$
 次三角多项式空间。则有 $$\| S_n \| \leq \| L \|$$
-:::
+
 
 
 *Proof.* 定义算子 $T_\lambda$ 和 $\mathbb{A}$
@@ -280,7 +280,7 @@ $M_n$，即作为 $\lambda$ 的函数 $e^{ik\lambda}$ 与 $(L f_k)(x - \lambda)$
 $$\| S_n f \| = \| \mathbb{A} f \| = \max_{x \in [0, 2\pi]} \left| \frac{1}{2\pi} \int_{-\pi}^{\pi} (T_{-\lambda} L T_\lambda f)(x) \, d\lambda \right|$$
 $$\leq \| T_{-\lambda} L T_\lambda f \| \leq \| L \| \| f \|$$
 $$\Rightarrow \| S_n \| \leq \| L \|$$ 证毕. ◻
-:::
+
 
 **Proposition**
 令 $D_n(t) = \frac{\sin(n + \frac{1}{2})t}{2 \sin \frac{1}{2} t}$ 则
@@ -290,11 +290,11 @@ $$(S_n f)(x) = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x + t) D_n(t) \, dt$$
 $n$ Lebesgue 常数**。
 
 则 $$\| S_n \| \leq \lambda_n$$ 进一步可证 $\| S_n \| = \lambda_n$
-:::
+
 
 **Lemma**
 $$\lambda_n > \frac{4}{\pi^2} \log n$$
-:::
+
 
 
 *Proof.* 
@@ -307,7 +307,7 @@ $$\begin{aligned}
  &\geq \frac{2}{\pi} \log n \int_{0}^{1} \sin \pi z \, dz \\
  &= \frac{4}{\pi^2} \log n \end{aligned}$$
  ◻
-:::
+
 
 我们的目的是为了得到如下定理.
 
@@ -315,24 +315,24 @@ $$\begin{aligned}
 $\forall n \in \mathbb{N}$，$L_n$ 为 $C_{2\pi}$ 到 $M_n$ 上的投影。
 则存在 $f \in C_{2\pi}$ 使得
 $$\lim_{n \to \infty} \| L_n f \| = \infty$$
-:::
+
 
 
 *Proof.* $$\| L_n \| \geq \| S_n \| \geq \frac{4}{\pi^2} \log n$$ 若
 $\| L_n f \|$ 对所有 $f$ 有界，则由定理 2.4.2 $\| L_n \|$ 有界，矛盾。 ◻
-:::
+
 
 **Remark**
 当我们试图用 $M_n$ 中的函数去逼近 $f$ 时，投影算子 $L_n$
 的结果可能变得极其"振荡"或"剧烈变化"，导致其范数趋于无穷大。这表明，即使是简单的连续函数，也可能存在无法通过简单的投影方法稳定逼近的情况。
-:::
+
 
 **Lemma**
 设 $L$ 是 $C_{2\pi}$ 中的偶函数到 $\leq n$
 次偶三角多项式上的有界投影，则
 
 $$\|I - L\| \geq \frac{1}{2} (\lambda_n + 1) > \frac{2}{\pi^2} \log n + \frac{1}{2}$$
-:::
+
 
 
 *Proof.* 令
@@ -343,7 +343,7 @@ $$(\Phi f)(x) = \frac{1}{2\pi} \int_{-\pi}^{\pi} [T_\lambda(I-L)(T_{-\lambda} + 
 
 于是 $\|I-S_n\| \le 2\|I-L\|$, $\|I-S_n\| = 1+\lambda$.
 (显然$\|I-S_n\|\le 1+\lambda$, 又可以取函数逼近取到) ◻
-:::
+
 
 **Theorem**
 $\forall n \in \mathbb{N}$，$L_n$ 为 $C[a,b]$ 到 $P_n$ 的投影，$P_n$ 为
@@ -352,7 +352,7 @@ $\leq n$ 次多项式空间。
 则存在 $f \in C[a,b]$ 使得
 
 $$\lim_{n \to \infty} \|f - L_n f\| = \infty$$
-:::
+
 
 
 *Proof.* $\forall f \in C[a,b]$，令
@@ -369,13 +369,13 @@ $$\|Tf\| = \|f\|$$
 $$\| I - \Lambda_n^* \| \to \infty$$ 从而
 $$\| I - \Lambda_n \| \to \infty$$ 由定理 2.4.2，存在 $f \in C[a, b]$
 使得 $$\| f - \Lambda_n f \| \to \infty$$ ◻
-:::
+
 
 ### 单调算子 {#单调算子 .unnumbered}
 
 **Definition**
 算子 $B$ 称为单调算子若 $\forall f \geq g$ 有 $Bf \geq Bg$
-:::
+
 
 **Theorem**
 对于 $C[a,b]$ 上的单调线性算子序列 $L_n$，下列条件等价：
@@ -386,7 +386,7 @@ $$\| I - \Lambda_n \| \to \infty$$ 由定理 2.4.2，存在 $f \in C[a, b]$
 
 (3) $\|L_n 1 - 1\|_\infty \to 0$ 且 $(L_n \phi_t)(t) \to 0$ (对
     $t \in [a,b]$ 一致) $\phi_t(x) = (t-x)^2$
-:::
+
 
 
 *Proof.* (1) $\Rightarrow$ (2) 显然
@@ -434,7 +434,7 @@ $\Rightarrow |f(t) (L_n f_0)(t) - (L_n f)(t)| \leq \varepsilon (\|L_n f_0\|_\inf
 由于 $\|L_n f_0 - f_0\|_\infty \to 0$ 且 $L_n \phi_t(t) \to 0$
 
 由此定理可证. ◻
-:::
+
 
 **Theorem**
 设 $\{L_n\}$ 是 $C_{2\pi}$ 上的单调线性算子序列，证明：
@@ -445,7 +445,7 @@ $$\lim_{n \to \infty} \| L_n f - f \|_{\infty} = 0, \quad \forall f \in C_{2\pi}
 
 (ii) $f(x) = \sin x, \cos x$ 时，有
      $\lim_{n \to \infty} \| L_n f - f \|_{\infty} = 0$
-:::
+
 
 
 *Proof.* $"\implies"$ 显然成立.
@@ -469,7 +469,7 @@ $$\begin{aligned}
 
 因为单调算子的性质,
 $\|L_n (f - S(f))\| \le \|L_n \epsilon\| = \epsilon$. ◻
-:::
+
 
 ### Fejér-Hermite 算子 {#fejér-hermite-算子 .unnumbered}
 
@@ -484,13 +484,13 @@ $$(Lf)(x) = \sum_{i=1}^{n} f(x_i) \left[1 - 2(x - x_i) \lambda_i'(x_i) \lambda_i
 $$= \sum_{i=1}^{n} f(x_i) \left[1 - \frac{(x - x_i) \omega''(x_i)}{\omega'(x_i)}\right] \left[\frac{\omega(x)}{(x - x_i) \omega'(x)}\right]^2$$
 
 $\omega(x) = (x - x_1) \cdots (x - x_n)$
-:::
+
 
 **Theorem**
 令$x_i = \cos \frac{(2i-1)\pi}{2n}$，$i=1,2,\cdots,n$. $L_n$
 为以$x_i$为插值节点的Fejér-Hermite 算子。对任意 $f \in C[-1,1]$，都有
 $$\|L_n f - f\| \to  0$$
-:::
+
 
 
 *Proof.* 令 $T_n(x) = \cos(n \arccos(x))$，$x \in [-1,1]$
@@ -512,7 +512,7 @@ $$L_n 1 \rightarrow 1, \quad (L_n \phi_t)(t) \rightarrow 0$$
 $$L_n 1 = 1$$
 $$|(L_n \phi_t)(t)| = \left| \frac{1}{n^2} T_n^2(t) \sum_{i=1}^{n} (t - x_i)^2 \frac{1 - t x_i}{(t - x_i)^2} \right|$$
 $$\leq \frac{1}{n^2} \cdot 2n = \frac{2}{n} \rightarrow 0$$ ◻
-:::
+
 
 ### 编者注
 
@@ -522,18 +522,18 @@ $\ell_i(x)$（满足 $\ell_i(x_j) = \delta_{ij}$），则 **Lebesgue 常数**
 $\Lambda_n$ 定义为：
 $$\Lambda_n = \max_{x \in [-1, 1]} \sum_{i=0}^n |\ell_i(x)|.$$
 它表示所有插值基函数的绝对值之和在区间 $[-1, 1]$ 上的最大值。
-:::
+
 
 **Proposition**
 对于任意连续函数 $f$，Lagrange 插值多项式 $L_n f$ 的误差满足：
 $$\| L_n f - f \|_\infty \leq (1 + \Lambda_n) \cdot \inf_{p \in \mathcal{P}_n} \| p - f \|_\infty = (1 + \Lambda_n) E_n(f)$$
 其中 $\mathcal{P}_n$ 是次数不超过 $n$ 的多项式空间。
-:::
+
 
 
 *Proof.*
 $$\|L_n f - f\| = \|L_n(f-p) - (f-p)\| \le \|L_n(f-p)\| + \|f-p\| \le (\Lambda_n+1) \|f-p\|$$ ◻
-:::
+
 
 **Proposition**
 设函数 $f \in C[-1, 1]$，且满足
@@ -542,7 +542,7 @@ $\omega(\delta, f)$ 为 $f$ 的连续模。若 $Q_0, Q_1, \dots$ 为区间
 $[-1, 1]$ 上的 Chebyshev 多项式，$L_n$ 是以 $Q_{n+1}$ 的零点为插值节点的
 Lagrange 插值多项式，证明：
 $$\lim_{n \to \infty} \| L_n f - f \|_{\infty} = 0$$
-:::
+
 
 
 *Proof.* $$\|L_n f - f\| \le (\Lambda_n+1) \|f-p\|.$$
@@ -567,7 +567,7 @@ $$\frac{\sin(n(\theta-\theta_j))\sin\theta_k}{2n\sin\frac{\theta-\theta_j}{2} \s
 
 所以
 $\|L_n f -f\| \le (\Lambda_n+1)\|f-p\| \le C \log n E_n(f) \le C \log(n) \omega(\frac{1}{n}, f) \to 0$. ◻
-:::
+
 
 ## 分段插值, 三次样条插值
 
@@ -611,7 +611,7 @@ $S$ 为 $[a, b]$ 满足下列条件的函数：
 $$S(x_j) = f(x_j), \quad j=0,\cdots,n$$
 
 则称 $S$ 是 $f$ 关于剖分 $\Delta$ 的一个**三次样条插值函数**。
-:::
+
 
 设 $S(x) = S_j(x) = a_j x^3 + b_j x^2 + c_j x + d_j$
 $$x \in [x_j, x_{j+1}], \quad j=0,\cdots,n-1$$ 需确定 $4n$ 个系数。
@@ -781,12 +781,12 @@ I型边界条件的三次样条插值函数，则有
 $$\| f - S \|_{\infty} \leq \frac{5}{384} h^4 \| f^{(4)} \|_{\infty}$$
 
 其中 $h = \max_{0 \leq j \leq n-1} |x_{j+1} - x_j|$
-:::
+
 
 **Lemma**
 设 $A = [a_{ij}] \in \mathbb{R}^{m \times n}$ 严格对角占优，则有
 $$||A^{-1}||_{\infty} \leq \left[ \min_{l \leq i \leq n} \left( |a_{ii}| - \sum_{j=1}^{n} |a_{ji}| \right) \right]^{-1}$$
-:::
+
 
 
 *Proof.*
@@ -794,7 +794,7 @@ $||A^{-1}||_{\infty} = \max_{|x_i|_\infty = 1} ||A^{-1}x||_{\infty} = \min_{|x_i
 
 对于任意 $||x||_{\infty} = 1$，设 $|x_k| = 1$，则有
 $$||Ax||_{\infty} \geq |a_{kk}| - \sum_{j=1}^{n} |a_{kj}| \geq \min_{l \leq i \leq n} \left( |a_{il}| - \sum_{j=1}^{n} |a_{ij}| \right)$$ ◻
-:::
+
 
 **Lemma**
 设 $f \in C^4[a,b]$，$S$ 是 $f$ 在 $[a,b]$ 上关于剖分
@@ -802,7 +802,7 @@ $\Delta : a = x_0 < x_1 < \cdots < x_n = b$ 的满足 $I$
 型边界条件的三次样条插值函数，则有
 $$|m_j - f_j'| \leq \frac{1}{24} h^3 ||f^{(4)}||_{\infty}$$ 其中
 $m_j = S'(x_j')$，$f_j' = f'(x_j')$，$h = \max_{0 \leq j \leq n-1} (x_{j+1} - x_j)$
-:::
+
 
 
 *Proof.* 首先在 $[x_j, x_{j+1}]$ 上 $S$ 为三次多项式且可以表示为
@@ -877,20 +877,20 @@ $$\begin{aligned}
     &\leq \frac{1}{24} h^3 \|f^{(4)}\|_\infty
 \end{aligned}$$
  ◻
-:::
+
 
 **Remark**
 $$\alpha_i(x) = \left(\frac{x-x_{i+1}}{h_i}\right)^2 \left(1+2\frac{x-x_i}{h_i}\right),\quad \alpha_{i+1}(x) = \left(\frac{x-x_i}{h_i}\right)^2 \left(1+2\frac{x_{i+1}-x}{h_i}\right)$$
 $$\beta_i(x) = (x-x_i) \left(\frac{x-x_{i+1}}{h_i}\right)^2, \quad \beta_{i+1}(x) = (x-x_{i+1}) \left(\frac{x-x_i}{h_i}\right)^2$$
 导数值
-:::
+
 
 **Theorem**
 设 $f \in C^4[a,b]$，$S$ 为 $f$ 在 $[a,b]$ 上关于剖分
 $\Delta$：$a = x_0 < x_1 < \cdots < x_n = b$ 的满足 I
 型边界条件的三次样条插值函数，则有
 $$||S - f||_{\infty} \leq \frac{5}{384} h^4 ||f^{(4)}||_{\infty}$$
-:::
+
 
 
 *Proof.* 令 $\varphi(x)$ 为 $[a,b]$ 上关于剖分 $\Delta$ 的分段三次
@@ -907,7 +907,7 @@ $$|\beta_j(x)| + |\beta_{j+1}(x)| \leq \frac{h}{4}, \quad x \in [x_j, x_{j+1}]$$
 由此定理得证。
 $$|S(x) - f(x)| \leq |S(x) - \varphi(x)| + |\varphi(x) - f(x)|$$
 $$\leq \frac{5}{384} h^4 ||f^{(4)}||_{\infty}$$ ◻
-:::
+
 
 ### B-样条函数 {#b-样条函数 .unnumbered}
 
@@ -919,7 +919,7 @@ $$\leq \frac{5}{384} h^4 ||f^{(4)}||_{\infty}$$ ◻
 
 **Theorem**
 $$\dim(S_3^n) = n+3$$
-:::
+
 
 
 *Proof.* $\blacksquare$ 令 $$u_k(x) = (x-x_0)^k, \quad k=0,1,2,3$$
@@ -977,7 +977,7 @@ $\beta_1 \cdots \beta_{n-1}$
 使得
 
 $$S(x) = \sum_{k=0}^3 \alpha_k u_k(x) + \sum_{k=1}^{n-1} \beta_k v_k(x), \quad x \in [a, b]$$ ◻
-:::
+
 
 B - 样条：
 
@@ -1000,7 +1000,7 @@ $$B_{m+1}(x) = \int_{x-\frac{1}{2}}^{x+\frac{1}{2}} B_m(x) \, dx$$
 **Lemma**
 $B_3(x), \, B_3(x-1), \, B_3(x-2), \, B_3(x-3)$ 在 $[1,2]$
 上线性无关。（练习）
-:::
+
 
 **Lemma**
 对于 $[a,b]$ 上的等距剖分 $x_j = a + jh, \, j = 0 \cdots n$
@@ -1009,11 +1009,11 @@ $$h = \frac{b-a}{n},$$
 $$B_3 \left( \frac{x-a-kh}{h} \right), \, k = -1, 0, \cdots n + 1$$
 
 是 $S_3^n$ 的一组基。
-:::
+
 
 **Remark**
 利用这组基可以计算等距剖分上的三次样条插值函数。
-:::
+
 
 前面介绍的 B-样条函数 $B_3(x)$
 是在等距节点下定义的。对于一般节点（即非等距剖分），B-样条的定义和性质会变得更复杂一些，但它们仍然是构建样条函数的强大工具。
@@ -1107,15 +1107,15 @@ $$||f||_Y = \sup_{y \in Y} |f(y)|$$
 
 $$\forall \alpha > 1, \exists \delta > 0 \quad 使得 \quad \forall p = \sum_{i=1}^n c_i g_i$$
 
-以及 $|Y| < \delta$ 有
+以及 $\|Y\| < \delta$ 有
 
 $$||p||_X \leq \alpha ||p||_Y$$
-:::
+
 
 
 *Proof.* 不妨设 $g_1 \cdots g_n$ 线性无关
 
-设 $\theta = \min_{\sum_{i=1}^n |c_i| = 1} ||\sum_{i=1}^n c_i g_i||$
+设 $\theta = \min_{\sum_{i=1}^n \|c_i\| = 1} \\|\sum_{i=1}^n c_i g_i \\|$
 
 由于 $g_1 \cdots g_n$ 线性无关，故 $\theta > 0$
 
@@ -1130,30 +1130,31 @@ $$\Omega(\delta) = \max_{1 \leq i \leq n} \max_{d(x,y) \leq \delta} |g_i(x) - g_
 $$|P(x)| = ||P||_X.$$
 
 则对 $\forall y \in Y, d(x, y) < \delta$ 有 
+
 $$\begin{aligned}
-\theta \sum_{i=1}^{n} |c_i| & \leq ||P||_X = |P(x)| \\
+\theta \sum_{i=1}^{n} |c_i| & \leq \|P\|_X = |P(x)| \\
 &\leq |P(x) - P(y)| + |P(y)| \\
-&\leq \sum_i |c_i||g_i(x) - g_i(y)| + ||P||_Y \\
-&\leq \Omega(\delta) \sum_i |c_i| + ||P||_Y 
+&\leq \sum_i |c_i||g_i(x) - g_i(y)| + \|P\|_Y \\
+&\leq \Omega(\delta) \sum_i |c_i| + \|P\|_Y 
 \end{aligned}$$
 
 $$\Rightarrow \sum_i |c_i| \leq \frac{||P||_Y}{\theta - \Omega(\delta)}$$
 
-$$||P||_X \leq \Omega(\delta) \frac{||P||_Y}{\theta - \Omega(\delta)} + ||P||_Y= (1- \frac{\Omega(\delta)}{\theta - \Omega(\delta)}) ||P||_Y$$ ◻
-:::
+$$\|P\|_X \leq \Omega(\delta) \frac{\|P\|_Y}{\theta - \Omega(\delta)} + \|P\|_Y= (1- \frac{\Omega(\delta)}{\theta - \Omega(\delta)}) \|P\|_Y$$ ◻
+
 
 **Lemma**
 $f, g, \ldots g_n \in C(X)$. $$Y\subset X, |Y| < \delta$$, 则
 $\exists \beta > 0$ 与 $f$ 无关
 
 对任意 $P = \sum_i c_i g_i$, 有
-$$||f - P||_X \leq ||f - P||_Y + \omega(\delta, f) + \beta ||P||_X \Omega(\delta)$$
-:::
+$$\|f - P\|_X \leq \|f - P\|_Y + \omega(\delta, f) + \beta \|P\|_X \Omega(\delta)$$
+
 
 
 *Proof.* 不妨设 $g_1 \cdots g_n$ 线性无关
 
-设 $\theta = \min_{\sum_{i=1}^n |c_i| = 1} ||\sum_{i=1}^n c_i g_i||$
+设 $\theta = \min_{\sum_{i=1}^n \|c_i\| = 1} \\|\sum_{i=1}^n c_i g_i\\|$
 
 由于 $g_1 \cdots g_n$ 线性无关，故 $\theta > 0$
 
@@ -1170,7 +1171,7 @@ $$= \max_{1 \leq i \leq 1} w(\delta, g_i)$$
 
 $$\theta \sum_{i=1}^{n} |c_i| \leq ||p||_X$$
 
-$\|f-p\|_X = |f(x_0) - p(x_0)| \le |f(y_0) - p(y_0)| + |f(y_0) - f(x_0)| + |p(x_0) - p(y_0)|, \forall y_0\in Y, d(x_0, y_0) < \delta$
+$$\|f-p\|_X = |f(x_0) - p(x_0)| \le |f(y_0) - p(y_0)| + |f(y_0) - f(x_0)| + |p(x_0) - p(y_0)|, \forall y_0\in Y, d(x_0, y_0) < \delta$$
 
 $$|f(y_0) - p(y_0)| \le \|f-p\|_Y$$
 
@@ -1179,7 +1180,7 @@ $$|f(y_0) - f(x_0)| \le \omega(\delta, f)$$
 $$|p(x_0)-p(y_0)| \le \sum_i |c_i| |g_i(x_0) - g_i(y_0)| \le \Omega(\delta) \sum_i |c_i| \le \frac{\|p\|_X}{\theta}\Omega(\delta)$$
 
 综上可得. ◻
-:::
+
 
 **Theorem**
 $f, g_1 \cdots g_n \in C(X)$, $Y \subset X$.
@@ -1189,7 +1190,7 @@ $P_Y$ 为 $f$ 在 $Y$ 上的最佳逼近广义多项式 $\sum c_i g_i$.
 $P_X$ 为 $f$ 在 $X$ 上的最佳逼近广义多项式, 则
 
 $$\lim_{|Y| \to 0} ||f - P_Y||_X = ||f - P_X||_X$$
-:::
+
 
 
 *Proof.* 由于
@@ -1211,7 +1212,7 @@ $$||P_{Y}||_{X} \leq \alpha ||P_{Y}||_{Y} \leq 2\alpha ||f||_{X}$$
 所以
 
 $$||f - P_{Y}||_{X} - ||f - P_{X}||_{X} \leq \omega(\delta, f) + \beta ||f||_{X} \Omega(\delta)$$ ◻
-:::
+
 
 **Lemma**
 $Y \subset [a, b]$，$f \in C[a, b]$，$P_{n,Y}$为 $f$ 在 $Y$ 上的最佳 $n$
@@ -1220,7 +1221,7 @@ $Y \subset [a, b]$，$f \in C[a, b]$，$P_{n,Y}$为 $f$ 在 $Y$ 上的最佳 $n$
 $P_{n}$ 为 $f$ 在 $[a, b]$ 上的最佳 $n$ 次逼近多项式则有
 
 $$\lim_{|Y| \to 0} ||P_{n,Y} - P_{n}|| = 0$$
-:::
+
 
 **Theorem**
 存在 $Y_1, Y_2, \cdots  \subset X$ 使得对任意 $f \in C[a, b]$，有
@@ -1228,7 +1229,7 @@ $$\lim_{|Y| \to 0} ||P_{n,Y} - P_{n}|| = 0$$
 $$\lim_{n \to \infty} ||f - P_{Y_n}|| = 0$$
 
 其中 $P_{Y_n}$ 为 $f$ 在 $Y_n$ 上的最佳 $n$ 次逼近多项式。
-:::
+
 
 ### 离散集上最佳逼近多项式的计算 {#离散集上最佳逼近多项式的计算 .unnumbered}
 
@@ -1240,10 +1241,13 @@ $$Y = \{x_1, x_2, \cdots, x_m\}, \quad \{f_0, f_1, \cdots, f_n\}$$
 
 $$\min_{a_k} \max_{1 \leq i \leq m} | \sum_{k=0}^n a_k f_k(x_i) - f(x_i) |$$
 
-::: tcolorbox
+ tcolorbox
 大作业：
 
 给出一种求解上述优化问题的最佳分析其收敛性 并展示数值算例
 
 （该问题可化为线性规划问题 也可参考 FISTA、ADMM 等方法）
-:::
+
+
+
+[← 多项式逼近一般理论](/posts/numerical-analysis-2/01-多项式逼近一般理论/) | [最佳平方逼近 →](/posts/numerical-analysis-2/03-最佳平方逼近/)

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Numerical Analysis II 常微分方程初值问题的数值方法"
-permalink: /posts/numerical-analysis-2-08-常微分方程初值问题的数值方法/
+permalink: /posts/numerical-analysis-2/08-常微分方程初值问题的数值方法/
 tags: numerical-analysis
 use_math: true
 ---
@@ -21,14 +21,14 @@ y(a) = y_0.
 $L > 0$ 使得
 $$|f(x, y_1) - f(x, y_2)| \leq L |y_1 - y_2|, \quad \forall (x, y_1), (x, y_2) \in D,$$
 则称 $f$ 关于 $y$ 满足 Lipschitz 条件，$L$ 称为 $f$ 的 Lipschitz 常数。
-:::
+
 
 **Definition**
 设 $D \subset \mathbb{R}^2$，若 $\forall (x_1, y_1), (x_2, y_2) \in D$
 均有
 $$((1-\lambda)x_1 + \lambda x_2, \quad (1-\lambda)y_1 + \lambda y_2) \in D, \quad \forall \lambda \in [0, 1],$$
 则称 $D$ 是一个凸集。
-:::
+
 
 **Definition**
 如果初值问题 (8.1.1) 满足：
@@ -43,13 +43,13 @@ $$((1-\lambda)x_1 + \lambda x_2, \quad (1-\lambda)y_1 + \lambda y_2) \in D, \qua
     $$|Z(x) - y(x)| < \varepsilon, \quad x \in [a, b]$$
 
 则称初值问题 (8.1.1) 是适定的。
-:::
+
 
 **Theorem**
 设 $D = \{(x, y) \mid a \leq x \leq b, -\infty < y < +\infty\}$， 函数
 $f$ 在 $D$ 上连续并对 $y$ 满足 Lipschitz 条件， 那么初值问题 (8.1.1)
 是适定的。
-:::
+
 
 ## Euler 方法
 
@@ -98,13 +98,13 @@ $$\varphi(x_n, y_n; h) = \frac{1}{2} \left[ f(x_n, y_n) + f(x_{n+1}, y_n + h f(x
 
 令 $e_n = y(x_n) - y_n$，整体截断误差为：
 $$T_{n+1} = T(x_n, y_n; h) = y(x+h) - y(x) - h \varphi(x, y(x); h).$$
-:::
+
 
 **Definition**
 设 $y(x)$ 是 (8.1.1) 的精确解，则
 $$T(x, y; h) = y(x+h) - y(x) - h \varphi(x, y(x); h)$$
 称为显式单步法的局部截断误差。
-:::
+
 
 **Example**
 
@@ -116,7 +116,7 @@ T_{n+1} &= y(x_{n+1}) - y(x_n) - h f(x_n, y(x_n)) \\
  若 $y \in C^2[a, b]$，令
 $$M = \max_{a \leq x \leq b} |y''(x)|,$$ 则有
 $$|T_{n+1}| \leq \frac{1}{2} M h^2.$$
-:::
+
 
 ### 相容性 {#相容性 .unnumbered}
 
@@ -126,11 +126,11 @@ $$|T_{n+1}| \leq \frac{1}{2} M h^2.$$
 
 若存在 $C > 0$ 使得 $$|T(x, y; h)| \leq C h^{p+1},$$ 则称单步法 $p$
 阶相容。
-:::
+
 
 **Theorem**
 单步法相容当且仅当 $$\lim_{h \to 0} \varphi(x, y; h) = f(x, y).$$
-:::
+
 
 
 *Proof.* 
@@ -145,7 +145,7 @@ $$\begin{aligned}
  
 
 因此，$\lim_{h \to 0} \varphi(x, y; h) = f(x, y)$。 ◻
-:::
+
 
 **Example**
 Euler 法：
@@ -177,7 +177,7 @@ T(x, y; h) &= y(x+h) - y(x) - \frac{1}{2}h \left[ f(x, y) + f(x+h, y+hf(x, y)) \
  
 
 因此，改进 Euler 法是 2 阶相容的。
-:::
+
 
 ### 收敛性 {#收敛性 .unnumbered}
 
@@ -190,7 +190,7 @@ $$E(h) \leq C h^p,$$ 则称单步法 $p$ 阶收敛。
 $$|\varepsilon_{j+1}| \leq (1+A)|\varepsilon_j| + B, \quad j = 0, 1, \dots,$$
 其中 $A, B$ 为常数。则有
 $$|\varepsilon_j| \leq |\varepsilon_0| e^{jA} + \frac{B}{A}(e^{jA} - 1), \quad j = 0, 1, \dots.$$
-:::
+
 
 
 *Proof.* 用归纳法证明。 
@@ -209,14 +209,14 @@ $$\begin{aligned}
  
 
 因此结论成立。 ◻
-:::
+
 
 **Theorem**
 设增量函数 $\varphi(x, y; h)$ 关于 $x, y, h$ 连续，对于 $y$ 满足
 Lipschitz 条件，即
 $$|\varphi(x, y; h) - \varphi(x, z; h)| \leq L|y-z|.$$
 那么单步法收敛当且仅当单步法相容。
-:::
+
 
 
 *Proof.* 设单步法相容。由单步法的定义和局部截断误差的定义，有
@@ -239,14 +239,14 @@ $$\lim_{h \to 0} E(h) = 0.$$ 即单步法收敛。
 $$y'(x) = f(x, y), \quad y(a) = y_0$$
 的解。同时单步法的解也收敛到上述初值问题的解。由初值问题的适定性得
 $$\varphi(x, y; 0) = f(x, y),$$ 即得相容性。 ◻
-:::
+
 
 **Theorem**
 设单步法满足定理 8.3.2 的条件且是 $p$ 阶相容的，即
 $|T(x, y; h)| \leq K h^{p+1}$，那么有
 $$|e_n| \leq \frac{K}{L} \left[ e^{L(b-a)} - 1 \right] h^p.$$
 即收敛阶也是$p$。
-:::
+
 
 ### 稳定性 {#稳定性 .unnumbered}
 
@@ -255,13 +255,13 @@ $$|e_n| \leq \frac{K}{L} \left[ e^{L(b-a)} - 1 \right] h^p.$$
 $$y_{n+1} = y_n + h \varphi(x_n, y_n; h)$$ 的解 $y_n$, $z_n$ 满足
 $$|y_n - z_n| \leq K |y_0 - z_0|, \quad 0 < h < h_0, \, nh \leq b-a,$$
 那么称单步法是稳定的.
-:::
+
 
 **Theorem**
 设增量函数 $\varphi(x, y; h)$ 关于 $y$ 满足 Lipschitz 条件
 $$|\varphi(x, y_1; h) - \varphi(x, y_2; h)| \leq L |y_1 - y_2|,$$
 那么单步法是稳定的.
-:::
+
 
 
 *Proof.* 考虑两个解序列 $y_n$ 和 $z_n$，它们满足 
@@ -287,7 +287,7 @@ $$\begin{aligned}
  
 
 因此，单步法是稳定的. ◻
-:::
+
 
 考虑试验方程 $$y'(x) = \lambda y, \quad \text{Re}(\lambda) < 0.$$
 一般单步法用于试验方程可以写成 $$y_{n+1} = E(\lambda h) y_n.$$
@@ -298,7 +298,7 @@ $$\begin{aligned}
 -   $\\{\lambda h \in \mathbb{C}: \|E(\lambda h)\| < 1\\}$：绝对稳定区域
 
 -   $\\{\lambda h \in \mathbb{R}: \|E(\lambda h)\| < 1\\}$：绝对稳定区间
-:::
+
 
 **Example**
 Euler 法的绝对稳定区域和区间.
@@ -308,7 +308,7 @@ Euler 法的绝对稳定区域和区间.
 $$|E(\lambda h)| = |1 + \lambda h|.$$ 绝对稳定区域为
 $$\{\lambda h \in \mathbb{C}: |1 + \lambda h| < 1\}.$$ 绝对稳定区间为
 $$(-2, 0).$$
-:::
+
 
 **Example**
 隐式 Euler 法的绝对稳定区间.
@@ -318,7 +318,7 @@ $$y_{n+1} = \frac{1}{1 - \lambda h} y_n.$$ 所以
 $E(\lambda h) = \frac{1}{1 - \lambda h}$. 因此，
 $$|E(\lambda h)| = \left|\frac{1}{1 - \lambda h}\right|.$$
 绝对稳定区间为 $$(-\infty, 0).$$
-:::
+
 
 **Example**
 改进 Euler 法的绝对稳定区间.
@@ -330,7 +330,7 @@ $E(\lambda h) = 1 + \lambda h + \frac{1}{2} (\lambda h)^2 = \frac{1}{2} (\lambda
 因此，
 $$|E(\lambda h)| = \left|1 + \lambda h + \frac{1}{2} (\lambda h)^2\right|.$$
 绝对稳定区间为 $$(-2, 0).$$
-:::
+
 
 **Example**
 梯形法的绝对稳定区间.
@@ -342,7 +342,7 @@ $E(\lambda h) = \frac{1 + \frac{1}{2} \lambda h}{1 - \frac{1}{2} \lambda h}$.
 因此，
 $$|E(\lambda h)| = \left|\frac{1 + \frac{1}{2} \lambda h}{1 - \frac{1}{2} \lambda h}\right|.$$
 绝对稳定区间为 $$(-\infty, 0).$$
-:::
+
 
 ## Runge-Kutta 方法
 
@@ -553,7 +553,7 @@ $$\sum_{j=0}^{k} \alpha_j y_{n+j} = h \sum_{j=0}^{k} \beta_j f(x_{n+j}, y_{n+j})
 设 $y(x)$ 为初值问题的解。定义
 $$T_{n+k} = \sum_{j=0}^{k} \alpha_j y(x_{n+j}) - h \sum_{j=0}^{k} \beta_j f(x_{n+j}, y(x_{n+j}))$$
 称为 $k$ 步法在 $x_{n+k}$ 处的局部截断误差。
-:::
+
 
 **Example**
 Simpson 方法的局部截断误差 
@@ -567,7 +567,7 @@ T_{n+1} &= y(x_{n+1}) - y(x_{n-1}) - \frac{h}{3} \left[ f(x_{n+1}, y(x_{n+1})) +
 &= -\frac{1}{90} h^5 y^{(5)}(x_n) + O(h^7)
 \end{aligned}$$
 
-:::
+
 
 ### 数值积分构造线性多步法 
 将 $y' = f(x, y)$ 在 $[x_{n+1-\ell}, x_{n+1}]$ 上积分：
@@ -627,7 +627,7 @@ $$\begin{aligned}
         &= \frac{5}{12} h^3 y'''(x_n) + O(h^4)    
     \end{aligned}$$
 
-    :::
+    
 
 4.  取插值节点为 $x_{n+1}$, $x_n$, $\dots$, $x_{n+1-r}$ 可得隐式方法
     $$y_{n+1} = y_n + h \sum_{j=0}^{k} \beta_j f(x_{n+1-j}, y_{n+1-j})$$
@@ -644,7 +644,7 @@ $$\begin{aligned}
         &= -\frac{1}{24} h^4 y^{(4)}(x_n) + O(h^5)    
     \end{aligned}$$
 
-    :::
+    
 
 ## 线性差分方程
 
@@ -657,7 +657,7 @@ $a_k, a_0 \neq 0$，则称 (8.6.1) 为 $k$ 阶常系数线性差分方程。
 给定 $k$ 个初始条件
 $$y_0 = \nu_0, \quad \ldots, \quad y_{k-1} = \nu_{k-1}$$ 则 (8.6.1)
 有唯一解。
-:::
+
 
 若 $c_{n+k} = 0$，则称 (8.6.1) 为 $k$ 阶齐次线性差分方程。
 
@@ -681,7 +681,7 @@ $$y_0 = \nu_0, \quad \ldots, \quad y_{k-1} = \nu_{k-1}$$ 则 (8.6.1)
 是齐次方程线性无关的解，则称其为基本解组
 $$\{z_n\} = \left\{\sum_{u=1}^k c_u y_n^{(u)}\right\}$$
 称为齐次方程的通解。
-:::
+
 
 **Theorem**
 设 $\{y_n^{(u)}\}$ 是 $k$ 阶齐次差分方程的基本解组，并满足条件
@@ -691,7 +691,7 @@ $$y_0 = \nu_0, \quad \ldots, \quad y_{k-1} = \nu_{k-1}$$ 的 $k$
 阶差分方程的解为
 $$y_n = \sum_{u=0}^{k-1} \nu_u y_n^{(u)} + \frac{1}{a_k} \sum_{j=0}^{n-k} c_{j+k} y_{n-j-1}^{(k-1)}, \quad n = 0, 1, \ldots$$
 其中 $i < 0$ 时 $y_i^{(k-1)} = 0$ 且 $n < k$ 时 $c_n = 0$。
-:::
+
 
 
 *Proof.* $\sum_{u=0}^{k-1} \nu_u y_n^{(u)}$
@@ -713,7 +713,7 @@ $$\sum_{s=0}^k a_s w_{n+s} = \frac{1}{a_k} c_{n+k} \sum_{s=0}^k a_s y_{s-1}^{(k-
 $y_i^{(k-1)} = \begin{cases} 0, & i = 0, 1, \ldots, k-2 \\ 1, & i = k-1 \end{cases}$
 可推出
 $$\sum_{s=0}^k a_s w_{n+s} = \frac{1}{a_k} c_{n+k} a_k = c_{n+k}$$ ◻
-:::
+
 
 对于 $k$ 阶齐次差分方程，考虑解的形式为 $$\{y_n\} = \{\xi^n\}.$$
 代入方程得
@@ -732,7 +732,7 @@ $$\{\xi_j^n\}, \{n \xi_j^n\}, \ldots, \{n^{r_j-1} \xi_j^n\}, \quad j = 1, \ldots
 **Definition**
 若线性多步法的局部截断误差满足 $$\lim_{h \to 0} \frac{T_{n+k}}{h} = 0$$
 则称线性多步法与初值问题相容。
-:::
+
 
 对于线性多步法
 $$\sum_{j=0}^{k} \alpha_j y_{n+j} = h \sum_{j=0}^{k} \beta_j f(x_{n+j}, y_{n+j}),$$
@@ -745,7 +745,7 @@ p(x) &= \sum_{j=0}^{k} \alpha_j x^j \quad \text{第一特征多项式}, \\
 
 **Theorem**
 线性多步法相容当且仅当 $$p(1) = 0, \quad p'(1) = \sigma(1).$$
-:::
+
 
 
 *Proof.* 
@@ -758,12 +758,12 @@ T_{n+k} &= \sum_{j=0}^{k} \alpha_j y(x_{n+j}) - h \sum_{j=0}^{k} \beta_j f(x_{n+
 \end{aligned}$$
  所以
 $$\lim_{h \to 0} \frac{T_{n+k}}{h} = 0 \iff p(1) = 0, \quad p'(1) = \sigma(1).$$ ◻
-:::
+
 
 **Theorem**
 线性多步法 $P$ 阶相容，当且仅当存在 $C \neq 0$，使得 $\omega \to 1$ 时有
 $$p(\omega) - \sigma(\omega)\ln(\omega) = C(\omega - 1)^{P+1} + O(|\omega - 1|^{P+2})$$
-:::
+
 
 采用多步法计算需给出适当的离散初始条件： 
 $$\begin{aligned}
@@ -780,7 +780,7 @@ $$\lim_{h \to 0} \eta_{\mu}(h) = y(a), \quad \mu = 0, 1, \dots, k-1$$
 线性多步法的解 $\{y_n\}$ 有
 $$\lim_{h \to 0} y_n = y(x), \quad \forall x \in [a, b]$$ 则称线性多步法
 **收敛**.
-:::
+
 
 **Example**
 考虑两步法：
@@ -791,7 +791,7 @@ y' &= 0 \\
 y(0) &= 1.
 \end{aligned}$$
 
-:::
+
 
 此时两步法变为 
 $$\begin{aligned}
@@ -829,7 +829,7 @@ $$\begin{aligned}
 如果第一特征多项式 $P$
 的零点都在单位圆内或单位圆周上，并且在单位圆周上的根均为单根，则称线性多步法满足
 **根条件**.
-:::
+
 
 
 *引理 (Gronwall 不等式).* 设 $\{\varepsilon_j\}$ 是 $\mathbb{R}$
@@ -842,7 +842,7 @@ $$\begin{aligned}
 |\varepsilon_j| \leq \big( A |\varepsilon_0| + B \big) e^{(j-1)A}, \quad j = 1, 2, \dots
 \end{aligned}$$
  ◻
-:::
+
 
 
 *Proof.* 采用归纳法证明
@@ -862,11 +862,11 @@ $$\begin{aligned}
  
 
 ◻
-:::
+
 
 **Theorem**
 线性多步法收敛当且仅当满足根条件并相容。
-:::
+
 
 
 *Proof.* （充分性） 由局部截断误差的定义有：
@@ -1078,7 +1078,7 @@ $$\begin{aligned}
  
 
 ◻
-:::
+
 
 ### 稳定性 
 
@@ -1098,11 +1098,11 @@ z_\mu &= y_\mu(h) + s_\mu, \quad \mu = 0, 1, \dots, k-1
 $z_n$, $z_n^*$ 是相应的扰动解. 若存在常数 $S$ 和 $h_0$, 使得对于任意
 $h \leq h_0$ 当 $$|s_n - s_n^\ast| \leq \varepsilon$$ 有
 $$|z_n - z_n^\ast| \leq S \varepsilon$$ 则称线性多步法是稳定的.
-:::
+
 
 **Theorem**
 线性多步法稳定当且仅当满足根条件.
-:::
+
 
 
 *Proof.* *(充分性)* 仿照收敛性的证明可得.
@@ -1193,7 +1193,7 @@ e_n = \sum_{j=1}^{k_0} \sum_{\ell=1}^{r_j} c_{j,\ell} n^{\ell-1} \lambda_j^n
 \end{aligned}$$
  其中 $\lambda_j$ 为特征方程 $p(\lambda) = 0$ 的根，$r_j$
 为 $\lambda_j$ 的重数。 ◻
-:::
+
 
 由稳定性得 
 
@@ -1249,7 +1249,7 @@ $$\begin{aligned}
 对于给定的 $\lambda h$，如果 $\pi(r, \lambda h)$ 的根满足
 $$|r_s| < 1, \quad s = 1, 2, \ldots, k$$ 则称线性多步法关于此
 $\lambda h$ 绝对稳定.
-:::
+
 
 **Definition**
 
@@ -1258,13 +1258,13 @@ $$\begin{aligned}
 \{ \lambda h \in \mathbb{R}: \, & \text{线性多步法关于 } \lambda h \text{ 绝对稳定} \} & \textbf{绝对稳定性区间}
 \end{aligned}$$
 
-:::
+
 
 **Example**
 $y_{n+2} = y_{n+1} + \frac{h}{2} \left[ 3f(x_{n+1}, y_{n+1}) - f(x_n, y_n) \right]$
 
 的绝对稳定性区域.
-:::
+
 
 解: 稳定性多项式为
 $$\pi(r, \lambda h) = r^2 - r - \frac{1}{2} \lambda h (3r - 1)$$
@@ -1281,7 +1281,7 @@ $$y(\theta) = \frac{4 \sin \theta - \sin 2\theta}{5 - 3 \sin \theta}$$
 考虑以下差分方程：
 $$y_{n+1} = y_n + \frac{h}{2} \left[ f(x_n, y_n) + f(x_{n+1}, y_{n+1}) \right]$$
 的绝对稳定性区域。
-:::
+
 
 
 *Proof.* 稳定性多项式为：
@@ -1291,13 +1291,13 @@ $$\pi(r, \lambda h) = r - 1 - \frac{1}{2} \lambda h (1 + r)$$
 
 令 $r = e^{i\theta}$，则有：
 $$\lambda h = \frac{i \sin \theta}{1 + \cos \theta}$$ ◻
-:::
+
 
 **Example**
 考虑 Simpson 方法：
 $$y_{n+2} = y_n + \frac{h}{3} \left[ f(x_n, y_n) + 4f(x_{n+1}, y_{n+1}) + f(x_{n+2}, y_{n+2}) \right]$$
 的绝对稳定性区域。
-:::
+
 
 
 *Proof.* 稳定性多项式为：
@@ -1307,7 +1307,7 @@ $$\pi(r, \lambda h) = r^2 - 1 - \frac{1}{3} \lambda h (r^2 + 4r + 1)$$
 $$\lambda h = \frac{e^{i2\theta} - 1}{\frac{1}{3}(e^{i2\theta} + 4e^{i\theta} + 1)} = \frac{3i \sin \theta}{2 + \cos \theta}$$
 
 因此，Simpson 方法的绝对稳定性区域为空集。 ◻
-:::
+
 
 ## Hamilton 系统的辛几何算法
 
@@ -1323,21 +1323,21 @@ $$\lambda h = \frac{e^{i2\theta} - 1}{\frac{1}{3}(e^{i2\theta} + 4e^{i\theta} + 
 **Example**
 $$H(p, q) = \frac{p^2}{2m} + \frac{1}{2}kq^2$$ 其中 $m$: 质量，$k$:
 弹性系数。
-:::
+
 
 **Example**
 $$H(p, q) = \frac{1}{2}p^2 - \cos q$$
-:::
+
 
 **Proposition**
 在 Hamilton 系统中，$H$ 是不变量
-:::
+
 
 
 *Proof.*
 $$\frac{dH(p, q)}{dt} = \frac{\partial H}{\partial p}\frac{dp}{dt} + \frac{\partial H}{\partial q}\frac{dq}{dt} = 0$$
 证毕。 ◻
-:::
+
 
 ### Hamilton 系统的另一种形式 {#hamilton-系统的另一种形式 .unnumbered}
 
@@ -1349,34 +1349,34 @@ Hamilton 系统可写为： $$\frac{dx}{dt} = J^{-1} \nabla H(x),
 **Definition**
 若 $A \in \mathbb{R}^{2d \times 2d}$ 满足 $$A^T J A = J$$ 则称 $A$
 为辛矩阵。
-:::
+
 
 **Definition**
 若 $g: U \subset \mathbb{R}^{2d} \to \mathbb{R}^{2d}$
 为可微映射，且对任意 $(p, q) \in U$ 有 $$g'(p, q)^T J g'(p, q) = J$$
 其中 $g'(p, q)$ 为 $g$ 的 Jacobian 矩阵，则称 $g$ 为辛映射。
-:::
+
 
 **Theorem**
 若 $g$ 是一个辛映射，$x$ 满足 Hamilton 系统
 $$\frac{dx}{dt} = J^{-1} \nabla H(x)$$ 则 $y = g(x)$ 也满足一个 Hamilton
 系统 $$\frac{dy}{dt} = J^{-1} \nabla G(y),$$ 其中 $G(y) = H(x)$。
-:::
+
 
 
 *Proof.* $$\frac{dy}{dt} = g'(x)\frac{dx}{dt}$$
 $$= g'(x) J^{-1} \frac{\partial H}{\partial x}$$
 $$= g'(x)^T J^{-1} g'(x) \nabla G(y(x))$$ $$= J^{-1} \nabla G$$ 证毕。 ◻
-:::
+
 
 **Definition**
 $\phi_t: U \subset \mathbb{R}^{2d} \to \mathbb{R}^{2d}$，$\phi_t(p_0, q_0) = (p(t, p_0, q_0), q(t, p_0, q_0))$
 称为 Hamilton 系统对应的流，初值为 $p_0, q_0$。
-:::
+
 
 **Theorem**
 若 $H$ 是阶可微，则相应的流 $\phi_t$ 为辛映射。
-:::
+
 
 
 *Proof.* 令 $y_0 = (p_0, q_0)$，则
@@ -1388,13 +1388,13 @@ $$+ \left( \frac{\partial \phi_t}{\partial y_0} \right)^T J J^{-1} \nabla H(\phi
 $$= 0$$ 所以
 $$\left( \frac{\partial \phi_t}{\partial y_0} \right)^T J \left( \frac{\partial \phi_t}{\partial y_0} \right) = J$$
 证毕。 ◻
-:::
+
 
 **Theorem**
 $f: U \subset \mathbb{R}^{2d} \to \mathbb{R}^{2d}$ 连续可微，则
 $\frac{dx}{dt} = f(x)$ 是局部 Hamilton 系统 当且仅当其相应的流
 $\phi_t(x)$ 对于任意 $x \in U$ 及充分小的 $t$ 是辛映射。
-:::
+
 
 
 *Proof.* 设 $\phi_t$ 是辛映射，则有
@@ -1407,7 +1407,7 @@ $$\frac{\partial H}{\partial y_k}(y) = \int_0^1 J_k f(y_0 + t z) + y^T J \frac{\
 $$= \int_0^1 J_k f(y_0 + t z) + t J_k \frac{\partial f}{\partial y}(y_0 + t z) z \, dt$$
 $$= \int_0^1 \frac{d}{dt} \left( t J_k f(y_0 + t z) \right) \, dt$$
 $$= J_k f(y)$$ 证毕。 ◻
-:::
+
 
 ### 保辛结构算法 (Symplectic methods) {#保辛结构算法-symplectic-methods .unnumbered}
 
@@ -1420,14 +1420,14 @@ x(0) = x_0 \in \mathbb{R}^{2d}
 单步法 $\Phi_{\Delta t}(P^k, \mathcal{Q}^k)$ 被称为是辛算法 如果 对于
 任意 $(P, \mathcal{Q})$ 以及 任意 $\Delta t$ 有
 $$\Phi_{\Delta t}'(P, \mathcal{Q})^T J \Phi_{\Delta t}'(P, \mathcal{Q}) = J$$
-:::
+
 
 **Theorem**
 $$\begin{cases}
 P^{k+1} = P^k - \Delta t \frac{\partial H}{\partial \mathcal{Q}} (P^{k+1}, \mathcal{Q}^k) \\
 \mathcal{Q}^{k+1} = \mathcal{Q}^k + \Delta t \frac{\partial H}{\partial P} (P^{k+1}, \mathcal{Q}^k)
 \end{cases} \quad (8.8.4)$$ 是辛算法.
-:::
+
 
 
 *Proof.* 令
@@ -1441,7 +1441,7 @@ I + \Delta t \frac{\partial^2 H}{\partial P \partial \mathcal{Q}} & 0 \\
 I & -\Delta t \frac{\partial^2 H}{\partial \mathcal{Q}^2} \\
 0 & I + \Delta t \frac{\partial^2 H}{\partial P \partial \mathcal{Q}}
 \end{pmatrix}$$直接计算可验证$$\Phi_{\Delta t}'(P^k, \mathcal{Q}^k)^T J \Phi_{\Delta t}'(P^k, \mathcal{Q}^k) = J \quad \text{证毕.}$$ ◻
-:::
+
 
 **Remark**
 $$\begin{cases}
@@ -1454,11 +1454,11 @@ P^{k+\frac{1}{2}} = P^k - \frac{\Delta t}{2} \frac{\partial H}{\partial \mathcal
 \mathcal{Q}^{k+1} = \mathcal{Q}^k + \frac{\Delta t}{2} \left( \frac{\partial H}{\partial P} (P^{k+\frac{1}{2}}, \mathcal{Q}^k) + \frac{\partial H}{\partial P} (P^{k+\frac{1}{2}}, \mathcal{Q}^{k+1}) \right) \\
 P^{k+1} = P^{k+\frac{1}{2}} - \frac{\Delta t}{2} \frac{\partial H}{\partial \mathcal{Q}} (P^{k+\frac{1}{2}}, \mathcal{Q}^{k+1})
 \end{cases}$$ 称为 Leap-frog 算法 (Verlet 方法, Störmer-Verlet)
-:::
+
 
 **Theorem**
 Leap-frog 算法是辛的.
-:::
+
 
 
 *Proof.* Leap-frog 可以看作是 $(8.8.4)$ $(8.8.5)$ 的复合 $$\begin{cases}
@@ -1468,20 +1468,20 @@ P^{k+\frac{1}{2}} = P^k - \frac{\Delta t}{2} \frac{\partial H}{\partial \mathcal
 P^{k+1} = P^{k+\frac{1}{2}} - \frac{\Delta t}{2} \frac{\partial H}{\partial \mathcal{Q}} (P^{k+\frac{1}{2}}, \mathcal{Q}^{k+1}) \\
 \mathcal{Q}^{k+1} = \mathcal{Q}^{k+\frac{1}{2}} + \frac{\Delta t}{2} \frac{\partial H}{\partial P} (P^{k+\frac{1}{2}}, \mathcal{Q}^{k+1})
 \end{cases}$$ 容易验证辛映射的复合仍是辛映射. 证毕. ◻
-:::
+
 
 **Definition**
 单步法 $\Phi_{\Delta t}$ 称为是对称的如果
 $$\Phi_{\Delta t} = \Phi_{-\Delta t}^{-1} \doteq \Phi_{\Delta t}^* \quad (\text{对偶})$$
-:::
+
 
 **Theorem**
 Leap-frog 是对称的.
-:::
+
 
 **Remark**
 $(8.8.4)$ $(8.8.5)$ 互为对偶算法.
-:::
+
 
 ### 保守恒量算法 {#保守恒量算法 .unnumbered}
 
@@ -1489,12 +1489,12 @@ $(8.8.4)$ $(8.8.5)$ 互为对偶算法.
 $\Phi_{\Delta t}$ 保持守恒量 $F$ 如果 对于 任意
 $P, \mathcal{Q}, \Delta t$
 $$F(\Phi_{\Delta t}(P, \mathcal{Q})) = F(P, \mathcal{Q})$$
-:::
+
 
 **Theorem**
 Leap-frog 方法保持线性守恒量 和 具有下列形式的二次守恒量
 $$F(P, \mathcal{Q}) = P^T(B\mathcal{Q}+b)$$
-:::
+
 
 
 *Proof.* 设 $F(P, \mathcal{Q}) = b^T\mathcal{Q}+c^T P$ 是一个线性守恒量,
@@ -1512,7 +1512,7 @@ $$\begin{aligned}
 &= (P^{k+\frac{1}{2}})^T (B\mathcal{Q}^{k+\frac{1}{2}}+b) \quad \text{证毕.}
 \end{aligned}$$
  ◻
-:::
+
 
 **Remark**
 Leap-frog 对于一般 Hamilton 量不守恒
@@ -1528,14 +1528,14 @@ P^{k+1} \\
 P^k \\
 \mathcal{Q}^k
 \end{pmatrix}$$ 能量不守恒.
-:::
+
 
 ### 保体积算法 {#保体积算法 .unnumbered}
 
 **Theorem**
 辛映射 $\Phi: U \to \mathbb{R}^{2d}$ 保持体积, 即
 $Vol(\Phi(\Omega)) = Vol(\Omega)$, $\forall \Omega \subset U$.
-:::
+
 
 
 *Proof.* 由 $(\Phi_t')^T J \Phi_t' = J$ 可得 
@@ -1549,13 +1549,13 @@ $$\begin{aligned}
 另一方面
 $$Vol(\Phi(\Omega)) = \int_\Omega |\det(\Phi_t'(y))| dy = Vol(\Omega).$$
 证毕. ◻
-:::
+
 
 **Theorem**
 (Liouville) 设 $f: \mathbb{R}^d \rightarrow \mathbb{R}^d$ 连续可微且
 $\nabla \cdot f(x) = 0$, $\forall x$. 则 $\frac{dx}{dt} = f(x)$ 对应的流
 $\phi_t$ 保体积.
-:::
+
 
 
 *Proof.* 首先
@@ -1563,12 +1563,12 @@ $$\frac{d\phi_t(y)}{dt} = f(\phi_t(y))$$则$$\frac{d}{dt} \phi_t'(y) = f'(\phi_t
 公式：
 $\frac{d}{dt} (\det \phi_t'(y)) = \det \phi_t'(y) tr\left(\left(\frac{d}{dt} \phi_t'(y)\right) \phi_t'(y)^{-1}\right)$$$\implies \det \phi_t'(y) = \det \phi_{t=0}'(y) = I$$
 证毕. ◻
-:::
+
 
 **Remark**
 Hamilton 系统保体积. 保体积系统不一定是 Hamilton 系统. 对于 Hamilton
 系统, 辛格式保体积. 对于一般保体积系统, 没有一般能保体积算法.
-:::
+
 
 ### 分裂格式 {#分裂格式 .unnumbered}
 
@@ -1622,7 +1622,7 @@ x^{k+1} = x^k + \Delta t \sum_{j=1}^m b_j f(x_{j,k})
 
 2.  若 $b_i a_{ij} + b_j a_{ji} - b_i b_j = 0$, $i, j = 1, \dots, m$
     (8.8.6) 则 Runge-Kutta 格式保二次不变量.
-:::
+
 
 
 *Proof.* 设 $F(x) = C^T x$ 是线性不变量. 则
@@ -1641,11 +1641,11 @@ F(\Phi_{\Delta t}(x^k)) &= (x^k + \Delta t \sum_{j=1}^m b_j f(x_{j,k}))^T C (x^k
 $x^k = x_{i,k} - \Delta t \sum_{j=1}^m a_{ij} f(x_{j,k})$. 由此可得
 $$F(\Phi_{\Delta t}(x^k)) = (x^k)^T C x^k - (\Delta t)^2 \sum_{i=1}^m \sum_{j=1}^m (b_i a_{ij} + b_j a_{ji} - b_i b_j) f(x_{i,k})^T C f(x_{j,k}) = (x^k)^T C x^k$$
 证毕. ◻
-:::
+
 
 **Theorem**
 满足 $(8.8.6)$ 的 Runge-Kutta 格式是辛格式.
-:::
+
 
 
 *Proof.* 令
@@ -1667,7 +1667,7 @@ $$\Psi_{i,k} = I + \Delta t \sum_{j=1}^m a_{ij} f'(x_{j,k}) \Psi_{j,k}$$
 对比上述格式可得
 $$\Psi^{k+1} = \frac{\partial x^{k+1}}{\partial x^k}, \quad \Psi_{i,k} = \frac{\partial x_{i,k}}{\partial x^k}$$
 证毕. ◻
-:::
+
 
 **Example**
 中点 Euler 格式
@@ -1676,4 +1676,6 @@ $$x^{k+1} = x^k + \Delta t f\left(\frac{x^k+x^{k+1}}{2}\right)$$
 $$x^{k+1} = x^k + \frac{1}{2} \Delta t (f(k_1) + f(k_2))$$
 $$k_1 = x^k + \Delta t \left( \frac{1}{4} f(k_1) + \left(\frac{1}{4} - \frac{\sqrt{3}}{6}\right) f(k_2) \right)$$
 $$k_2 = x^k + \Delta t \left( \left(\frac{1}{4} + \frac{\sqrt{3}}{6}\right) f(k_1) + \frac{1}{4} f(k_2) \right)$$
-:::
+
+
+[← 数值积分](/posts/numerical-analysis-2/07-数值积分/)

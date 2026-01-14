@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Numerical Analysis II 有理逼近"
-permalink: /posts/numerical-analysis-2-05-有理逼近/
+permalink: /posts/numerical-analysis-2/05-有理逼近/
 tags: numerical-analysis
 use_math: true
 ---
@@ -21,7 +21,7 @@ $$R_m^n[a, b] = \left\{ \frac{P}{Q} : d(P) \leq n, \, d(Q) \leq m, \, Q(x) > 0 \
 
 **Theorem**
 设 $f \in C[a, b]$，则 $R_m^n[a, b]$ 中存在至少一个最佳有理逼近。
-:::
+
 
 
 *Proof.* 设
@@ -69,23 +69,23 @@ $\Rightarrow \lim_{x \to x_i} P(x) = 0$，即 $x_i$ 为 $P(x)$ 的零点。
 $$|R(x) - f(x)| \leq \eta, \quad \forall x \in [a, b].$$
 
 则 $R(x)$ 为 $f$ 的最佳有理逼近。$\Box$
-:::
+
 
 **Theorem**
 $f \in C[a, b]$, $R \in R_m^n$ 是 $f$ 的最佳逼近当且仅当不存在
 $\varphi \in P_n + RQ_m$ 使得
 $$\varphi(y)(f(y) - R(y)) \geq 0, \quad \forall y \in Y,$$ 其中
 $Y = \{ x \in [a, b] : |f(x) - R(x)| = \| f - R \| \}$.
-:::
+
 
 **Theorem**
 $f \in C[a, b]$, $R \in R_m^n$ 是 $f$ 的最佳逼近，如果 $P_n + RQ_m$ 为
 Haar 空间，则 $R$ 唯一。
-:::
+
 
 **Definition**
 存在一组基满足 Haar 条件。
-:::
+
 
 ## Padé 逼近
 
@@ -94,12 +94,12 @@ $f \in C[-a, a]$, $f$ 在 $0$ 处充分光滑。如果存在
 $$R(x) = \frac{P_n(x)}{Q_m(x)},$$ 满足
 $$R(0) = f(0), \quad R^{(j)}(0) = f^{(j)}(0), \quad j = 1, 2, \dots, n+m,$$
 则称 $R$ 为 $f$ 在 $x = 0$ 处的 $(n, m)$ 阶 Padé 逼近。
-:::
+
 
 **Theorem**
 $R(x) = \frac{P_n(x)}{Q_m(x)}$ 为 $f$ 在 $x = 0$ 处的 $(n, m)$ 阶 Padé
 逼近，则有 $$f(x)Q_m(x) - P_n(x) = \sum_{j=n+m+1}^\infty c_j x^j.$$
-:::
+
 
 
 *Proof.* 对 $f(x)Q_m(x) - P_n(x)$ 在 $x = 0$ 处作 Taylor 展开：
@@ -180,4 +180,6 @@ f(x_0) \\ \vdots \\ f(x_{n+m})
 $N > m+n$，则寻找最小二乘解：
 $$\min_{a_0, \dots, a_n, b_0, \dots, b_m} \sum_{j=0}^N \left| P_n(x_j) - f(x_j) Q_m(x_j) \right|^2,$$
 约束条件为： $$\sum_{k=0}^m b_k^2 = 1 \quad (\text{避免零解}).$$ ◻
-:::
+
+
+[← 高维分片多项式逼近](/posts/numerical-analysis-2/04-高维分片多项式逼近/) | [Sobolev空间简介 →](/posts/numerical-analysis-2/06-Sobolev空间简介/)

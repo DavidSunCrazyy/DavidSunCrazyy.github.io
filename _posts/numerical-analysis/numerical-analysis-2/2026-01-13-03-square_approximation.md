@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Numerical Analysis II 最佳平方逼近"
-permalink: /posts/numerical-analysis-2-03-最佳平方逼近/
+permalink: /posts/numerical-analysis-2/03-最佳平方逼近/
 tags: numerical-analysis
 use_math: true
 ---
@@ -104,7 +104,7 @@ $$b_j = \frac{1}{\pi} \int_0^{2\pi} f(x) \sin jx \, dx$$
 设 $f, g \in C[a,b]$，$\rho$ 为 $[a,b]$ 上的权函数，若
 $$(f, g) = \int_a^b \rho(x) f(x) g(x) \, dx = 0$$ 则称 $f$ 和 $g$ 在
 $[a,b]$ 上关于权函数 $\rho$ 正交。
-:::
+
 
 **Definition**
 设 $\varphi_n$ 是 $[a,b]$ 上 $n$ 次项系数不为零的 $n$ 次多项式，$\rho$
@@ -116,7 +116,7 @@ A_j, & i = j
 \end{cases}$$ 则称 $\{\varphi_n, n \geq 0\}$ 在 $[a,b]$ 上关于 $\rho$
 正交，称 $\varphi_n$ 为 $[a,b]$ 上**带权函数 $\rho$ 的 $n$
 次正交多项式**。
-:::
+
 
 利用 Gram-Schmidt 方法可以构造正交多项式序列：
 
@@ -126,7 +126,7 @@ $$\varphi_k(x) = \psi_k(x) - \sum_{j=0}^{k-1} \frac{(\psi_k, \varphi_j)}{(\varph
 **Theorem**
 设 $\{\varphi_n, n \geq 0\}$ 是 $[a,b]$ 上带权函数 $\rho$
 的正交多项式序列，则 $\varphi_n$ 在 $(a,b)$ 内有 $n$ 个不同的零点。
-:::
+
 
 
 *Proof.* $\varphi_n$ 为正交多项式，所以
@@ -145,14 +145,14 @@ $$\int_a^b \rho(x) \varphi_n(x) g(x) \, dx > 0$$
 
 若 $e < n$，与 $\varphi_n$ 是 $n$ 次正交多项式矛盾。故有 $e = n$，即
 $\varphi_n$ 有 $n$ 个单重零点。 ◻
-:::
+
 
 **Theorem**
 $\{\varphi_n: n \geq 0\}$ 是带权 $\rho$ 的正交多项式序列。对于
 $n \geq 1$ 有
 $$\varphi_{n+1}(x) = (\alpha_n x + \beta_n) \varphi_n(x) + \gamma_{n-1} \varphi_{n-1}(x)$$
 其中 $\varphi_1(x) = 0$。
-:::
+
 
 
 *Proof.* 设 $a_n$ 为 $\varphi_n$ 中 $x^n$ 的系数，取
@@ -169,7 +169,7 @@ $$\varphi_{n+1} - \alpha_n \alpha \varphi_n = \beta_n \varphi_n + \delta_{n-1} \
 $$\gamma_{n-1} = -\frac{\alpha_n (\varphi_n, \alpha \varphi_{n-1})}{(\varphi_{n-1}, \varphi_{n-1})}$$
 $$= -\frac{\alpha_n a_{n-1}}{a_n} \frac{(\varphi_n, \varphi_n)}{(\varphi_{n-1}, \varphi_{n-1})}$$
 $$= -\frac{a_{n-1} a_{n+1}}{a_n^2} \frac{(\varphi_n, \varphi_n)}{(\varphi_{n-1}, \varphi_{n-1})}$$ ◻
-:::
+
 
 ### Legendre 多项式 {#legendre-多项式 .unnumbered}
 
@@ -188,7 +188,7 @@ $$P_n(x) = \frac{1}{2^n n!} \frac{d^n}{dx^n} \left[ (x^2 - 1)^n \right], \quad n
     $P_1 = 0$
 
 (3) $$P_n(-x) = (-1)^n P_n(x)$$
-:::
+
 
 ### Laguerre 多项式 {#laguerre-多项式 .unnumbered}
 
@@ -240,7 +240,7 @@ $$\frac{1}{2^{n-1}} = \max_{x \in [t,1]} |\tilde{T}_n(x)| \leq \max_{x \in [t,1]
 
 即
 $\tilde{T}_n = \argmin_{\varphi \in \tilde{P}_n} ||\varphi||_\infty$。
-:::
+
 
 
 *Proof.* 反证法。设 $\varphi_n \in \tilde{P}_n$ 有
@@ -265,7 +265,7 @@ $Q(\overline{x}_k) > 0$。
 由介值定理，$Q$ 在 $[-1,1]$ 中至少有 $n$ 个零点。
 
 所以 $Q \equiv 0$。 ◻
-:::
+
 
 **Theorem**
 设插值区间为 $[-1,1]$，插值节点 $x_0, x_1, \ldots, x_n$ 为 $n+1$ 次
@@ -274,7 +274,7 @@ Chebyshev 多项式的零点。
 被插值函数 $f \in C^{n+1}[-1,1]$，$L_n$ 为 Lagrange 插值多项式，那么
 
 $$\max_{x \in [-1,1]} |f(x) - L_n(x)| \leq \frac{1}{2^n(n+1)!} ||f^{(n+1)}||_\infty$$
-:::
+
 
 
 *Proof.* 由 Lagrange 插值余项估计
@@ -286,7 +286,7 @@ $$\max_{x \in [-1,1]} |f(x) - L_n(x)| \leq \frac{1}{(n+1)!} ||f^{(n+1)}||_\infty
 $$w^{n+1}(x) = (x-x_0) \cdots (x-x_n)$$
 
 $$||w^{n+1}||_\infty = \frac{1}{2^n}$$ ◻
-:::
+
 
 ## 多项式最佳平方逼近的收敛性
 
@@ -303,17 +303,17 @@ $$S_n f = \sum_{i=0}^n \langle f, Q_i \rangle_\omega \overline{Q}_i$$
 **Theorem**
 对于所有 $f \in C[a,b]$，有
 $$\|f - S_n f\|_\infty \to 0, \quad n \to \infty$$
-:::
+
 
 
 *Proof.* 设 $T_nf$ 为 $f$ 的 $\le n$ 次最佳逼近多项式，则
 $$\|f - S_n f\|_\infty \leq \|f - T_n f\|_\infty$$
 $$\leq \|f - T_n f\|_\infty \int_a^b \omega(x)  dx$$ ◻
-:::
+
 
 **Theorem**
 若 $f \in C^2[a,b]$，则 $f$ 的 Chebyshev 多项式展开一致收敛到 $f$。
-:::
+
 
 
 *Proof.* 设 $f$ 的 Chebyshev 多项式展开为
@@ -337,7 +337,7 @@ $$\frac{1}{2} A_0 + \sum_{k=1}^\infty A_k T_k \quad \text{一致收敛}$$
 则
 $$\|f - f\|_\omega \leq \|f - S_n f\|_\omega + \|S_n f - f\|_\omega \to 0$$
 $$\Rightarrow f = F$$ ◻
-:::
+
 
 $S_n$ 可以写成积分算子的形式：
 $$(S_n f)(x) = \sum_{t=0}^n \int_a^b f(t) \overline{Q_i}(t) \omega(t) dt \overline{Q_i}(x)$$
@@ -349,7 +349,7 @@ $$K_n(t,x) = \sum_{t=0}^n \overline{Q_i}(t) Q_i(x)$$
 $$\sum_{t=0}^n \overline{Q_t}(t) \overline{Q_t}(x) = \lambda_{n+1} \lambda_n^{-1} \frac{\overline{Q_{n+1}}(x) \overline{Q_n}(t) - \overline{Q_n}(x) \overline{Q_{n+1}}(t)}{x-t}$$
 
 其中 $\lambda_n^{-1}$ 为 $Q_n$ 中 $x^n$ 的系数。
-:::
+
 
 
 *Proof.* 设 $Q_n = \lambda_n \overline{Q_n}$ 为首 $1$
@@ -369,14 +369,14 @@ $$\lambda_n^{-2} [Q_{n+1}(x) Q_n(t) - Q_{n+1}(t) Q_n(x)] = (x - t) \overline{Q_n
 
 递推可得：
 $$\lambda_n^{-2} [Q_{n+1}(x) Q_n(t) - Q_{n+1}(t) Q_n(x)] = (x - t) \sum_{i=0}^{n} \overline{Q_i}(x) \overline{Q_i}(t)$$ ◻
-:::
+
 
 **Theorem**
 设 $x_0 \in [a, b]$，$f$ 在 $x_0$ 处 Lipschitz 连续。
 $\overline{Q}_n(x_0)$ 有界(与 $n$ 无关), 则
 
 $$f(x_0) = \sum_{k=0}^{\infty} \langle f, \overline{Q}_k \rangle \overline{Q}_k(x_0)$$
-:::
+
 
 
 *Proof.* 
@@ -406,7 +406,7 @@ $$h(x) = [f(x_0) - f(x)] / (x_0 - x)$$
 $f$ 在 $x_0$ 处 Lipschitz 连续，所以 $$|h(x)| \le L$$
 由于$\langle h, \overline{Q}_n \rangle \to 0$, $\overline{Q}_n(x_0)$
 有界. 定理可证. ◻
-:::
+
 
 $f \in C_{2\pi}$ 的 Fourier 级数为
 
@@ -425,7 +425,7 @@ $f \in C_{2\pi}$ 并且
 $\lim_{\delta \to 0} w(\delta,f) \log \delta = 0$，则
 
 $$\lim_{n \to \infty} ||S_n f - f||_\infty = 0$$
-:::
+
 
 
 *Proof.*
@@ -444,7 +444,7 @@ $$||S_n|| < 3 + \log n$$
 因此令 $P$ 为 $f$ 的 $s_n$ 次最佳三角
 
 $$||S_nf - f|| = ||S_n(f - P) + (f - P)|| \leq ||S_n(f - P)|| + ||f - P|| \leq (4 + \log n) ||f - P|| \leq \frac{3}{2} (4 + \log n) \omega (\frac{\pi}{n+1}) \quad D$$ ◻
-:::
+
 
 $f \in C_{2n}$，令 Cesaro 均值为
 
@@ -452,7 +452,7 @@ $$G_n f = \frac{1}{n} \sum_{k=0}^{n-1} S_k f$$
 
 **Lemma**
 $$(G_n f)(x) = \frac{1}{2n\pi} \int_{-\pi}^{\pi} f(t+x) \left( \frac{\sin \frac{1}{2} nt}{\sin \frac{1}{2} t} \right)^2 \, dt$$
-:::
+
 
 （证明留作练习）
 
@@ -460,7 +460,7 @@ $$(G_n f)(x) = \frac{1}{2n\pi} \int_{-\pi}^{\pi} f(t+x) \left( \frac{\sin \frac{
 $f \in C_{2\pi}$，则
 
 $$\lim_{n \to \infty} ||G_n f - f||_\infty = 0$$
-:::
+
 
 
 *Proof.*
@@ -469,7 +469,7 @@ $$| (G_n f)(x) - f(x) | = \frac{1}{2n\pi} \left| \int_0^{\pi} \left( f(t+x) + f(
 $$\leq \frac{1}{n\pi} \int_0^{\pi} w(t,f) \left( \frac{\sin \frac{1}{2} nt}{\sin \frac{1}{2} t} \right)^2 \, dt \leq \frac{1}{n\pi} w(\frac{1}{n},f) \int_{-\pi}^{\pi} w(t+1) \left( \frac{\sin \frac{1}{2} nt}{\sin \frac{1}{2} t} \right)^2 \, dt$$
 
 直接计算定理可证（留作练习） ◻
-:::
+
 
 **Theorem**
 设 $f \in [a,b]$，$Q_0, Q_1, \cdots$ 是 $[a,b]$ 上关于权 $w(x)$
@@ -477,7 +477,7 @@ $$\leq \frac{1}{n\pi} \int_0^{\pi} w(t,f) \left( \frac{\sin \frac{1}{2} nt}{\sin
 插值多项式，则有
 
 $$\lim_{n \to \infty} ||L_n f - f||_w = 0$$
-:::
+
 
 
 *Proof.* 设 $x_0, \cdots, x_n$ 为 $Q_{n+1}$ 的零点，则
@@ -511,4 +511,6 @@ $$\begin{aligned}
 &= ||f - P_n||^2_\infty \int_a^b w(x) \, dx \to 0\\
 \end{aligned}$$
  ◻
-:::
+
+
+[← 多项式插值](/posts/numerical-analysis-2/02-多项式插值/) | [高维分片多项式逼近 →](/posts/numerical-analysis-2/04-高维分片多项式逼近/)

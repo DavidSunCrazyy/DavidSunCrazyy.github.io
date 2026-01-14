@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Numerical Analysis II 数值积分"
-permalink: /posts/numerical-analysis-2-07-数值积分/
+permalink: /posts/numerical-analysis-2/07-数值积分/
 tags: numerical-analysis
 use_math: true
 ---
@@ -32,7 +32,7 @@ $$E_n(f) = \int_a^b p(x)f(x)\,dx - \sum_{k=0}^n A_k f(x_k)$$
 **Definition**
 如果 $E_n(x^m) = 0$, $m=0,\dots,k$ 且
 $E_n(x^{k+1}) \neq 0$，则称求积公式具有 $k$ 次代数精度。
-:::
+
 
 **Example**
 给定求积公式为如下形式：
@@ -51,7 +51,7 @@ $$x_1 = \frac{2}{3}, \quad c_1 = \frac{3}{4}, \quad c_0 = \frac{1}{4}$$
 对于 $x^3$ 有：
 $$\int_0^1 x^3\,dx = \frac{1}{4} \neq \frac{3}{4} \left(\frac{2}{3}\right)^3 = \frac{2}{9}$$
 故代数精度为 2。
-:::
+
 
 ---
 
@@ -91,7 +91,7 @@ $$I_1(f) = \frac{b-a}{2} \left[f(a) + f(b)\right] \tag{7.2.1}$$
 设 $f, g \in C[a,b]$ 且 $g(x)$ 在 $[a,b]$ 上不变号，则存在
 $\xi \in [a,b]$ 使得：
 $$\int_a^b f(x)g(x)\,dx = f(\xi) \int_a^b g(x)\,dx$$
-:::
+
 
 **Theorem**
 $f \in C^2[a,b]$，梯形求积公式的误差为： 
@@ -100,7 +100,7 @@ E_1(f) &= \int_a^b f(x)\,dx - \frac{b-a}{2} \left[f(a) + f(b)\right] \\
 &= -\frac{(b-a)^3}{12} f''(\eta), \quad \eta \in [a,b]
 \end{aligned}$$
 
-:::
+
 
 
 *Proof.* 利用 Newton 均差得： $$R_1(x) = f[a,b,x] \omega_2(x)$$
@@ -111,12 +111,12 @@ $$E_1(f) = f[a,b,\xi] \int_a^b \omega_2(x)\,dx = -\frac{(b-a)^3}{12} f''(\eta), 
 $x_2=b$，利用二次插值多项式，可得：
 $$I_2(f) = \frac{b-a}{6} \left[f(a) + 4f\left(\frac{a+b}{2}\right) + f(b)\right]$$
 称为 Simpson 求积公式。 ◻
-:::
+
 
 **Theorem**
 设 $f \in C^4[a,b]$，Simpson 求积公式的误差为
 $$E_2(f) = -\frac{(b-a)^5}{2880} f^{(4)}(\eta), \quad \eta \in [a,b].$$
-:::
+
 
 
 *Proof.* 二次插值多项式的余项为
@@ -133,7 +133,7 @@ E_2(f) &= \frac{1}{2} \int_a^b f[a, \frac{a+b}{2}, b, x] (x-a)(x-b) \, d\left((x
 \end{aligned}$$
  利用重节点均差的性质，可以进一步化简为
 $$E_2(f) = -\frac{(b-a)^5}{2880} f^{(4)}(\eta), \quad \eta \in [a,b].$$ ◻
-:::
+
 
 一般情况：Newton-Cotes 求积公式
 
@@ -152,7 +152,7 @@ $$\int_a^b f(x) \, dx \approx (b-a) \sum_{k=0}^n C_k^{(n)} f(x_k).$$
 $C_k^{(n)}$ 定义为 $$C_k^{(n)} = \frac{1}{b-a} \int_a^b l_k(x) \, dx.$$
 并且有
 $$C_k^{(n)} = C_{n-k}^{(n)}, \quad k=0,1,\dots,\lfloor n/2 \rfloor.$$
-:::
+
 
 **Theorem**
 $n$ 阶 Newton-Cotes 求积公式的误差为：
@@ -164,12 +164,12 @@ $n$ 阶 Newton-Cotes 求积公式的误差为：
 2.  若 $n$ 为奇数，设 $f \in C^{n+1}[a,b]$，则
     $$E_n(f) = \frac{\overline{C}_n}{(n+1)!} f^{(n+1)}(\xi), \quad \xi \in [a,b],$$
     其中 $$\overline{C}_n = \int_a^b w_{n+1}(x) \, dx < 0.$$
-:::
+
 
 **Corollary**
 当 $n$ 为偶数时，Newton-Cotes 求积公式具有 $n+1$ 次代数精度；当 $n$
 为奇数时，具有 $n$ 次代数精度。
-:::
+
 
 ### Newton-Cotes 求积公式的数值稳定性
 
@@ -252,7 +252,7 @@ $$= \underbrace{h \left[ \frac{1}{2} \left( f(a) + f(b) \right) + \sum_{k=1}^{n-
 
 2.  $$A_k = \int_a^b p(x) l_k(x) \, dx, \quad k = 0, 1, \dots, n$$ 其中
     $l_k(x)$ 为 Lagrange 插值基函数。
-:::
+
 
 
 *Proof.* **(必要性)** 设求积公式具有 $2n+1$ 次代数精度。令
@@ -278,7 +278,7 @@ $$\begin{aligned}
  
 
 ◻
-:::
+
 
 **Remark**
 若 $f(x) = \prod_{j=0}^n (x - x_j)^2$，则 $f \in P_{2n+2}$ 且
@@ -287,12 +287,12 @@ $\sum_{k=0}^n A_k f(x_k)$ 的代数精度最高为 $2n+1$。
 
 若 $\sum_{k=0}^n A_k f(x_k)$ 具有 $2n+1$ 次代数精度，则称其为 Gauss
 型求积公式，$x_0, \dots, x_n$ 称为 Gauss 点。
-:::
+
 
 **Theorem**
 Gauss 型求积公式的求积系数为
 $$A_k = \frac{1}{[w'_{n+1}(x_k)]^2} \int_a^b p(x) \left[\frac{w_{n+1}(x)}{x - x_k}\right]^2 \, dx.$$
-:::
+
 
 
 *Proof.* 令
@@ -309,17 +309,17 @@ $$f(x_j) =
 Gauss 型求积公式代数精度为 $2n+1$，所以
 $$\int_a^b p(x) f(x) \, dx = \sum_{j=0}^n A_j f(x_j) = A_k [w'_{n+1}(x_k)]^2.$$
 从而 $$A_k = \frac{\int_a^b p(x) l_k^2(x) \, dx}{[w'_{n+1}(x_k)]^2}.$$ ◻
-:::
+
 
 **Corollary**
 Gauss 型求积公式的求积系数均为正。
-:::
+
 
 **Theorem**
 设 $f \in C^{2n+2}[a, b]$，Gauss 型求积公式的误差为
 $$E_n(f) = \frac{1}{(2n+2)!} f^{(2n+2)}(\eta) \int_a^b p(x) [w_{n+1}(x)]^2 \, dx,$$
 其中 $\eta \in [a, b]$。
-:::
+
 
 
 *Proof.* $2n+1$ 次 Hermite 插值多项式 $H_{2n+1}$ 满足
@@ -332,13 +332,13 @@ $$\begin{aligned}
 &= \sum_{k=0}^n A_k f(x_k) + \frac{1}{(2n+2)!} f^{(2n+2)}(\eta) \int_a^b p(x) w_{n+1}^2(x) \, dx.
 \end{aligned}$$
  ◻
-:::
+
 
 ### Gauss 求积公式的收敛性 
 
 **Theorem**
 $$|Q_n(f) - Q_n(g)| \leq \max_{0 \leq k \leq n} |f(x_k) - g(x_k)| \int_a^b p(x) \, dx.$$
-:::
+
 
 
 *Proof.* 
@@ -348,13 +348,13 @@ $$\begin{aligned}
 &= \max_{0 \leq k \leq n} |f(x_k) - g(x_k)| \int_a^b p(x) \, dx.
 \end{aligned}$$
  ◻
-:::
+
 
 **Theorem**
 设 $f \in C[a, b]$，则有
 $$\lim_{n \to \infty} Q_n(f) = \int_a^b p(x) f(x) \, dx,$$ 其中
 $Q_n(f) = \sum_{k=0}^n A_k f(x_k)$ 为 Gauss 型求积公式。
-:::
+
 
 
 *Proof.* $f \in C[a, b]$，所以 $\forall \varepsilon > 0$ 存在多项式
@@ -371,7 +371,7 @@ $$\begin{aligned}
  即 $\forall \varepsilon > 0$，存在
 $N > 0$，$\forall n > N$ 有
 $$|Q_n(f) - \int_a^b p(x) f(x) \, dx| < \varepsilon.$$ ◻
-:::
+
 
 ---
 
@@ -382,12 +382,12 @@ Bernoulli 多项式 $B_n(x)$ 满足： $$\begin{cases}
 B_0(x) = 1 \\
 B_n'(x) = B_{n-1}(x), \quad \int_0^1 B_n(x) \, dx = 0, \quad n \in \mathbb{N}.
 \end{cases}$$
-:::
+
 
 **Theorem**
 对于 Bernoulli 多项式，有
 $$B_n(x) = (-1)^n B_n(1-x), \quad n = 0, 1, 2, \dots$$
-:::
+
 
 
 *Proof.* 采用数学归纳法证明。
@@ -409,17 +409,17 @@ $$\begin{aligned}
 由 $\int_0^1 B_{n+1}(x) \, dx = 0$ 得
 $(1 - (-1)^{n+1})C = 0$，因此 $$B_{n+1}(x) = (-1)^{n+1} B_{n+1}(1-x).$$
 归纳完毕。 ◻
-:::
+
 
 **Corollary**
 $$B_{2m+1}(1) = B_{2m+1}(0) = 0, \quad m = 1, 2, \dots$$
-:::
+
 
 
 *Proof.* 由 $\int_0^1 B_n(x) \, dx = 0$，得
 $$B_n(1) = B_n(0), \quad n = 2, 3, \dots$$ 由此即得
 $$B_{2m+1}(1) = B_{2m+1}(0), \quad m = 1, 2, \dots$$ ◻
-:::
+
 
 **Theorem**
 设 $f \in C^m[a, b]$，$m \geq 3$，且
@@ -434,7 +434,7 @@ $$\begin{aligned}
  其中 $b_n = n! B_n(0)$，$\widetilde{B}_n$ 为 $B_n$
 的周期延拓，即
 $$\widetilde{B}_n(x) = B_n(x), \quad x \in [0, 1], \quad \widetilde{B}_n(x+1) = \widetilde{B}_n(x).$$
-:::
+
 
 
 *Proof.* 设 $g(x) \in C^m[0, 1]$，由分部积分得 
@@ -451,7 +451,7 @@ $$\begin{aligned}
 &\quad + (-1)^m h^m \int_{x_k}^{x_{k+1}} B_m\left(\frac{x-x_k}{h}\right) f^{(m)}(x) \, dx.
 \end{aligned}$$
  对 $k = 0, 1, 2, \dots, n-1$ 求和即得定理结论。 ◻
-:::
+
 
 ### Romberg 求积方法
 
@@ -490,7 +490,7 @@ $\lim_{x \to a} f(x) = \infty$，则可对区间进行分割计算积分。
 **Example**
 设 $g \in C^m[0, 1]$，$|g(x)| \leq 1$，$x \in [0, 1]$，计算
 $$\int_0^1 \frac{g(x)}{x^{1/2} + x^{3/2}} \, dx.$$
-:::
+
 
 
 *解.* 在 $[0, 1]$ 上有 
@@ -500,11 +500,11 @@ $$\begin{aligned}
 \Rightarrow \left| \int_0^1 \frac{g(x)}{x^{1/2} + x^{3/2}} \, dx - \int_\varepsilon^1 \frac{g(x)}{x^{1/2} + x^{3/2}} \, dx \right| &\leq \varepsilon^{1/2}.
 \end{aligned}$$
  ◻
-:::
+
 
 **Example**
 计算 $$\int_0^6 \sqrt{x} \sin x \, dx.$$
-:::
+
 
 
 *解：.* 令 $f(x) = \sqrt{x} \sin x$，则
@@ -517,7 +517,7 @@ $$\int_\varepsilon^6 \sqrt{x} \sin x \, dx \quad \text{逼近} \quad \int_0^6 \s
 另一种精度更高的方法为对 $\sin x$ 作 Taylor 展开：
 $$\int_0^\varepsilon \sqrt{x} \sin x \, dx = \int_0^\varepsilon \sqrt{x} \left( x - \frac{x^3}{3!} + \cdots \right) dx.$$
 取前几项计算积分。 ◻
-:::
+
 
 ### 变量替换
 
@@ -535,13 +535,13 @@ $$\begin{aligned}
 
 令 $t = \sqrt{x}$，则有
 $$\int_0^1 \frac{e^x}{\sqrt{x}} \, dx = 2 \int_0^1 e^{t^2} \, dt.$$
-:::
+
 
 ### Kontorovich 奇点分离法
 
 **Example**
 计算 $$\int_0^1 \frac{\cos x}{x^{1/2}} \, dx.$$
-:::
+
 
 **解：** 
 $$\begin{aligned}
@@ -590,7 +590,7 @@ $$\int_a^b f(x) \, dx = \int_a^b g(x) \, dx + \int_a^b [f(x) - g(x)] \, dx.$$
 $$S_N = X_1 + X_2 + \cdots + X_N,$$ 若 $\mathbb{E}|X_1| < +\infty$，则有
 $\frac{S_N}{N}$ 依概率收敛到 $\mathbb{E}X_1$，即
 $$\frac{S_N}{N} \xrightarrow{P} \mathbb{E}X_1.$$
-:::
+
 
 
 *Proof.* 设 $X_i$, $i = 1, 2, \dots, N$ 为独立同分布于 $[0, 1]$
@@ -615,7 +615,7 @@ $$\mathbb{E}|\epsilon_N| \leq \sqrt{\mathbb{E}|\epsilon_N|^2} = \sqrt{\frac{\tex
 
 若 $\text{Var}(f) < +\infty$，则 Monte Carlo
 方法具有半阶收敛性（与维数无关）。 ◻
-:::
+
 
 ### 重要性抽样法
 
@@ -625,7 +625,7 @@ $$I(f) = \int_0^1 f(x) \, dx = \int_0^1 \frac{f(x)}{p(x)} p(x) \, dx,$$
 其中 $p(x)$ 为 $[0, 1]$ 上的一个概率密度函数。利用 Monte Carlo 方法可得
 $$I(f) \approx \frac{1}{N} \sum_{i=1}^N \frac{f(Y_i)}{p(Y_i)},$$ 其中
 $Y_i$, $i = 1, 2, \dots, N$ 为独立同分布于 $p$ 的随机变量。
-:::
+
 
 此时有 
 $$\begin{aligned}
@@ -644,7 +644,7 @@ $\text{Var}_Y\left(\frac{f}{p}\right) = 0$。
 **Theorem**
 极小化 $\text{Var}_Y\left(\frac{f}{p}\right)$ 的分布为
 $$p^* = \frac{|f(x)|}{\int_0^1 |f(y)| \, dy}.$$
-:::
+
 
 
 *Proof.* 
@@ -653,7 +653,7 @@ $$\begin{aligned}
 &\leq \int_0^1 \left(\frac{f(x)}{p(x)}\right)^2 p(x) \, dx.
 \end{aligned}$$
  等号在 $p = p^*$ 时取到。 ◻
-:::
+
 
 ## 采样方法
 
@@ -664,12 +664,12 @@ $$\begin{aligned}
 $a_{ij} \geq b_{ij}$，$i = 1, \dots, n$，$j = 1, \dots, r$，则称
 $A \geq B$。记 $\mathbf{0}$ 为全零矩阵，若 $A \geq \mathbf{0}$，则称 $A$
 为非负矩阵；若 $A > \mathbf{0}$，则称 $A$ 为正矩阵。
-:::
+
 
 **Lemma**
 设 $A \in \mathbb{R}^{n \times n}$ 不可约且 $A \geq \mathbf{0}$，则
 $$(I + A)^{n-1} > \mathbf{0}.$$
-:::
+
 
 
 *Proof.* 下证：对任意 $x \in \mathbb{R}^n$，若 $x \geq \mathbf{0}$，则有
@@ -696,12 +696,12 @@ $A_{21} = \mathbf{0}$，这与 $A$ 不可约矛盾。
 
 所以 $x_{k+1}$ 的零元素个数小于 $x_k$ 的零元素个数。由于 $x_0$
 的零元素个数至多为 $n-1$，因此 $$(I + A)^{n-1} x > \mathbf{0}.$$ ◻
-:::
+
 
 **Lemma**
 设 $A \geq \mathbf{0}$ 是不可约的 $n \times n$ 方阵，则 $r > 0$ 且为 $A$
 的特征值，相应的特征向量为 $z$ 满足 $\lambda(z) = r$。
-:::
+
 
 
 *Proof.* 令 $\bar{x} \in \mathbb{R}^n$，$\bar{x} > \mathbf{0}$。由于 $A$
@@ -720,7 +720,7 @@ $$Az - rz = \mathbf{0}.$$
 
 另一方面， $$\eta = (I + A)^{n-1} z = (1 + r)^{n-1} z > \mathbf{0}.$$
 因此 $z > \mathbf{0}$。 ◻
-:::
+
 
 **Lemma**
 设 $A = [a_{ij}] \geq \mathbf{0}$ 是不可约的 $n \times n$
@@ -728,7 +728,7 @@ $$Az - rz = \mathbf{0}.$$
 $$\rho(B) \leq r,$$ 且 $\rho(B) = r$ 当且仅当
 $$B = e^{i\phi} DAD^{-1},$$ 其中
 $D = \text{diag}(d_j)$，$d_j \in \mathbb{C}$，$|d_j| = 1$，$j = 1, 2, \dots, n$。
-:::
+
 
 
 *Proof.* 设 $\beta$ 为 $B$ 的特征值，即存在 $y \neq \mathbf{0}$，使得
@@ -768,16 +768,16 @@ $$C = |C| = A.$$
 因此 $$B = e^{i\phi} DAD^{-1}.$$
 
 另一方面，易证。 ◻
-:::
+
 
 **Corollary**
 设 $A \geq \mathbf{0}$ 是不可约的 $n \times n$ 方阵，则 $$\rho(A) = r.$$
-:::
+
 
 **Lemma**
 设 $A \geq \mathbf{0}$ 是不可约的 $n \times n$ 矩阵，$B$ 为 $A$
 的主子式，则 $$\rho(B) \leq \rho(A).$$
-:::
+
 
 
 *Proof.* 不妨设
@@ -788,7 +788,7 @@ $$C = \begin{bmatrix} B & \mathbf{0} \\ \mathbf{0} & \mathbf{0} \end{bmatrix} \i
 
 则有 $C = |C| \neq A$，且 $\rho(B) = \rho(C)$。由引理 7.8.3 得
 $$\rho(C) \leq \rho(A).$$ 因此 $$\rho(B) \leq \rho(A).$$ ◻
-:::
+
 
 **Theorem**
 设 $A \geq \mathbf{0}$ 是不可约的 $n \times n$ 矩阵，则有：
@@ -798,7 +798,7 @@ $$\rho(C) \leq \rho(A).$$ 因此 $$\rho(B) \leq \rho(A).$$ ◻
 2.  若 $0 \leq B \leq A$，则 $\rho(B) \leq \rho(A)$。
 
 3.  $\rho(A)$ 为 $A$ 的单特征值。
-:::
+
 
 
 *Proof.* (1), (2) 由引理 7.8.2 和 7.8.3 可得。
@@ -814,13 +814,13 @@ $$\phi'(t) = \sum_{i=1}^n \det(tI - A_i),$$ 其中 $A_i$ 为 $A$
 因此 $$\phi'(\rho(A)) > 0.$$
 
 故 $\rho(A)$ 为 $\phi(t) = 0$ 的单根。 ◻
-:::
+
 
 **Lemma**
 设 $A \geq \mathbf{0}$ 是不可约的 $n \times n$ 矩阵，则
 $$\sum_{j=1}^n a_{ij} = \rho(A), \quad i = 1, \dots, n,$$ 或者
 $$\min_{1 \leq i \leq n} \left( \sum_{j=1}^n a_{ij} \right) < \rho(A) < \max_{1 \leq i \leq n} \left( \sum_{j=1}^n a_{ij} \right).$$
-:::
+
 
 
 *Proof.* 若 $\sum_{j=1}^n a_{ij} = \alpha$，$i = 1, \dots, n$，则
@@ -840,27 +840,27 @@ $$\sum_{j=1}^n b_{kj} = \min_{1 \leq i \leq n} \left( \sum_{j=1}^n a_{ij} \right
 因此 $$\alpha_{\text{min}} < \rho(A).$$
 
 同样可证 $$\rho(A) < \alpha_{\text{max}}.$$ ◻
-:::
+
 
 ### 反变换法 
 
 **Definition**
 设 $F: \mathbb{R} \to [0, 1]$ 是非减函数。令
 $$F^{-1}(u) = \inf \{ x : F(x) \geq u \}.$$
-:::
+
 
 **Theorem**
 设 $U \sim U[0, 1]$，则随机变量 $F^{-1}(U)$ 的分布为 $F$。
-:::
+
 
 
 *Proof.* $$P(F^{-1}(U) \leq x) = P(U \leq F(x)) = F(x).$$ ◻
-:::
+
 
 **Example**
 设 $X \sim \exp(-x)$，则
 $$F(x) = 1 - e^{-x}, \quad F^{-1}(u) = -\log(1-u).$$
-:::
+
 
 **Example**
 设 $X \sim N(0, 1)$，则
@@ -869,7 +869,7 @@ $$F(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x \exp\left(-\frac{z^2}{2}\right) 
 近似公式为
 $$F^{-1}(x) \approx t - \frac{a_0 + a_1 t}{1 + b_1 t + b_2 t^2},$$ 其中
 $t^2 = \log(x^{-2})$，$a_0 = 2.30753$，$a_1 = 0.27061$，$b_1 = 0.99229$，$b_2 = 0.04481$。
-:::
+
 
 **Example**
 设 $X_1, X_2 \overset{\text{iid}}{\sim} N(0, 1)$，$(R, \theta)$ 为
@@ -880,14 +880,14 @@ $$R^2 = X_1^2 + X_2^2 \sim \exp(-\frac{1}{2}x), \quad \theta \sim U[0, 2\pi].$$
 $$X_1 = \sqrt{-2\log U_1} \cos(2\pi U_2), \quad X_2 = \sqrt{-2\log U_1} \sin(2\pi U_2).$$
 
 于是 $X_1, X_2 \overset{\text{iid}}{\sim} N(0, 1)$。
-:::
+
 
 ### 接受-拒绝方法 
 
 **Theorem**
 设 $X, U$ 为随机变量，$X$ 的取值范围为 $(0, 1)$。若
 $(X, U) \sim U\{(x, u): 0 < u < f(x), 0 < x < 1\}$，则 $X \sim f(x)$。
-:::
+
 
 
 *Proof.* 
@@ -896,36 +896,36 @@ P(X < x) &= \int_0^x \left( \int_0^{f(y)} \frac{du}{\int_0^1 f(z) dz} \right) dy
 &= \frac{1}{\int_0^1 f(z) dz} \int_0^x f(y) dy.
 \end{aligned}$$
  因此，$X \sim f(x)$。 ◻
-:::
+
 
 ### 算法 1 {#算法-1 .unnumbered}
 
-::: algorithm
-::: algorithmic
+ algorithm
+ algorithmic
 选择 $M \geq \sup_x f(x)$ 生成 $Y \sim U[0, 1]$，$U \sim U[0, M]$ 接受
 $X = Y$
-:::
-:::
+
+
 
 ### 算法 2 {#算法-2 .unnumbered}
 
-::: algorithm
-::: algorithmic
+ algorithm
+ algorithmic
 选择 $g(x)$、常数 $M$，使得 $f(x) \leq Mg(x)$，且 $g(x)$ 为密度函数 生成
 $Y \sim g$，$U \sim U[0, 1]$ 接受 $X = Y$
-:::
-:::
+
+
 
 ### 算法 (Metropolis-Hastings) {#算法-metropolis-hastings .unnumbered}
 
-::: algorithm
-::: algorithmic
+ algorithm
+ algorithmic
 给定初始值 $X^{(0)}$，选定条件密度函数 $Q(y|x)$ 生成
 $Y_t \sim Q(y|X^{(t)})$，$U \sim U[0, 1]$ 计算接受概率：
 $$p(X^{(t)}, Y_t) = \min\left\{ \frac{\pi(Y_t)}{\pi(X^{(t)})} \cdot \frac{Q(X^{(t)}|Y_t)}{Q(Y_t|X^{(t)})}, 1 \right\}$$
 $X^{(t+1)} \gets Y_t$ $X^{(t+1)} \gets X^{(t)}$
-:::
-:::
+
+
 
 **Theorem**
 设 $(X^{(t)})$ 是 MH 算法生成的 Markov 链。若
@@ -935,7 +935,7 @@ $$\bigcup_{x \in \text{supp}(\pi)} \text{supp}(Q(\cdot|x)) \supset \text{supp}(\
 1.  转移概率满足细致平衡条件，即 $$K(x, y)\pi(x) = K(y, x)\pi(y).$$
 
 2.  $\pi$ 是平稳分布。
-:::
+
 
 **Theorem**
 若 $X^{(t)}$ 不可约，则：
@@ -945,4 +945,6 @@ $$\bigcup_{x \in \text{supp}(\pi)} \text{supp}(Q(\cdot|x)) \supset \text{supp}(\
 
 2.  若 $(X^{(t)})$ 非周期，则对于任意分布 $\mu$，
     $$\lim_{n \to \infty} \left\| \int k^n(x, \cdot) \mu(dx) - \pi \right\|_{TV} = 0.$$
-:::
+
+
+[← Sobolev空间简介](/posts/numerical-analysis-2/06-Sobolev空间简介/) | [数值常微分方程 →](/posts/numerical-analysis-2/08-数值常微分方程/)

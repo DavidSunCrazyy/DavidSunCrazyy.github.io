@@ -1,14 +1,12 @@
 ---
 layout: post
 title: "Numerical Analysis II 高维分片多项式逼近"
-permalink: /posts/numerical-analysis-2-04-高维分片多项式逼近/
+permalink: /posts/numerical-analysis-2/04-高维分片多项式逼近/
 tags: numerical-analysis
 use_math: true
 ---
 
 # 高维（二维）分片多项式逼近
-
----
 
 ## 有限元空间（分片多项式空间）
 
@@ -156,7 +154,7 @@ $$\begin{aligned}
            0, & i \neq j \\
            1, & i = j
        \end{cases}$$
-:::
+
 
 **Definition**
 设 $(K, P_k, \Sigma_k)$
@@ -165,7 +163,7 @@ $$\begin{aligned}
 $$\varphi_i(P_j) = \delta_{ij}.$$ 定义 $$\Pi_K: C^\infty(K) \to P_k,$$
 $$\Pi_K(v) = \sum_{i=1}^N \varphi_i(v) P_i, \quad \forall v \in C^\infty(K).$$
 称 $\Pi_K$ 为 $P_k$ 插值算子，$\Pi_K(v)$ 为 $v$ 的 $P_k$ 插值函数。
-:::
+
 
 **Definition**
 令 $P_k(\Omega)$ 为 $\Omega$ 上不超过 $k$ 次多项式构成的空间。
@@ -175,12 +173,12 @@ $$\| [v] \|_{k+1,p} = \inf_{w \in P_k(\Omega)} \| v + w \|_{k+1,p}.$$
 
 半范
 $$| [v] |_{k+1,p} = \inf_{w \in P_k(\Omega)} \| v + w \|_{k+1,p} = |v|_{k+1,p}.$$
-:::
+
 
 **Theorem**
 存在只依赖于 $\Omega$ 的常数 $C$，使得
 $$\| [v] \|_{k+1,p} \leq C |v|_{k+1,p}, \quad \forall v \in W^{k+1,p}.$$
-:::
+
 
 **证明：** 设 $P_1, \dots, P_N$ 是 $P_k(\Omega)$ 的一组基，即
 $f_i(P_j) = \delta_{ij}$。则有 $\forall w \in P_k(\Omega)$，
@@ -226,6 +224,8 @@ $\tilde{v}(x) = v(F(x)) \in W^{m,p}(\Omega_2)$。
 $$|\tilde{v}|_{m,p,\Omega_2} \leq C \|B\|_2^m |\det(B)|^{-1/p} |v|_{m,p,\Omega_1},$$
 $$|v|_{m,p,\Omega_1} \leq C \|B^{-1}\|_2^m |\det(B)|^{1/p} |\tilde{v}|_{m,p,\Omega_2}.$$
 其中 $\|\cdot\|_2$ 是矩阵的 2-范数。
-:::
+
 
 **证明：** 留作练习。
+
+[← 最佳平方逼近](/posts/numerical-analysis-2/03-最佳平方逼近/) | [有理逼近 →](/posts/numerical-analysis-2/05-有理逼近/)
