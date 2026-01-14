@@ -171,8 +171,8 @@ $$
 ** \alpha = P_{\theta_0}(\mathbf{X} \in R).
 $$
 
-a.（充分性）* & ** $\implies$ UMP
-b. （必要性）如果存在满足 * & ** 的检验，则 UMP $\implies$ * & **，除非可能在一个集合 $ A $ 上，该集合满足 $ P_{\theta_i}(\mathbf{X} \in A) = 0, i = 0, 1 $。
+a.（充分性）* & ** $\mathrm{Im}plies$ UMP
+b. （必要性）如果存在满足 * & ** 的检验，则 UMP $\mathrm{Im}plies$ * & **，除非可能在一个集合 $ A $ 上，该集合满足 $ P_{\theta_i}(\mathbf{X} \in A) = 0, i = 0, 1 $。
 
 
 

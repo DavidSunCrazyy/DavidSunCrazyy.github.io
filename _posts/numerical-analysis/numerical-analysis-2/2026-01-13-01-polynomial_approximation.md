@@ -12,13 +12,13 @@ use_math: true
 
 我们知道连续函数可以使用多项式逼近.
 
-::: theorem
+**Theorem**
 如果 $f(x)$ 在区间 $[a,b]$ 上连续，则对于$\forall \epsilon >0$,
 存在一个$n$次多项式$p_n(x)$使得:
 $$\|f(x)-p_n(x)\|_\infty\leqslant \epsilon$$
 :::
 
-::: proof
+
 *Proof.*
 令$B_n^f (x) = \sum_{k=0}^n f(\frac{k}{n}) {n \choose k} x^k (1-x)^{n-k}$.
 这是Bernstein 多项式的线性组合.
@@ -55,11 +55,11 @@ $$\begin{aligned}
 
 我们定义几个记号.
 
-::: definition
+**Definition**
 令$C_{2\pi} = \{ f\in C(\mathbb{R}): f(x) = f(x+2\pi), \forall x\in \mathbb{R}\}$.
 :::
 
-::: definition
+**Definition**
 若$|a_n| + |b_n|>0$ 则称
 $T_n(x) = A + \sum_{k=1}^n (a_k \cos k x + b_k \sin kx)$
 为$n$阶三角多项式.
@@ -67,21 +67,21 @@ $T_n(x) = A + \sum_{k=1}^n (a_k \cos k x + b_k \sin kx)$
 
 周期性连续函数则可以使用三角多项式逼近.
 
-::: theorem
+**Theorem**
 如果$f(x)\in C_{2\pi}$，则存在$n$阶三角多项式$T(x)$使得:
 $\forall x\in \mathbb{R}$, $|T(x) - f(x)| < \varepsilon$.
 :::
 
-::: proposition
+**Proposition**
 Weierstrass 第一定理 和 Weierstrass 第二定理 等价.
 :::
 
-::: lemma
+**Lemma**
 若$f(x) \in C[0,\pi]$, $\forall \varepsilon >0$, 存在一个偶的三角多项式
 $T(x)$ 使得 $$|f(x)-T(x)| < \varepsilon, \forall x\in [0,\pi].$$
 :::
 
-::: proof
+
 *Proof.* $f(\arccos y) \in C[-1, 1]$。由 Weierstrass
 第一定理，存在多项式 $$\sum_{k=0}^{n} c_k y^k$$ 使得
 $$|f(\arccos y) - \sum_{k=0}^{n} c_k y^k| < \varepsilon, \quad y \in [-1, 1].$$
@@ -149,14 +149,14 @@ $\forall x \in [-\pi, \pi]$ 有 $$|f(x) - P(x)| < \varepsilon.$$ ◻
 
 我们可以推广Weierstrass定理到更一般的函数空间.
 
-::: definition
+**Definition**
 设 $X$ 为紧距离空间. $A\subset C(X)$. 称 $A$ 分离$X$中的点, 如果
 $\forall x,y\in X$, $x\ne y$, 存在$f\in A$ 使得 $f(x) \ne f(y)$.
 :::
 
 回忆代数的定义.
 
-::: definition
+**Definition**
 $\mathcal{X}$ 称为一个代数，如果满足以下条件：
 
 \(1\) $\mathcal{X}$ 是一个线性空间。
@@ -171,7 +171,7 @@ f(gh) &= (fg)h \\
 \end{aligned}$$
 :::
 
-::: theorem
+**Theorem**
 设 $X$ 是紧距离空间, $A$ 是 $C(X)$ 的子代数. 若$1\in A$,
 且$A$分离$X$中的点, 则$A$在$C(X)$中稠密.
 :::
@@ -180,7 +180,7 @@ f(gh) &= (fg)h \\
 
 在本节我们证明最佳逼近多项式存在 (Chebyshev 定理). 并给出刻画它的方法.
 
-::: definition
+**Definition**
 $\Delta(p) = \max_{x\in [a,b]} |f(x) - p(x)|$.
 :::
 
@@ -188,7 +188,7 @@ $\Delta(p) = \max_{x\in [a,b]} |f(x) - p(x)|$.
 偏差是指一个特定的多项式到原函数$f$的距离 (最大差值).
 :::
 
-::: definition
+**Definition**
 $E_n = \inf_{p\in P_n} \Delta(p)$, 其中 $P_n$ 是至多 $n$ 次多项式的集合.
 :::
 
@@ -196,7 +196,7 @@ $E_n = \inf_{p\in P_n} \Delta(p)$, 其中 $P_n$ 是至多 $n$ 次多项式的集
 最小偏差是$P_n$中所有多项式的偏差的最小值.
 :::
 
-::: theorem
+**Theorem**
 对于$\forall f(x) \in C[a,b]$, 存在$n$次多项式$p^*(x)$使得:
 $$\Delta (p^*) = E_n$$
 :::
@@ -209,7 +209,7 @@ Borel 定理告诉我们确实存在一个多项式可以取到最小偏差.
 证明使用了泛函分析中的思想.
 :::
 
-::: proof
+
 *Proof.* 定理 Borel 对于$\forall f(x) \in C[a,b]$,
 存在$n$次多项式$p^*(x)$使得: $$\Delta (p^*) = E_n$$
 
@@ -241,17 +241,17 @@ Borel定理断言，对于任意连续函数$f \in C[a,b]$，存在次数不超�
 $\boxed{\text{存在这样的多项式 } p^* \text{ 使得 } \Delta(p^*) = E_n}$ ◻
 :::
 
-::: definition
+**Definition**
 记$\varepsilon (x) = p(x) - f(x)$, 若$|\varepsilon(x_0)| = \Delta (p)$,
 则称$x_0$为**偏离点**. $\varepsilon(x_0) >0$, 正偏离点;
 $\varepsilon(x_0) <0$, 负偏离点.
 :::
 
-::: lemma
+**Lemma**
 若$p(x)$为$f(x)$的最佳逼近多项式, 则正负偏离点必须都存在.
 :::
 
-::: theorem
+**Theorem**
 设$p(x) \in P_n$, $\varepsilon(x)$ 在 $x_1 < x_2 < \cdots < x_n$
 上取值为非零的正负相间值
 $\lambda_1, -\lambda_2, \cdots, (-1)^{N-1} \lambda_N$, $\lambda_j>0$,
@@ -259,7 +259,7 @@ $j=1,2,\cdots,N$, 且$N\ge n+2$, 则$\forall Q(x) \in P_n$,
 $\Delta(Q) \ge \min_{1\le i\le N} \lambda_i.$
 :::
 
-::: proof
+
 *Proof.* 假设存在 $Q(x) \in P_n$ 使得
 $\Delta (Q) < \min_{1\le i \le N} \lambda_i$. 令
 $\eta(x) = P(x) - Q(x) = (P(x) - f(x)) - (Q(x) - f(x))$
@@ -274,19 +274,19 @@ $\eta(x) = P(x) - Q(x) = (P(x) - f(x)) - (Q(x) - f(x))$
 由 $\eta \in P_n$ 得 $\eta = 0$. ◻
 :::
 
-::: theorem
+**Theorem**
 对于任意 $f(x) \in C[a,b]$, $P_n$ 中的最佳逼近多项式存在且唯一,
 且$P(x)$为最佳逼近多项式当且仅当存在$a\le x_1 < x_2 < \cdots < x_N \le b$,
 $N \ge n+2$, 使得 $|E(x_j)| = \Delta(p)$,
 $E(x_j) = (-1)^{j-1}E(x_1), j=1,2,\cdots,N$.
 :::
 
-::: proof
-*Proof.* **充分性\"$\impliedby$\"**
+
+*Proof.* **充分性\"$\mathrm{Im}pliedby$\"**
 
 由 Vallée-Poussin 定理可得.
 
-**必要性: \"$\implies$\"**
+**必要性: \"$\mathrm{Im}plies$\"**
 
 (反证法) 设 $P(x)$ 交错偏离点数 $N' \leq n+1$, 则存在 $\alpha > 0$ 和
 $\xi_1, \ldots, \xi_{N'-1} \in [a,b]$ 将 $[a,b]$ 分割为
@@ -341,13 +341,13 @@ $\eta \equiv 0$. ◻
 
 最小偏差的估计
 
-::: definition
+**Definition**
 设$f(x)$ 定义于$[a,b]$上, 则
 $\omega(t) = \omega(t,f) = \sup_{|x-y|\le t, x,y\in [a,b]} |f(x) - f(y)|$
 称为 $f(x)$ 在 $[a,b]$ 上的**连续模**.
 :::
 
-::: proposition
+**Proposition**
 1.  若$f(x) \in C[a,b]$ 则 $\omega(t)$是$t$的连续非减函数. 且
     $\lim_{t\to 0} \omega(t) = 0$.
 
@@ -357,16 +357,16 @@ $\omega(t) = \omega(t,f) = \sup_{|x-y|\le t, x,y\in [a,b]} |f(x) - f(y)|$
 3.  若$\omega(t) = o(t), t\to 0$, 则$f(x) = const$.
 :::
 
-::: definition
+**Definition**
 若$\omega(t,f) \le M t^\alpha$, $0<\alpha\le 1$, 则称 $f(x)$ 在 $[a,b]$
 上 满足 $\alpha$ 阶 Lipschitz 条件. 记作 $f(x) \in \Lip \alpha$.
 :::
 
-::: theorem
+**Theorem**
 设$f(x) \in C_{2\pi}$, 则 $E_n(f) \le 12 \omega(\frac{1}{n}, f).$
 :::
 
-::: proof
+
 *证明Jackson定理的最佳三角多项式逼近误差估计.*
 设$f(x)$为$2\pi$-周期连续函数，其最佳三角多项式逼近的最小偏差定义为：
 $$E_n(f) = \inf_{T_n} \max_x |f(x) - T_n(x)|,$$
@@ -420,52 +420,52 @@ $$E_n(f) = \inf_{T_n} \max_x |f(x) - T_n(x)|,$$
 $$\boxed{E_n(f) \leq 12 \omega\left(\frac{1}{n}, f\right)}.$$ ◻
 :::
 
-::: corollary
+**Corollary**
 $f\in C_{2\pi}$, 且$f' \in C_{2\pi}$, 则
 $E_n (f) \le \frac{12}{n} \|f'\|_\infty$
 :::
 
-::: theorem
+**Theorem**
 $f\in C_{2\pi}$, $f^{(r)} \in C_{2\pi}$, 则
 $E_n (f) \le \frac{12^{r+1}}{n^r} \omega(\frac{1}{n}, f^{(r)})$.
 :::
 
-::: corollary
+**Corollary**
 $f\in C_{2\pi}$, $f^{(r)} \in Lip \alpha$, 则
 $E_n(f) \le \frac{12^{r+1}}{n^{r+\alpha}} M$. 定理 (区间)
 设$f(x) \in C[-1,1]$, 则$E_n(f) \le 12 \omega(\frac{1}{n},f)$.
 :::
 
-::: proof
+
 *Proof.* 对于$\varphi(\theta) = f(\cos \theta)$ 应用 周期函数 Jackson
 定理即得. ◻
 :::
 
-::: theorem
+**Theorem**
 $f(x) \in C^{(r)}[-1,1]$, 则对于 $n>r$,
 $E_n(f) \le \frac{12^{r+1}}{n(n-1)\cdots (n-r+1)} \omega(\frac{1}{n-r}, f^{(r)})$.
 :::
 
-::: theorem
+**Theorem**
 $f\in C_{2\pi}$ , 则$E_n(f)\le \frac{3}{2}\omega(\frac{\pi}{n+1})$.
 :::
 
-::: proof
+
 *Proof.*
 
-::: corollary
+**Corollary**
 若$k<n$, 则$$\int_0^\pi \sin kx \operatorname{sgn}(\sin(nx)) dx = 0$$
 :::
 
-::: proof
+
 *Proof.* 对 $\operatorname{sgn}(\sin(nx))$ 进行傅里叶展开. ◻
 :::
 
-::: lemma
+**Lemma**
 $$\min_{\alpha_k \in \mathbb{R}} \int_0^\pi \left|x-\sum_{k=1}^{n-1} \alpha_k \sin kx\right| dx = \frac{\pi^2}{2n}.$$
 :::
 
-::: proof
+
 *Proof.*
 $$\int_0^\pi \left|x-\sum_{k=1}^{n-1} \alpha_k \sin kx \right| dx \ge \int_0^\pi (x-\sum_{k=1}^{n-1} \alpha_k \sin kx) \operatorname{sgn} (\sin nx) \, dx = \frac{\pi^2}{2n}.$$ ◻
 :::
@@ -475,12 +475,12 @@ $$(L_nf)(x) = \frac{a_0}{2} + \sum_{k=1}^n A_k (a_k \cos kx + b_k \sin kx)$$
 其中 $a_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(s) \cos (ks) ds$,
 $b_k = \frac{1}{\pi}\int_{-\pi}^{\pi} f(s) \sin (ks) ds$.
 
-::: lemma
+**Lemma**
 $f\in C_{2\pi}, f'\in C_{2\pi}$, 则
 $$(L_n f - f) (x) = \frac{1}{\pi}\int_{-\pi}^{\pi} \left[\frac{1}{2}t + \sum_{k=1}^n \frac{(-1)^k}{k}A_k \sin(kt)\right]f'(x+\pi-t) dt$$
 :::
 
-::: proof
+
 *Proof.* ◻
 :::
 
@@ -516,7 +516,7 @@ $$\leq \frac{3}{2} \omega\left(\frac{\pi}{n+1}\right)$$ ◻
 $E_n(f) \leq \omega\left(\frac{\pi}{n+1}\right)$，并且该结果中常数为最优。
 :::
 
-::: example
+**Example**
 设
 $0 < \varepsilon < \frac{1}{2}$，$h = \frac{\pi}{n+1}$，$\beta \in (0, \frac{2\varepsilon}{(n+1)^2})$，$x_i = ih - (n-i+1)\beta$，$i = 1, \dots, n+1$
 
@@ -552,16 +552,16 @@ $$\min_i |f(x_i) - p(x_i)| \geq \frac{2n+1}{2n+2} - \varepsilon$$
 由之前的定理，$E_n(f) \geq \frac{2n+1}{2n+2} - \varepsilon$.
 :::
 
-::: theorem
+**Theorem**
 $f\in C_{2\pi}$, $f' \in C_{2\pi}$, 则
 $E_n(f) \le \frac{\pi}{2(n+1)}\|f'\|_\infty$.
 :::
 
-::: proof
+
 *Proof.* ◻
 :::
 
-::: theorem
+**Theorem**
 若 $f \in C_{2\pi}$，$E_n(f) \leq A n^{-p-\alpha}$，其中
 $p \in \mathbb{N}$，$\alpha \in (0, 1)$，则有
 
@@ -572,12 +572,12 @@ $$f', \dots, f^{(p)} \in C_{2\pi} \quad \text{且} \quad f^{(p)} \in \text{Lip }
 $$B_n(f) = \sum_{k=0}^n f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k}$$
 为 $f$ 的 Bernstein 多项式。
 
-::: theorem
+**Theorem**
 若 $f(x) \in C[0, 1]$，则有
 $$|B_n(f) - f| \leq \frac{3}{2} \omega\left(\frac{1}{\sqrt{n}}\right)$$
 :::
 
-::: proof
+
 *Proof.*
 $$|B_n(f) - f| = \left| \sum_{k=0}^n \left( f\left(\frac{k}{n}\right) - f(x) \right) \binom{n}{k} x^k (1-x)^{n-k} \right|$$
 
@@ -600,7 +600,7 @@ $$= \frac{x(1-x)}{n} \leq \frac{1}{4n}$$
 $$|B_n(f) - f| \leq \frac{3}{2} \omega\left(\frac{1}{\sqrt{n}}\right)$$ ◻
 :::
 
-::: corollary
+**Corollary**
 若 $f(x) \in \text{Lip } \alpha$，$0 < \alpha \leq 1$，则
 
 $$|B_n(f) - f| \leq \frac{3M}{2n^{\alpha/2}}$$

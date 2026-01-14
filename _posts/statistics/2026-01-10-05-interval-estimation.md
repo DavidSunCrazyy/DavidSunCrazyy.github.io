@@ -209,17 +209,17 @@ $$
 
 固定 $\alpha$：在一类 $(1-\alpha)$ 置信集中，最小化假值覆盖的 $(1-\alpha)$ 置信集叫做一致最大准确 (UMA) 置信集。
 
-检验 $H_0: \theta = \theta_0$, $H_1: \theta > \theta_0$ $\implies$ UMA 下界置信区间 $[L(X), \infty)$。
+检验 $H_0: \theta = \theta_0$, $H_1: \theta > \theta_0$ $\mathrm{Im}plies$ UMA 下界置信区间 $[L(X), \infty)$。
 
 
-**定理 反转 UMP $\implies$ UMA**
+**定理 反转 UMP $\mathrm{Im}plies$ UMA**
 
 设 $X \sim f(x \mid \theta)$，其中 $\theta$ 是一个实值参数。对于每个 $\theta_0 \in \Theta$，令 $A^*(\theta_0)$ 为检验 $H_0: \theta = \theta_0$ 对于 $H_1: \theta > \theta_0$ 的 UMP（一致最大功效）水平 $\alpha$ 的接受域。令 $C^*(\textbf{x})$ 为通过反转 UMP 接受域形成的 $1-\alpha$ 置信集。那么对于任何其他 $1-\alpha$ 置信集 $C$，
 $$
 P_\theta(\theta' \in C^*(\textbf{X})) \leq P_\theta(\theta' \in C(\textbf{X})) \quad \text{对所有 } \theta' < \theta.
 $$
 
-上述定理表明：反转 UMP $\implies$ UMA（一致最大置信度）。
+上述定理表明：反转 UMP $\mathrm{Im}plies$ UMA（一致最大置信度）。
 
 
 **证明**
@@ -259,7 +259,7 @@ $$
 $$ P_{\theta}(\theta' \in C(\mathbf{X})) \leq 1 - \alpha. $$
 
 $$
-\implies \underbrace{P_{\theta}(\theta \in C(\mathbf{X}))}\_{\geq (1-\alpha)} \geq \underbrace{P_{\theta}(\theta' \in C(\mathbf{X}))}\_{\leq 1-\alpha}
+\mathrm{Im}plies \underbrace{P_{\theta}(\theta \in C(\mathbf{X}))}\_{\geq (1-\alpha)} \geq \underbrace{P_{\theta}(\theta' \in C(\mathbf{X}))}\_{\leq 1-\alpha}
 $$
 
 注意，上述定义表明，对于任何无偏置信集，假值覆盖的概率永远不会超过真实覆盖概率的最小值。

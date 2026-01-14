@@ -56,7 +56,7 @@ $$\lim_n \mathbb{E}[\|X_n-X\|^p] = 0$$
 
 ### 1.4 依分布收敛 / 弱收敛 (Convergence in Distribution)
 
-**定义** 随机变量序列 $\{X_n\}$ 依分布收敛到随机变量 $X$，如果 $\mathcal{L}(X_n) \implies \mathcal{L}(X)$。
+**定义** 随机变量序列 $\{X_n\}$ 依分布收敛到随机变量 $X$，如果 $\mathcal{L}(X_n) \mathrm{Im}plies \mathcal{L}(X)$。
 
 记作：$X_n \xrightarrow{d} X$ 或 $X_n \to X$ in distribution。
 
@@ -74,7 +74,7 @@ $$\lim_{n \to \infty} \mathbb{E}[f(X_n)] = \mathbb{E}[f(X)]$$
 
 $$\mu_n((a,b]) \to \mu((a,b]), \quad \text{对所有 } \mu \text{ 的连续点 } a,b$$
 
-记为：$\mu_n \implies \mu$。
+记为：$\mu_n \mathrm{Im}plies \mu$。
 
 ### 2.2 胎紧性 (Tightness)
 
@@ -82,7 +82,7 @@ $$\mu_n((a,b]) \to \mu((a,b]), \quad \text{对所有 } \mu \text{ 的连续点 }
 
 $$\inf_{\alpha \in A} \mu_\alpha(I) \ge 1 - \epsilon$$
 
-**引理**：设 $\{\mu_n\}$ 为概率测度序列且 $\mu_n \implies \mu$，其中 $\mu$ 也是概率测度，则 $\{\mu_n, n \ge 1\}$ 是胎紧的。
+**引理**：设 $\{\mu_n\}$ 为概率测度序列且 $\mu_n \mathrm{Im}plies \mu$，其中 $\mu$ 也是概率测度，则 $\{\mu_n, n \ge 1\}$ 是胎紧的。
 
 **Prohorov 定理**：设 $\{\mu_\alpha \| \alpha \in A\}$ 为概率测度族。任意序列存在弱收敛到概率测度的子序列，当且仅当该族是*胎紧的*。
 
@@ -92,7 +92,7 @@ $$\inf_{\alpha \in A} \mu_\alpha(I) \ge 1 - \epsilon$$
 
 $$
 \begin{aligned}
-& \mu_n \implies \mu \\
+& \mu_n \mathrm{Im}plies \mu \\
 &\iff \lim_n \int f \, d\mu_n = \int f \, d\mu, \quad \forall f \in C_b \text{（有界连续函数）} \\
 &\iff \mathbb{E}[f(X_n)] \to \mathbb{E}[f(X)], \quad \forall f \in C_c \text{（紧支撑连续函数）} \\
 &\iff \liminf_n \int f \, d\mu_n \ge \int f \, d\mu, \quad \forall \text{ 有界下半连续函数 } f \\
@@ -104,9 +104,9 @@ $$
 
 ### 2.4 依分布收敛的性质
 
-**定理**：若 $X_n \implies X$，$\alpha_n \implies a$，$\beta_n \implies b$（其中 $a,b$ 为常数），则
+**定理**：若 $X_n \mathrm{Im}plies X$，$\alpha_n \mathrm{Im}plies a$，$\beta_n \mathrm{Im}plies b$（其中 $a,b$ 为常数），则
 
-$$\alpha_n X_n + \beta_n \implies aX + b$$
+$$\alpha_n X_n + \beta_n \mathrm{Im}plies aX + b$$
 
 **引理**：设 $X_n \to X$ 依分布，$Y_n \to 0$ 依分布，则：
 1. $X_n + Y_n \to X$ 依分布
@@ -120,7 +120,7 @@ $$\alpha_n X_n + \beta_n \implies aX + b$$
 
 **定理** 给定任意次概率测度序列，存在弱收敛到次概率测度的子序列。
 
-**命题** 设 $\{\mu_n\}$ 为次概率测度序列。若每个弱收敛的子序列都收敛到同一极限 $\mu$，则 $\mu_n \implies \mu$。
+**命题** 设 $\{\mu_n\}$ 为次概率测度序列。若每个弱收敛的子序列都收敛到同一极限 $\mu$，则 $\mu_n \mathrm{Im}plies \mu$。
 
 **意义**：这是证明弱收敛的有力工具，只需验证所有收敛子序列的极限相同即可。
 
@@ -141,7 +141,7 @@ $$\sup_i \mathbb{E}[\|X_i\|\mathbb{1}_{\{\|X_i\| \ge \alpha\}}] \to 0 \quad \tex
 2. 若随机变量族在某个 $L^p$（$p>1$）中有界，则它是 UI 的
 
 **重要关系**：
-$$L^p \text{ 中有界} \implies \text{UI} \implies L^1 \text{ 中有界}$$
+$$L^p \text{ 中有界} \mathrm{Im}plies \text{UI} \mathrm{Im}plies L^1 \text{ 中有界}$$
 
 ### 4.3 UI 与收敛
 
@@ -170,9 +170,9 @@ $$L^p \text{ 中有界} \implies \text{UI} \implies L^1 \text{ 中有界}$$
 ```
 
 **说明**：
-- 几乎必然收敛 $\implies$ 依概率收敛
-- $L^p$ 收敛 $\implies$ 依概率收敛
-- 依概率收敛 $\implies$ 依分布收敛
+- 几乎必然收敛 $\mathrm{Im}plies$ 依概率收敛
+- $L^p$ 收敛 $\mathrm{Im}plies$ 依概率收敛
+- 依概率收敛 $\mathrm{Im}plies$ 依分布收敛
 
 **重要**：
 - 依分布收敛 ⇏ 依概率收敛（除非极限是常数）

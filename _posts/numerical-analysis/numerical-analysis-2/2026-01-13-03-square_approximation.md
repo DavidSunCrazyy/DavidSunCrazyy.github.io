@@ -100,13 +100,13 @@ $$b_j = \frac{1}{\pi} \int_0^{2\pi} f(x) \sin jx \, dx$$
 
 ## 正交多项式
 
-::: definition
+**Definition**
 设 $f, g \in C[a,b]$，$\rho$ 为 $[a,b]$ 上的权函数，若
 $$(f, g) = \int_a^b \rho(x) f(x) g(x) \, dx = 0$$ 则称 $f$ 和 $g$ 在
 $[a,b]$ 上关于权函数 $\rho$ 正交。
 :::
 
-::: definition
+**Definition**
 设 $\varphi_n$ 是 $[a,b]$ 上 $n$ 次项系数不为零的 $n$ 次多项式，$\rho$
 为 $[a,b]$ 上的权函数。如果多项式序列 $\{\varphi_n, n \geq 0\}$ 满足
 $$(\varphi_i, \varphi_j) = \int_a^b \rho(x) \varphi_i(x) \varphi_j(x) \, dx =
@@ -123,12 +123,12 @@ A_j, & i = j
 令 $\psi_j(x) = x^j$，令 $$\varphi_0(x) = 1$$
 $$\varphi_k(x) = \psi_k(x) - \sum_{j=0}^{k-1} \frac{(\psi_k, \varphi_j)}{(\varphi_j, \varphi_j)} \varphi_j(x), \quad k=1,2,\cdots,n$$
 
-::: theorem
+**Theorem**
 设 $\{\varphi_n, n \geq 0\}$ 是 $[a,b]$ 上带权函数 $\rho$
 的正交多项式序列，则 $\varphi_n$ 在 $(a,b)$ 内有 $n$ 个不同的零点。
 :::
 
-::: proof
+
 *Proof.* $\varphi_n$ 为正交多项式，所以
 $$\int_a^b \rho(x) \varphi_n(x) \varphi_0(x) \, dx = 0$$
 $$\Rightarrow \int_a^b \rho(x) \varphi_n(x) \, dx = 0$$
@@ -147,14 +147,14 @@ $$\int_a^b \rho(x) \varphi_n(x) g(x) \, dx > 0$$
 $\varphi_n$ 有 $n$ 个单重零点。 ◻
 :::
 
-::: theorem
+**Theorem**
 $\{\varphi_n: n \geq 0\}$ 是带权 $\rho$ 的正交多项式序列。对于
 $n \geq 1$ 有
 $$\varphi_{n+1}(x) = (\alpha_n x + \beta_n) \varphi_n(x) + \gamma_{n-1} \varphi_{n-1}(x)$$
 其中 $\varphi_1(x) = 0$。
 :::
 
-::: proof
+
 *Proof.* 设 $a_n$ 为 $\varphi_n$ 中 $x^n$ 的系数，取
 $\alpha_n = \frac{a_{n+1}}{a_n}$，则
 $$\varphi_{n+1} - \alpha_n x \varphi_n \text{ 的次数 } \leq n$$ 则
@@ -177,7 +177,7 @@ $$= -\frac{a_{n-1} a_{n+1}}{a_n^2} \frac{(\varphi_n, \varphi_n)}{(\varphi_{n-1},
 多项式： $$P_0(x) = 1$$
 $$P_n(x) = \frac{1}{2^n n!} \frac{d^n}{dx^n} \left[ (x^2 - 1)^n \right], \quad n \geq 1$$
 
-::: proposition
+**Proposition**
 (1) $$\int_{-1}^{1} P_n(x) P_m(x) \, dx =
     \begin{cases}
     0, & n \neq m \\
@@ -230,7 +230,7 @@ $$T_n(x) = \cos(n \arccos(x)), \quad n \geq 0$$
     $$\overline{x}_k = \cos \frac{k\pi}{n}, \quad k=0,1,\cdots,n$$
     $$T_n(\overline{x}_k) = (-1)^k$$
 
-::: theorem
+**Theorem**
 令
 $\tilde{T}_0(x) = T_0(x)$，$\tilde{T}_n(x) = \frac{1}{2^{n-1}} T_n(x)$，$n \geq 1$。
 
@@ -242,7 +242,7 @@ $$\frac{1}{2^{n-1}} = \max_{x \in [t,1]} |\tilde{T}_n(x)| \leq \max_{x \in [t,1]
 $\tilde{T}_n = \argmin_{\varphi \in \tilde{P}_n} ||\varphi||_\infty$。
 :::
 
-::: proof
+
 *Proof.* 反证法。设 $\varphi_n \in \tilde{P}_n$ 有
 
 $$\max_{x \in [t,1]} |\varphi_n(x)| < \max_{x \in [t,1]} |\tilde{T}_n(x)| = \frac{1}{2^{n-1}}$$
@@ -267,7 +267,7 @@ $Q(\overline{x}_k) > 0$。
 所以 $Q \equiv 0$。 ◻
 :::
 
-::: theorem
+**Theorem**
 设插值区间为 $[-1,1]$，插值节点 $x_0, x_1, \ldots, x_n$ 为 $n+1$ 次
 Chebyshev 多项式的零点。
 
@@ -276,7 +276,7 @@ Chebyshev 多项式的零点。
 $$\max_{x \in [-1,1]} |f(x) - L_n(x)| \leq \frac{1}{2^n(n+1)!} ||f^{(n+1)}||_\infty$$
 :::
 
-::: proof
+
 *Proof.* 由 Lagrange 插值余项估计
 
 $$\max_{x \in [-1,1]} |f(x) - L_n(x)| \leq \frac{1}{(n+1)!} ||f^{(n+1)}||_\infty ||w^{n+1}||_\infty$$
@@ -300,22 +300,22 @@ $$\langle f, g \rangle_\omega = \int_a^b f(x)g(x) \omega(x) \, dx$$
 
 $$S_n f = \sum_{i=0}^n \langle f, Q_i \rangle_\omega \overline{Q}_i$$
 
-::: theorem
+**Theorem**
 对于所有 $f \in C[a,b]$，有
 $$\|f - S_n f\|_\infty \to 0, \quad n \to \infty$$
 :::
 
-::: proof
+
 *Proof.* 设 $T_nf$ 为 $f$ 的 $\le n$ 次最佳逼近多项式，则
 $$\|f - S_n f\|_\infty \leq \|f - T_n f\|_\infty$$
 $$\leq \|f - T_n f\|_\infty \int_a^b \omega(x)  dx$$ ◻
 :::
 
-::: theorem
+**Theorem**
 若 $f \in C^2[a,b]$，则 $f$ 的 Chebyshev 多项式展开一致收敛到 $f$。
 :::
 
-::: proof
+
 *Proof.* 设 $f$ 的 Chebyshev 多项式展开为
 $$\frac{1}{2} A_0 + \sum_{k=1}^\infty A_k T_k$$ 其中
 $$A_k = \frac{2}{\pi} \int_{-1}^1 f(x) T_k(x) \frac{dx}{\sqrt{1-x^2}}$$
@@ -345,13 +345,13 @@ $$= \int_a^b f(t) \sum_{t=0}^n \overline{Q_i}(t) Q_i(x) \omega(t) dt$$
 $$= \int_a^b f(t) K_n(t,x) w(t) \, dt$$ 其中
 $$K_n(t,x) = \sum_{t=0}^n \overline{Q_i}(t) Q_i(x)$$
 
-::: lemma
+**Lemma**
 $$\sum_{t=0}^n \overline{Q_t}(t) \overline{Q_t}(x) = \lambda_{n+1} \lambda_n^{-1} \frac{\overline{Q_{n+1}}(x) \overline{Q_n}(t) - \overline{Q_n}(x) \overline{Q_{n+1}}(t)}{x-t}$$
 
 其中 $\lambda_n^{-1}$ 为 $Q_n$ 中 $x^n$ 的系数。
 :::
 
-::: proof
+
 *Proof.* 设 $Q_n = \lambda_n \overline{Q_n}$ 为首 $1$
 多项式，由递推关系得:
 $$Q_{n+1}(x) Q_n(t) = (x - a_{n+1}) Q_n(x) Q_n(t) - b_{n+1} Q_{n-1}(x) Q_n(t)$$
@@ -371,14 +371,14 @@ $$\lambda_n^{-2} [Q_{n+1}(x) Q_n(t) - Q_{n+1}(t) Q_n(x)] = (x - t) \overline{Q_n
 $$\lambda_n^{-2} [Q_{n+1}(x) Q_n(t) - Q_{n+1}(t) Q_n(x)] = (x - t) \sum_{i=0}^{n} \overline{Q_i}(x) \overline{Q_i}(t)$$ ◻
 :::
 
-::: theorem
+**Theorem**
 设 $x_0 \in [a, b]$，$f$ 在 $x_0$ 处 Lipschitz 连续。
 $\overline{Q}_n(x_0)$ 有界(与 $n$ 无关), 则
 
 $$f(x_0) = \sum_{k=0}^{\infty} \langle f, \overline{Q}_k \rangle \overline{Q}_k(x_0)$$
 :::
 
-::: proof
+
 *Proof.* $$\begin{aligned}
     \lambda_n^2 =& \langle Q_n, Q_n \rangle \\
     =& \langle Q_n, xQ_{n-1} - a_nQ_{n-1} - b_nQ_{n-2} \rangle \\
@@ -418,14 +418,14 @@ $$a_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos kt \, dt, \quad b_k = \frac{1}
 
 $$(S_n f)(x) = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t+x) \frac{\sin(u+\frac{1}{2})t}{2 \sin \frac{1}{2}t} \, dt$$
 
-::: theorem
+**Theorem**
 $f \in C_{2\pi}$ 并且
 $\lim_{\delta \to 0} w(\delta,f) \log \delta = 0$，则
 
 $$\lim_{n \to \infty} ||S_n f - f||_\infty = 0$$
 :::
 
-::: proof
+
 *Proof.*
 $$||(S_n f)(x)|| \leq ||f||_\infty \int_0^\pi \frac{|\sin(u+\frac{1}{2})t|}{\pi |\sin \frac{1}{2}t|} \, dt$$
 
@@ -448,19 +448,19 @@ $f \in C_{2n}$，令 Cesaro 均值为
 
 $$G_n f = \frac{1}{n} \sum_{k=0}^{n-1} S_k f$$
 
-::: lemma
+**Lemma**
 $$(G_n f)(x) = \frac{1}{2n\pi} \int_{-\pi}^{\pi} f(t+x) \left( \frac{\sin \frac{1}{2} nt}{\sin \frac{1}{2} t} \right)^2 \, dt$$
 :::
 
 （证明留作练习）
 
-::: theorem
+**Theorem**
 $f \in C_{2\pi}$，则
 
 $$\lim_{n \to \infty} ||G_n f - f||_\infty = 0$$
 :::
 
-::: proof
+
 *Proof.*
 $$| (G_n f)(x) - f(x) | = \frac{1}{2n\pi} \left| \int_0^{\pi} \left( f(t+x) + f(x-t) - 2f(x) \right) \left( \frac{\sin \frac{1}{2} nt}{\sin \frac{1}{2} t} \right)^2 \, dt \right|$$
 
@@ -469,7 +469,7 @@ $$\leq \frac{1}{n\pi} \int_0^{\pi} w(t,f) \left( \frac{\sin \frac{1}{2} nt}{\sin
 直接计算定理可证（留作练习） ◻
 :::
 
-::: theorem
+**Theorem**
 设 $f \in [a,b]$，$Q_0, Q_1, \cdots$ 是 $[a,b]$ 上关于权 $w(x)$
 正交的多项式。$L_n f$ 为 $Q_{n+1}$ 的零点对应的 Lagrange
 插值多项式，则有
@@ -477,7 +477,7 @@ $$\leq \frac{1}{n\pi} \int_0^{\pi} w(t,f) \left( \frac{\sin \frac{1}{2} nt}{\sin
 $$\lim_{n \to \infty} ||L_n f - f||_w = 0$$
 :::
 
-::: proof
+
 *Proof.* 设 $x_0, \cdots, x_n$ 为 $Q_{n+1}$ 的零点，则
 
 $$(L_n f)(x) = \sum_{i=0}^n f(x_i) l_i(x)$$

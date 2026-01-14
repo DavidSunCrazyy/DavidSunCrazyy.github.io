@@ -125,7 +125,7 @@ $\Omega = (a, b)$，剖分 $\Omega$: $a = x_0 < x_1 < \cdots < x_N = b$
 
 ## Sobolev 空间插值
 
-::: definition
+**Definition**
 一个三元组 $(K, P_k, \Sigma_k)$ 称为一个有限元，如果
 
 1.  $K \subset \mathbb{R}^n$ 为闭集，$\partial K$ Lipschitz 连续.
@@ -143,7 +143,7 @@ $\Omega = (a, b)$，剖分 $\Omega$: $a = x_0 < x_1 < \cdots < x_N = b$
        \end{cases}$$
 :::
 
-::: definition
+**Definition**
 设 $(K, P_k, \Sigma_k)$
 为一给定的有限元。$\{\varphi_1, \dots, \varphi_N\}$
 为自由度集，$\{P_1, \dots, P_N\}$ 为 $P_k$ 相应的基，即
@@ -152,7 +152,7 @@ $$\Pi_K(v) = \sum_{i=1}^N \varphi_i(v) P_i, \quad \forall v \in C^\infty(K).$$
 称 $\Pi_K$ 为 $P_k$ 插值算子，$\Pi_K(v)$ 为 $v$ 的 $P_k$ 插值函数。
 :::
 
-::: definition
+**Definition**
 令 $P_k(\Omega)$ 为 $\Omega$ 上不超过 $k$ 次多项式构成的空间。
 
 定义等价类 $$[v] = \{w \in W^{k+1,p}: w - v \in P_k\}.$$ 等价类的范数
@@ -161,14 +161,14 @@ $$\| [v] \|_{k+1,p} = \inf_{w \in P_k(\Omega)} \| v + w \|_{k+1,p}.$$
 $$| [v] |_{k+1,p} = \inf_{w \in P_k(\Omega)} \| v + w \|_{k+1,p} = |v|_{k+1,p}.$$
 :::
 
-::: theorem
+**Theorem**
 存在只依赖于 $\Omega$ 的常数 $C$，使得
 $$\| [v] \|_{k+1,p} \leq C |v|_{k+1,p}, \quad \forall v \in W^{k+1,p}.$$
 :::
 
 **证明：** 设 $P_1, \dots, P_N$ 是 $P_k(\Omega)$ 的一组基，即
 $f_i(P_j) = \delta_{ij}$。则有 $\forall w \in P_k(\Omega)$，
-$$f_i(w) = 0, \quad i = 1, \dots, N \implies w = 0.$$ 由 Hahn-Banach
+$$f_i(w) = 0, \quad i = 1, \dots, N \mathrm{Im}plies w = 0.$$ 由 Hahn-Banach
 定理，$f_i$, $i = 1, \dots, N$ 可以延拓为 $W^{k+1,p}$ 上的有界线性泛函。
 
 下面证明存在 $C$ 使得
@@ -204,7 +204,7 @@ $$\Omega_2 = F(\Omega_1),$$ 其中 $$F(x) = Bx + b.$$ 令
 $v \in W^{m,p}(\Omega_1)$，令
 $\tilde{v}(x) = v(F(x)) \in W^{m,p}(\Omega_2)$。
 
-::: theorem
+**Theorem**
 存在常数 $C = C(m,n)$ 使得
 $$|\tilde{v}|_{m,p,\Omega_2} \leq C \|B\|_2^m |\det(B)|^{-1/p} |v|_{m,p,\Omega_1},$$
 $$|v|_{m,p,\Omega_1} \leq C \|B^{-1}\|_2^m |\det(B)|^{1/p} |\tilde{v}|_{m,p,\Omega_2}.$$

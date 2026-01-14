@@ -28,13 +28,13 @@ $$\varphi^{(k)}(x_i) = f^{(k)}(x_i), \quad i = 0, \ldots, n, \quad k = 0, \ldots
 
 首先我们定义一个记号.
 
-::: definition
+**Definition**
 记$$l_i (x) = \prod_{j=0, j\ne i}^n \frac{(x-x_j)}{(x_i-x_j)}$$
 
 $$L_n(x) = \sum_{i=0}^n f(x_i) l_i(x).$$ $L_n$为Lagrange插值多项式.
 :::
 
-::: theorem
+**Theorem**
 给定 $n+1$ 个互异节点 $x_0, x_1, \cdots, x_n \in [a, b]$ 和相应的
 $f(x_0), \cdots, f(x_n)$，则存在唯一 $n$ 次多项式 $p \in P_n$
 满足插值条件： $$p(x_i) = f(x_i), \quad i = 0, 1, \cdots, n$$
@@ -42,7 +42,7 @@ $f(x_0), \cdots, f(x_n)$，则存在唯一 $n$ 次多项式 $p \in P_n$
 
 Lagrange 插值多项式的误差估计.
 
-::: theorem
+**Theorem**
 $x_0, \cdots, x_n$ 为 $[a, b]$ 上互异节点，$f \in C^{n+1}[a, b]$。$L_n$
 为 $n$ 次 Lagrange 插值多项式，则
 $\forall x \in [a, b]$，$\exists \xi = \xi(x) \in [a, b]$ 使得：
@@ -50,7 +50,7 @@ $$R_n(x) = f(x) - L_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} w_{n+1}(x)$$
 其中 $w_{n+1}(x) = (x - x_0) \cdots (x - x_n)$ （微分形式余项）
 :::
 
-::: proof
+
 *Proof.* 取定 $x \in [a, b]$，$x \neq x_i$，$i = 0, 1, \cdots, n$，令
 $$G(t) = R_n(t) - \frac{w_{n+1}(t)}{w_{n+1}(x)} R_n(x)$$ 则有
 $G \in C^{n+1}[a, b]$ 且 $$G(x_i) = 0, \quad i = 0, \cdots, n$$
@@ -63,14 +63,14 @@ $$= f^{(n+1)}(\xi) - \frac{(n+1)!}{w_{n+1}(x)} R_n(x)$$ 由此可得
 $$R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} w_{n+1}(x)$$ ◻
 :::
 
-::: corollary
+**Corollary**
 设 $a=x_0 < x_1 < \cdots < x_n = b$,
 $h = \max_{1\le j \le n} (x_j - x_{j-1})$, $f \in C^{n+1} [a,b]$, $L_n$
 为 $f$ 的 $n$ 次 插值多项式, 则有
 $\|f-L_n\|_\infty \le \frac{h^{n+1}}{4(n+1)} \|f^{(n+1)}\|_\infty$
 :::
 
-::: proof
+
 *Proof.* 设 $x \in [x_k, x_{k+1}]$， $$\begin{aligned}
 |(x - x_k)(x - x_{k+1})| &\leq \frac{1}{4}h^2 \\
 |x - x_{k+2}| &\leq 2h, \dots, |x - x_n| \leq (n-k)h \\
@@ -151,13 +151,13 @@ $$\beta_j(x) = c (x - x_j) \prod_{\substack{k=0 \\ k \neq j}}^{n} (x - x_k)^2$$
 $$\Rightarrow \beta_j(x) = (x - x_j) l^2_j(x)$$ $f \in C^{2n+2}[a, b]$,
 $x_0, \ldots, x_n \in [a, b]$ 互异
 
-::: proposition
+**Proposition**
 $H_{2n+1}$ 为 $2n+1$ 次 Hermite 插值多项式，则
 $\forall x \in [a, b]$，存在 $\xi = \xi(x) \in [a, b]$ 使得
 $$R_{2n+1}(x) = f(x) - H_{2n+1}(x) = \frac{f^{(2n+2)}(\xi)}{(2n+2)!} \omega_{n+1}^2(x)$$
 :::
 
-::: proof
+
 *Proof.* 固定$x\in [a,b]$,
 
 因为 $R_{2n+1}(x_i) = 0$, $R_{2n+1}'(x_i) = 0$.
@@ -177,11 +177,11 @@ $\exists \xi_i, G'(\xi_i) = 0, \forall 1\le i\le n+1$,
 
 ## 插值的收敛性
 
-::: theorem
+**Theorem**
 若完备距离空间表示为可数个闭集之并，则至少有一个闭集包含一个球。
 :::
 
-::: proof
+
 *Proof.* （反证法） 若不成立，则存在一个完备距离空间
 $X = \bigcup_{n=1}^{\infty} F_n$，其中 $F_n$ 为闭集，且不含任意球。
 
@@ -199,14 +199,14 @@ $x^* \in S_n$。 所以 $x^*$ 为 $S_n$ 的公共点，也为 $O_n$
 的公共点，矛盾。 ◻
 :::
 
-::: theorem
+**Theorem**
 $X, Y$ 为 Banach 空间，$\{ L_\alpha \}$ 为 $X \to Y$
 的一族有界线性算子。若 $\forall f \in X$
 $$\sup_{\alpha} \| L_\alpha f \| < \infty$$ 则
 $$\sup_{\alpha} \| L_\alpha \| < \infty$$
 :::
 
-::: proof
+
 *Proof.* 令
 $H_n = \{ f \in X : \sup_{\alpha} \| L_\alpha f \| \leq n \}$ 则 $H_n$
 为闭集，且 $$X = \bigcup_{n=1}^{\infty} H_n$$
@@ -228,12 +228,12 @@ $$(S_n f)(x) = \frac{a_0}{2} + \sum_{k=1}^{n} a_k \cos kx + b_k \sin kx$$
 $$a_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(s) \cos ks \, ds$$
 $$b_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(s) \sin ks \, ds$$
 
-::: theorem
+**Theorem**
 设 $L$ 是 $C_{2\pi}$ 到 $M_n$ 上的投影。 其中$M_n$ 为 $\leq n$
 次三角多项式空间。则有 $$\| S_n \| \leq \| L \|$$
 :::
 
-::: proof
+
 *Proof.* 定义算子 $T_\lambda$ 和 $\mathbb{A}$
 $$(T_\lambda f)(x) = f(x + \lambda)$$
 $$(\mathbb{A} f)(x) = \frac{1}{2\pi} \int_{-\pi}^{\pi} (T_{-\lambda} L T_\lambda f)(x) \, d\lambda$$
@@ -256,7 +256,7 @@ $$\leq \| T_{-\lambda} L T_\lambda f \| \leq \| L \| \| f \|$$
 $$\Rightarrow \| S_n \| \leq \| L \|$$ 证毕. ◻
 :::
 
-::: proposition
+**Proposition**
 令 $D_n(t) = \frac{\sin(n + \frac{1}{2})t}{2 \sin \frac{1}{2} t}$ 则
 $$(S_n f)(x) = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x + t) D_n(t) \, dt$$
 
@@ -266,11 +266,11 @@ $n$ Lebesgue 常数**。
 则 $$\| S_n \| \leq \lambda_n$$ 进一步可证 $\| S_n \| = \lambda_n$
 :::
 
-::: lemma
+**Lemma**
 $$\lambda_n > \frac{4}{\pi^2} \log n$$
 :::
 
-::: proof
+
 *Proof.* $$\begin{aligned}
 \lambda_n &= \frac{2}{\pi} \int_{0}^{\frac{\pi}{2}} \frac{|\sin(2n+1)x|}{\sin x} \, dx \\
  &\geq \frac{2}{\pi} \int_{0}^{\frac{\pi}{2}} \frac{|\sin(2n+1)x|}{x} \, dx \\
@@ -283,13 +283,13 @@ $$\lambda_n > \frac{4}{\pi^2} \log n$$
 
 我们的目的是为了得到如下定理.
 
-::: theorem
+**Theorem**
 $\forall n \in \mathbb{N}$，$L_n$ 为 $C_{2\pi}$ 到 $M_n$ 上的投影。
 则存在 $f \in C_{2\pi}$ 使得
 $$\lim_{n \to \infty} \| L_n f \| = \infty$$
 :::
 
-::: proof
+
 *Proof.* $$\| L_n \| \geq \| S_n \| \geq \frac{4}{\pi^2} \log n$$ 若
 $\| L_n f \|$ 对所有 $f$ 有界，则由定理 2.4.2 $\| L_n \|$ 有界，矛盾。 ◻
 :::
@@ -299,14 +299,14 @@ $\| L_n f \|$ 对所有 $f$ 有界，则由定理 2.4.2 $\| L_n \|$ 有界，矛
 的结果可能变得极其"振荡"或"剧烈变化"，导致其范数趋于无穷大。这表明，即使是简单的连续函数，也可能存在无法通过简单的投影方法稳定逼近的情况。
 :::
 
-::: lemma
+**Lemma**
 设 $L$ 是 $C_{2\pi}$ 中的偶函数到 $\leq n$
 次偶三角多项式上的有界投影，则
 
 $$\|I - L\| \geq \frac{1}{2} (\lambda_n + 1) > \frac{2}{\pi^2} \log n + \frac{1}{2}$$
 :::
 
-::: proof
+
 *Proof.* 令
 
 $$(\Phi f)(x) = \frac{1}{2\pi} \int_{-\pi}^{\pi} [T_\lambda(I-L)(T_{-\lambda} + T_\lambda)f](x) d\lambda$$
@@ -317,7 +317,7 @@ $$(\Phi f)(x) = \frac{1}{2\pi} \int_{-\pi}^{\pi} [T_\lambda(I-L)(T_{-\lambda} + 
 (显然$\|I-S_n\|\le 1+\lambda$, 又可以取函数逼近取到) ◻
 :::
 
-::: theorem
+**Theorem**
 $\forall n \in \mathbb{N}$，$L_n$ 为 $C[a,b]$ 到 $P_n$ 的投影，$P_n$ 为
 $\leq n$ 次多项式空间。
 
@@ -326,7 +326,7 @@ $\leq n$ 次多项式空间。
 $$\lim_{n \to \infty} \|f - L_n f\| = \infty$$
 :::
 
-::: proof
+
 *Proof.* $\forall f \in C[a,b]$，令
 
 $$(Tf)(t) = f\left(\frac{a+b}{2} + \frac{b-a}{2} \cos t\right)$$
@@ -345,11 +345,11 @@ $$\| I - \Lambda_n \| \to \infty$$ 由定理 2.4.2，存在 $f \in C[a, b]$
 
 ### 单调算子 {#单调算子 .unnumbered}
 
-::: definition
+**Definition**
 算子 $B$ 称为单调算子若 $\forall f \geq g$ 有 $Bf \geq Bg$
 :::
 
-::: theorem
+**Theorem**
 对于 $C[a,b]$ 上的单调线性算子序列 $L_n$，下列条件等价：
 
 (1) $\forall f \in C[a,b]$，$\|L_n f - f\|_\infty \to 0$
@@ -360,7 +360,7 @@ $$\| I - \Lambda_n \| \to \infty$$ 由定理 2.4.2，存在 $f \in C[a, b]$
     $t \in [a,b]$ 一致) $\phi_t(x) = (t-x)^2$
 :::
 
-::: proof
+
 *Proof.* (1) $\Rightarrow$ (2) 显然
 
 \(2\) $\Rightarrow$ (3). 令 $f_i(x) = x^i$ 则
@@ -408,7 +408,7 @@ $\Rightarrow |f(t) (L_n f_0)(t) - (L_n f)(t)| \leq \varepsilon (\|L_n f_0\|_\inf
 由此定理可证. ◻
 :::
 
-::: theorem
+**Theorem**
 设 $\{L_n\}$ 是 $C_{2\pi}$ 上的单调线性算子序列，证明：
 $$\lim_{n \to \infty} \| L_n f - f \|_{\infty} = 0, \quad \forall f \in C_{2\pi}$$
 当且仅当对以下两种情况成立：
@@ -419,10 +419,10 @@ $$\lim_{n \to \infty} \| L_n f - f \|_{\infty} = 0, \quad \forall f \in C_{2\pi}
      $\lim_{n \to \infty} \| L_n f - f \|_{\infty} = 0$
 :::
 
-::: proof
-*Proof.* $"\implies"$ 显然成立.
 
-$"\impliedby"$
+*Proof.* $"\mathrm{Im}plies"$ 显然成立.
+
+$"\mathrm{Im}pliedby"$
 
 对于$C_{2\pi}$上的连续函数, 存在三角多项式逼近: $\forall \epsilon >0$,
 存在三角多项式$S(f)$ 满足 $$\|S(f) - f\|_{\infty} < \epsilon$$
@@ -443,7 +443,7 @@ $\|L_n (f - S(f))\| \le \|L_n \epsilon\| = \epsilon$. ◻
 
 ### Fejér-Hermite 算子 {#fejér-hermite-算子 .unnumbered}
 
-::: definition
+**Definition**
 在 Hermite 插值中取
 
 $$y_i = f(x_i), \quad y_i' = 0$$
@@ -456,13 +456,13 @@ $$= \sum_{i=1}^{n} f(x_i) \left[1 - \frac{(x - x_i) \omega''(x_i)}{\omega'(x_i)}
 $\omega(x) = (x - x_1) \cdots (x - x_n)$
 :::
 
-::: theorem
+**Theorem**
 令$x_i = \cos \frac{(2i-1)\pi}{2n}$，$i=1,2,\cdots,n$. $L_n$
 为以$x_i$为插值节点的Fejér-Hermite 算子。对任意 $f \in C[-1,1]$，都有
 $$\|L_n f - f\| \to  0$$
 :::
 
-::: proof
+
 *Proof.* 令 $T_n(x) = \cos(n \arccos(x))$，$x \in [-1,1]$
 
 $T_n$ 为 $n$ 次多项式 (Chebyshev 多项式)
@@ -486,7 +486,7 @@ $$\leq \frac{1}{n^2} \cdot 2n = \frac{2}{n} \rightarrow 0$$ ◻
 
 ### 编者注
 
-::: definition
+**Definition**
 设插值节点为 $x_0, x_1, \dots, x_n \in [-1, 1]$，Lagrange 基函数为
 $\ell_i(x)$（满足 $\ell_i(x_j) = \delta_{ij}$），则 **Lebesgue 常数**
 $\Lambda_n$ 定义为：
@@ -494,18 +494,18 @@ $$\Lambda_n = \max_{x \in [-1, 1]} \sum_{i=0}^n |\ell_i(x)|.$$
 它表示所有插值基函数的绝对值之和在区间 $[-1, 1]$ 上的最大值。
 :::
 
-::: proposition
+**Proposition**
 对于任意连续函数 $f$，Lagrange 插值多项式 $L_n f$ 的误差满足：
 $$\| L_n f - f \|_\infty \leq (1 + \Lambda_n) \cdot \inf_{p \in \mathcal{P}_n} \| p - f \|_\infty = (1 + \Lambda_n) E_n(f)$$
 其中 $\mathcal{P}_n$ 是次数不超过 $n$ 的多项式空间。
 :::
 
-::: proof
+
 *Proof.*
 $$\|L_n f - f\| = \|L_n(f-p) - (f-p)\| \le \|L_n(f-p)\| + \|f-p\| \le (\Lambda_n+1) \|f-p\|$$ ◻
 :::
 
-::: proposition
+**Proposition**
 设函数 $f \in C[-1, 1]$，且满足
 $$\lim_{\delta \to 0^+} \omega(\delta, f) \log \delta = 0$$ 其中
 $\omega(\delta, f)$ 为 $f$ 的连续模。若 $Q_0, Q_1, \dots$ 为区间
@@ -514,7 +514,7 @@ Lagrange 插值多项式，证明：
 $$\lim_{n \to \infty} \| L_n f - f \|_{\infty} = 0$$
 :::
 
-::: proof
+
 *Proof.* $$\|L_n f - f\| \le (\Lambda_n+1) \|f-p\|.$$
 
 使用$Q_{n+1}$的零点作为插值节点时,
@@ -563,7 +563,7 @@ $$|f(x) - \varphi(x)| \leq \frac{1}{384} h^4 \| f^{(4)} \|_{\infty}$$
 
 ### 三次样条插值 {#三次样条插值 .unnumbered}
 
-::: definition
+**Definition**
 给定剖分：
 
 $$\Delta: a = x_0 < x_1 < \cdots < x_n = b$$
@@ -744,7 +744,7 @@ d_{n-1} \\
 d_n
 \end{bmatrix}$$
 
-::: theorem
+**Theorem**
 $f \in C^4[a, b]$，$S$ 为 $f$ 在 $[a, b]$ 上关于剖分 $\Delta$ 满足
 I型边界条件的三次样条插值函数，则有
 
@@ -753,12 +753,12 @@ $$\| f - S \|_{\infty} \leq \frac{5}{384} h^4 \| f^{(4)} \|_{\infty}$$
 其中 $h = \max_{0 \leq j \leq n-1} |x_{j+1} - x_j|$
 :::
 
-::: lemma
+**Lemma**
 设 $A = [a_{ij}] \in \mathbb{R}^{m \times n}$ 严格对角占优，则有
 $$||A^{-1}||_{\infty} \leq \left[ \min_{l \leq i \leq n} \left( |a_{ii}| - \sum_{j=1}^{n} |a_{ji}| \right) \right]^{-1}$$
 :::
 
-::: proof
+
 *Proof.*
 $||A^{-1}||_{\infty} = \max_{|x_i|_\infty = 1} ||A^{-1}x||_{\infty} = \min_{|x_i|_\infty = 1} ||Ax||_{\infty}$
 
@@ -766,7 +766,7 @@ $||A^{-1}||_{\infty} = \max_{|x_i|_\infty = 1} ||A^{-1}x||_{\infty} = \min_{|x_i
 $$||Ax||_{\infty} \geq |a_{kk}| - \sum_{j=1}^{n} |a_{kj}| \geq \min_{l \leq i \leq n} \left( |a_{il}| - \sum_{j=1}^{n} |a_{ij}| \right)$$ ◻
 :::
 
-::: lemma
+**Lemma**
 设 $f \in C^4[a,b]$，$S$ 是 $f$ 在 $[a,b]$ 上关于剖分
 $\Delta : a = x_0 < x_1 < \cdots < x_n = b$ 的满足 $I$
 型边界条件的三次样条插值函数，则有
@@ -774,7 +774,7 @@ $$|m_j - f_j'| \leq \frac{1}{24} h^3 ||f^{(4)}||_{\infty}$$ 其中
 $m_j = S'(x_j')$，$f_j' = f'(x_j')$，$h = \max_{0 \leq j \leq n-1} (x_{j+1} - x_j)$
 :::
 
-::: proof
+
 *Proof.* 首先在 $[x_j, x_{j+1}]$ 上 $S$ 为三次多项式且可以表示为
 $$S(x) = f(x_j) \alpha_j(x) + f(x_{j+1}) \alpha_{j+1}(x) + m_j \beta_j(x) + m_{j+1} \beta_{j+1}(x)$$
 其中 $\alpha_j, \alpha_{j+1}, \beta_j, \beta_{j+1}$ 为三次 Hermit
@@ -851,14 +851,14 @@ $$\beta_i(x) = (x-x_i) \left(\frac{x-x_{i+1}}{h_i}\right)^2, \quad \beta_{i+1}(x
 导数值
 :::
 
-::: theorem
+**Theorem**
 设 $f \in C^4[a,b]$，$S$ 为 $f$ 在 $[a,b]$ 上关于剖分
 $\Delta$：$a = x_0 < x_1 < \cdots < x_n = b$ 的满足 I
 型边界条件的三次样条插值函数，则有
 $$||S - f||_{\infty} \leq \frac{5}{384} h^4 ||f^{(4)}||_{\infty}$$
 :::
 
-::: proof
+
 *Proof.* 令 $\varphi(x)$ 为 $[a,b]$ 上关于剖分 $\Delta$ 的分段三次
 Hermit 插值函数，即
 $$\varphi(x) = f(x_j) \alpha_j^\prime (x) + f(x_{j+1}) \alpha_{j+1}^\prime (x) + f^\prime (x_j) \beta_j (x) + f^\prime (x_{j+1}) \beta_{j+1} (x), x \in [x, x_i]$$
@@ -883,11 +883,11 @@ $$\leq \frac{5}{384} h^4 ||f^{(4)}||_{\infty}$$ ◻
 
 容易验证 $S^n_3$ 为线性空间。
 
-::: theorem
+**Theorem**
 $$\dim(S_3^n) = n+3$$
 :::
 
-::: proof
+
 *Proof.* $\blacksquare$ 令 $$u_k(x) = (x-x_0)^k, \quad k=0,1,2,3$$
 
 $$v_k(x) = (x-x_0)^3_+ , \quad k=1,2,\cdots,n-1.$$
@@ -899,13 +899,13 @@ $$\sum_{k=0}^3 \alpha_k u_k(x) + \sum_{k=1}^{n-1} \beta_k v_k(x) = 0$$
 对于 $x \in [x_0, x_1]$，$v_k(x) = 0$，$k=1,\cdots,n-1$
 
 故
-$$\sum_{k=0}^3 \alpha_k u_k(x) = \sum_{k=0}^3 \alpha_k x^k = 0 \implies \alpha_k = 0$$
+$$\sum_{k=0}^3 \alpha_k u_k(x) = \sum_{k=0}^3 \alpha_k x^k = 0 \mathrm{Im}plies \alpha_k = 0$$
 
 $$\Rightarrow \sum_{k=1}^{n-1} \beta_k v_k(x) = 0$$
 
 对于 $x \in [x_1, x_2]$，$v_k(x) = 0$，$k=2,\cdots,n-1$
 
-$$\Rightarrow \beta_1 v_1(x) = 0 \implies \beta_1 = 0$$
+$$\Rightarrow \beta_1 v_1(x) = 0 \mathrm{Im}plies \beta_1 = 0$$
 
 依次类推可得 $\beta_k = 0$，$k=1,\cdots,n-1$
 
@@ -963,12 +963,12 @@ $$B_{m+1}(x) = \int_{x-\frac{1}{2}}^{x+\frac{1}{2}} B_m(x) \, dx$$
 
 -   $B_3(x)$ 在 $[-2,-1], [-1,0], [0,1], [1,2]$ 上为三次多项式
 
-::: lemma
+**Lemma**
 $B_3(x), \, B_3(x-1), \, B_3(x-2), \, B_3(x-3)$ 在 $[1,2]$
 上线性无关。（练习）
 :::
 
-::: lemma
+**Lemma**
 对于 $[a,b]$ 上的等距剖分 $x_j = a + jh, \, j = 0 \cdots n$
 
 $$h = \frac{b-a}{n},$$
@@ -1068,7 +1068,7 @@ $$|Y| = \max_{x \in X} \inf_{y \in Y} d(x, y)$$
 
 $$||f||_Y = \sup_{y \in Y} |f(y)|$$
 
-::: lemma
+**Lemma**
 设 $g_1 \cdots g_n \in C(X)$ 则
 
 $$\forall \alpha > 1, \exists \delta > 0 \quad 使得 \quad \forall p = \sum_{i=1}^n c_i g_i$$
@@ -1078,7 +1078,7 @@ $$\forall \alpha > 1, \exists \delta > 0 \quad 使得 \quad \forall p = \sum_{i=
 $$||p||_X \leq \alpha ||p||_Y$$
 :::
 
-::: proof
+
 *Proof.* 不妨设 $g_1 \cdots g_n$ 线性无关
 
 设 $\theta = \min_{\sum_{i=1}^n |c_i| = 1} ||\sum_{i=1}^n c_i g_i||$
@@ -1106,7 +1106,7 @@ $$\Rightarrow \sum_i |c_i| \leq \frac{||P||_Y}{\theta - \Omega(\delta)}$$
 $$||P||_X \leq \Omega(\delta) \frac{||P||_Y}{\theta - \Omega(\delta)} + ||P||_Y= (1- \frac{\Omega(\delta)}{\theta - \Omega(\delta)}) ||P||_Y$$ ◻
 :::
 
-::: lemma
+**Lemma**
 $f, g, \ldots g_n \in C(X)$. $$Y\subset X, |Y| < \delta$$, 则
 $\exists \beta > 0$ 与 $f$ 无关
 
@@ -1114,7 +1114,7 @@ $\exists \beta > 0$ 与 $f$ 无关
 $$||f - P||_X \leq ||f - P||_Y + \omega(\delta, f) + \beta ||P||_X \Omega(\delta)$$
 :::
 
-::: proof
+
 *Proof.* 不妨设 $g_1 \cdots g_n$ 线性无关
 
 设 $\theta = \min_{\sum_{i=1}^n |c_i| = 1} ||\sum_{i=1}^n c_i g_i||$
@@ -1145,7 +1145,7 @@ $$|p(x_0)-p(y_0)| \le \sum_i |c_i| |g_i(x_0) - g_i(y_0)| \le \Omega(\delta) \sum
 综上可得. ◻
 :::
 
-::: theorem
+**Theorem**
 $f, g_1 \cdots g_n \in C(X)$, $Y \subset X$.
 
 $P_Y$ 为 $f$ 在 $Y$ 上的最佳逼近广义多项式 $\sum c_i g_i$.
@@ -1155,7 +1155,7 @@ $P_X$ 为 $f$ 在 $X$ 上的最佳逼近广义多项式, 则
 $$\lim_{|Y| \to 0} ||f - P_Y||_X = ||f - P_X||_X$$
 :::
 
-::: proof
+
 *Proof.* 由于
 
 $$||f - P_Y||_Y \leq ||f - P_X||_Y \leq ||f - P_X||_X \leq ||f - P_Y||_X$$
@@ -1177,7 +1177,7 @@ $$||P_{Y}||_{X} \leq \alpha ||P_{Y}||_{Y} \leq 2\alpha ||f||_{X}$$
 $$||f - P_{Y}||_{X} - ||f - P_{X}||_{X} \leq \omega(\delta, f) + \beta ||f||_{X} \Omega(\delta)$$ ◻
 :::
 
-::: lemma
+**Lemma**
 $Y \subset [a, b]$，$f \in C[a, b]$，$P_{n,Y}$为 $f$ 在 $Y$ 上的最佳 $n$
 次逼近多项式。
 
@@ -1186,7 +1186,7 @@ $P_{n}$ 为 $f$ 在 $[a, b]$ 上的最佳 $n$ 次逼近多项式则有
 $$\lim_{|Y| \to 0} ||P_{n,Y} - P_{n}|| = 0$$
 :::
 
-::: theorem
+**Theorem**
 存在 $Y_1, Y_2, \cdots  \subset X$ 使得对任意 $f \in C[a, b]$，有
 
 $$\lim_{n \to \infty} ||f - P_{Y_n}|| = 0$$

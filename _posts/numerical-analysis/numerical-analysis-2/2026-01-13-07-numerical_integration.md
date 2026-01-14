@@ -29,12 +29,12 @@ $$\int_a^b p(x)f(x)\,dx \approx \sum_{k=0}^n A_k f(x_k)$$
 定义误差为：
 $$E_n(f) = \int_a^b p(x)f(x)\,dx - \sum_{k=0}^n A_k f(x_k)$$
 
-::: definition
+**Definition**
 如果 $E_n(x^m) = 0$, $m=0,\dots,k$ 且
 $E_n(x^{k+1}) \neq 0$，则称求积公式具有 $k$ 次代数精度。
 :::
 
-::: example
+**Example**
 给定求积公式为如下形式：
 $$\int_0^1 f(x)\,dx \approx c_0 f(0) + c_1 f(x_1)$$ 求 $x_1$, $c_0$,
 $c_1$，使得求积公式代数精度最高。
@@ -80,20 +80,20 @@ $\Rightarrow$ 该求积公式为插值型求积公式。
 在 $[a,b]$ 取端点 $a$, $b$ 为求积节点，则可得梯形求积公式：
 $$I_1(f) = \frac{b-a}{2} \left[f(a) + f(b)\right] \tag{7.2.1}$$
 
-::: theorem
+**Theorem**
 设 $f, g \in C[a,b]$ 且 $g(x)$ 在 $[a,b]$ 上不变号，则存在
 $\xi \in [a,b]$ 使得：
 $$\int_a^b f(x)g(x)\,dx = f(\xi) \int_a^b g(x)\,dx$$
 :::
 
-::: theorem
+**Theorem**
 $f \in C^2[a,b]$，梯形求积公式的误差为： $$\begin{aligned}
 E_1(f) &= \int_a^b f(x)\,dx - \frac{b-a}{2} \left[f(a) + f(b)\right] \\
 &= -\frac{(b-a)^3}{12} f''(\eta), \quad \eta \in [a,b]
 \end{aligned}$$
 :::
 
-::: proof
+
 *Proof.* 利用 Newton 均差得： $$R_1(x) = f[a,b,x] \omega_2(x)$$
 $\Rightarrow$ $$E_1(f) = \int_a^b f[a,b,x] \omega_2(x)\,dx$$ 由于
 $\omega_2(x)$ 不变号，可得：
@@ -104,12 +104,12 @@ $$I_2(f) = \frac{b-a}{6} \left[f(a) + 4f\left(\frac{a+b}{2}\right) + f(b)\right]
 称为 Simpson 求积公式。 ◻
 :::
 
-::: theorem
+**Theorem**
 设 $f \in C^4[a,b]$，Simpson 求积公式的误差为
 $$E_2(f) = -\frac{(b-a)^5}{2880} f^{(4)}(\eta), \quad \eta \in [a,b].$$
 :::
 
-::: proof
+
 *Proof.* 二次插值多项式的余项为
 $$R_2(x) = f[a, \frac{a+b}{2}, b, x] w_3(x),$$ 其中
 $$w_3(x) = (x-a)\left(x-\frac{a+b}{2}\right)(x-b).$$ 于是有
@@ -137,13 +137,13 @@ $$\int_a^b f(x) \, dx \approx (b-a) \sum_{k=0}^n C_k^{(n)} f(x_k).$$
 称为 $n$ 阶 Newton-Cotes 求积公式，其中 $C_k^{(n)}$ 称为 Cotes
 求积系数。
 
-::: definition
+**Definition**
 $C_k^{(n)}$ 定义为 $$C_k^{(n)} = \frac{1}{b-a} \int_a^b l_k(x) \, dx.$$
 并且有
 $$C_k^{(n)} = C_{n-k}^{(n)}, \quad k=0,1,\dots,\lfloor n/2 \rfloor.$$
 :::
 
-::: theorem
+**Theorem**
 $n$ 阶 Newton-Cotes 求积公式的误差为：
 
 1.  若 $n$ 为偶数，设 $f \in C^{n+2}[a,b]$，则
@@ -155,7 +155,7 @@ $n$ 阶 Newton-Cotes 求积公式的误差为：
     其中 $$\overline{C}_n = \int_a^b w_{n+1}(x) \, dx < 0.$$
 :::
 
-::: corollary
+**Corollary**
 当 $n$ 为偶数时，Newton-Cotes 求积公式具有 $n+1$ 次代数精度；当 $n$
 为奇数时，具有 $n$ 次代数精度。
 :::
@@ -165,7 +165,7 @@ $n$ 阶 Newton-Cotes 求积公式的误差为：
 设 $f(x_k)$, $k=0,1,\dots,n$ 有误差，记为 $\widetilde{f}(x_k)$，则有
 $$\left| \sum_{k=0}^n C_k^{(n)} \widetilde{f}(x_k) - \sum_{k=0}^n C_k^{(n)} f(x_k) \right| \leq \max_{0 \leq k \leq n} |\widetilde{f}(x_k) - f(x_k)| \sum_{k=0}^n |C_k^{(n)}|.$$
 另一方面，Newton-Cotes 求积公式至少具有 1 次代数精度，故有
-$$\int_a^b 1 \, dx = (b-a) \sum_{k=0}^n C_k^{(n)} \implies \sum_{k=0}^n C_k^{(n)} = 1.$$
+$$\int_a^b 1 \, dx = (b-a) \sum_{k=0}^n C_k^{(n)} \mathrm{Im}plies \sum_{k=0}^n C_k^{(n)} = 1.$$
 若 $C_k^{(n)} \geq 0$，则
 $$\sum_{k=0}^n |C_k^{(n)}| = \sum_{k=0}^n C_k^{(n)} = 1,$$ 因此
 $$\left| \sum_{k=0}^n C_k^{(n)} \widetilde{f}(x_k) - \sum_{k=0}^n C_k^{(n)} f(x_k) \right| \leq \max_{0 \leq k \leq n} |\widetilde{f}(x_k) - f(x_k)|.$$
@@ -227,7 +227,7 @@ $$= \underbrace{h \left[ \frac{1}{2} \left( f(a) + f(b) \right) + \sum_{k=1}^{n-
 
 ## Gauss 求积公式
 
-::: theorem
+**Theorem**
 求积公式 $$\int_a^b p(x) f(x) \, dx \approx \sum_{k=0}^n A_k f(x_k)$$
 具有 $2n+1$ 次代数精度的充分必要条件为：
 
@@ -238,7 +238,7 @@ $$= \underbrace{h \left[ \frac{1}{2} \left( f(a) + f(b) \right) + \sum_{k=1}^{n-
     $l_k(x)$ 为 Lagrange 插值基函数。
 :::
 
-::: proof
+
 *Proof.* **(必要性)** 设求积公式具有 $2n+1$ 次代数精度。令
 $$w_{n+1}(x) = (x - x_0) \cdots (x - x_n),$$ 则 $\forall g(x) \in P_n$
 有
@@ -267,12 +267,12 @@ $\sum_{k=0}^n A_k f(x_k)$ 的代数精度最高为 $2n+1$。
 型求积公式，$x_0, \dots, x_n$ 称为 Gauss 点。
 :::
 
-::: theorem
+**Theorem**
 Gauss 型求积公式的求积系数为
 $$A_k = \frac{1}{[w'_{n+1}(x_k)]^2} \int_a^b p(x) \left[\frac{w_{n+1}(x)}{x - x_k}\right]^2 \, dx.$$
 :::
 
-::: proof
+
 *Proof.* 令
 $f(x) = [l_k(x)]^2 = \left[\frac{w_{n+1}(x)}{x - x_k}\right]^2$，则有
 $f \in P_{2n}$ 且 $$f(x_j) =
@@ -284,17 +284,17 @@ $$\int_a^b p(x) f(x) \, dx = \sum_{j=0}^n A_j f(x_j) = A_k [w'_{n+1}(x_k)]^2.$$
 从而 $$A_k = \frac{\int_a^b p(x) l_k^2(x) \, dx}{[w'_{n+1}(x_k)]^2}.$$ ◻
 :::
 
-::: corollary
+**Corollary**
 Gauss 型求积公式的求积系数均为正。
 :::
 
-::: theorem
+**Theorem**
 设 $f \in C^{2n+2}[a, b]$，Gauss 型求积公式的误差为
 $$E_n(f) = \frac{1}{(2n+2)!} f^{(2n+2)}(\eta) \int_a^b p(x) [w_{n+1}(x)]^2 \, dx,$$
 其中 $\eta \in [a, b]$。
 :::
 
-::: proof
+
 *Proof.* $2n+1$ 次 Hermite 插值多项式 $H_{2n+1}$ 满足
 $$H_{2n+1}(x_j) = f(x_j), \quad H'_{2n+1}(x_j) = f'(x_j), \quad j = 0, 1, \dots, n,$$
 且
@@ -307,11 +307,11 @@ $$f(x) = H_{2n+1}(x) + f[x_0, x_0, \dots, x_n, x_n, x] w_{n+1}^2(x).$$
 
 ### Gauss 求积公式的收敛性 {#gauss-求积公式的收敛性 .unnumbered}
 
-::: theorem
+**Theorem**
 $$|Q_n(f) - Q_n(g)| \leq \max_{0 \leq k \leq n} |f(x_k) - g(x_k)| \int_a^b p(x) \, dx.$$
 :::
 
-::: proof
+
 *Proof.* $$\begin{aligned}
 |Q_n(f) - Q_n(g)| &= \left| \sum_{k=0}^n A_k (f(x_k) - g(x_k)) \right| \\
 &\leq \left( \sum_{k=0}^n A_k \right) \max_{0 \leq k \leq n} |f(x_k) - g(x_k)| \\
@@ -319,13 +319,13 @@ $$|Q_n(f) - Q_n(g)| \leq \max_{0 \leq k \leq n} |f(x_k) - g(x_k)| \int_a^b p(x) 
 \end{aligned}$$ ◻
 :::
 
-::: theorem
+**Theorem**
 设 $f \in C[a, b]$，则有
 $$\lim_{n \to \infty} Q_n(f) = \int_a^b p(x) f(x) \, dx,$$ 其中
 $Q_n(f) = \sum_{k=0}^n A_k f(x_k)$ 为 Gauss 型求积公式。
 :::
 
-::: proof
+
 *Proof.* $f \in C[a, b]$，所以 $\forall \varepsilon > 0$ 存在多项式
 $P$（设为 $m$ 次）使得
 $$\|f - P\|_\infty < \frac{\varepsilon}{2 \int_a^b p(x) \, dx}.$$ 那么
@@ -342,19 +342,19 @@ $$|Q_n(f) - \int_a^b p(x) f(x) \, dx| < \varepsilon.$$ ◻
 
 ## Romberg 求积方法
 
-::: definition
+**Definition**
 Bernoulli 多项式 $B_n(x)$ 满足： $$\begin{cases}
 B_0(x) = 1 \\
 B_n'(x) = B_{n-1}(x), \quad \int_0^1 B_n(x) \, dx = 0, \quad n \in \mathbb{N}.
 \end{cases}$$
 :::
 
-::: theorem
+**Theorem**
 对于 Bernoulli 多项式，有
 $$B_n(x) = (-1)^n B_n(1-x), \quad n = 0, 1, 2, \dots$$
 :::
 
-::: proof
+
 *Proof.* 采用数学归纳法证明。
 
 1\. 当 $n = 0$ 时，显然成立，因为 $B_0(x) = 1$。
@@ -373,17 +373,17 @@ $(1 - (-1)^{n+1})C = 0$，因此 $$B_{n+1}(x) = (-1)^{n+1} B_{n+1}(1-x).$$
 归纳完毕。 ◻
 :::
 
-::: corollary
+**Corollary**
 $$B_{2m+1}(1) = B_{2m+1}(0) = 0, \quad m = 1, 2, \dots$$
 :::
 
-::: proof
+
 *Proof.* 由 $\int_0^1 B_n(x) \, dx = 0$，得
 $$B_n(1) = B_n(0), \quad n = 2, 3, \dots$$ 由此即得
 $$B_{2m+1}(1) = B_{2m+1}(0), \quad m = 1, 2, \dots$$ ◻
 :::
 
-::: theorem
+**Theorem**
 设 $f \in C^m[a, b]$，$m \geq 3$，且
 $$x_k = a + kh, \quad h = \frac{b-a}{n}, \quad k = 0, 1, 2, \dots, n,$$
 则
@@ -396,7 +396,7 @@ $$T_h(f) = \frac{h}{2} \sum_{k=0}^{n-1} \left[ f(x_k) + f(x_{k+1}) \right].$$
 $$\widetilde{B}_n(x) = B_n(x), \quad x \in [0, 1], \quad \widetilde{B}_n(x+1) = \widetilde{B}_n(x).$$
 :::
 
-::: proof
+
 *Proof.* 设 $g(x) \in C^m[0, 1]$，由分部积分得 $$\begin{aligned}
 \int_0^1 g(z) \, dz &= \int_0^1 B_0(z) g(z) \, dz \\
 &= \frac{1}{2} \left[ g(0) + g(1) \right] - \sum_{j=2}^m (-1)^j B_j(0) \left[ g^{(j-1)}(1) - g^{(j-1)}(0) \right] \\
@@ -443,12 +443,12 @@ $$(T_{k+1} f)(h) = \frac{4^k (T_k f)\left(\frac{h}{2}\right) - (T_k f)(h)}{4^k -
 若 $\int_a^b f(x) \, dx$ 且
 $\lim_{x \to a} f(x) = \infty$，则可对区间进行分割计算积分。
 
-::: example
+**Example**
 设 $g \in C^m[0, 1]$，$|g(x)| \leq 1$，$x \in [0, 1]$，计算
 $$\int_0^1 \frac{g(x)}{x^{1/2} + x^{3/2}} \, dx.$$
 :::
 
-::: proof
+
 *解.* 在 $[0, 1]$ 上有 $$\begin{aligned}
 \left| \frac{g(x)}{x^{1/2} + x^{3/2}} \right| &\leq \frac{1}{2x^{1/2}}, \\
 \Rightarrow \left| \int_0^\varepsilon \frac{g(x)}{x^{1/2} + x^{3/2}} \, dx \right| &\leq \frac{1}{2} \int_0^\varepsilon x^{-1/2} \, dx = \varepsilon^{1/2}, \\
@@ -456,11 +456,11 @@ $$\int_0^1 \frac{g(x)}{x^{1/2} + x^{3/2}} \, dx.$$
 \end{aligned}$$ ◻
 :::
 
-::: example
+**Example**
 计算 $$\int_0^6 \sqrt{x} \sin x \, dx.$$
 :::
 
-::: proof
+
 *解：.* 令 $f(x) = \sqrt{x} \sin x$，则
 $f'(x) = \frac{1}{2\sqrt{x}} \sin x + \sqrt{x} \cos x$。$f'$ 在 $x = 0$
 处奇异。
@@ -482,7 +482,7 @@ $$\int_0^\varepsilon \sqrt{x} \sin x \, dx = \int_0^\varepsilon \sqrt{x} \left( 
 &= n \int_0^1 f(t^n) t^{n-2} \, dt.
 \end{aligned}$$
 
-::: example
+**Example**
 计算 $$\int_0^1 \frac{e^x}{\sqrt{x}} \, dx.$$
 
 令 $t = \sqrt{x}$，则有
@@ -491,7 +491,7 @@ $$\int_0^1 \frac{e^x}{\sqrt{x}} \, dx = 2 \int_0^1 e^{t^2} \, dt.$$
 
 ### Kontorovich 奇点分离法 {#kontorovich-奇点分离法 .unnumbered}
 
-::: example
+**Example**
 计算 $$\int_0^1 \frac{\cos x}{x^{1/2}} \, dx.$$
 :::
 
@@ -535,14 +535,14 @@ $$\int_a^b f(x) \, dx = \int_a^b g(x) \, dx + \int_a^b [f(x) - g(x)] \, dx.$$
 
 ## Monte Carlo 方法
 
-::: theorem
+**Theorem**
 设 $X_n$, $n = 1, 2, \dots$ 为独立同分布的随机变量，令
 $$S_N = X_1 + X_2 + \cdots + X_N,$$ 若 $\mathbb{E}|X_1| < +\infty$，则有
 $\frac{S_N}{N}$ 依概率收敛到 $\mathbb{E}X_1$，即
 $$\frac{S_N}{N} \xrightarrow{P} \mathbb{E}X_1.$$
 :::
 
-::: proof
+
 *Proof.* 设 $X_i$, $i = 1, 2, \dots, N$ 为独立同分布于 $[0, 1]$
 上均匀分布的随机变量（简记为 $X_i \sim U[0, 1]$），则有
 $$I_N(f) = \frac{1}{N} \sum_{i=1}^N f(X_i)$$ 依概率收敛到
@@ -567,7 +567,7 @@ $$\mathbb{E}|\epsilon_N| \leq \sqrt{\mathbb{E}|\epsilon_N|^2} = \sqrt{\frac{\tex
 
 ### 重要性抽样法 {#重要性抽样法 .unnumbered}
 
-::: definition
+**Definition**
 令
 $$I(f) = \int_0^1 f(x) \, dx = \int_0^1 \frac{f(x)}{p(x)} p(x) \, dx,$$
 其中 $p(x)$ 为 $[0, 1]$ 上的一个概率密度函数。利用 Monte Carlo 方法可得
@@ -587,12 +587,12 @@ $$\int_0^1 \frac{f^2}{p} \, dy < \int_0^1 f^2 \, dx.$$
 若 $p = \frac{|f|}{I(|f|)}$，则有
 $\text{Var}_Y\left(\frac{f}{p}\right) = 0$。
 
-::: theorem
+**Theorem**
 极小化 $\text{Var}_Y\left(\frac{f}{p}\right)$ 的分布为
 $$p^* = \frac{|f(x)|}{\int_0^1 |f(y)| \, dy}.$$
 :::
 
-::: proof
+
 *Proof.* $$\begin{aligned}
 \left(\int_0^1 |f(x)| \, dx\right)^2 &= \int_0^1 \frac{|f(x)|}{p(x)} p(x) \, dx \\
 &\leq \int_0^1 \left(\frac{f(x)}{p(x)}\right)^2 p(x) \, dx.
@@ -603,19 +603,19 @@ $$p^* = \frac{|f(x)|}{\int_0^1 |f(y)| \, dy}.$$
 
 ### 非负矩阵基本理论 {#非负矩阵基本理论 .unnumbered}
 
-::: definition
+**Definition**
 设 $A = [a_{ij}]$, $B = [b_{ij}] \in \mathbb{R}^{n \times r}$。如果
 $a_{ij} \geq b_{ij}$，$i = 1, \dots, n$，$j = 1, \dots, r$，则称
 $A \geq B$。记 $\mathbf{0}$ 为全零矩阵，若 $A \geq \mathbf{0}$，则称 $A$
 为非负矩阵；若 $A > \mathbf{0}$，则称 $A$ 为正矩阵。
 :::
 
-::: lemma
+**Lemma**
 设 $A \in \mathbb{R}^{n \times n}$ 不可约且 $A \geq \mathbf{0}$，则
 $$(I + A)^{n-1} > \mathbf{0}.$$
 :::
 
-::: proof
+
 *Proof.* 下证：对任意 $x \in \mathbb{R}^n$，若 $x \geq \mathbf{0}$，则有
 $(I + A)^{n-1} x > \mathbf{0}$。
 
@@ -642,12 +642,12 @@ $A_{21} = \mathbf{0}$，这与 $A$ 不可约矛盾。
 的零元素个数至多为 $n-1$，因此 $$(I + A)^{n-1} x > \mathbf{0}.$$ ◻
 :::
 
-::: lemma
+**Lemma**
 设 $A \geq \mathbf{0}$ 是不可约的 $n \times n$ 方阵，则 $r > 0$ 且为 $A$
 的特征值，相应的特征向量为 $z$ 满足 $\lambda(z) = r$。
 :::
 
-::: proof
+
 *Proof.* 令 $\bar{x} \in \mathbb{R}^n$，$\bar{x} > \mathbf{0}$。由于 $A$
 不可约，则有 $A\bar{x} > \mathbf{0}$，所以 $\lambda(\bar{x}) > 0$。
 
@@ -666,7 +666,7 @@ $$Az - rz = \mathbf{0}.$$
 因此 $z > \mathbf{0}$。 ◻
 :::
 
-::: lemma
+**Lemma**
 设 $A = [a_{ij}] \geq \mathbf{0}$ 是不可约的 $n \times n$
 方阵，$B = [b_{ij}] \in \mathbb{C}^{n \times n}$，且 $|B| \leq A$。则
 $$\rho(B) \leq r,$$ 且 $\rho(B) = r$ 当且仅当
@@ -674,7 +674,7 @@ $$B = e^{i\phi} DAD^{-1},$$ 其中
 $D = \text{diag}(d_j)$，$d_j \in \mathbb{C}$，$|d_j| = 1$，$j = 1, 2, \dots, n$。
 :::
 
-::: proof
+
 *Proof.* 设 $\beta$ 为 $B$ 的特征值，即存在 $y \neq \mathbf{0}$，使得
 $$By_i = \sum_{j=1}^n b_{ij} y_j.$$
 
@@ -700,16 +700,16 @@ $$D = \text{diag}\left(\frac{y_i}{|y_i|}\right), \quad i = 1, \dots, n.$$
 另一方面，易证。 ◻
 :::
 
-::: corollary
+**Corollary**
 设 $A \geq \mathbf{0}$ 是不可约的 $n \times n$ 方阵，则 $$\rho(A) = r.$$
 :::
 
-::: lemma
+**Lemma**
 设 $A \geq \mathbf{0}$ 是不可约的 $n \times n$ 矩阵，$B$ 为 $A$
 的主子式，则 $$\rho(B) \leq \rho(A).$$
 :::
 
-::: proof
+
 *Proof.* 不妨设
 $$A = \begin{bmatrix} B & A_{12} \\ A_{21} & A_{22} \end{bmatrix}, \quad B \in \mathbb{R}^{m \times m}, \quad A_{22} \in \mathbb{R}^{(n-m) \times (n-m)}.$$
 
@@ -720,7 +720,7 @@ $$C = \begin{bmatrix} B & \mathbf{0} \\ \mathbf{0} & \mathbf{0} \end{bmatrix} \i
 $$\rho(C) \leq \rho(A).$$ 因此 $$\rho(B) \leq \rho(A).$$ ◻
 :::
 
-::: theorem
+**Theorem**
 设 $A \geq \mathbf{0}$ 是不可约的 $n \times n$ 矩阵，则有：
 
 1.  $r = \rho(A)$ 为 $A$ 的特征值，相应的特征向量为正向量。
@@ -730,7 +730,7 @@ $$\rho(C) \leq \rho(A).$$ 因此 $$\rho(B) \leq \rho(A).$$ ◻
 3.  $\rho(A)$ 为 $A$ 的单特征值。
 :::
 
-::: proof
+
 *Proof.* (1), (2) 由引理 7.8.2 和 7.8.3 可得。
 
 下证 (3)：
@@ -746,13 +746,13 @@ $$\phi'(t) = \sum_{i=1}^n \det(tI - A_i),$$ 其中 $A_i$ 为 $A$
 故 $\rho(A)$ 为 $\phi(t) = 0$ 的单根。 ◻
 :::
 
-::: lemma
+**Lemma**
 设 $A \geq \mathbf{0}$ 是不可约的 $n \times n$ 矩阵，则
 $$\sum_{j=1}^n a_{ij} = \rho(A), \quad i = 1, \dots, n,$$ 或者
 $$\min_{1 \leq i \leq n} \left( \sum_{j=1}^n a_{ij} \right) < \rho(A) < \max_{1 \leq i \leq n} \left( \sum_{j=1}^n a_{ij} \right).$$
 :::
 
-::: proof
+
 *Proof.* 若 $\sum_{j=1}^n a_{ij} = \alpha$，$i = 1, \dots, n$，则
 
 令 $\bar{x} = [1, \dots, 1]^T \in \mathbb{R}^n$，则
@@ -774,25 +774,25 @@ $$\sum_{j=1}^n b_{kj} = \min_{1 \leq i \leq n} \left( \sum_{j=1}^n a_{ij} \right
 
 ### 反变换法 {#反变换法 .unnumbered}
 
-::: definition
+**Definition**
 设 $F: \mathbb{R} \to [0, 1]$ 是非减函数。令
 $$F^{-1}(u) = \inf \{ x : F(x) \geq u \}.$$
 :::
 
-::: theorem
+**Theorem**
 设 $U \sim U[0, 1]$，则随机变量 $F^{-1}(U)$ 的分布为 $F$。
 :::
 
-::: proof
+
 *Proof.* $$P(F^{-1}(U) \leq x) = P(U \leq F(x)) = F(x).$$ ◻
 :::
 
-::: example
+**Example**
 设 $X \sim \exp(-x)$，则
 $$F(x) = 1 - e^{-x}, \quad F^{-1}(u) = -\log(1-u).$$
 :::
 
-::: example
+**Example**
 设 $X \sim N(0, 1)$，则
 $$F(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x \exp\left(-\frac{z^2}{2}\right) dz.$$
 
@@ -801,7 +801,7 @@ $$F^{-1}(x) \approx t - \frac{a_0 + a_1 t}{1 + b_1 t + b_2 t^2},$$ 其中
 $t^2 = \log(x^{-2})$，$a_0 = 2.30753$，$a_1 = 0.27061$，$b_1 = 0.99229$，$b_2 = 0.04481$。
 :::
 
-::: example
+**Example**
 设 $X_1, X_2 \overset{\text{iid}}{\sim} N(0, 1)$，$(R, \theta)$ 为
 $(X_1, X_2)$ 的极坐标，则
 $$R^2 = X_1^2 + X_2^2 \sim \exp(-\frac{1}{2}x), \quad \theta \sim U[0, 2\pi].$$
@@ -814,12 +814,12 @@ $$X_1 = \sqrt{-2\log U_1} \cos(2\pi U_2), \quad X_2 = \sqrt{-2\log U_1} \sin(2\p
 
 ### 接受-拒绝方法 {#接受-拒绝方法 .unnumbered}
 
-::: theorem
+**Theorem**
 设 $X, U$ 为随机变量，$X$ 的取值范围为 $(0, 1)$。若
 $(X, U) \sim U\{(x, u): 0 < u < f(x), 0 < x < 1\}$，则 $X \sim f(x)$。
 :::
 
-::: proof
+
 *Proof.* $$\begin{aligned}
 P(X < x) &= \int_0^x \left( \int_0^{f(y)} \frac{du}{\int_0^1 f(z) dz} \right) dy \\
 &= \frac{1}{\int_0^1 f(z) dz} \int_0^x f(y) dy.
@@ -855,7 +855,7 @@ $X^{(t+1)} \gets Y_t$ $X^{(t+1)} \gets X^{(t)}$
 :::
 :::
 
-::: theorem
+**Theorem**
 设 $(X^{(t)})$ 是 MH 算法生成的 Markov 链。若
 $$\bigcup_{x \in \text{supp}(\pi)} \text{supp}(Q(\cdot|x)) \supset \text{supp}(\pi),$$
 则：
@@ -865,7 +865,7 @@ $$\bigcup_{x \in \text{supp}(\pi)} \text{supp}(Q(\cdot|x)) \supset \text{supp}(\
 2.  $\pi$ 是平稳分布。
 :::
 
-::: theorem
+**Theorem**
 若 $X^{(t)}$ 不可约，则：
 
 1.  若 $h \in L^1(\pi)$，则
