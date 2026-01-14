@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "微分几何 第6章：向量场 (Vector Fields)"
+title: "Differential Geometry 向量场 (Vector Fields)"
 permalink: /posts/differential-geometry-06-vector-fields/
 tags: differential-geometry
 use_math: true

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "微分几何 第7章：微分形式 (Differential Forms)"
+title: "Differential Geometry 微分形式 (Differential Forms)"
 permalink: /posts/differential-geometry-07-differential-forms/
 tags: differential-geometry
 use_math: true

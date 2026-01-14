@@ -58,7 +58,7 @@ $$
 $$\ast_{\alpha\in S}f_\alpha:\ast_{\alpha\in S}G_\alpha\to H$$
 使得如下交换图对任意$\beta\in S$成立
 
-<script type="text/tikz">
+<!-- <script type="text/tikz">
     \begin{tikzcd}
         {\ast_{\alpha\in S}G_\alpha} \\
         {G_\beta} & H
@@ -66,7 +66,9 @@ $$\ast_{\alpha\in S}f_\alpha:\ast_{\alpha\in S}G_\alpha\to H$$
         \arrow["{i_\beta}", from=2-1, to=1-1]
         \arrow["{f_\beta}"', from=2-1, to=2-2]
     \end{tikzcd}
-</script>
+</script> -->
+<!-- https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGFzdF97XFxhbHBoYVxcaW4gU31HX1xcYWxwaGEiXSxbMCwxLCJHX1xcYmV0YSJdLFsxLDEsIkgiXSxbMCwyLCJ7XFxhc3Rfe1xcYWxwaGFcXGluIFN9Zl9cXGFscGhhfSJdLFsxLDAsIntpX1xcYmV0YX0iXSxbMSwyLCJ7Zl9cXGJldGF9IiwyXV0= -->
+<iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGFzdF97XFxhbHBoYVxcaW4gU31HX1xcYWxwaGEiXSxbMCwxLCJHX1xcYmV0YSJdLFsxLDEsIkgiXSxbMCwyLCJ7XFxhc3Rfe1xcYWxwaGFcXGluIFN9Zl9cXGFscGhhfSJdLFsxLDAsIntpX1xcYmV0YX0iXSxbMSwyLCJ7Zl9cXGJldGF9IiwyXV0=&embed" width="341" height="304" style="border-radius: 8px; border: none;"></iframe>
 
 ### <span style="color:cyan">定义</span> [正规闭包]
 

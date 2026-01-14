@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "微分几何 第2章：光滑流形 (Smooth Manifolds)"
-permalink: /posts/differential-geome$try-02-smooth-manifolds/
-tags: differential-geome$try
+title: "Differential Geometry 光滑流形 (Smooth Manifolds)"
+permalink: /posts/differential-geometry-02-smooth-manifolds/
+tags: differential-geometry
 use_math: true
 ---
 

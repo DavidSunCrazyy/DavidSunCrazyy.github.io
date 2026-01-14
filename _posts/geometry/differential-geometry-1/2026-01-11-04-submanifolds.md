@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "微分几何 第4章：子流形 (Submanifolds)"
-permalink: /posts/differential-geome$try-04-submanifolds/
-tags: differential-geome$try
+title: "Differential Geometry 子流形 (Submanifolds)"
+permalink: /posts/differential-geometry-04-submanifolds/
+tags: differential-geometry
 use_math: true
 ---
 

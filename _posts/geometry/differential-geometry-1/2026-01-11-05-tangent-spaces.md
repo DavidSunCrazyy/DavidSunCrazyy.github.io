@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "微分几何 第5章：切空间 (Tangent Spaces)"
-permalink: /posts/differential-geome$try-05-tangent-spaces/
-tags: differential-geome$try
+title: "Differential Geometry 切空间 (Tangent Spaces)"
+permalink: /posts/differential-geometry-05-tangent-spaces/
+tags: differential-geometry
 use_math: true
 ---
 

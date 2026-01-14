@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "微分几何 第8章：de Rham上同调 (de Rham Cohomology)"
+title: "Differential Geometry de Rham上同调 (de Rham Cohomology)"
 permalink: /posts/differential-geometry-08-de-rham-cohomology/
 tags: differential-geometry
 use_math: true

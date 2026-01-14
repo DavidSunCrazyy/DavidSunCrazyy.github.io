@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "微分几何 第9章：经典微分几何 (Classical Differential Geometry)"
+title: "Differential Geometry 经典微分几何 (Classical Differential Geometry)"
 permalink: /posts/differential-geometry-09-classical-differential-geometry/
 tags: differential-geometry
 use_math: true
@@ -163,7 +163,7 @@ $$\iint_S K\,dA + \int_{\partial S} k_g\,ds = 2\pi\chi(S)$$
 | 平均曲率 | Mean Curvature | $H$ | $(k_1+k_2)/2$ |
 | 主曲率 | Principal Curvatures | $k_1,k_2$ | Weingarten 映射特征值 |
 | 弧长 | Arc Length | $s(t)$ | $\int\|\gamma'(t)\|dt$ |
-| Frenet 标架 | Frenet Frame | $\{t,n,b\}$ | 曲线的活动标架 |
+| Frenet 标架 | Frenet Frame | $\\{t,n,b\\}$ | 曲线的活动标架 |
 | 测地线 | Geodesic | $k_g=0$ | "最短"曲线 |
 | Euler 示性数 | Euler Characteristic | $\chi(S)$ | $V-E+F$ |
 
