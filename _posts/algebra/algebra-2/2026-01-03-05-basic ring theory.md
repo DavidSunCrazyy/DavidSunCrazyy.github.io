@@ -2,7 +2,7 @@
 layout: post
 title: "Algebra II Basic Properties of Rings"
 date: 2026-01-03 00:00:00 +0800
-permalink: /posts/algebra2/
+permalink: /posts/algebra2/ring-basics/
 tags: algebra
 use_math: true
 ---

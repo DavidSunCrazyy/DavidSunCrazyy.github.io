@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Algebra II Presentation"
+title: "Algebra II Module Presentations and Canonical Forms"
 date: 2026-01-03 00:00:00 +0800
-permalink: /posts/algebra2/
+permalink: /posts/algebra2/module-presentation/
 tags: algebra
 use_math: true
 ---
 
-# Presentation
+# Module Presentations and Canonical Forms
 
 $R$ ring $R^m,R^n$ finite free modules /$R$.
 

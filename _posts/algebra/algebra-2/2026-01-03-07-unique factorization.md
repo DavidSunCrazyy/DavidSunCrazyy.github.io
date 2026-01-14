@@ -2,7 +2,7 @@
 layout: post
 title: "Algebra II Unique Factorization"
 date: 2026-01-03 00:00:00 +0800
-permalink: /posts/algebra2/
+permalink: /posts/algebra2/unique-factorization/
 tags: algebra
 use_math: true
 ---
