@@ -21,7 +21,7 @@ here secretly use standard basis $$\left(\begin{matrix}1\\0\\ \vdots\\0\end{matr
 
 **Definition**
 Given $f:R^m\to R^n$ $R$-linear, $M:=R^m/\mathrm{Im} f$ be $R$-module. In this case, $f$ is called a presentation of $M$, and if $M$ admits such a presentation. We say $M$ is of finite presentation.
-:::
+
 
 ## Rational canonical form
 
