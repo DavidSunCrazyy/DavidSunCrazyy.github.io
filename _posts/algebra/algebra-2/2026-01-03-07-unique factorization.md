@@ -7,6 +7,8 @@ tags: algebra
 use_math: true
 ---
 
+本文档介绍唯一分解理论，包括欧氏整环、主理想整环(PID)、唯一分解整环(UFD)及其相互关系，以及多项式环的相关性质。
+
 # 欧氏整环, PID, UFD
 
 **Definition**

@@ -7,6 +7,8 @@ tags: algebra
 use_math: true
 ---
 
+本文档介绍可解群理论，包括合成列、Jordan-Hölder定理、自由群和可解群的基本性质等内容。
+
 # 可解群
 
 ## composition series

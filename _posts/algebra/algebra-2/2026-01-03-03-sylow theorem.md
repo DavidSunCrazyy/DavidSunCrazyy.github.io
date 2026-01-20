@@ -7,6 +7,8 @@ tags: algebra
 use_math: true
 ---
 
+本文档介绍群作用和Sylow定理，包括群作用的定义、轨道-稳定子定理、共轭作用、p群性质以及Sylow定理等内容。
+
 # 群作用和 Sylow 定理
 
 ## 群作用

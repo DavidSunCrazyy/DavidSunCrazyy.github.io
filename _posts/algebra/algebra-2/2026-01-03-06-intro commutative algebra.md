@@ -7,6 +7,8 @@ tags: algebra
 use_math: true
 ---
 
+本文档介绍交换代数的基本概念，包括希尔伯特零点定理、素谱、积环、局部化等核心内容。
+
 # Introduction to Commutative Algebra
 
 **Theorem**

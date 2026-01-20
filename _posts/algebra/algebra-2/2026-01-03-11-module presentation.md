@@ -7,6 +7,8 @@ tags: algebra
 use_math: true
 ---
 
+本文档介绍模的表示和标准型理论，包括有理标准型、Jordan标准型以及它们在有限生成模结构中的应用等内容。
+
 # Module Presentations and Canonical Forms
 
 $R$ ring $R^m,R^n$ finite free modules /$R$.
