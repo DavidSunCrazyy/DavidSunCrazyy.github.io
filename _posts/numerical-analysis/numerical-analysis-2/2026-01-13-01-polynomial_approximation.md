@@ -6,6 +6,8 @@ tags: numerical-analysis
 use_math: true
 ---
 
+本文档介绍数值分析中多项式逼近的一般理论，包括Weierstrass逼近定理及其证明，以及多项式和三角多项式逼近的基本概念和性质。
+
 # 多项式逼近一般理论
 
 ## Weierstrass 定理

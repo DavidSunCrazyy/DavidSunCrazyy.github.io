@@ -6,6 +6,8 @@ tags: numerical-analysis
 use_math: true
 ---
 
+本文档介绍数值分析中的多项式插值理论，包括Lagrange插值、Newton插值及其误差估计，以及均差的概念和性质。
+
 # 多项式插值
 
 $$f: [a, b] \to \mathbb{R}, \quad x_0, \ldots, x_n \in [a, b] \text{ 互异}$$

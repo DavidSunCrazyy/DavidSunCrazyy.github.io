@@ -6,6 +6,8 @@ tags: numerical-analysis
 use_math: true
 ---
 
+本文档介绍数值分析中的有理逼近理论，包括最佳有理逼近的存在性、Padé逼近及其性质等内容。
+
 # 有理逼近
 
 设 $f \in C[a, b]$, $m, n \in \mathbb{N}$，采用有理多项式逼近 $f$。

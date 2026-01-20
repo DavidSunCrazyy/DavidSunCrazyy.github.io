@@ -6,6 +6,8 @@ tags: numerical-analysis
 use_math: true
 ---
 
+本文档介绍数值积分的基本理论和方法，包括插值型求积公式、Newton-Cotes公式、代数精度概念以及常见数值积分方法（如梯形公式、Simpson公式）的误差分析。
+
 # 数值积分
 
 计算定积分 $\int_a^b p(x)f(x)\,dx$
