@@ -619,7 +619,9 @@ $$= \frac{x(1-x)}{n} \leq \frac{1}{4n}$$
 
 由此可证
 
-$$|B_n(f) - f| \leq \frac{3}{2} \omega\left(\frac{1}{\sqrt{n}}\right)$$ ◻
+$$
+|B_n(f) - f| \leq \frac{3}{2} \omega\left(\frac{1}{\sqrt{n}}\right)
+$$ ◻
 
 
 **Corollary**

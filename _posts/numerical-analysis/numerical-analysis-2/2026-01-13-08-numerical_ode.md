@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Numerical Analysis II 常微分方程初值问题的数值方法"
-permalink: /posts/numerical-analysis-2/08-常微分方程初值问题的数值方法/
+permalink: /posts/numerical-analysis-2/08-数值常微分方程/
 tags: numerical-analysis
 use_math: true
 ---

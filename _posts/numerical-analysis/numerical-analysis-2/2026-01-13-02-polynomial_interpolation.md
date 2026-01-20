@@ -563,10 +563,15 @@ $$\frac{\sin(n(\theta-\theta_k))\sin\theta_k}{2n\sin\frac{\theta-\theta_k}{2} \s
 
 $$\frac{\sin(n(\theta-\theta_j))\sin\theta_k}{2n\sin\frac{\theta-\theta_j}{2} \sin \frac{\theta+\theta_k}{2}} \le \pi\frac{1}{2n (\theta - \theta_j) }$$
 
-所以$$\sum_{i=0}^n |\frac{\sin(n(\theta-\theta_k))\sin\theta_k}{2n\sin\frac{\theta-\theta_k}{2} \sin \frac{\theta+\theta_k}{2}}| \sim \log n$$
+所以
+
+$$\sum_{i=0}^n |\frac{\sin(n(\theta-\theta_k))\sin\theta_k}{2n\sin\frac{\theta-\theta_k}{2} \sin \frac{\theta+\theta_k}{2}}| \sim \log n
+$$
 
 所以
-$\|L_n f -f\| \le (\Lambda_n+1)\|f-p\| \le C \log n E_n(f) \le C \log(n) \omega(\frac{1}{n}, f) \to 0$. ◻
+$$
+\|L_n f -f\| \le (\Lambda_n+1)\|f-p\| \le C \log n E_n(f) \le C \log(n) \omega(\frac{1}{n}, f) \to 0
+$$. ◻
 
 
 ## 分段插值, 三次样条插值
@@ -780,27 +785,27 @@ I型边界条件的三次样条插值函数，则有
 
 $$\| f - S \|_{\infty} \leq \frac{5}{384} h^4 \| f^{(4)} \|_{\infty}$$
 
-其中 $h = \max_{0 \leq j \leq n-1} |x_{j+1} - x_j|$
+其中 $h = \max_{0 \leq j \leq n-1} \|x_{j+1} - x_j\|$
 
 
 **Lemma**
 设 $A = [a_{ij}] \in \mathbb{R}^{m \times n}$ 严格对角占优，则有
-$$||A^{-1}||_{\infty} \leq \left[ \min_{l \leq i \leq n} \left( |a_{ii}| - \sum_{j=1}^{n} |a_{ji}| \right) \right]^{-1}$$
+$$\|A^{-1}\|_{\infty} \leq \left[ \min_{l \leq i \leq n} \left( |a_{ii}| - \sum_{j=1}^{n} |a_{ji}| \right) \right]^{-1}$$
 
 
 
 *Proof.*
-$||A^{-1}||_{\infty} = \max_{|x_i|_\infty = 1} ||A^{-1}x||_{\infty} = \min_{|x_i|_\infty = 1} ||Ax||_{\infty}$
+$$\|A^{-1}\|_{\infty} = \max_{|x_i|_\infty = 1} \|A^{-1}x\|_{\infty} = \min_{|x_i|_\infty = 1} \|Ax\|_{\infty}$$
 
-对于任意 $||x||_{\infty} = 1$，设 $|x_k| = 1$，则有
-$$||Ax||_{\infty} \geq |a_{kk}| - \sum_{j=1}^{n} |a_{kj}| \geq \min_{l \leq i \leq n} \left( |a_{il}| - \sum_{j=1}^{n} |a_{ij}| \right)$$ ◻
+对于任意 $\\|x\\|\_{\infty} = 1$，设 $\|x_k\| = 1$，则有
+$$\|Ax\|_{\infty} \geq |a_{kk}| - \sum_{j=1}^{n} |a_{kj}| \geq \min_{l \leq i \leq n} \left( |a_{il}| - \sum_{j=1}^{n} |a_{ij}| \right)$$ ◻
 
 
 **Lemma**
 设 $f \in C^4[a,b]$，$S$ 是 $f$ 在 $[a,b]$ 上关于剖分
 $\Delta : a = x_0 < x_1 < \cdots < x_n = b$ 的满足 $I$
 型边界条件的三次样条插值函数，则有
-$$|m_j - f_j'| \leq \frac{1}{24} h^3 ||f^{(4)}||_{\infty}$$ 其中
+$$|m_j - f_j'| \leq \frac{1}{24} h^3 \|f^{(4)}\|_{\infty}$$ 其中
 $m_j = S'(x_j')$，$f_j' = f'(x_j')$，$h = \max_{0 \leq j \leq n-1} (x_{j+1} - x_j)$
 
 
@@ -833,7 +838,9 @@ $\lambda_j = \frac{h_j}{h_{j-1}+h_j}, \quad \mu_j = \frac{h_{j-1}}{h_{j-1}+h_j},
 
 $$d_j = 3(\lambda_j f[x_{j-1}, x_j] + \mu_j f[x_j, x_{j+1}])$$ 再利用 I
 型边界条件： $$m_0 = f'(x_0), \quad m_n = f'(x_n)$$ 由此得到
-$m_1, \cdots, m_{n-1}$ 满足的线性方程组 $$A m = b  \tag{2}$$ $$A = 
+$m_1, \cdots, m_{n-1}$ 满足的线性方程组 $$A m = b  \tag{2}$$ 
+
+$$A = 
 \begin{bmatrix}
 2 & \mu_1 & & \\
 \lambda_2 & 2 & \mu_2 & \\
@@ -844,14 +851,15 @@ $m_1, \cdots, m_{n-1}$ 满足的线性方程组 $$A m = b  \tag{2}$$ $$A =
 \quad m = [m_1, \cdots, m_{n-1}]$$
 
 $$b = (d_1 - \lambda_1 f'(x_0), \quad d_2, \cdots, d_{n-2}, \quad d_{n-1} - \mu_{n-1} f'(x_n))^T$$
-令 $q = [m_1 - f_1', \cdots, m_{n-1} - f'_{n-1}]$，由 (2) 可得。
+
+令 $$q = [m_1 - f_1', \cdots, m_{n-1} - f'_{n-1}]$$，由 (2) 可得。
 $$A q = \mathbf{c}$$ 其中 $\mathbf{c} = [c_1, \cdots, c_{n-1}]^T$
 $$c_j = d_j - \lambda_j f'(x_{j-1}) - 2f'(x_j) - \mu_j f'(x_{j+1})$$
 
-由引理2.5.1得，$$||A^{-1}||_{\infty} \leq 1$$
+由引理2.5.1得，$$\|A^{-1}\|_{\infty} \leq 1$$
 
 故有
-$$||q||_{\infty} \leq ||A^{-1}||_{\infty} ||\mathbf{c}||_{\infty} \leq ||\mathbf{c}||_{\infty}$$
+$$\|q\|_{\infty} \leq \|A^{-1}\|_{\infty} \|\mathbf{c}\|_{\infty} \leq \|\mathbf{c}\|_{\infty}$$
 
 由于 $f \in C^{4}[a,b]$，利用 Taylor 展开可得
 
@@ -889,7 +897,7 @@ $$\beta_i(x) = (x-x_i) \left(\frac{x-x_{i+1}}{h_i}\right)^2, \quad \beta_{i+1}(x
 设 $f \in C^4[a,b]$，$S$ 为 $f$ 在 $[a,b]$ 上关于剖分
 $\Delta$：$a = x_0 < x_1 < \cdots < x_n = b$ 的满足 I
 型边界条件的三次样条插值函数，则有
-$$||S - f||_{\infty} \leq \frac{5}{384} h^4 ||f^{(4)}||_{\infty}$$
+$$\|S - f\|_{\infty} \leq \frac{5}{384} h^4 \|f^{(4)}\|_{\infty}$$
 
 
 
@@ -898,15 +906,15 @@ Hermit 插值函数，即
 $$\varphi(x) = f(x_j) \alpha_j^\prime (x) + f(x_{j+1}) \alpha_{j+1}^\prime (x) + f^\prime (x_j) \beta_j (x) + f^\prime (x_{j+1}) \beta_{j+1} (x), x \in [x, x_i]$$
 
 利用三次 Hermit 插值多项式的误差估计有
-$$| \varphi(x) - f(x) | \leq \frac{1}{384} h^4 ||f^{(4)}||_{\infty}, \quad x \in [x_j, x_{j+1}]$$
+$$| \varphi(x) - f(x) | \leq \frac{1}{384} h^4 \|f^{(4)}\|_{\infty}, \quad x \in [x_j, x_{j+1}]$$
 另一方面，由引理2.5.2
 $$| S(x) - \varphi(x) | = (m_j - f_j') \beta_j(x) + (m_{j+1} - f_{j+1}) \beta_j(x)$$
-$$\leq \frac{1}{24} h^3 ||f^{(4)}||_{\infty} (|\beta_j(x)| + |\beta_{j+1}(x)|)$$
+$$\leq \frac{1}{24} h^3 \|f^{(4)}\|_{\infty} (|\beta_j(x)| + |\beta_{j+1}(x)|)$$
 由 $\beta_j$、$\beta_{j+1}$ 的表达式可得
 $$|\beta_j(x)| + |\beta_{j+1}(x)| \leq \frac{h}{4}, \quad x \in [x_j, x_{j+1}]$$
 由此定理得证。
 $$|S(x) - f(x)| \leq |S(x) - \varphi(x)| + |\varphi(x) - f(x)|$$
-$$\leq \frac{5}{384} h^4 ||f^{(4)}||_{\infty}$$ ◻
+$$\leq \frac{5}{384} h^4 \|f^{(4)}\|_{\infty}$$ ◻
 
 
 ### B-样条函数 {#b-样条函数 .unnumbered}
@@ -993,7 +1001,7 @@ $$B_{m+1}(x) = \int_{x-\frac{1}{2}}^{x+\frac{1}{2}} B_m(x) \, dx$$
 
 -   $B_3(x) \in C^2$
 
--   $B_3(x) = 0, \, |x| \geq 2$
+-   $B_3(x) = 0, \, \|x\| \geq 2$
 
 -   $B_3(x)$ 在 $[-2,-1], [-1,0], [0,1], [1,2]$ 上为三次多项式
 
@@ -1100,7 +1108,7 @@ B-样条基。具体如何构造这组基取决于如何选择节点向量。
 
 $$|Y| = \max_{x \in X} \inf_{y \in Y} d(x, y)$$
 
-$$||f||_Y = \sup_{y \in Y} |f(y)|$$
+$$\|f\|_Y = \sup_{y \in Y} |f(y)|$$
 
 **Lemma**
 设 $g_1 \cdots g_n \in C(X)$ 则
@@ -1109,7 +1117,7 @@ $$\forall \alpha > 1, \exists \delta > 0 \quad 使得 \quad \forall p = \sum_{i=
 
 以及 $\|Y\| < \delta$ 有
 
-$$||p||_X \leq \alpha ||p||_Y$$
+$$\|p\|_X \leq \alpha \|p\|_Y$$
 
 
 
@@ -1127,18 +1135,18 @@ $$\Omega(\delta) = \max_{1 \leq i \leq n} \max_{d(x,y) \leq \delta} |g_i(x) - g_
 取 $\delta$ 充分小，使得 $\Omega(\delta) < \theta$
 
 考虑，$P = \sum_{i=1}^{n} c_i g_i$，取 $x \in X$，使得
-$$|P(x)| = ||P||_X.$$
+$$|P(x)| = \|P\|_X.$$
 
 则对 $\forall y \in Y, d(x, y) < \delta$ 有 
 
 $$\begin{aligned}
 \theta \sum_{i=1}^{n} |c_i| & \leq \|P\|_X = |P(x)| \\
 &\leq |P(x) - P(y)| + |P(y)| \\
-&\leq \sum_i |c_i||g_i(x) - g_i(y)| + \|P\|_Y \\
+&\leq \sum_i |c_i\|g_i(x) - g_i(y)| + \|P\|_Y \\
 &\leq \Omega(\delta) \sum_i |c_i| + \|P\|_Y 
 \end{aligned}$$
 
-$$\Rightarrow \sum_i |c_i| \leq \frac{||P||_Y}{\theta - \Omega(\delta)}$$
+$$\Rightarrow \sum_i |c_i| \leq \frac{\|P\|_Y}{\theta - \Omega(\delta)}$$
 
 $$\|P\|_X \leq \Omega(\delta) \frac{\|P\|_Y}{\theta - \Omega(\delta)} + \|P\|_Y= (1- \frac{\Omega(\delta)}{\theta - \Omega(\delta)}) \|P\|_Y$$ ◻
 
@@ -1169,7 +1177,7 @@ $$= \max_{1 \leq i \leq 1} w(\delta, g_i)$$
 
 考虑，$p = \sum_{i=1}^{n} c_i g_i$.
 
-$$\theta \sum_{i=1}^{n} |c_i| \leq ||p||_X$$
+$$\theta \sum_{i=1}^{n} |c_i| \leq \|p\|_X$$
 
 $$\|f-p\|_X = |f(x_0) - p(x_0)| \le |f(y_0) - p(y_0)| + |f(y_0) - f(x_0)| + |p(x_0) - p(y_0)|, \forall y_0\in Y, d(x_0, y_0) < \delta$$
 
@@ -1189,29 +1197,29 @@ $P_Y$ 为 $f$ 在 $Y$ 上的最佳逼近广义多项式 $\sum c_i g_i$.
 
 $P_X$ 为 $f$ 在 $X$ 上的最佳逼近广义多项式, 则
 
-$$\lim_{|Y| \to 0} ||f - P_Y||_X = ||f - P_X||_X$$
+$$\lim_{|Y| \to 0} \|f - P_Y\|_X = \|f - P_X\|_X$$
 
 
 
 *Proof.* 由于
 
-$$||f - P_Y||_Y \leq ||f - P_X||_Y \leq ||f - P_X||_X \leq ||f - P_Y||_X$$
+$$\|f - P_Y\|_Y \leq \|f - P_X\|_Y \leq \|f - P_X\|_X \leq \|f - P_Y\|_X$$
 
 所以有
 
-$$||f - P_Y||_X - ||f - P_X||_X \leq ||f - P_Y||_X - ||f - P_Y||_Y \leq w(\delta, f) + \beta ||P_Y||_X \Omega(\delta).$$
+$$\|f - P_Y\|_X - \|f - P_X\|_X \leq \|f - P_Y\|_X - \|f - P_Y\|_Y \leq w(\delta, f) + \beta \|P_Y\|_X \Omega(\delta).$$
 
 另一方面
 
-$$||P_Y||_Y \leq ||P_Y - f||_Y + ||f||_Y \leq ||f||_Y + ||f||_X \leq 2||f||_X$$
+$$\|P_Y\|_Y \leq \|P_Y - f\|_Y + \|f\|_Y \leq \|f\|_Y + \|f\|_X \leq 2\|f\|_X$$
 
 由引理 2.6.1
 
-$$||P_{Y}||_{X} \leq \alpha ||P_{Y}||_{Y} \leq 2\alpha ||f||_{X}$$
+$$\|P_{Y}\|_{X} \leq \alpha \|P_{Y}\|_{Y} \leq 2\alpha \|f\|_{X}$$
 
 所以
 
-$$||f - P_{Y}||_{X} - ||f - P_{X}||_{X} \leq \omega(\delta, f) + \beta ||f||_{X} \Omega(\delta)$$ ◻
+$$\|f - P_{Y}\|_{X} - \|f - P_{X}\|_{X} \leq \omega(\delta, f) + \beta \|f\|_{X} \Omega(\delta)$$ ◻
 
 
 **Lemma**
@@ -1220,13 +1228,13 @@ $Y \subset [a, b]$，$f \in C[a, b]$，$P_{n,Y}$为 $f$ 在 $Y$ 上的最佳 $n$
 
 $P_{n}$ 为 $f$ 在 $[a, b]$ 上的最佳 $n$ 次逼近多项式则有
 
-$$\lim_{|Y| \to 0} ||P_{n,Y} - P_{n}|| = 0$$
+$$\lim_{|Y| \to 0} \|P_{n,Y} - P_{n}\| = 0$$
 
 
 **Theorem**
 存在 $Y_1, Y_2, \cdots  \subset X$ 使得对任意 $f \in C[a, b]$，有
 
-$$\lim_{n \to \infty} ||f - P_{Y_n}|| = 0$$
+$$\lim_{n \to \infty} \|f - P_{Y_n}\| = 0$$
 
 其中 $P_{Y_n}$ 为 $f$ 在 $Y_n$ 上的最佳 $n$ 次逼近多项式。
 

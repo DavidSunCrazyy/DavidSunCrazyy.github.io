@@ -736,7 +736,7 @@ $$By_i = \sum_{j=1}^n b_{ij} y_j.$$
 
 于是 
 
-$$|\beta||y| \leq |B||y| \leq A|y|.$$
+$$|\beta\|y| \leq |B\|y| \leq A|y|.$$
 
 若 $\|\beta\| = r$，则 
 
@@ -759,7 +759,7 @@ $$C|y| = r|y|, \quad C = e^{-i\phi} D^{-1}BD.$$
 
 另一方面， 
 
-$$C|y| = r|y| = A|y| = |C||y|,$$ 
+$$C|y| = r|y| = A|y| = |C\|y|,$$ 
 
 故 
 

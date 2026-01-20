@@ -239,7 +239,7 @@ $\tilde{T}_0(x) = T_0(x)$，$\tilde{T}_n(x) = \frac{1}{2^{n-1}} T_n(x)$，$n \ge
 $$\frac{1}{2^{n-1}} = \max_{x \in [t,1]} |\tilde{T}_n(x)| \leq \max_{x \in [t,1]} |\varphi_n(x)|, \forall \varphi_n \in \tilde{P}_n$$
 
 即
-$\tilde{T}_n = \argmin_{\varphi \in \tilde{P}_n} ||\varphi||_\infty$。
+$\tilde{T}_n = \argmin_{\varphi \in \tilde{P}_n} \|\varphi\|_\infty$。
 
 
 
@@ -273,19 +273,19 @@ Chebyshev 多项式的零点。
 
 被插值函数 $f \in C^{n+1}[-1,1]$，$L_n$ 为 Lagrange 插值多项式，那么
 
-$$\max_{x \in [-1,1]} |f(x) - L_n(x)| \leq \frac{1}{2^n(n+1)!} ||f^{(n+1)}||_\infty$$
+$$\max_{x \in [-1,1]} |f(x) - L_n(x)| \leq \frac{1}{2^n(n+1)!} \|f^{(n+1)}\|_\infty$$
 
 
 
 *Proof.* 由 Lagrange 插值余项估计
 
-$$\max_{x \in [-1,1]} |f(x) - L_n(x)| \leq \frac{1}{(n+1)!} ||f^{(n+1)}||_\infty ||w^{n+1}||_\infty$$
+$$\max_{x \in [-1,1]} |f(x) - L_n(x)| \leq \frac{1}{(n+1)!} \|f^{(n+1)}\|_\infty \|w^{n+1}\|_\infty$$
 
 其中
 
 $$w^{n+1}(x) = (x-x_0) \cdots (x-x_n)$$
 
-$$||w^{n+1}||_\infty = \frac{1}{2^n}$$ ◻
+$$\|w^{n+1}\|_\infty = \frac{1}{2^n}$$ ◻
 
 
 ## 多项式最佳平方逼近的收敛性
@@ -386,7 +386,7 @@ $$\begin{aligned}
     =& \langle Q_n, xQ_{n-1} \rangle \\
     \leq & \int_a^b |x| |Q_n| |Q_{n-1}| \omega \, dx \\
     \leq & \max\{|a|, |b|\} \langle |Q_n|, |Q_{n-1}| \rangle  \\
-    \leq & \max\{|a|, |b|\} ||Q_n|| ||Q_{n-1}|| \\
+    \leq & \max\{|a|, |b|\} \|Q_n\| \|Q_{n-1}\| \\
     = & \max\{|a|, |b|\} \lambda_n \lambda_{n-1} \\
 \end{aligned}$$
 
@@ -424,12 +424,12 @@ $$(S_n f)(x) = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t+x) \frac{\sin(u+\frac{1}{2})t
 $f \in C_{2\pi}$ 并且
 $\lim_{\delta \to 0} w(\delta,f) \log \delta = 0$，则
 
-$$\lim_{n \to \infty} ||S_n f - f||_\infty = 0$$
+$$\lim_{n \to \infty} \|S_n f - f\|_\infty = 0$$
 
 
 
 *Proof.*
-$$||(S_n f)(x)|| \leq ||f||_\infty \int_0^\pi \frac{|\sin(u+\frac{1}{2})t|}{\pi |\sin \frac{1}{2}t|} \, dt$$
+$$\|(S_n f)(x)\| \leq \|f\|_\infty \int_0^\pi \frac{|\sin(u+\frac{1}{2})t|}{\pi |\sin \frac{1}{2}t|} \, dt$$
 
 $$\frac{2}{\pi} \int_0^{1/n} \left| \frac{\sin (u+\frac{1}{2}) t}{2 \sin \frac{1}{2} t} \right| \, dt = \frac{2}{\pi} \int_0^{1/n} \left| \frac{1}{2} + \cos t + \cdots + \cos n t \right| \, dt \leq \frac{2}{\pi} \cdot \frac{1}{n} \cdot \left( \frac{1}{2} + n \right) < 1$$
 
@@ -439,11 +439,11 @@ $$\frac{1}{\pi} \int_{1/n}^{\pi} \left| \frac{\sin (u+\frac{1}{2}) t}{s \sin \fr
 
 则有
 
-$$||S_n|| < 3 + \log n$$
+$$\|S_n\| < 3 + \log n$$
 
 因此令 $P$ 为 $f$ 的 $s_n$ 次最佳三角
 
-$$||S_nf - f|| = ||S_n(f - P) + (f - P)|| \leq ||S_n(f - P)|| + ||f - P|| \leq (4 + \log n) ||f - P|| \leq \frac{3}{2} (4 + \log n) \omega (\frac{\pi}{n+1}) \quad D$$ ◻
+$$\|S_nf - f\| = \|S_n(f - P) + (f - P)\| \leq \|S_n(f - P)\| + \|f - P\| \leq (4 + \log n) \|f - P\| \leq \frac{3}{2} (4 + \log n) \omega (\frac{\pi}{n+1}) \quad D$$ ◻
 
 
 $f \in C_{2n}$，令 Cesaro 均值为
@@ -459,7 +459,7 @@ $$(G_n f)(x) = \frac{1}{2n\pi} \int_{-\pi}^{\pi} f(t+x) \left( \frac{\sin \frac{
 **Theorem**
 $f \in C_{2\pi}$，则
 
-$$\lim_{n \to \infty} ||G_n f - f||_\infty = 0$$
+$$\lim_{n \to \infty} \|G_n f - f\|_\infty = 0$$
 
 
 
@@ -476,7 +476,7 @@ $$\leq \frac{1}{n\pi} \int_0^{\pi} w(t,f) \left( \frac{\sin \frac{1}{2} nt}{\sin
 正交的多项式。$L_n f$ 为 $Q_{n+1}$ 的零点对应的 Lagrange
 插值多项式，则有
 
-$$\lim_{n \to \infty} ||L_n f - f||_w = 0$$
+$$\lim_{n \to \infty} \|L_n f - f\|_w = 0$$
 
 
 
@@ -498,17 +498,17 @@ $$\int_a^b w(x) \, dx = \int_a^b \left( \sum_{i=0}^n l_i(x) \right)^2 w(x) \, dx
 
 令 $P_n$ 为 $f$ 的 $\leq n$ 次最佳逼近多项式，则
 
-$$||P_n - f||_w \leq ||P_n - f||_\infty \left( \int_a^b w(x) \, dx \right)^{1/2} \to 0$$
+$$\|P_n - f\|_w \leq \|P_n - f\|_\infty \left( \int_a^b w(x) \, dx \right)^{1/2} \to 0$$
 
 并且
 
 
 $$\begin{aligned}
-||L_n f - P_n||^2_w & = ||L_n (f - P_n)||^2_w  \\
+\|L_n f - P_n\|^2_w & = \|L_n (f - P_n)\|^2_w  \\
 &= \int_a^b \left( \sum_{i=0}^n (f(x_i) - P_n(x_i)) l_i(x) \right)^2 w(x) \, dx \\
 &= \sum_{i=0}^n (f(x_i) - P_n(x_i))^2 \int_a^b l_i(x) w(x) \, dx  \\
-&\leq ||f - P_n||^2_\infty \sum_{i=0}^n \int_a^b l_i(x) w(x) \, dx \\
-&= ||f - P_n||^2_\infty \int_a^b w(x) \, dx \to 0\\
+&\leq \|f - P_n\|^2_\infty \sum_{i=0}^n \int_a^b l_i(x) w(x) \, dx \\
+&= \|f - P_n\|^2_\infty \int_a^b w(x) \, dx \to 0\\
 \end{aligned}$$
  ◻
 
