@@ -9,10 +9,10 @@ use_math: true
 
 本文档介绍交换代数的基本概念，包括希尔伯特零点定理、素谱、积环、局部化等核心内容。
 
-# Introduction to Commutative Algebra
+# 交换代数导论
 
 **Theorem**
-Let $K$ be an algebraically closed field. Then the maximal ideals of $K[x_1, . . . , x_n]$ are of the form $(x_1 − a_1, . . . , x_n − a_n)$ for some $(a_1, . . . , a_n) ∈ K^n$.
+设$K$为代数闭域。则$K[x_1, . . . , x_n]$的极大理想形如$(x_1 − a_1, . . . , x_n − a_n)$，其中$(a_1, . . . , a_n) ∈ K^n$。
 
 
 **Proposition**

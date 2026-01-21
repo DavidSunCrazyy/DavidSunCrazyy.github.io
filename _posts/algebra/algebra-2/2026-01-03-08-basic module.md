@@ -14,7 +14,7 @@ use_math: true
 ## 代数数
 
 **Definition**
-一个数$\alpha$是代数数，若$\exists \textrm{ monic } f(x)\in \mathbb{Q}[x]$使得$f(\alpha)=0$。
+一个数$\alpha$是代数数，若$\exists$ 首一多项式 $f(x)\in \mathbb{Q}[x]$使得$f(\alpha)=0$。
 
 
 **Definition**

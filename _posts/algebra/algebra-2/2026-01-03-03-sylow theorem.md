@@ -41,7 +41,7 @@ $$|G| = |\mathrm{Stab}_G(a)||O_G(a)|$$
 令$S$为有限集，令群$G$作用在$S$上。$A$表示非平凡轨道（不止一个元素）的代表元素集合。则 $$|S|=|Z|+\sum_{a\in A}|G:G_a|=\sum O_G(a)$$
 
 
-## 共轭作用 (conjugation action)
+## 共轭作用
 
 **Definition**
 群$G$的共轭作用定义为$G$在自身上的作用，$\rho(g, a) = gag^{-1}$。

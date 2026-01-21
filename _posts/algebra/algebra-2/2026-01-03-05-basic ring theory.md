@@ -25,11 +25,11 @@ use_math: true
 注意理想不一定为子环。
 
 **Definition**
-(1) zero divisor if ($x\ne 0$) and $\exists y\ne 0$, s.t. $xy=0$
+(1) 零因子，如果($x\ne 0$)且$\exists y\ne 0$，使得$xy=0$
 
-(2) nilpotent if $\exists n>0$, s.t. $x^n = 0$
+(2) 幂零元，如果$\exists n>0$，使得$x^n = 0$
 
-(3) idempotent if $x^2=x$.
+(3) 幂等元，如果$x^2=x$。
 
 
 **Proposition**
@@ -49,7 +49,7 @@ use_math: true
 
 
 **Definition**
-带有单位元$1\ne0$的环$R$并且每个元素都是unit（可逆）的环是除环 （dividen ring）。 域就是交换除环。 （通俗来说可以做除法的环）
+带有单位元$1\ne0$的环$R$并且每个非零元素都是unit（可逆）的环是除环 （division ring）。 域就是交换除环。 （通俗来说可以做除法的环）
 
 
 **Definition**
@@ -61,10 +61,10 @@ use_math: true
 
 
 **Definition**
-素理想$I$,$a\in R,b\in R, a b \in I 
+素理想$I$,$a\in R,b\in R, a b \in I
     \Longrightarrow (a \in I | b \in I)$ 即 $a\notin I \& b \notin I \Longrightarrow a b \notin I$
 
-等价定义:$A,B$ideal of $R$,$$AB\subset P\Longrightarrow A\subset P | B\subset P$$
+等价定义:$A,B$为$R$的理想，$$AB\subset P\Longrightarrow A\subset P | B\subset P$$
 
 
 **Remark**
@@ -92,9 +92,9 @@ use_math: true
 
 
 **Proposition**
-(i) 如果$M$是maximal并且$R$是交换的，那么商环$R\backslash M$是域。
+(i) 如果$M$是极大理想并且$R$是交换的，那么商环$R\backslash M$是域。
 
-(ii) 如果商环$R\backslash M$是除环，那么$M$是maximal。
+(ii) 如果商环$R\backslash M$是除环，那么$M$是极大理想。
 
 
 **Lemma**
@@ -126,23 +126,23 @@ $C\ne R$可以通过证明$1\notin C$得到。 ◻
 
 
 **Theorem**
-If $R$ and $S$ are rings and $φ:R → S$ is a ring homomorphism then $R/\ker(φ) ∼= Im(φ)$.
+如果$R$和$S$是环且$φ:R → S$是环同态，则$R/\ker(φ) ∼= Im(φ)$。
 
 
 **Theorem**
-Let $I$ be an ideal of a ring $R$. There is a bijection $ψ$ from the set of subrings of $R$ containing $I$ and the set of subrings of $R/I$. The bijection preserves inclusion$(S_1 ⊆ S_2\Leftrightarrow S_1ψ ⊆ S_2ψ)$, and ideals of $R$ containing $I$ correspond to ideals of $R/I$.
+设$I$是环$R$的一个理想。存在从包含$I$的$R$的子环集合到$R/I$的子环集合的双射$ψ$。该双射保持包含关系$(S_1 ⊆ S_2\Leftrightarrow S_1ψ ⊆ S_2ψ)$，且包含$I$的$R$的理想对应于$R/I$的理想。
 
 
 **Theorem**
-If $I$ and $J$ are ideals of a ring $R$ with $I \le J$ then $(R/I)/(J/I) \cong R/J$.
+如果$I$和$J$是环$R$的理想且$I \le J$，则$(R/I)/(J/I) \cong R/J$。
 
 
 **Theorem**
-If R is a ring, I is an ideal of R and S is a subring of $R$, define $I +S = \{x+y : x ∈ I, y ∈ S\}$. Then
+如果$R$是一个环，$I$是$R$的理想且$S$是$R$的子环，定义$I +S = \{x+y : x ∈ I, y ∈ S\}$。则
 
-(a) $I +S$ is a subring of $R$ containing $I$;
+(a) $I +S$是包含$I$的$R$的子环；
 
-(b) $I ∩S$ is an ideal of $S$;
+(b) $I ∩S$是$S$的理想；
 
 (c) $(I +S)/I \cong S/I ∩S$
 
