@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Statistical Inference 渐进评估"
-permalink: /posts/statistical-inference-asymptotic-evaluation/
+permalink: /posts/statistical-inference/asymptotic-evaluation/
 tags: statistical-inference
 use_math: true
 ---
@@ -198,5 +198,18 @@ $$
 Z_S(\mathbf{X}) = l'(\theta_0 \| \mathbf{X}) / \sqrt{I_n(\theta_0)}
 $$
 在 $H_0$ 下，$Z_S$ 的均值为 0，方差为 1，并收敛于标准正态随机变量。因此，近似水平为 $\alpha$ 的得分检验当 $\|Z_S(\mathbf{x})\| > z_{\alpha/2}$ 时拒绝 $H_0$。
+
+---
+
+## 导航栏
+
+**Statistical Inference 系列文章**
+
+- [概率论基础](/posts/statistical-inference/probability/)
+- [数据简化原理](/posts/statistical-inference/data-reduction/)
+- [点估计](/posts/statistical-inference/point-estimation/)
+- [假设检验](/posts/statistical-inference/hypothesis-testing/)
+- [区间估计](/posts/statistical-inference/interval-estimation/)
+- [渐进评估](/posts/statistical-inference/asymptotic-evaluation/)
 
 
