@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Statistical Inference 概率论基础"
-permalink: /posts/statistical-inference-probability/
+permalink: /posts/statistical-inference/probability/
 tags: statistical-inference
 use_math: true
 ---
@@ -582,3 +582,6 @@ $$
 
 
 通过分解联合概率密度函数证明了 $\overline{X}$ 和 $S^2$ 的独立性，事实上，我们还可以利用下面的引理完成该证明. 这个引理将正态随机样本的独立性与相关联在一起.
+
+
+[下一节：数据简化原理](/posts/statistical-inference/data-reduction/)

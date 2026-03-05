@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Statistical Inference 假设检验"
-permalink: /posts/statistical-inference-hypothesis-testing/
+permalink: /posts/statistical-inferenc/hypothesis-testing/
 tags: statistical-inference
 use_math: true
 ---
@@ -383,3 +383,16 @@ $$
 = \alpha,
 $$
 其中第二个不等式是 Bonferroni 不等式的应用。因此，$\sup_{\theta \in \Theta_0} P_\theta(X \in R) = \alpha$。
+
+---
+
+## 导航栏
+
+**Statistical Inference 系列文章**
+
+- [概率论基础](/posts/statistical-inference/probability/)
+- [数据简化原理](/posts/statistical-inference/data-reduction/)
+- [点估计](/posts/statistical-inference/point-estimation/)
+- [假设检验](/posts/statistical-inference/hypothesis-testing/)
+- [区间估计](/posts/statistical-inference/interval-estimation/)
+- [渐进评估](/posts/statistical-inference/asymptotic-evaluation/)

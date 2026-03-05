@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Statistical Inference 点估计"
-permalink: /posts/statistical-inference-point-estimation/
+permalink: /posts/statistical-inference/point-estimation/
 tags: statistical-inference
 use_math: true
 ---
@@ -664,3 +664,6 @@ $$
 被称为 **最小最大规则**（最小化最大风险）。
 
 这一最优性准则非常保守，旨在最大程度地保护免受最坏情况的发生。
+
+[上一节：数据简化原理](/posts/statistical-inference/data-reduction/)
+[下一节：假设检验](/posts/statistical-inference/hypothesis-testing/)

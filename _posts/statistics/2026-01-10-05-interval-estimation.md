@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Statistical Inference 区间估计"
-permalink: /posts/statistical-inference-interval-estimation/
+permalink: /posts/statistical-inference/interval-estimation/
 tags: statistical-inference
 use_math: true
 ---
@@ -313,4 +313,17 @@ $$
 $$
 
 给出。
+
+---
+
+## 导航栏
+
+**Statistical Inference 系列文章**
+
+- [概率论基础](/posts/statistical-inference/probability/)
+- [数据简化原理](/posts/statistical-inference/data-reduction/)
+- [点估计](/posts/statistical-inference/point-estimation/)
+- [假设检验](/posts/statistical-inference/hypothesis-testing/)
+- [区间估计](/posts/statistical-inference/interval-estimation/)
+- [渐进评估](/posts/statistical-inference/asymptotic-evaluation/)
 

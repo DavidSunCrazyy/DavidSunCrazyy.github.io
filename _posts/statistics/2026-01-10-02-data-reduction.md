@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Statistical Inference 数据简化原理"
-permalink: /posts/statistical-inference-data-reduction/
+permalink: /posts/statistical-inference/data-reduction/
 tags: statistical-inference
 use_math: true
 ---
@@ -221,3 +221,7 @@ $$
 a. $f_i(x) \in \mathcal{F}, \, i = 0, 1, \dots, k$；
 b. $T(x)$ 是 $\mathcal{F}$ 的充分统计量。
 则 $T(x)$ 是 $\mathcal{F}$ 的极小充分统计量。
+
+
+[上一节：概率论基础](/posts/statistical-inference/probability/)
+[下一节：点估计](/posts/statistical-inference/point-estimation/)
