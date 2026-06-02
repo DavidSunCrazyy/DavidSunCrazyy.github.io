@@ -132,4 +132,6 @@ use_math: true
 
 -   [强化学习](/posts/ai/online-learning/model-based-reinforcement-learning/)
 
--   
+-   [带背包约束的老虎机](/posts/ai/online-learning/bandits-with-knapsacks/)
+
+-   [在线线性规划](/posts/ai/online-learning/online-linear-programming/)
