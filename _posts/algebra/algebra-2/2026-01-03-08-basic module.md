@@ -205,18 +205,18 @@ $$\bigoplus_{i\in I} M_i = \{(m_i)_{i\in I} : m_i \in M_i \text{ 且只有有限
 **Proposition**（直和的泛性质）
 设$\{M_i\}_{i \in I}$是一族$R$-模，$N$是另一个$R$-模。
 1. 对每个$j \in I$，存在自然嵌入$\iota_j: M_j \to \bigoplus_{i \in I} M_i$，定义为$\iota_j(m_j) = (m_i)_{i \in I}$，其中$m_i = 0$当$i \neq j$，$m_j = m_j$
-2. 对任意一族同态$\\{\varphi_i: M_i \to N\\}\_{i \in I}$，存在唯一的同态$\varphi: \bigoplus_{i \in I} M_i \to N$使得对所有$i \in I$，$\varphi \circ \iota_i = \varphi_i$
+2. 对任意一族同态$\{\varphi_i: M_i \to N\}_{i \in I}$，存在唯一的同态$\varphi: \bigoplus_{i \in I} M_i \to N$使得对所有$i \in I$，$\varphi \circ \iota_i = \varphi_i$
 
 **Proposition**（直积的泛性质）
 设$\{M_i\}_{i \in I}$是一族$R$-模，$N$是另一个$R$-模。
 1. 对每个$j \in I$，存在自然投影$\pi_j: \prod_{i \in I} M_i \to M_j$，定义为$\pi_j((m_i)_{i \in I}) = m_j$
-2. 对任意一族同态$\{\varphi_i: N \to M_i\}\_{i \in I}$，存在唯一的同态$\varphi: N \to \prod_{i \in I} M_i$使得对所有$i \in I$，$\pi_i \circ \varphi = \varphi_i$
+2. 对任意一族同态$\{\varphi_i: N \to M_i\}_{i \in I}$，存在唯一的同态$\varphi: N \to \prod_{i \in I} M_i$使得对所有$i \in I$，$\pi_i \circ \varphi = \varphi_i$
 
 **Definition**（内部直和）
-设$M$是$R$-模，$\\{N_i\\}\_{i \in I}$是$M$的一族子模。如果每个$m \in M$都能唯一地写成$m = \sum_{i \in I} n_i$（其中$n_i \in N_i$且几乎所有的$n_i = 0$），则称$M$是子模$\{N_i\}$的内部直和，记作$M = \bigoplus_{i \in I} N_i$。
+设$M$是$R$-模，$\{N_i\}_{i \in I}$是$M$的一族子模。如果每个$m \in M$都能唯一地写成$m = \sum_{i \in I} n_i$（其中$n_i \in N_i$且几乎所有的$n_i = 0$），则称$M$是子模$\{N_i\}$的内部直和，记作$M = \bigoplus_{i \in I} N_i$。
 
 **Proposition**（内部直和的判定）
-设$\\{N_i\\}\_{i \in I}$是$R$-模$M$的子模族，则$M = \sum_{i \in I} N_i$是内部直和当且仅当：
+设$\{N_i\}_{i \in I}$是$R$-模$M$的子模族，则$M = \sum_{i \in I} N_i$是内部直和当且仅当：
 1. $M = \sum_{i \in I} N_i$（生成性）
 2. 对任意有限子集$J \subseteq I$，如果$\sum_{j \in J} n_j = 0$（其中$n_j \in N_j$），则对所有$j \in J$，$n_j = 0$
 

@@ -297,9 +297,9 @@ $$\begin{aligned}
 **Definition**
 如果 $|E(\lambda h)| < 1$，称单步法是绝对稳定的.
 
--   $\\{\lambda h \in \mathbb{C}: \|E(\lambda h)\| < 1\\}$：绝对稳定区域
+-   $\{\lambda h \in \mathbb{C}: \|E(\lambda h)\| < 1\}$：绝对稳定区域
 
--   $\\{\lambda h \in \mathbb{R}: \|E(\lambda h)\| < 1\\}$：绝对稳定区间
+-   $\{\lambda h \in \mathbb{R}: \|E(\lambda h)\| < 1\}$：绝对稳定区间
 
 
 **Example**

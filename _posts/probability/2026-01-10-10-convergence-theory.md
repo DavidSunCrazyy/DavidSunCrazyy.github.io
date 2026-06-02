@@ -149,7 +149,7 @@ $$L^p \text{ 中有界} \implies \text{UI} \implies L^1 \text{ 中有界}$$
 
 **绝对连续性**：设 $Z \in L^1$，则对任意 $\epsilon > 0$，存在 $\delta > 0$ 使得
 
-若 $\mathbb{P}(A) \le \delta$，则 $\mathbb{E}[Z \mathbb{1}\_A] \le \epsilon$
+若 $\mathbb{P}(A) \le \delta$，则 $\mathbb{E}[Z \mathbb{1}_A] \le \epsilon$
 
 ---
 

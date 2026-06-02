@@ -34,7 +34,7 @@ use_math: true
 
 **1-形式**：$T^\ast M$ 的截面，记为 $\Omega^1(M) = \Gamma^\infty(M,T^\ast M)$
 
-**性质**：$\alpha\in \Omega^1(M)$ 通过 $\alpha(X)\|\_p = \alpha_p(X_p)$ 作用于 $\Gamma^\infty(M,TM)$
+**性质**：$\alpha\in \Omega^1(M)$ 通过 $\alpha(X)\|_p = \alpha_p(X_p)$ 作用于 $\Gamma^\infty(M,TM)$
 
 ### 外微分 (Exterior Derivative)
 

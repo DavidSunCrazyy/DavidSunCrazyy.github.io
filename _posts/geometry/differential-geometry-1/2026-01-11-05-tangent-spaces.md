@@ -31,8 +31,8 @@ $$\vec{v}(f) = \frac{d}{dt}\bigg|_{t=0} f(\gamma(t))$$
 **定理**：$T_pM$ 是有限维向量空间，且 $\dim T_pM = \dim M$
 
 **证明要点**：
-1. 在局部坐标下，$\vec{v}(f) = \sum_{i=1}^n a_i \frac{\partial f}{\partial x_i}\bigg\|\_{\varphi(p)}$
-2. 可以将 $v$ 视为 $\operatorname{span}\_\mathbb{R}\\{\partial/\partial x_1,\ldots,\partial/\partial x_n\\}$ 中的元素
+1. 在局部坐标下，$\vec{v}(f) = \sum_{i=1}^n a_i \frac{\partial f}{\partial x_i}\bigg\|_{\varphi(p)}$
+2. 可以将 $v$ 视为 $\operatorname{span}_\mathbb{R}\{\partial/\partial x_1,\ldots,\partial/\partial x_n\}$ 中的元素
 
 ---
 
@@ -66,9 +66,9 @@ $\vec{v} \in T_pM \iff \vec{v} \text{ 满足乘积法则}$
 
 ### 推论：坐标变换公式
 
-设 v$\\in $T_pM，(U,$\\varphi$)、(V,$\\psi$) 是两个坐标卡，则：
+设 v$\in $T_pM，(U,$\varphi$)、(V,$\psi$) 是两个坐标卡，则：
 
-$$\vec{v}(f) = \sum_i a_i \frac{\partial}{\partial x_i}\tilde{f}\\|_{\varphi(p)} = \sum_j b_j \frac{\partial}{\partial y_j}\hat{f}\\|_{\psi(p)}$$
+$$\vec{v}(f) = \sum_i a_i \frac{\partial}{\partial x_i}\tilde{f}\|_{\varphi(p)} = \sum_j b_j \frac{\partial}{\partial y_j}\hat{f}\|_{\psi(p)}$$
 
 其中：
 

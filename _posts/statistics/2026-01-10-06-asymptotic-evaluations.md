@@ -19,25 +19,25 @@ $$
 
 对于一个估计量 $W_n$，回想一下 Chebychev 不等式的陈述
 $$
-P_\theta(\|W_n - \theta\| \geq \epsilon) \leq \frac{\operatorname{E}\_\theta[(W_n - \theta)^2]}{\epsilon^2},
+P_\theta(\|W_n - \theta\| \geq \epsilon) \leq \frac{\operatorname{E}_\theta[(W_n - \theta)^2]}{\epsilon^2},
 $$
 这样，如果对于每个 $\theta \in \Theta$ 有
 $$
-\lim_{n \to \infty} \operatorname{E}\_\theta[(W_n - \theta)^2] = 0,
+\lim_{n \to \infty} \operatorname{E}_\theta[(W_n - \theta)^2] = 0,
 $$
 则这个估计量序列就是相合的。
 
 此外，根据式 (7.3.1) 就有
 $$
-\operatorname{E}\_\theta[(W_n - \theta)^2] = \operatorname{Var}\_\theta W_n + [\operatorname{Bias}\_\theta W_n]^2.
+\operatorname{E}_\theta[(W_n - \theta)^2] = \operatorname{Var}_\theta W_n + [\operatorname{Bias}_\theta W_n]^2.
 $$
 把其总括在一起，我们可以给出以下的定理。
 
 **定理 相合性的证明**
 如果 $W_n$ 是参数 $\theta$ 的一个估计量序列，它对于每个 $\theta \in \Theta$ 都满足
 
-1. $\lim_{n \to \infty} \operatorname{Var}\_\theta W_n = 0$,
-2. $\lim_{n \to \infty} \operatorname{Bias}\_\theta W_n = 0$,
+1. $\lim_{n \to \infty} \operatorname{Var}_\theta W_n = 0$,
+2. $\lim_{n \to \infty} \operatorname{Bias}_\theta W_n = 0$,
 
 则 $W_n$ 是参数 $\theta$ 的一个相合估计量序列。
 
@@ -83,7 +83,7 @@ $$
 $$
 而且
 $$
-\nu(\theta) = \frac{[\tau'(\theta)]^2}{\operatorname{E}\_\theta\left[\left(\frac{\partial}{\partial\theta}\log f(X\|\theta)\right)^2\right]},
+\nu(\theta) = \frac{[\tau'(\theta)]^2}{\operatorname{E}_\theta\left[\left(\frac{\partial}{\partial\theta}\log f(X\|\theta)\right)^2\right]},
 $$
 也就是说，$W_n$ 的渐近方差达到了 Cramér-Rao 下界.
 
@@ -143,20 +143,20 @@ $\therefore -2\log(\lambda(\mathbf{x})) \approx -2\left[l(\hat{\theta} \| \mathb
 
 $-2\log(\lambda(\mathbf{x})) \approx -l''(\hat{\theta} \| \mathbf{x})(\theta_0 - \hat{\theta})^2$
 
-$-2\log(\lambda(\mathbf{x})) \approx (\theta_0 - \hat{\theta})^2[-l''(\hat{\theta} \| \mathbf{x})] = (\hat{\theta} - \theta_0)^2 \hat{I}\_n(\hat{\theta})$
+$-2\log(\lambda(\mathbf{x})) \approx (\theta_0 - \hat{\theta})^2[-l''(\hat{\theta} \| \mathbf{x})] = (\hat{\theta} - \theta_0)^2 \hat{I}_n(\hat{\theta})$
 
-其中 $\hat{I}\_n(\hat{\theta})$ 是观测信息。
+其中 $\hat{I}_n(\hat{\theta})$ 是观测信息。
 
-我们可以证明 $\frac{1}{n}\hat{I}\_n(\hat{\theta}) \xrightarrow{P} I_1(\theta_0)$，其中 $I_1(\theta_0)$ 是来自一个观测的信息量。
+我们可以证明 $\frac{1}{n}\hat{I}_n(\hat{\theta}) \xrightarrow{P} I_1(\theta_0)$，其中 $I_1(\theta_0)$ 是来自一个观测的信息量。
 已知 (定理 10.1.12) $\frac{\sqrt{n}(\hat{\theta} - \theta_0)}{\sqrt{1/I_1(\theta_0)}} \xrightarrow{\mathcal{L}} N(0,1)$
 $$
 \therefore \frac{n(\hat{\theta} - \theta_0)^2}{1/I_1(\theta_0)} \xrightarrow{\mathcal{L}} \chi_1^2
 $$
 $$
--2\log(\lambda(\mathbf{x})) \approx \frac{n(\hat{\theta} - \theta_0)^2}{1/I_1(\theta_0)} \frac{1}{n}\hat{I}\_n(\hat{\theta}) \xrightarrow{\mathcal{L}} \chi_1^2 \quad \text{通过应用 Slutsky 定理}
+-2\log(\lambda(\mathbf{x})) \approx \frac{n(\hat{\theta} - \theta_0)^2}{1/I_1(\theta_0)} \frac{1}{n}\hat{I}_n(\hat{\theta}) \xrightarrow{\mathcal{L}} \chi_1^2 \quad \text{通过应用 Slutsky 定理}
 $$
 $$
-\underbrace{\frac{n(\hat{\theta} - \theta_0)^2}{1/I_1(\theta_0)}}\_{\xrightarrow{\mathcal{L}} \chi_1^2} \quad \underbrace{\frac{1}{n}\hat{I}\_n(\hat{\theta})}\_{\xrightarrow{P} 1}
+\underbrace{\frac{n(\hat{\theta} - \theta_0)^2}{1/I_1(\theta_0)}}_{\xrightarrow{\mathcal{L}} \chi_1^2} \quad \underbrace{\frac{1}{n}\hat{I}_n(\hat{\theta})}_{\xrightarrow{P} 1}
 $$
 $$
 \therefore -2\log(\lambda(\mathbf{x})) \xrightarrow{\mathcal{L}} \chi_1^2 \quad \text{在 } H_0 \text{ 下}.
@@ -178,7 +178,7 @@ $$
 
 如果 $W_n$ 是 MLE，使用定理 10.1.12 来验证上述结论。
 如果 $\sigma_n$ 也依赖于一个未知参数怎么办？
-$\rightarrow$ 估计 $\sigma_n$ (使用 $S_n$ 或 $\hat{\sigma}\_n$)，使得 $\left(\frac{\sigma_n}{S_n}\right) \xrightarrow{P} 1$
+$\rightarrow$ 估计 $\sigma_n$ (使用 $S_n$ 或 $\hat{\sigma}_n$)，使得 $\left(\frac{\sigma_n}{S_n}\right) \xrightarrow{P} 1$
 $$
 \left. \begin{array}{l}
 \xrightarrow{\mathcal{L}} \text{依分布收敛} \\

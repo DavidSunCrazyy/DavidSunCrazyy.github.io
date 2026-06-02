@@ -14,28 +14,28 @@ use_math: true
 
 ### 1.1 鞅 (Martingale)
 
-**定义** 适应过程 $\{X_n, \mathcal{F}\_n\}$ 称为鞅，如果
+**定义** 适应过程 $\{X_n, \mathcal{F}_n\}$ 称为鞅，如果
 - $\mathbb{E}[\|X_n\|] < \infty$ 对所有 $n$（可积性）
-- $X_n$ 是 $\mathcal{F}\_n$ 可测的（适应性）
-- $\mathbb{E}[X_{n+1}\|\mathcal{F}\_n] = X_n$ 几乎必然（鞅性质）
+- $X_n$ 是 $\mathcal{F}_n$ 可测的（适应性）
+- $\mathbb{E}[X_{n+1}\|\mathcal{F}_n] = X_n$ 几乎必然（鞅性质）
 
 **直观理解**：鞅是"公平博弈"的数学模型，即在给定当前信息的条件下，下一时刻的期望值等于当前值。
 
 ### 1.2 上鞅 (Supermartingale)
 
-**定义** 适应过程 $\{X_n, \mathcal{F}\_n\}$ 称为上鞅，如果
+**定义** 适应过程 $\{X_n, \mathcal{F}_n\}$ 称为上鞅，如果
 - $\mathbb{E}[\|X_n\|] < \infty$ 对所有 $n$
-- $X_n$ 是 $\mathcal{F}\_n$ 可测的
-- $\mathbb{E}[X_{n+1}\|\mathcal{F}\_n] \le X_n$ 几乎必然
+- $X_n$ 是 $\mathcal{F}_n$ 可测的
+- $\mathbb{E}[X_{n+1}\|\mathcal{F}_n] \le X_n$ 几乎必然
 
 **直观理解**：上鞅对应"不利博弈"，未来期望不超过当前值。
 
 ### 1.3 下鞅 (Submartingale)
 
-**定义** 适应过程 $\{X_n, \mathcal{F}\_n\}$ 称为下鞅，如果
+**定义** 适应过程 $\{X_n, \mathcal{F}_n\}$ 称为下鞅，如果
 - $\mathbb{E}[\|X_n\|] < \infty$ 对所有 $n$
-- $X_n$ 是 $\mathcal{F}\_n$ 可测的
-- $\mathbb{E}[X_{n+1}\|\mathcal{F}\_n] \ge X_n$ 几乎必然
+- $X_n$ 是 $\mathcal{F}_n$ 可测的
+- $\mathbb{E}[X_{n+1}\|\mathcal{F}_n] \ge X_n$ 几乎必然
 
 **直观理解**：下鞅对应"有利博弈"，未来期望不低于当前值。
 
@@ -55,13 +55,13 @@ $$
 
 ### 2.1 绝对值不等式
 
-**定理** $\mathbb{E}[X\|\mathcal{A}] \le \mathbb{E}[Y\|\mathcal{A}]$ a.s. 当且仅当 $\mathbb{E}[X\mathbb{1}\_A] \le \mathbb{E}[Y\mathbb{1}\_A]$ 对所有 $A \in \mathcal{A}$ 成立。
+**定理** $\mathbb{E}[X\|\mathcal{A}] \le \mathbb{E}[Y\|\mathcal{A}]$ a.s. 当且仅当 $\mathbb{E}[X\mathbb{1}_A] \le \mathbb{E}[Y\mathbb{1}_A]$ 对所有 $A \in \mathcal{A}$ 成立。
 
 **推论**：若 $Z = \mathbb{E}[X\|\mathcal{A}]$，则
 - $\mathbb{E}[Z] = \mathbb{E}[X]$
 - $\|Z\| \le \mathbb{E}[\|X\|\|\mathcal{A}]$ a.s.
 - $\mathbb{E}[\|Z\|] \le \mathbb{E}[\|X\|]$
-- $\mathbb{E}[\|Z\|\mathbb{1}\_A] \le \mathbb{E}[\|X\|\mathbb{1}\_A]$ 对所有 $A \in \mathcal{A}$ 成立
+- $\mathbb{E}[\|Z\|\mathbb{1}_A] \le \mathbb{E}[\|X\|\mathbb{1}_A]$ 对所有 $A \in \mathcal{A}$ 成立
 
 ### 2.2 詹森不等式（条件期望版本）
 
@@ -83,14 +83,14 @@ Doob 极大不等式是鞅论中的重要工具，用于控制鞅的极大值。
 
 **定理** 设 $\{X_n\}$ 为非负下鞅。定义 $X_n^* = \max_{k \le n} X_k$。则
 
-$$\lambda \mathbb{P}(X_n^* \ge \lambda) \le \mathbb{E}[X_n \mathbb{1}\_{X_n^* \ge \lambda}] \le \mathbb{E}[X_n]$$
+$$\lambda \mathbb{P}(X_n^* \ge \lambda) \le \mathbb{E}[X_n \mathbb{1}_{X_n^* \ge \lambda}] \le \mathbb{E}[X_n]$$
 
 **证明思路**：定义停时 $T = \min \{n \| X_n \ge \lambda\}$。注意到 $X_n^* \ge \lambda = \{T \le n\}$。
 
 $$
 \begin{aligned}
-\mathbb{E}[X_n \mathbb{1}\_{T \le n}] &= \sum_{j=1}^n \mathbb{E}[X_n \mathbb{1}\_{T=j}] \\
-&\ge \sum_{j=1}^n \mathbb{E}[X_j \mathbb{1}\_{T=j}] \quad \text{(下鞅性质)} \\
+\mathbb{E}[X_n \mathbb{1}_{T \le n}] &= \sum_{j=1}^n \mathbb{E}[X_n \mathbb{1}_{T=j}] \\
+&\ge \sum_{j=1}^n \mathbb{E}[X_j \mathbb{1}_{T=j}] \quad \text{(下鞅性质)} \\
 &\ge \sum_{j=1}^n \lambda \mathbb{P}(T=j) = \lambda \mathbb{P}(T \le n)
 \end{aligned}
 $$
@@ -123,7 +123,7 @@ $$\|X_n^*\|_p \le \frac{p}{p-1}\|X_n\|_p$$
 
 1. $\{X_n\}$ 在 $L^p$ 中有界
 2. $\{X_n\}$ 几乎必然且 $L^p$ 收敛到 $X_\infty \in L^p$
-3. 存在 $Z \in L^p$ 使得 $X_n = \mathbb{E}[Z\|\mathcal{F}\_n]$ a.s. $\forall n$
+3. 存在 $Z \in L^p$ 使得 $X_n = \mathbb{E}[Z\|\mathcal{F}_n]$ a.s. $\forall n$
 
 **意义**：对于 $p > 1$，鞅的 $L^p$ 有界性蕴含几乎必然和 $L^p$ 收敛。
 
@@ -133,7 +133,7 @@ $$\|X_n^*\|_p \le \frac{p}{p-1}\|X_n\|_p$$
 
 1. $\{X_n\}$ 是 UI 的（一致可积）
 2. $\{X_n\} \to X_\infty$ 在 $L^1$ 中且几乎必然收敛
-3. 存在 $X_\infty \in L^1$ 使得 $X_n = \mathbb{E}[X_\infty\|\mathcal{F}\_n]$ a.s. $\forall n$
+3. 存在 $X_\infty \in L^1$ 使得 $X_n = \mathbb{E}[X_\infty\|\mathcal{F}_n]$ a.s. $\forall n$
 
 **引理**：设 $\mathcal{F}$ 为 $\sigma$-代数，$X \in L^1$，则 $\{\mathbb{E}[X\|\mathcal{A}]: \mathcal{A} \text{ 是 } \mathcal{F} \text{ 的子 } \sigma\text{-代数}\}$ 是 UI 的。
 
@@ -150,9 +150,9 @@ $$
 
 令 $\delta \to \infty$，$\epsilon = \delta^2$。
 
-**推论**：设 $X \in L^1$，则 $\mathbb{E}[X\|\mathcal{F}\_n] \to \mathbb{E}[X\|\mathcal{F}\_\infty]$ 在几乎必然且 $L^1$ 意义下成立。
+**推论**：设 $X \in L^1$，则 $\mathbb{E}[X\|\mathcal{F}_n] \to \mathbb{E}[X\|\mathcal{F}_\infty]$ 在几乎必然且 $L^1$ 意义下成立。
 
-其中 $\mathcal{F}\_\infty = \sigma(\bigcup_n \mathcal{F}\_n)$。
+其中 $\mathcal{F}_\infty = \sigma(\bigcup_n \mathcal{F}_n)$。
 
 ---
 
@@ -165,7 +165,7 @@ $$
 **定理** 设 $\{X_n\}$ 为鞅，$T$ 为停时。
 
 1. $X_{n \wedge T}$ 是鞅，因此 $\mathbb{E}[X_{n \wedge T}] = \mathbb{E}[X_0]$
-2. 若 $T$ 有界（不超过 $N$），则 $\mathbb{E}[X_T] = \mathbb{E}[X_0]$ 且当 $T \ge S$ a.s. 时有 $\mathbb{E}[X_T\|\mathcal{F}\_S] = X_S$ a.s.
+2. 若 $T$ 有界（不超过 $N$），则 $\mathbb{E}[X_T] = \mathbb{E}[X_0]$ 且当 $T \ge S$ a.s. 时有 $\mathbb{E}[X_T\|\mathcal{F}_S] = X_S$ a.s.
 3. 若 $T < \infty$ a.s. 且 $\|X_n\| \le Y \in L^1$，则 $\mathbb{E}[X_T] = \mathbb{E}[X_0]$
 4. 若 $\mathbb{E}[T] < \infty$，且 $X_n$ 有有界增量，则 $\mathbb{E}[X_T] = \mathbb{E}[X_0]$
 
@@ -174,7 +174,7 @@ $$
 **定理** 设 $\{X_n\}$ 为上鞅，$T$ 为停时。
 
 1. $X_{n \wedge T}$ 是上鞅，因此 $\mathbb{E}[X_{n \wedge T}] \le \mathbb{E}[X_0]$
-2. 若 $T$ 有界，则 $\mathbb{E}[X_T] \le \mathbb{E}[X_0]$ 且当 $T \ge S$ a.s. 时有 $\mathbb{E}[X_T\|\mathcal{F}\_S] \le X_S$ a.s.
+2. 若 $T$ 有界，则 $\mathbb{E}[X_T] \le \mathbb{E}[X_0]$ 且当 $T \ge S$ a.s. 时有 $\mathbb{E}[X_T\|\mathcal{F}_S] \le X_S$ a.s.
 3. 若 $T < \infty$ a.s. 且 $\|X_n\| \le Y \in L^1$，则 $\mathbb{E}[X_T] \le \mathbb{E}[X_0]$
 4. 若 $\mathbb{E}[T] < \infty$，且 $X_n$ 有有界增量，则 $\mathbb{E}[X_T] \le \mathbb{E}[X_0]$
 5. 若 $T < \infty$ a.s.，且 $\{X_n\}$ 非负，则 $\mathbb{E}[X_T] \le \mathbb{E}[X_0]$
@@ -183,7 +183,7 @@ $$
 
 **定理** 设 $\{X_n\}$ 为 UI 鞅。$S \le T$ 为停时，则
 
-$$\mathbb{E}[X_T \| \mathcal{F}\_S] = X_S \quad \text{a.s.}$$
+$$\mathbb{E}[X_T \| \mathcal{F}_S] = X_S \quad \text{a.s.}$$
 
 因此 $\mathbb{E}[X_T] = \mathbb{E}[X_S]$。
 
@@ -193,7 +193,7 @@ $$\mathbb{E}[X_T \| \mathcal{F}\_S] = X_S \quad \text{a.s.}$$
 
 ## 六、Kolmogorov 0-1 律
 
-**定理** 设 $\{\xi_i\}\_{i \ge 1}$ 为独立随机变量序列。设 $\mathcal{G}\_n = \sigma(\xi_k, k \ge n)$ 且 $\mathcal{G}\_\infty = \cap_{n \ge 1} \mathcal{G}\_n$。则 $\mathcal{G}\_\infty$ 是平凡的，即对任意 $A \in \mathcal{G}\_\infty$ 有 $\mathbb{P}(A) = 0$ 或 $1$。
+**定理** 设 $\{\xi_i\}_{i \ge 1}$ 为独立随机变量序列。设 $\mathcal{G}_n = \sigma(\xi_k, k \ge n)$ 且 $\mathcal{G}_\infty = \cap_{n \ge 1} \mathcal{G}_n$。则 $\mathcal{G}_\infty$ 是平凡的，即对任意 $A \in \mathcal{G}_\infty$ 有 $\mathbb{P}(A) = 0$ 或 $1$。
 
 **直观理解**：尾部 $\sigma$-代数中的事件概率只能是 0 或 1，这些事件不受任何有限个随机变量的影响。
 
@@ -243,8 +243,8 @@ $$\mathbb{E}[X_T \| \mathcal{F}\_S] = X_S \quad \text{a.s.}$$
 | 收敛类型 | 充要条件 | 极限表示 | 典型应用 |
 |---------|----------|----------|----------|
 | 几乎必然 | $L^1$ 有界（上鞅） | $X_\infty \in L^1$ | 上鞅的稳定性 |
-| $L^p$ ($p>1$) | $L^p$ 有界 | $X_n = \mathbb{E}[Z\|\mathcal{F}\_n]$ | 条件期望的正则性 |
-| $L^1$ | UI | $X_n = \mathbb{E}[X_\infty\|\mathcal{F}\_n]$ | 一致可积鞅的收敛 |
+| $L^p$ ($p>1$) | $L^p$ 有界 | $X_n = \mathbb{E}[Z\|\mathcal{F}_n]$ | 条件期望的正则性 |
+| $L^1$ | UI | $X_n = \mathbb{E}[X_\infty\|\mathcal{F}_n]$ | 一致可积鞅的收敛 |
 
 ---
 
@@ -260,7 +260,7 @@ $$\mathbb{E}[X_T \| \mathcal{F}\_S] = X_S \quad \text{a.s.}$$
 
 ### 10.3 例3：Doob 鞅
 
-设 $Z \in L^1$，定义 $X_n = \mathbb{E}[Z\|\mathcal{F}\_n]$，则 $\{X_n\}$ 是 UI 鞅，且 $X_n \to \mathbb{E}[Z\|\mathcal{F}\_\infty]$ a.s. 且 $L^1$。
+设 $Z \in L^1$，定义 $X_n = \mathbb{E}[Z\|\mathcal{F}_n]$，则 $\{X_n\}$ 是 UI 鞅，且 $X_n \to \mathbb{E}[Z\|\mathcal{F}_\infty]$ a.s. 且 $L^1$。
 
 ### 10.4 例4：Polya 罐子模型
 
@@ -276,7 +276,7 @@ $$\mathbb{E}[X_T \| \mathcal{F}\_S] = X_S \quad \text{a.s.}$$
 |--------|----| ---- | ---- |
 | 可积性 | ✓ | ✓ | ✓ |
 | 适应性 | ✓ | ✓ | ✓ |
-| 条件期望 | $E[X_{n+1}\|\mathcal{F}\_n] = X_n$ | $E[X_{n+1}\|\mathcal{F}\_n] \le X_n$ | $E[X_{n+1}\|\mathcal{F}\_n] \ge X_n$ |
+| 条件期望 | $E[X_{n+1}\|\mathcal{F}_n] = X_n$ | $E[X_{n+1}\|\mathcal{F}_n] \le X_n$ | $E[X_{n+1}\|\mathcal{F}_n] \ge X_n$ |
 
 ### 11.2 证明收敛性
 

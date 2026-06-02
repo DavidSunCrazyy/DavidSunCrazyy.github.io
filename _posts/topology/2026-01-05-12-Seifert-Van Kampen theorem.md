@@ -25,9 +25,9 @@ $$
 
 由积空间的泛性质，有双射
 $$
-    \\{\text{loops in } \prod_{\alpha\in S} X_\alpha \text{ based at } (x_\alpha)\\}
+    \{\text{loops in } \prod_{\alpha\in S} X_\alpha \text{ based at } (x_\alpha)\}
     \leftrightarrow
-    \prod_{\alpha\in S} \\{\text{loops in } X_\alpha \text{ based at } X_\alpha\\}
+    \prod_{\alpha\in S} \{\text{loops in } X_\alpha \text{ based at } X_\alpha\}
 $$
 由$\gamma\leftrightarrow (\pi_\alpha\circ \gamma)_{\alpha\in S}$给出。
 
@@ -39,7 +39,7 @@ $\pi_1(T^n)\cong \pi_1(S^1)\times \cdots \times \pi_1(S^1)\cong \mathbb{Z}^n$
 
 ### <span style="color:cyan">定义</span> [一点并 (one point union)]
 
-令$\\{X_\alpha,x_\alpha\\}\_{\alpha\in S}$为带点空间的族。则它们的**一点并**定义为
+令$\{X_\alpha,x_\alpha\}_{\alpha\in S}$为带点空间的族。则它们的**一点并**定义为
 $$
     \bigvee_{\alpha\in S}X_\alpha := (\sqcup_{\alpha\in S}X_\alpha)/\sim
 $$
@@ -49,12 +49,12 @@ $$
 
 ### <span style="color:cyan">定义</span> [单词 (word)]
 
-令$\\{G_\alpha\\}\_{\alpha\in S}$为群的族。作如下定义：
-1. $\\{G_\alpha\\}\_{\alpha\in S}$的**单词**定义为有限序列$(g_1,\cdots,g_n)$使得$g_i\in \sqcup_{\alpha\in S}G_\alpha$对任意$i$均成立。其中$n$称为该单词的**长度** (length)。
+令$\{G_\alpha\}_{\alpha\in S}$为群的族。作如下定义：
+1. $\{G_\alpha\}_{\alpha\in S}$的**单词**定义为有限序列$(g_1,\cdots,g_n)$使得$g_i\in \sqcup_{\alpha\in S}G_\alpha$对任意$i$均成立。其中$n$称为该单词的**长度** (length)。
 
 ## <span style="color:violet">引理</span> [自由积的泛性质]
 
-令$H$为群并令$\\{f_\alpha:G_\alpha\to H\\}_{\alpha\in S}$为群同态的族。则存在唯一的群同态
+令$H$为群并令$\{f_\alpha:G_\alpha\to H\}_{\alpha\in S}$为群同态的族。则存在唯一的群同态
 $$\ast_{\alpha\in S}f_\alpha:\ast_{\alpha\in S}G_\alpha\to H$$
 使得如下交换图对任意$\beta\in S$成立
 
@@ -73,7 +73,7 @@ $$\ast_{\alpha\in S}f_\alpha:\ast_{\alpha\in S}G_\alpha\to H$$
 ### <span style="color:cyan">定义</span> [正规闭包]
 
 令$A$为群$G$的子集。定义$A$在$G$中的**正规闭包 (normal closure)** $N_G(A)$ 为包含以下集合中有限个元素的积的子群
-$$\\{e\\}\cup\\{gag^{-1}:g\in G,a\in A\\}\cup \\{g a^{-1}g^{-1}:g\in A,a\in A\\}$$
+$$\{e\}\cup\{gag^{-1}:g\in G,a\in A\}\cup \{g a^{-1}g^{-1}:g\in A,a\in A\}$$
 注意$N_G(A)$为所有包含$A$的$G$的正规子群的交。特别的，$N_G(A)$本身也是一个正规子群。
 
 ### <span style="color:cyan">定义</span>
@@ -87,7 +87,7 @@ $$
 
 1. $\langle a,b\|aba^{-1}b^{-1}\rangle\cong \mathbb{Z}\oplus \mathbb{Z}$
 2. $\langle a,b\|a^2,b^2\rangle \cong \mathbb{Z}/2\ast \mathbb{Z}/2$
-3. $\langle a,b\| ab,aba\rangle\cong \\{e\\}$
+3. $\langle a,b\| ab,aba\rangle\cong \{e\}$
 
 ### <span style="color:cyan">定义</span> [表示 (presentation)]
 
@@ -106,7 +106,7 @@ $$f_{\alpha,\beta}:\pi_1(A_\alpha\cap A_\beta,x_0)\to \pi_1(A_\alpha,x_0)$$
 
 考虑集合
 $$
-    B=\bigcup_{\beta,\beta'\in S}\\{ f_{\beta,\beta'}(g)\cdot (f_{\beta',\beta}(g))^{-1}:g\in \pi_1(A_\beta\cap A_{\beta'},x_0)\\}
+    B=\bigcup_{\beta,\beta'\in S}\{ f_{\beta,\beta'}(g)\cdot (f_{\beta',\beta}(g))^{-1}:g\in \pi_1(A_\beta\cap A_{\beta'},x_0)\}
 $$
 则$B\subset \ker(\ast_{\alpha\in S}f_\alpha)$
 
@@ -127,11 +127,11 @@ $$
 
 1. 所有流形上的点都是"nice"的。
 2. Hawaiinn earring 中的原点不是 "nice" 的
-  $$X:=\bigcup_{n\in \mathbb{N}^+} \\{(x,y)\in \mathbb{R}^2:x^2+(y-\frac{1}{n})^2 = \frac{1}{n^2}\\}$$
+  $$X:=\bigcup_{n\in \mathbb{N}^+} \{(x,y)\in \mathbb{R}^2:x^2+(y-\frac{1}{n})^2 = \frac{1}{n^2}\}$$
 
 ## <span style="color:olive">命题</span> [Wedge]
 
-令$\\{(X_\alpha,x_\alpha)\\}\_{\alpha\in S}$为带点空间的族。假设 $x_\alpha$ 对所有$\alpha$都是 "nice" 的
+令$\{(X_\alpha,x_\alpha)\}_{\alpha\in S}$为带点空间的族。假设 $x_\alpha$ 对所有$\alpha$都是 "nice" 的
 则
 $$
     \pi_1(\bigvee_{\alpha\in S} X_\alpha, [x_\alpha]) \cong \ast_{\alpha\in S} \pi_1(X_\alpha,x_\alpha)

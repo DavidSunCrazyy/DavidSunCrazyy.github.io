@@ -82,7 +82,7 @@ $$p(x) = \begin{cases}0, & x \le 0, \\ \lambda e^{-\lambda x}, & x \ge 0. \end{c
 
 **联合分布**：$n$ 个参数为 $\lambda > 0$ 的指数分布随机变量之和：
 
-$$p(x) = \frac{\lambda^n}{\Gamma(n)} x^{n-1} e^{-\lambda x}\mathbb{1}\_{x \ge 0}$$
+$$p(x) = \frac{\lambda^n}{\Gamma(n)} x^{n-1} e^{-\lambda x}\mathbb{1}_{x \ge 0}$$
 
 这是伽马分布 $\Gamma(n, \lambda)$。
 

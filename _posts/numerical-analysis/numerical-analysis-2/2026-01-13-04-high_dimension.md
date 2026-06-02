@@ -195,12 +195,12 @@ $$\lim_{j \to \infty} \left( |v_j|_{k+1,p} + \sum_{i=1}^N |f_i(v_j)| \right) = 0
 
 由 Sobolev 空间的嵌入定理
 $$W^{k+1,p}(\Omega) \hookrightarrow W^{k,p}(\Omega),$$ 即存在
-$\\{v_j\\}\_{j=1}^\infty$ 的子列（不妨仍记为 $\{v_j\}\_{j=1}^\infty$）和
+$\{v_j\}_{j=1}^\infty$ 的子列（不妨仍记为 $\{v_j\}_{j=1}^\infty$）和
 $v \in W^{k,p}(\Omega)$ 使得
 $$\lim_{j \to \infty} \| v_j - v \|_{k,p} = 0.$$ 则
-$\\{v_j\\}_{j=1}^\infty$ 是 $W^{k,p}$ 中的 Cauchy 列。
+$\{v_j\}_{j=1}^\infty$ 是 $W^{k,p}$ 中的 Cauchy 列。
 
-由 (4.2.2) 得 $\\{v_j\\}_{j=1}^\infty$ 也是 $W^{k+1,p}$ 中的 Cauchy 列，且
+由 (4.2.2) 得 $\{v_j\}_{j=1}^\infty$ 也是 $W^{k+1,p}$ 中的 Cauchy 列，且
 $$\lim_{j \to \infty} \| v_j - v \|_{k+1,p} = 0.$$
 
 特别有

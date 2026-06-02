@@ -259,7 +259,7 @@ $$
 $$ P_{\theta}(\theta' \in C(\mathbf{X})) \leq 1 - \alpha. $$
 
 $$
-\implies \underbrace{P_{\theta}(\theta \in C(\mathbf{X}))}\_{\geq (1-\alpha)} \geq \underbrace{P_{\theta}(\theta' \in C(\mathbf{X}))}\_{\leq 1-\alpha}
+\implies \underbrace{P_{\theta}(\theta \in C(\mathbf{X}))}_{\geq (1-\alpha)} \geq \underbrace{P_{\theta}(\theta' \in C(\mathbf{X}))}_{\leq 1-\alpha}
 $$
 
 注意，上述定义表明，对于任何无偏置信集，假值覆盖的概率永远不会超过真实覆盖概率的最小值。
@@ -268,7 +268,7 @@ $$
 
 设 $X$ 是一个实值随机变量，满足 $X \sim f(x \mid \theta)$，其中 $\theta$ 是一个实值参数。设 $C(x) = [L(x), U(x)]$ 是 $\theta$ 的一个置信区间。如果 $L(x)$ 和 $U(x)$ 都是 $x$ 的递增函数，则对于任意值 $\theta^*$，
 $$
-\mathbb{E}\_{\theta^*}(\text{Length}[C(X)]) = \int_{\theta \neq \theta^*} P_{\theta^*}(\theta \in C(X)) \, d\theta.
+\mathbb{E}_{\theta^*}(\text{Length}[C(X)]) = \int_{\theta \neq \theta^*} P_{\theta^*}(\theta \in C(X)) \, d\theta.
 $$
 
 ### Bayesian

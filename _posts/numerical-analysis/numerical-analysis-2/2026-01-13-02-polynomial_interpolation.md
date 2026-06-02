@@ -799,7 +799,7 @@ $$\|A^{-1}\|_{\infty} \leq \left[ \min_{l \leq i \leq n} \left( |a_{ii}| - \sum_
 *Proof.*
 $$\|A^{-1}\|_{\infty} = \max_{|x_i|_\infty = 1} \|A^{-1}x\|_{\infty} = \min_{|x_i|_\infty = 1} \|Ax\|_{\infty}$$
 
-对于任意 $\\|x\\|\_{\infty} = 1$，设 $\|x_k\| = 1$，则有
+对于任意 $\|x\|_{\infty} = 1$，设 $\|x_k\| = 1$，则有
 $$\|Ax\|_{\infty} \geq |a_{kk}| - \sum_{j=1}^{n} |a_{kj}| \geq \min_{l \leq i \leq n} \left( |a_{il}| - \sum_{j=1}^{n} |a_{ij}| \right)$$ ◻
 
 
@@ -1125,7 +1125,7 @@ $$\|p\|_X \leq \alpha \|p\|_Y$$
 
 *Proof.* 不妨设 $g_1 \cdots g_n$ 线性无关
 
-设 $\theta = \min_{\sum_{i=1}^n \|c_i\| = 1} \\|\sum_{i=1}^n c_i g_i \\|$
+设 $\theta = \min_{\sum_{i=1}^n \|c_i\| = 1} \|\sum_{i=1}^n c_i g_i \|$
 
 由于 $g_1 \cdots g_n$ 线性无关，故 $\theta > 0$
 
@@ -1164,7 +1164,7 @@ $$\|f - P\|_X \leq \|f - P\|_Y + \omega(\delta, f) + \beta \|P\|_X \Omega(\delta
 
 *Proof.* 不妨设 $g_1 \cdots g_n$ 线性无关
 
-设 $\theta = \min_{\sum_{i=1}^n \|c_i\| = 1} \\|\sum_{i=1}^n c_i g_i\\|$
+设 $\theta = \min_{\sum_{i=1}^n \|c_i\| = 1} \|\sum_{i=1}^n c_i g_i\|$
 
 由于 $g_1 \cdots g_n$ 线性无关，故 $\theta > 0$
 

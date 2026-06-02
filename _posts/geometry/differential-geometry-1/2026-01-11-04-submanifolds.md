@@ -26,7 +26,7 @@ $$\varphi(U\cap S) = \varphi(U) \cap $\mathbb{R}^k$$
 
 **命题**：假设 $S$ 是 $M$ 的子流形。则：
 1. $S$ 是 $k$ 维光滑流形
-2. 其图集由 $\\{(U\cap S,\varphi')\\}$ 组成，其中 $\varphi' = \pi\circ\varphi|_{U\cap S}$，$\pi:\mathbb{R}^m\to$\mathbb{R}^k$ 是投影
+2. 其图集由 $\{(U\cap S,\varphi')\}$ 组成，其中 $\varphi' = \pi\circ\varphi|_{U\cap S}$，$\pi:\mathbb{R}^m\to$\mathbb{R}^k$ 是投影
 3. 包含 $\iota:S\hookrightarrow M$ 是光滑的
 
 ---
@@ -43,15 +43,15 @@ $$Df(p) = \begin{pmatrix}
 \frac{\partial f_n}{\partial x_1}(p) & \cdots & \frac{\partial f_n}{\partial x_m}(p)
 \end{pmatrix}$$
 
-对于流形间的映射 $f:M\to N$，$\operatorname{rank}\_p f = \operatorname{rank}\_{\varphi(p)}(\psi\circ f\circ\varphi^{-1})$
+对于流形间的映射 $f:M\to N$，$\operatorname{rank}_p f = \operatorname{rank}_{\varphi(p)}(\psi\circ f\circ\varphi^{-1})$
 
 **性质**：$\operatorname{rank} Df(p) \leq \min(m,n)$
 
 ### 最大秩
 
-**定义**：$f$ 在 $p$ 处具有**最大秩**，如果 $\operatorname{rank}\_p f = \min\\{m,n\\}$
+**定义**：$f$ 在 $p$ 处具有**最大秩**，如果 $\operatorname{rank}_p f = \min\{m,n\}$
 
-**常数秩**：$f$ 具有常数秩 $k$，如果 $\operatorname{rank}\_p f = k$，$\forall p\in M$
+**常数秩**：$f$ 具有常数秩 $k$，如果 $\operatorname{rank}_p f = k$，$\forall p\in M$
 
 ---
 
@@ -59,7 +59,7 @@ $$Df(p) = \begin{pmatrix}
 
 ### 逆函数定理 (Inverse Function Theorem)
 
-**定理**：设 $f\in C^\infty(M,N)$，$\dim M = \dim N = m$。如果对于某个 $p\in M$，$\operatorname{rank}\_p F = m$，则 $\exists p$ 的邻域 $U$ 使得 $f\|_U$ 是微分同胚
+**定理**：设 $f\in C^\infty(M,N)$，$\dim M = \dim N = m$。如果对于某个 $p\in M$，$\operatorname{rank}_p F = m$，则 $\exists p$ 的邻域 $U$ 使得 $f\|_U$ 是微分同胚
 
 **局部微分同胚**：$f\in C^\infty(M,N)$ 是局部微分同胚，如果 $\forall p\in M$，$\exists U\ni p$ 使得 $f\|_U$ 是微分同胚
 
@@ -120,8 +120,8 @@ $$\psi \circ f \circ \varphi^{-1}(x_1,\cdots,x_m) = (x_1,\cdots,x_k,0,\cdots,0)$
 ### 1. 正则值的例子
 
 $f:\mathbb{R}^n\to\mathbb{R}$，$(x_1,\cdots,x_n)\mapsto x_1^2+\cdots+x_n^2$
-- $Df(p) = (2x_1,\cdots,2x_n)$ 在 $\mathbb{R}^n\setminus\\{0\\}$ 上具有秩 $1$
-- $f^{-1}(1) = S^{n-1}$ 是 $\mathbb{R}^n\setminus\\{0\\}$ 的余维 $1$ 的子流形
+- $Df(p) = (2x_1,\cdots,2x_n)$ 在 $\mathbb{R}^n\setminus\{0\}$ 上具有秩 $1$
+- $f^{-1}(1) = S^{n-1}$ 是 $\mathbb{R}^n\setminus\{0\}$ 的余维 $1$ 的子流形
 
 ### 2. $\mathbb{R}^3$ 中的例子
 

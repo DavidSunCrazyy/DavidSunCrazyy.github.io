@@ -86,9 +86,9 @@ $$\lim_{T \to \infty} \frac{1}{2T} \int_{-T}^T \|f(t)\|^2 \, dt = \sum_{x \in \m
 
 $$\frac{S_n - nm}{\sqrt{n}} \implies \mathcal{N}(0, \sigma^2)$$
 
-**等价形式**：设 $\bar{X}\_n = \frac{1}{n}\sum_{j=1}^n X_j$，则
+**等价形式**：设 $\bar{X}_n = \frac{1}{n}\sum_{j=1}^n X_j$，则
 
-$$\sqrt{n}(\bar{X}\_n - m) \implies \mathcal{N}(0, \sigma^2)$$
+$$\sqrt{n}(\bar{X}_n - m) \implies \mathcal{N}(0, \sigma^2)$$
 
 **标准化形式**：设 $Y_n = \frac{S_n - nm}{\sigma\sqrt{n}}$，则 $Y_n \implies \mathcal{N}(0,1)$。
 
@@ -117,7 +117,7 @@ $$\sqrt{n}(\bar{X}\_n - m) \implies \mathcal{N}(0, \sigma^2)$$
 如果满足：
 1. **林德伯格条件**：对于所有 $\epsilon > 0$，有
 
-$$\sum_{m=1}^n \mathbb{E}[X_{n,m}^2 \mathbb{1}\_{\{\|X_{n,m}\|>\epsilon\}}] \to 0 \quad \text{当 } n \to \infty$$
+$$\sum_{m=1}^n \mathbb{E}[X_{n,m}^2 \mathbb{1}_{\{\|X_{n,m}\|>\epsilon\}}] \to 0 \quad \text{当 } n \to \infty$$
 
 2. **方差条件**：
 
@@ -133,7 +133,7 @@ $$\sum_{m=1}^n X_{n,m} \implies \mathcal{N}(0, \sigma^2)$$
 
 **等价表述**：对于任意 $\epsilon > 0$，
 
-$$\sum_{m=1}^n \mathbb{E}[X_{n,m}^2 \mathbb{1}\_{\{\|X_{n,m}\|>\epsilon\}}] = o\left(\sum_{m=1}^n \mathbb{E}[X_{n,m}^2]\right)$$
+$$\sum_{m=1}^n \mathbb{E}[X_{n,m}^2 \mathbb{1}_{\{\|X_{n,m}\|>\epsilon\}}] = o\left(\sum_{m=1}^n \mathbb{E}[X_{n,m}^2]\right)$$
 
 ### 3.3 退化情形
 
@@ -165,7 +165,7 @@ $$\lim_{n \to \infty} \frac{1}{\alpha_n^3} \sum_{m=1}^n \mathbb{E}[\|Y_m - \math
 
 ### 4.3 与林德伯格条件的关系
 
-李雅普诺夫条件蕴含林德伯格条件（利用 $X^2 \mathbb{1}\_{\|X\|>\epsilon} \le \|X\|^{2+\delta}/\epsilon^{\delta}$），因此是更强的条件。
+李雅普诺夫条件蕴含林德伯格条件（利用 $X^2 \mathbb{1}_{\|X\|>\epsilon} \le \|X\|^{2+\delta}/\epsilon^{\delta}$），因此是更强的条件。
 
 ---
 
@@ -240,7 +240,7 @@ $$\mathbb{P}[S_n = k] \approx \frac{1}{\sqrt{2\pi np(1-p)}} \exp\left(-\frac{(k-
 
 1. 计算每个 $X_{n,m}$ 的二阶矩
 2. 验证方差收敛：$\sum_m \mathbb{E}[X_{n,m}^2] \to \sigma^2$
-3. 对于任意 $\epsilon > 0$，估计 $$\sum_m \mathbb{E}[X_{n,m}^2 \mathbb{1}\_{\|_{n,m}\|>\epsilon}]$$
+3. 对于任意 $\epsilon > 0$，估计 $$\sum_m \mathbb{E}[X_{n,m}^2 \mathbb{1}_{\|_{n,m}\|>\epsilon}]$$
 4. 验证该尾项趋于 0
 
 ### 8.3 应用李雅普诺夫定理的步骤
@@ -310,9 +310,9 @@ $$\mathbb{P}[S_n = k] \approx \frac{1}{\sqrt{2\pi np(1-p)}} \exp\left(-\frac{(k-
 
 **定理** 设 $\{X_n\}$ 为 $\mathbb{R}^d$ 值 i.i.d. 随机向量，$\mathbb{E}[X_1] = \mu$，$\operatorname{Cov}(X_1) = \Sigma$（正定）。
 
-则 $\sqrt{n}(\bar{X}\_n - \mu) \implies \mathcal{N}\_d(0, \Sigma)$。
+则 $\sqrt{n}(\bar{X}_n - \mu) \implies \mathcal{N}_d(0, \Sigma)$。
 
-其中 $\mathcal{N}\_d(0, \Sigma)$ 是 $d$ 维正态分布。
+其中 $\mathcal{N}_d(0, \Sigma)$ 是 $d$ 维正态分布。
 
 ---
 

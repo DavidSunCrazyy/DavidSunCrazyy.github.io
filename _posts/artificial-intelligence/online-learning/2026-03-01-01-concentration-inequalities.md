@@ -182,7 +182,7 @@ $$\begin {aligned}
 \end{aligned}
 $$
 
-对$S^4$应用马尔可夫公式： $$\operatorname{Prb}[\\|S\\| \geq t \cdot \sqrt{n}] = \operatorname{Prb}[S^4 \geq t^4 \cdot n^2] \leq \frac{\mathbb{E}S^4}{t^4 \cdot n^2} \leq \frac{3n^2}{t^4 \cdot n^2} = \frac{3}{t^4}$$
+对$S^4$应用马尔可夫公式： $$\operatorname{Prb}[\|S\| \geq t \cdot \sqrt{n}] = \operatorname{Prb}[S^4 \geq t^4 \cdot n^2] \leq \frac{\mathbb{E}S^4}{t^4 \cdot n^2} \leq \frac{3n^2}{t^4 \cdot n^2} = \frac{3}{t^4}$$
 
 取 $t = 10\sqrt{\ln n}$：$\operatorname{Prb}[S \geq t \cdot \sqrt{n}] \leq \frac{3}{10000 (\ln n)^2}$
 

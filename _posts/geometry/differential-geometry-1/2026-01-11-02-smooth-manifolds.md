@@ -18,7 +18,7 @@ use_math: true
 
 **可微性**：$f$ 在 $p\in U$ 处可微，如果存在线性映射 $Df(p):W\to V$ 使得：
 
-$$\lim_{x\to 0}\frac{f(p+x)-f(p)-Df(p)(x)}{\\|x\\|} = 0$$
+$$\lim_{x\to 0}\frac{f(p+x)-f(p)-Df(p)(x)}{\|x\|} = 0$$
 
 **重要性质**：
 1. $Df(p)$ 是唯一的
@@ -39,7 +39,7 @@ $$C^\infty(U,V) = \bigcap_{k\geq 0} C^k(U,V)$$
 
 ### 光滑图集
 
-**定义**：图集 $\mathcal{A} = \\{(U_i, \varphi_i)\\}\_{i\in I}$ 是**光滑的**，如果所有粘合映射
+**定义**：图集 $\mathcal{A} = \{(U_i, \varphi_i)\}_{i\in I}$ 是**光滑的**，如果所有粘合映射
 
 $$\varphi_{ij} = \varphi_j \circ \varphi_i^{-1}|_{\varphi_i(U_{ij})}$$
 
@@ -63,7 +63,7 @@ $$\varphi_2 \circ \varphi_1^{-1}|_{\varphi_1(U_1\cap U_2)}$$
 
 **命题**：
 1. 每个光滑图集 $\mathcal{A}$ 都包含在唯一的最大图集 $\tilde{\mathcal{A}}$ 中
-2. $\mathcal{A}\_1$ 和 $\mathcal{A}\_2$ 包含在同一个最大图集中当且仅当 $\mathcal{A}\_1\cup\mathcal{A}\_2$ 是光滑图集
+2. $\mathcal{A}_1$ 和 $\mathcal{A}_2$ 包含在同一个最大图集中当且仅当 $\mathcal{A}_1\cup\mathcal{A}_2$ 是光滑图集
 
 ---
 
@@ -86,7 +86,7 @@ $$\varphi_2 \circ \varphi_1^{-1}|_{\varphi_1(U_1\cap U_2)}$$
 **定向**：选择了定向图集的流形
 
 **相反定向**：设 $(M,\mathcal{A})$ 是定向流形，$R:\mathbb{R}^n\to\mathbb{R}^n$，$(x_1,\ldots,x_n)\mapsto(x_1,\ldots,-x_n)$
-则 $\bar{\mathcal{A}} = \\{(U_\alpha,R\circ\varphi_\alpha)\\}$ 是定向图集，$(M,\bar{\mathcal{A}})$ 具有相反定向
+则 $\bar{\mathcal{A}} = \{(U_\alpha,R\circ\varphi_\alpha)\}$ 是定向图集，$(M,\bar{\mathcal{A}})$ 具有相反定向
 
 ### 命题
 
@@ -105,7 +105,7 @@ $$\varphi_2 \circ \varphi_1^{-1}|_{\varphi_1(U_1\cap U_2)}$$
 
 $$\phi_S \circ \phi_N^{-1}(u,v) = \left(\frac{u}{u^2+v^2},\frac{v}{u^2+v^2}\right)$$
 
-在 $\mathbb{R}^2\setminus\\{(0,0)\\}$ 上是光滑的微分同胚
+在 $\mathbb{R}^2\setminus\{(0,0)\}$ 上是光滑的微分同胚
 
 ### 2. 实射影空间 $\mathbb{R}P^n$ 是光滑流形
 

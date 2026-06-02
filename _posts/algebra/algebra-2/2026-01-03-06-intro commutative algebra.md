@@ -24,7 +24,7 @@ use_math: true
 $$V(S) = \{(a_1, \ldots, a_n) \in K^n : f(a_1, \ldots, a_n) = 0 \text{ 对所有 } f \in S\}$$
 
 **Definition**（理想的零点集）
-对理想$I \subseteq K[x_1, \ldots, x_n]$，定义$V(I) = V(\\{f : f \in I\\})$。
+对理想$I \subseteq K[x_1, \ldots, x_n]$，定义$V(I) = V(\{f : f \in I\})$。
 
 **Definition**（理想的根）
 对理想$I \subseteq R$，定义$I$的根为：
@@ -33,7 +33,7 @@ $$\sqrt{I} = \{r \in R : \exists n > 0 \text{ 使得 } r^n \in I\}$$
 **Theorem**（希尔伯特零点定理的强形式）
 设$K$是代数闭域，$I \subseteq K[x_1, \ldots, x_n]$是一个理想。则：
 $$I(V(I)) = \sqrt{I}$$
-其中$I(V(I)) = \\{f \in K[x_1, \ldots, x_n] : f(a_1, \ldots, a_n) = 0 \text{ 对所有 } (a_1, \ldots, a_n) \in V(I)\\}$。
+其中$I(V(I)) = \{f \in K[x_1, \ldots, x_n] : f(a_1, \ldots, a_n) = 0 \text{ 对所有 } (a_1, \ldots, a_n) \in V(I)\}$。
 
 
 **Definition**（素谱）
@@ -46,7 +46,7 @@ $\operatorname{Spec}(\mathbb{C}[x,y])$的元素包括：
 - $(f)$：其中$f \in \mathbb{C}[x,y]$是不可约多项式（高度为1的素理想）
 
 **Definition**（扎里斯基拓扑）
-在$\operatorname{Spec}(R)$上定义扎里斯基拓扑：闭集是形如$V(I) = \\{\mathfrak{p} \in \operatorname{Spec}(R) : I \subseteq \mathfrak{p}\\}$的集合，其中$I$是$R$的理想。
+在$\operatorname{Spec}(R)$上定义扎里斯基拓扑：闭集是形如$V(I) = \{\mathfrak{p} \in \operatorname{Spec}(R) : I \subseteq \mathfrak{p}\}$的集合，其中$I$是$R$的理想。
 
 **Proposition**（扎里斯基拓扑的性质）
 1. $V(0) = \operatorname{Spec}(R)$，$V(R) = \emptyset$
@@ -54,7 +54,7 @@ $\operatorname{Spec}(\mathbb{C}[x,y])$的元素包括：
 3. $V(I \cap J) = V(I) \cup V(J)$
 
 **Definition**（扎里斯基闭集）
-对于$S \subseteq \operatorname{Spec}(R)$，定义$V(S) = \\{\mathfrak{p} \in \operatorname{Spec}(R) : \mathfrak{p} \supseteq \mathfrak{q} \text{ 对某个 } \mathfrak{q} \in S\\}$。
+对于$S \subseteq \operatorname{Spec}(R)$，定义$V(S) = \{\mathfrak{p} \in \operatorname{Spec}(R) : \mathfrak{p} \supseteq \mathfrak{q} \text{ 对某个 } \mathfrak{q} \in S\}$。
 
 
 ## 积环
@@ -129,7 +129,7 @@ $$S^{-1}R:=\{(r,s)\in R\times S\}/\sim$$
 *Proof.* 设$R$是整环，$a/s, b/t \in S^{-1}R$，且$(a/s)(b/t) = 0$。则$ab/(st) = 0/1$，这意味着存在$u \in S$使得$u(ab \cdot 1 - 0 \cdot st) = uab = 0$。由于$R$是整环且$u \neq 0$，我们有$ab = 0$。由于$R$是整环，所以$a = 0$或$b = 0$，因此$a/s = 0$或$b/t = 0$。
 
 **Proposition**（分式环的性质）
-如果$S = R \setminus \\{0\\}$，则$S^{-1}R = \operatorname{Frac}(R)$是域。
+如果$S = R \setminus \{0\}$，则$S^{-1}R = \operatorname{Frac}(R)$是域。
 
 **Lemma**（素理想的补集是乘法封闭的）
 设$R$是一个环，$\mathfrak{p}$为素理想，则$S = R \setminus \mathfrak{p}$是乘法封闭子集。
@@ -218,9 +218,9 @@ $(\Leftarrow)$ 如果$R \setminus \mathfrak{m}$恰好是所有可逆元的集合
 
 
 **Example**（局部化的例子）
-1. $R=\mathbb{Z}$，$S=\mathbb{Z}\setminus \\{0\\}$，则$S^{-1}R=\mathbb{Q}$。
-2. $R=\mathbb{Z}$，$S=\\{2^n:n\ge0\\}$，则$S^{-1}R=\mathbb{Z}[1/2] = \\{a/2^n : a \in \mathbb{Z}, n \geq 0\\}$。
-3. $R=F[x]$（$F$是域），$S = \\{1, x, x^2, \ldots \\}$，则$S^{-1}R = F[x, x^{-1}]$（Laurent多项式环）。
+1. $R=\mathbb{Z}$，$S=\mathbb{Z}\setminus \{0\}$，则$S^{-1}R=\mathbb{Q}$。
+2. $R=\mathbb{Z}$，$S=\{2^n:n\ge0\}$，则$S^{-1}R=\mathbb{Z}[1/2] = \{a/2^n : a \in \mathbb{Z}, n \geq 0\}$。
+3. $R=F[x]$（$F$是域），$S = \{1, x, x^2, \ldots \}$，则$S^{-1}R = F[x, x^{-1}]$（Laurent多项式环）。
 
 ## Nilradical和Jacobson Radical
 
@@ -237,7 +237,7 @@ $$\sqrt{0} = \bigcap_{\mathfrak{p} \in \operatorname{Spec} R} \mathfrak{p}$$
 *Proof.*
 ($\subseteq$) 设$x \in \sqrt{0}$，则存在$n > 0$使得$x^n = 0$。对任意素理想$\mathfrak{p}$，由于$0 \in \mathfrak{p}$，我们有$x^n \in \mathfrak{p}$。由于$\mathfrak{p}$是素理想，$x \in \mathfrak{p}$。
 
-($\supseteq$) 设$x \notin \sqrt{0}$。考虑集合$S = \\{1, x, x^2, x^3, \ldots\\}$。由于$x$不是幂零元，$0 \notin S$。由Zorn引理，存在包含$(0)$且与$S$不相交的极大理想$\mathfrak{m}$。可以证明这样的$\mathfrak{m}$是素理想：如果$ab \in \mathfrak{m}$但$a, b \notin \mathfrak{m}$，则$(\mathfrak{m}, a) \cap S \neq \emptyset$和$(\mathfrak{m}, b) \cap S \neq \emptyset$，这会导致$S \cap \mathfrak{m} \neq \emptyset$，矛盾。因此$\mathfrak{m}$是素理想且$x \notin \mathfrak{m}$，所以$x \notin \bigcap_{\mathfrak{p} \in \operatorname{Spec} R} \mathfrak{p}$。
+($\supseteq$) 设$x \notin \sqrt{0}$。考虑集合$S = \{1, x, x^2, x^3, \ldots\}$。由于$x$不是幂零元，$0 \notin S$。由Zorn引理，存在包含$(0)$且与$S$不相交的极大理想$\mathfrak{m}$。可以证明这样的$\mathfrak{m}$是素理想：如果$ab \in \mathfrak{m}$但$a, b \notin \mathfrak{m}$，则$(\mathfrak{m}, a) \cap S \neq \emptyset$和$(\mathfrak{m}, b) \cap S \neq \emptyset$，这会导致$S \cap \mathfrak{m} \neq \emptyset$，矛盾。因此$\mathfrak{m}$是素理想且$x \notin \mathfrak{m}$，所以$x \notin \bigcap_{\mathfrak{p} \in \operatorname{Spec} R} \mathfrak{p}$。
 
 **Definition**（Jacobson Radical）
 设$R$是环，定义$R$的**Jacobson Radical**为：

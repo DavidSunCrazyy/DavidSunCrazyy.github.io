@@ -54,7 +54,7 @@ f(\mathbf{x} \mid \theta) = P_\theta(\mathbf{X} = \mathbf{x} \mid T(\mathbf{X}) 
 $$
 By sufficiency, this can be rewritten as:
 $$
-f(\mathbf{x} \mid \theta) = \underbrace{P_\theta(T(\mathbf{X}) = T(\mathbf{x}))}\_{g(T(\mathbf{x}) \mid \theta)} \cdot \underbrace{P(\mathbf{X} = \mathbf{x} \mid T(\mathbf{X}) = T(\mathbf{x}))}\_{h(\mathbf{x})}
+f(\mathbf{x} \mid \theta) = \underbrace{P_\theta(T(\mathbf{X}) = T(\mathbf{x}))}_{g(T(\mathbf{x}) \mid \theta)} \cdot \underbrace{P(\mathbf{X} = \mathbf{x} \mid T(\mathbf{X}) = T(\mathbf{x}))}_{h(\mathbf{x})}
 $$
 Thus, we have:
 $$
@@ -175,7 +175,7 @@ $$
 
 设 $T(X)$ 是一个基于样本 $X = (X_1, X_2, \dots, X_n)$ 的统计量，其分布依赖于参数 $\theta$。如果对于所有函数 $g(\cdot)$，满足以下条件：
 $$
-\mathbb{E}\_\theta[g(T)] = 0 \quad \text{对所有 } \theta \implies g(T) = 0 \quad \text{几乎处处成立},
+\mathbb{E}_\theta[g(T)] = 0 \quad \text{对所有 } \theta \implies g(T) = 0 \quad \text{几乎处处成立},
 $$
 则称统计量 $T(X)$ 是**完全统计量**。
 

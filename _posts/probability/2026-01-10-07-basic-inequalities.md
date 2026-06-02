@@ -58,9 +58,9 @@ $$\mathbb{E}[\varphi(X)\|\mathcal{A}] \ge \varphi(\mathbb{E}[X\|\mathcal{A}])$$
 - $\mathbb{E}[Z] = \mathbb{E}[X]$
 - $\|Z\| \le \mathbb{E}[\|X\|\|\mathcal{A}]$ a.s.
 - $\mathbb{E}[\|Z\|] \le \mathbb{E}[\|X\|]$
-- $\mathbb{E}[\|Z\|\mathbb{1}\_A] \le \mathbb{E}[\|X\|\mathbb{1}\_A]$ 对所有 $A \in \mathcal{A}$ 成立
+- $\mathbb{E}[\|Z\|\mathbb{1}_A] \le \mathbb{E}[\|X\|\mathbb{1}_A]$ 对所有 $A \in \mathcal{A}$ 成立
 
-**绝对值比较**：$\mathbb{E}[X\|\mathcal{A}] \le \mathbb{E}[Y\|\mathcal{A}]$ a.s. 当且仅当 $\mathbb{E}[X\mathbb{1}\_A] \le \mathbb{E}[Y\mathbb{1}\_A]$ 对所有 $A\in\mathcal{A}$ 成立。
+**绝对值比较**：$\mathbb{E}[X\|\mathcal{A}] \le \mathbb{E}[Y\|\mathcal{A}]$ a.s. 当且仅当 $\mathbb{E}[X\mathbb{1}_A] \le \mathbb{E}[Y\mathbb{1}_A]$ 对所有 $A\in\mathcal{A}$ 成立。
 
 ## 6. Kolmogorov 不等式
 

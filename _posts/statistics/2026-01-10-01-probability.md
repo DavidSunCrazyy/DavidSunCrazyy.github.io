@@ -16,22 +16,22 @@ use_math: true
 
 **定义 独立随机变量**
 
-设 $\mathbf{X}\_1, \ldots, \mathbf{X}\_n$ 为一列随机向量，其联合概率密度（或质量）函数为 $f(\mathbf{x}\_1, \ldots, \mathbf{x}\_n)$，$\mathbf{X}\_i$ 的边缘概率密度（或质量）函数为 $f_{\mathbf{X}\_i}(\mathbf{x}\_i)$。如果对任意 $(\mathbf{x}\_1, \ldots, \mathbf{x}\_n)$，都有
+设 $\mathbf{X}_1, \ldots, \mathbf{X}_n$ 为一列随机向量，其联合概率密度（或质量）函数为 $f(\mathbf{x}_1, \ldots, \mathbf{x}_n)$，$\mathbf{X}_i$ 的边缘概率密度（或质量）函数为 $f_{\mathbf{X}_i}(\mathbf{x}_i)$。如果对任意 $(\mathbf{x}_1, \ldots, \mathbf{x}_n)$，都有
 $$
-f(\mathbf{x}\_1, \ldots, \mathbf{x}\_n) = f_{\mathbf{X}\_1}(\mathbf{x}\_1) \cdot \ldots \cdot f_{\mathbf{X}\_n}(\mathbf{x}\_n) = \prod_{i=1}^{n} f_{\mathbf{X}\_i}(\mathbf{x}\_i)
+f(\mathbf{x}_1, \ldots, \mathbf{x}_n) = f_{\mathbf{X}_1}(\mathbf{x}_1) \cdot \ldots \cdot f_{\mathbf{X}_n}(\mathbf{x}_n) = \prod_{i=1}^{n} f_{\mathbf{X}_i}(\mathbf{x}_i)
 $$
-则称 $\mathbf{X}\_1, \ldots, \mathbf{X}\_n$ 是相互独立的随机向量（mutually independent vectors）。如果每个 $\mathbf{X}\_i$ 都是一维的，则称 $\mathbf{X}\_1, \ldots, \mathbf{X}\_n$ 是相互独立的随机变量（mutually independent variables）。
+则称 $\mathbf{X}_1, \ldots, \mathbf{X}_n$ 是相互独立的随机向量（mutually independent vectors）。如果每个 $\mathbf{X}_i$ 都是一维的，则称 $\mathbf{X}_1, \ldots, \mathbf{X}_n$ 是相互独立的随机变量（mutually independent variables）。
 
 **命题**
 
-设 $\mathbf{X}\_1, \ldots, \mathbf{X}\_n$ 是一列随机向量，则 $\mathbf{X}\_1, \ldots, \mathbf{X}\_n$ 相互独立当且仅当存在函数 $g_i(\mathbf{x}\_i)$，$i=1, \ldots, n$，使得 $(\mathbf{X}\_1, \ldots, \mathbf{X}\_n)$ 的联合概率密度（或质量）函数可以写为：
+设 $\mathbf{X}_1, \ldots, \mathbf{X}_n$ 是一列随机向量，则 $\mathbf{X}_1, \ldots, \mathbf{X}_n$ 相互独立当且仅当存在函数 $g_i(\mathbf{x}_i)$，$i=1, \ldots, n$，使得 $(\mathbf{X}_1, \ldots, \mathbf{X}_n)$ 的联合概率密度（或质量）函数可以写为：
 $$
-f(\mathbf{x}\_1, \ldots, \mathbf{x}\_n) = g_1(\mathbf{x}\_1) \cdot \ldots \cdot g_n(\mathbf{x}\_n)
+f(\mathbf{x}_1, \ldots, \mathbf{x}_n) = g_1(\mathbf{x}_1) \cdot \ldots \cdot g_n(\mathbf{x}_n)
 $$
 
 **命题**
 
-设 $\mathbf{X}\_1, \ldots, \mathbf{X}\_n$ 是一列相互独立的随机向量，$g_i(\mathbf{x}\_i)$ 是 $\mathbf{x}\_i$ 的一元函数，$i=1, \ldots, n$。则随机变量 $U_i = g_i(\mathbf{X}\_i)$，$i=1, \ldots, n$ 相互独立。
+设 $\mathbf{X}_1, \ldots, \mathbf{X}_n$ 是一列相互独立的随机向量，$g_i(\mathbf{x}_i)$ 是 $\mathbf{x}_i$ 的一元函数，$i=1, \ldots, n$。则随机变量 $U_i = g_i(\mathbf{X}_i)$，$i=1, \ldots, n$ 相互独立。
 
 
 ## Distributions
@@ -457,13 +457,13 @@ $$
 
 **定理 多元 $\Delta$ 方法**
 
-设随机样本 $\mathbf{X}\_1, \ldots, \mathbf{X}\_n$ 满足：$\mathbb{E}(\mathbf{X}\_{ij}) = \mu_i$ 且 $\operatorname{Cov}(\mathbf{X}\_{ik}, \mathbf{X}\_{jk}) = \sigma_{ij}$。函数 $g$ 有连续一阶偏导，且在指定的 $\boldsymbol{\mu} = (\mu_1, \ldots, \mu_p)$ 处满足：
+设随机样本 $\mathbf{X}_1, \ldots, \mathbf{X}_n$ 满足：$\mathbb{E}(\mathbf{X}_{ij}) = \mu_i$ 且 $\operatorname{Cov}(\mathbf{X}_{ik}, \mathbf{X}_{jk}) = \sigma_{ij}$。函数 $g$ 有连续一阶偏导，且在指定的 $\boldsymbol{\mu} = (\mu_1, \ldots, \mu_p)$ 处满足：
 $$
 \tau^2 = \sum_{i=1}^{p} \sum_{j=1}^{p} \sigma_{ij} \frac{\partial g(\boldsymbol{\mu})}{\partial \mu_i} \cdot \frac{\partial g(\boldsymbol{\mu})}{\partial \mu_j} > 0,
 $$
 则
 $$
-\sqrt{n}[g(\overline{\mathbf{X}}\_1, \ldots, \overline{\mathbf{X}}\_p) - g(\mu_1, \ldots, \mu_p)] \xrightarrow{\text{d}} \mathcal{N}(0, \tau^2)
+\sqrt{n}[g(\overline{\mathbf{X}}_1, \ldots, \overline{\mathbf{X}}_p) - g(\mu_1, \ldots, \mu_p)] \xrightarrow{\text{d}} \mathcal{N}(0, \tau^2)
 $$
 
 ## Order Statistics
@@ -556,10 +556,10 @@ b. 如果 $X_1, \dots, X_n$ 独立且 $X_i \sim \chi_{p_i}^2$，则 $X_1 + \cdot
 
 **证明**
 
-下面我们归纳地求 $S^2$ 的分布. 以 $\overline{X}\_k$ 和 $S_k^2$ 分别记前 $k$ 个观测值的样本均值和方差（注意各个观测值可能原本是无序的，此处将它们看成有序的原因，仅仅是为了方便证明）. 我们很容易证明（见习题 5.15）：
+下面我们归纳地求 $S^2$ 的分布. 以 $\overline{X}_k$ 和 $S_k^2$ 分别记前 $k$ 个观测值的样本均值和方差（注意各个观测值可能原本是无序的，此处将它们看成有序的原因，仅仅是为了方便证明）. 我们很容易证明（见习题 5.15）：
 $$
 \begin{equation}
-(n-1) S_n^2 = (n-2) S_{n-1}^2 + \left(\frac{n-1}{n}\right)(X_n - \overline{X}\_{n-1})^2 
+(n-1) S_n^2 = (n-2) S_{n-1}^2 + \left(\frac{n-1}{n}\right)(X_n - \overline{X}_{n-1})^2 
 \end{equation}
 $$
 现在令 $n=2$，并定义 $0 \times S_1^2 = 0$，则由式 (5.3.1) 有：
@@ -569,16 +569,16 @@ $$
 由于 $(X_2 - X_1)/\sqrt{2}$ 服从 $\mathcal{N}(0, 1)$ 分布，于是根据引理 5.3.2 有 $S_2^2 \sim \chi_1^2$. 利用归纳法，假设当 $n=k$ 时有 $(k-1)S_k^2 \sim \chi_{k-1}^2$，则对 $n=k+1$，根据式 (5.3.1) 有：
 $$
 \begin{equation}
-k S_{k+1}^2 = (k-1) S_k^2 + \left(\frac{k}{k+1}\right)(X_{k+1} - \overline{X}\_k)^2 
+k S_{k+1}^2 = (k-1) S_k^2 + \left(\frac{k}{k+1}\right)(X_{k+1} - \overline{X}_k)^2 
 \end{equation}
 $$
-根据归纳假设 $(k-1)S_k^2 \sim \chi_{k-1}^2$，如果我们能够证明 $(k/(k+1))(X_{k+1} - \overline{X}\_k)^2 \sim \chi_1^2$ 且与 $S_k^2$ 独立，则由引理 5.3.2(b) 可得 $kS_{k+1}^2 \sim \chi_k^2$，从而定理得证.
+根据归纳假设 $(k-1)S_k^2 \sim \chi_{k-1}^2$，如果我们能够证明 $(k/(k+1))(X_{k+1} - \overline{X}_k)^2 \sim \chi_1^2$ 且与 $S_k^2$ 独立，则由引理 5.3.2(b) 可得 $kS_{k+1}^2 \sim \chi_k^2$，从而定理得证.
 
-$(X_{k+1} - \overline{X}\_k)^2$ 与 $S_k^2$ 的独立性仍可利用定理 4.6.12 加以证明. 事实上，向量 $(X_{k+1}, \overline{X}\_k)$ 与 $S_k^2$ 独立，故任意其函数均与 $S_k^2$ 独立. 此外，注意到 $X_{k+1} - \overline{X}\_k$ 是正态随机变量，且其期望为 0，方差为
+$(X_{k+1} - \overline{X}_k)^2$ 与 $S_k^2$ 的独立性仍可利用定理 4.6.12 加以证明. 事实上，向量 $(X_{k+1}, \overline{X}_k)$ 与 $S_k^2$ 独立，故任意其函数均与 $S_k^2$ 独立. 此外，注意到 $X_{k+1} - \overline{X}_k$ 是正态随机变量，且其期望为 0，方差为
 $$
-\operatorname{Var}(X_{k+1} - \overline{X}\_k) = \frac{k+1}{k}
+\operatorname{Var}(X_{k+1} - \overline{X}_k) = \frac{k+1}{k}
 $$
-因此 $(k/(k+1))(X_{k+1} - \overline{X}\_k)^2 \sim \chi_1^2$，定理得证.
+因此 $(k/(k+1))(X_{k+1} - \overline{X}_k)^2 \sim \chi_1^2$，定理得证.
 
 
 通过分解联合概率密度函数证明了 $\overline{X}$ 和 $S^2$ 的独立性，事实上，我们还可以利用下面的引理完成该证明. 这个引理将正态随机样本的独立性与相关联在一起.

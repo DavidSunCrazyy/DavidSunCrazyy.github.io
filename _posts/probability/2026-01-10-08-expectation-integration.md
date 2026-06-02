@@ -99,7 +99,7 @@ $$\mathbb{E}[aX + bY] = a\mathbb{E}[X] + b\mathbb{E}[Y]$$
 
 - **线性性**：$\mathbb{E}[aX+bY\|\mathcal{A}] = a\mathbb{E}[X\|\mathcal{A}] + b\mathbb{E}[Y\|\mathcal{A}]$
 - **取期望**：$\mathbb{E}[\mathbb{E}[X\|\mathcal{A}]] = \mathbb{E}[X]$
-- **塔式性质**：若 $\mathcal{A}\_1 \subset \mathcal{A}\_2$，则 $\mathbb{E}[\mathbb{E}[X\|\mathcal{A}\_2]\|\mathcal{A}\_1] = \mathbb{E}[X\|\mathcal{A}\_1]$
+- **塔式性质**：若 $\mathcal{A}_1 \subset \mathcal{A}_2$，则 $\mathbb{E}[\mathbb{E}[X\|\mathcal{A}_2]\|\mathcal{A}_1] = \mathbb{E}[X\|\mathcal{A}_1]$
 - **独立性的简化**：若 $X$ 与 $\mathcal{A}$ 独立，则 $\mathbb{E}[X\|\mathcal{A}] = \mathbb{E}[X]$
 
 ## 5. 收敛定理关系图

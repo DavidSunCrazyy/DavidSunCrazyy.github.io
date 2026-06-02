@@ -26,7 +26,7 @@ use_math: true
 
 **Example**（自由模的例子）
 1. $R^n$是自由$R$-模，标准基为$\{e_1, \ldots, e_n\}$，其中$e_i$的第$i$个分量为$1$，其余为$0$。
-2. $R^{(\Lambda)} = \\{(r_\lambda)\_{\lambda \in \Lambda} : r\_\lambda \in R \text{ 且只有有限个 } r_\lambda \neq 0\\}$是自由$R$-模，基为$\\\{e_\lambda : \lambda \in \Lambda\\}$，其中$e_\lambda$的第$\lambda$个分量为$1$，其余为$0$。
+2. $R^{(\Lambda)} = \{(r_\lambda)_{\lambda \in \Lambda} : r_\lambda \in R \text{ 且只有有限个 } r_\lambda \neq 0\}$是自由$R$-模，基为$\{e_\lambda : \lambda \in \Lambda\}$，其中$e_\lambda$的第$\lambda$个分量为$1$，其余为$0$。
 3. 如果$R$是域，则$R$-模就是$R$-向量空间，自由$R$-模就是有限维向量空间。
 
 **Proposition**（自由模的泛性质）

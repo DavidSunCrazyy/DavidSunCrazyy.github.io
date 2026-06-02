@@ -17,7 +17,7 @@ use_math: true
 
 $f:R^n\to R^m$为$R$-线性映射 $\iff$ $A=(a_{ij})\in M_{m,n}(R)$
 
-即 $$f\left(\begin{matrix}1\\0\\ \vdots\\0\end{matrix}\right)=\left(\begin{matrix}a_{11}\\a_{21}\\ \vdots\\a_{m1}\end{matrix}\right)$$
+即 $$f\left(\begin{matrix}1\\0\\ \vdots\\0\end{matrix}\right)=\left(\begin{matrix}a_{11}\a_{21}\\ \vdots\a_{m1}\end{matrix}\right)$$
 
 这里暗中使用了标准基 $$\left(\begin{matrix}1\\0\\ \vdots\\0\end{matrix}\right),\ldots,\left(\begin{matrix}0\\0\\ \vdots\\1\end{matrix}\right)$$
 
