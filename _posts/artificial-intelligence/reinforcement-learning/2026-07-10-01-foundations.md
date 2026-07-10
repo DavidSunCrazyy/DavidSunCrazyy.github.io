@@ -117,29 +117,16 @@ $$V_{\pi}(s_t) = \mathbb{E}_{\pi}\left[ R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t
 
 ---
 
-## 1.5 RL 算法分类学
+## 1.5 RL 算法分类
 
-理解眼花缭乱的 RL 算法，第一步是建立清晰的分类框架：
+强化学习算法可分为无模型和基于模型两大类。
 
-```
-                        ┌──────────────────┐
-                        │   RL Algorithms  │
-                        └────────┬─────────┘
-                                 │
-              ┌──────────────────┴──────────────────┐
-              ▼                                      ▼
-    ┌─────────────────┐                    ┌─────────────────┐
-    │   Model-Free    │                    │   Model-Based   │
-    │  (直接从经验学)  │                    │  (先学/用模型)   │
-    └────────┬────────┘                    └────────┬────────┘
-             │                                      │
-    ┌────────┼────────┐                    ┌────────┼────────┐
-    ▼        ▼        ▼                    ▼        ▼        ▼
- ┌──────┐ ┌──────┐ ┌──────┐             ┌──────┐ ┌──────┐ ┌──────┐
- │Value │ │Policy│ │Actor │             │Value │ │Policy│ │Actor │
- │Based │ │Based │ │Critic│             │Based │ │Based │ │Critic│
- └──────┘ └──────┘ └──────┘             └──────┘ └──────┘ └──────┘
-```
+无模型方法直接从与环境的交互经验中学习，不依赖环境模型，可进一步分为：
+- 基于价值的方法（如 Q-Learning、DQN），学习价值函数来选择动作；
+- 基于策略的方法（如 REINFORCE），直接优化策略参数；
+- 演员-评论家方法（如 PPO、A3C），结合价值函数与策略学习。
+
+基于模型方法先学习或使用环境模型，然后基于模型进行规划或学习，同样可分为基于价值、基于策略和演员-评论家三类，例如 Dyna-Q（价值类）和 MBPO（演员-评论家类）。
 
 **第一层划分——是否有模型**：
 
@@ -194,31 +181,18 @@ $$V_{\pi}(s_t) = \mathbb{E}_{\pi}\left[ R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t
 
 ---
 
-## 1.7 本书（讲义）的讲解路线
+## 1.7 讲解路线
 
-本讲义将按以下逻辑展开，后面的每一章都以前一章为基础：
+将按以下逻辑展开，后面的每一章都以前一章为基础：
 
-```
-第 1 章 ──── RL 概念框架、三大组件、算法分类（本章）
+- 第 1 章 ──── RL 概念框架、三大组件、算法分类（本章）
+- 第 2 章 ──── MDP：形式化序列决策问题的数学语言
+- 第 3 章 ──── 动态规划：当模型已知时的精确求解方法
+- 第 4 章 ──── 无模型方法：MC → TD → SARSA → Q-Learning
+- 第 5 章 ──── 价值函数逼近 + DQN：扩展到大规模/连续状态空间
+- 第 6 章 ──── 策略梯度 + 高级策略优化：REINFORCE → A2C → GAE → TRPO → PPO 
+- 第 7 章 ──── 前沿专题：LLM 对齐 (RLHF/DPO/GRPO/RLVR)、推理涌现 (DeepSeek R1)、扩散模型 RL
 
-    ▼
-第 2 章 ──── MDP：形式化序列决策问题的数学语言
-
-    ▼
-第 3 章 ──── 动态规划：当模型已知时的精确求解方法
-
-    ▼
-第 4 章 ──── 无模型方法：MC → TD → SARSA → Q-Learning
-
-    ▼
-第 5 章 ──── 价值函数逼近 + DQN：扩展到大规模/连续状态空间
-
-    ▼
-第 6 章 ──── 策略梯度 + 高级策略优化：REINFORCE → A2C → GAE → TRPO → PPO
-
-    ▼
-第 7 章 ──── 前沿专题：LLM 对齐 (RLHF/DPO/GRPO/RLVR)、推理涌现 (DeepSeek R1)、扩散模型 RL
-```
 
 ---
 
@@ -245,3 +219,17 @@ $$V_{\pi}(s_t) = \mathbb{E}_{\pi}\left[ R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t
 - 三大组件——**策略**（决定做什么）、**价值函数**（评估有多好）、**模型**（预测环境响应）——构成了 RL 系统的核心。
 - RL 算法可沿两个维度分类：**是否有模型**（Model-Free vs Model-Based）和**学什么**（Value-Based / Policy-Based / Actor-Critic）。
 - 不存在万能算法——选择取决于样本效率、稳定性、探索策略、状态/动作空间特性等多重权衡。
+
+---
+
+## 导航栏
+
+**强化学习 系列文章**
+
+- [第一章：什么是强化学习？](/posts/ai/reinforcement-learning/foundations/)
+- [第二章：马尔可夫决策过程 (MDP)](/posts/ai/reinforcement-learning/mdp/)
+- [第三章：动态规划 —— 模型已知时的精确求解](/posts/ai/reinforcement-learning/dynamic-programming/)
+- [第四章：无模型方法 —— Monte Carlo 与时差学习](/posts/ai/reinforcement-learning/model-free/)
+- [第五章：价值函数逼近与 Deep Q-Network](/posts/ai/reinforcement-learning/value-based-deep/)
+- [第六章：策略梯度方法 —— 从 REINFORCE 到 PPO](/posts/ai/reinforcement-learning/policy-gradient/)
+- [第七章：RL 前沿专题 —— LLM 对齐、推理涌现与扩散模型](/posts/ai/reinforcement-learning/llm-alignment-frontiers/)

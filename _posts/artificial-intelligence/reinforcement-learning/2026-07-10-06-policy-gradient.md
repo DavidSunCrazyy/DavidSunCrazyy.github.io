@@ -611,3 +611,17 @@ Actor-Critic ──── 用 Critic 降方差，方差仍大
 - **GAE** 用 $\lambda$ 参数平滑控制偏差-方差权衡，计算高效。
 - **TRPO** 用 KL 约束保证单调改进，理论完备但实现复杂。
 - **PPO** 用简单的裁剪机制达到同等稳定性——已成为现代 RL 的事实标准算法。
+
+---
+
+## 导航栏
+
+**强化学习 系列文章**
+
+- [第一章：什么是强化学习？](/posts/ai/reinforcement-learning/foundations/)
+- [第二章：马尔可夫决策过程 (MDP)](/posts/ai/reinforcement-learning/mdp/)
+- [第三章：动态规划 —— 模型已知时的精确求解](/posts/ai/reinforcement-learning/dynamic-programming/)
+- [第四章：无模型方法 —— Monte Carlo 与时差学习](/posts/ai/reinforcement-learning/model-free/)
+- [第五章：价值函数逼近与 Deep Q-Network](/posts/ai/reinforcement-learning/value-based-deep/)
+- [第六章：策略梯度方法 —— 从 REINFORCE 到 PPO](/posts/ai/reinforcement-learning/policy-gradient/)
+- [第七章：RL 前沿专题 —— LLM 对齐、推理涌现与扩散模型](/posts/ai/reinforcement-learning/llm-alignment-frontiers/)

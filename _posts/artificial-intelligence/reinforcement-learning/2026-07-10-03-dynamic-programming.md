@@ -312,3 +312,17 @@ $$\pi_{k+1}(s) = \arg\max_{a} \sum_{s', r} p(s', r \mid s, a) \left[ r + \gamma 
 - **价值迭代** 直接迭代 Bellman 最优算子，利用压缩映射定理保证收敛。
 - **策略迭代** 交替执行策略评估和策略改进，有限步内到达最优。
 - DP 方法需要完整模型，这引出了下一章的**模型自由方法**——用采样（Monte Carlo / TD）替代对模型的依赖。
+
+---
+
+## 导航栏
+
+**强化学习 系列文章**
+
+- [第一章：什么是强化学习？](/posts/ai/reinforcement-learning/foundations/)
+- [第二章：马尔可夫决策过程 (MDP)](/posts/ai/reinforcement-learning/mdp/)
+- [第三章：动态规划 —— 模型已知时的精确求解](/posts/ai/reinforcement-learning/dynamic-programming/)
+- [第四章：无模型方法 —— Monte Carlo 与时差学习](/posts/ai/reinforcement-learning/model-free/)
+- [第五章：价值函数逼近与 Deep Q-Network](/posts/ai/reinforcement-learning/value-based-deep/)
+- [第六章：策略梯度方法 —— 从 REINFORCE 到 PPO](/posts/ai/reinforcement-learning/policy-gradient/)
+- [第七章：RL 前沿专题 —— LLM 对齐、推理涌现与扩散模型](/posts/ai/reinforcement-learning/llm-alignment-frontiers/)

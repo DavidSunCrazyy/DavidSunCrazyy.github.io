@@ -239,3 +239,17 @@ $$p_i = |\delta_i| + \epsilon, \quad P(i) = \frac{p_i^{\alpha}}{\sum_k p_k^{\alp
 - **目标网络** 固定学习目标，解决 bootstrapping 中的非平稳性问题，是防止训练发散的关键。
 - **DQN = 神经网络 + 经验回放 + 目标网络 + Q-Learning**——是深度 RL 的里程碑。
 - 基于价值的方法**只适用于离散动作空间**（$\arg\max$ 操作）。对于连续动作（机器人控制、自动驾驶），我们需要**策略梯度方法**——第六章的主题。
+
+---
+
+## 导航栏
+
+**强化学习 系列文章**
+
+- [第一章：什么是强化学习？](/posts/ai/reinforcement-learning/foundations/)
+- [第二章：马尔可夫决策过程 (MDP)](/posts/ai/reinforcement-learning/mdp/)
+- [第三章：动态规划 —— 模型已知时的精确求解](/posts/ai/reinforcement-learning/dynamic-programming/)
+- [第四章：无模型方法 —— Monte Carlo 与时差学习](/posts/ai/reinforcement-learning/model-free/)
+- [第五章：价值函数逼近与 Deep Q-Network](/posts/ai/reinforcement-learning/value-based-deep/)
+- [第六章：策略梯度方法 —— 从 REINFORCE 到 PPO](/posts/ai/reinforcement-learning/policy-gradient/)
+- [第七章：RL 前沿专题 —— LLM 对齐、推理涌现与扩散模型](/posts/ai/reinforcement-learning/llm-alignment-frontiers/)

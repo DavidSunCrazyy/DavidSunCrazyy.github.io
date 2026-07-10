@@ -102,7 +102,7 @@ $$
 
 **例子**
 
-设 $X_1, \ldots, X_n$ 是来自正态分布 $N(\mu, \sigma^2)$ 的随机样本，令 $\bar{X} = (1/n)\sum_{i=1}^n X_i$ 和 $S^2 = [1/(n-1)]\sum_{i=1}^n (X_i - \barline{X})^2$。则
+设 $X_1, \ldots, X_n$ 是来自正态分布 $N(\mu, \sigma^2)$ 的随机样本，令 $\bar{X} = (1/n)\sum_{i=1}^n X_i$ 和 $S^2 = [1/(n-1)]\sum_{i=1}^n (X_i - \bar{X})^2$。则
 
 1. $\bar{X}$ 和 $S^2$ 是独立的随机变量，
 2. $\bar{X}$ 服从 $N(\mu, \sigma^2/n)$ 分布，
