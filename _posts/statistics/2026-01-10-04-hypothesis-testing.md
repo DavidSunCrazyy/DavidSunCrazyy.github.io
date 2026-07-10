@@ -10,7 +10,7 @@ use_math: true
 
 **定义 假设，原假设，备择假设**
 
-**假设（hypothesis）**就是关于总体参数的一个陈述。
+**假设（hypothesis）** 就是关于总体参数的一个陈述。
 
 这个定义是颇为笼统的，但其重点在于假设作出的是关于总体的陈述。假设检验的目的就是依靠来自总体的样本去决定互补的两个假设哪个为真。
 
@@ -46,14 +46,14 @@ $$
 
 **证明**
 
-根据 Factorization Theorem，$X$ 的概率密度函数或概率质量函数可以写成 $f(x \| \theta) = g(T(x) \| \theta) h(x)$，其中 $g(t \| \theta)$ 是 $T$ 的概率密度函数或概率质量函数而 $h(x)$ 不依赖于 $\theta$。于是
+根据 Factorization Theorem，$X$ 的概率密度函数或概率质量函数可以写成 $f(x | \theta) = g(T(x) | \theta) h(x)$，其中 $g(t | \theta)$ 是 $T$ 的概率密度函数或概率质量函数而 $h(x)$ 不依赖于 $\theta$。于是
 $$
 \begin{aligned}
-\lambda(x) &= \frac{\sup_{\theta_0} L(\theta \| x)}{\sup_{\theta} L(\theta \| x)} \\
-&= \frac{\sup_{\theta_0} f(x \| \theta)}{\sup_{\theta} f(x \| \theta)} \\
-&= \frac{\sup_{\theta_0} g(T(x) \| \theta) h(x)}{\sup_{\theta} g(T(x) \| \theta) h(x)} \text{$T$ 是充分的} \\
-&= \frac{\sup_{\theta_0} g(T(x) \| \theta)}{\sup_{\theta} g(T(x) \| \theta)} \text{$h(x)$ 不依赖于 $\theta$} \\
-&= \frac{\sup_{\theta_0} L^*(\theta \| T(x))}{\sup_{\theta} L^*(\theta \| T(x))} \text{$g(t \| \theta)$ 是 $T$ 的 pdf 或 pmf} \\
+\lambda(x) &= \frac{\sup_{\theta_0} L(\theta | x)}{\sup_{\theta} L(\theta | x)} \\
+&= \frac{\sup_{\theta_0} f(x | \theta)}{\sup_{\theta} f(x | \theta)} \\
+&= \frac{\sup_{\theta_0} g(T(x) | \theta) h(x)}{\sup_{\theta} g(T(x) | \theta) h(x)} \text{$T$ 是充分的} \\
+&= \frac{\sup_{\theta_0} g(T(x) | \theta)}{\sup_{\theta} g(T(x) | \theta)} \text{$h(x)$ 不依赖于 $\theta$} \\
+&= \frac{\sup_{\theta_0} L^*(\theta | T(x))}{\sup_{\theta} L^*(\theta | T(x))} \text{$g(t | \theta)$ 是 $T$ 的 pdf 或 pmf} \\
 &= \lambda^*(T(x)).
 \end{aligned}
 $$
@@ -158,12 +158,12 @@ a. （充分性）任何满足条件 (1) 和 (2) 的检验都是 UMP  level $ \a
 
 b. （必要性）如果存在一个满足条件 (1) 和 (2) 的检验（其中 $ k > 0 $），则每个 UMP 水平为 $ \alpha $ 的检验都是大小为 $ \alpha $ 的检验（满足 (3)），并且每个 UMP 水平为 $ \alpha $ 的检验都满足 (1)，除非可能在一个集合 $ A $ 上，该集合满足 $ P_{\theta_0}(\mathbf{X} \in A) = P_{\theta_1}(\mathbf{X} \in A) = 0 $。
 
-**总结，N-P 引理：** $ H_0: \theta = \theta_0 $ 对于 $ H_1: \theta = \theta_1 $$
+**总结，N-P 引理：** $H_0: \theta = \theta_0$ 对于 $H_1: \theta = \theta_1$
 
 $$
 *\begin{cases}
-\mathbf{x} \in R \quad \text{if} \quad f(\mathbf{x} \| \theta_1) > k f(\mathbf{x} \| \theta_0) \\
-\mathbf{x} \in R^c \quad \text{if} \quad f(\mathbf{x} \| \theta_1) < k f(\mathbf{x} \| \theta_0)
+\mathbf{x} \in R \quad \text{if} \quad f(\mathbf{x} | \theta_1) > k f(\mathbf{x} | \theta_0) \\
+\mathbf{x} \in R^c \quad \text{if} \quad f(\mathbf{x} | \theta_1) < k f(\mathbf{x} | \theta_0)
 \end{cases}, \quad k \geq 0
 $$
 
@@ -171,7 +171,7 @@ $$
 ** \alpha = P_{\theta_0}(\mathbf{X} \in R).
 $$
 
-a.（充分性）* & ** $\implies$ UMP
+a.（充分性）$\ast$ & $\ast\ast$ $\implies$ UMP
 b. （必要性）如果存在满足 * & ** 的检验，则 UMP $\implies$ * & **，除非可能在一个集合 $ A $ 上，该集合满足 $ P_{\theta_i}(\mathbf{X} \in A) = 0, i = 0, 1 $。
 
 
@@ -183,7 +183,7 @@ b. （必要性）如果存在满足 * & ** 的检验，则 UMP $\implies$ * & *
 - 原假设：$ H_0: \theta = \theta_0 $
 - 备择假设：$ H_1: \theta = \theta_1 $
 
-设 $ f(x \| \theta_0) $ 和 $ f(x \| \theta_1) $ 分别为原假设和备择假设下的概率密度函数（或概率质量函数）。
+设 $ f(x | \theta_0) $ 和 $ f(x | \theta_1) $ 分别为原假设和备择假设下的概率密度函数（或概率质量函数）。
 
 目标是找到一个拒绝域 $ R $，使得：
 1. 第一类错误的概率 $ P_{\theta_0}(X \in R) \leq \alpha $；
@@ -192,10 +192,10 @@ b. （必要性）如果存在满足 * & ** 的检验，则 UMP $\implies$ * & *
 
 根据 Neyman-Pearson 引理，最优的拒绝域 $ R $ 应满足以下规则：
 $$
-x \in R \quad \text{if} \quad f(x \| \theta_1) > k f(x \| \theta_0),
+x \in R \quad \text{if} \quad f(x | \theta_1) > k f(x | \theta_0),
 $$
 $$
-x \notin R \quad \text{if} \quad f(x \| \theta_1) < k f(x \| \theta_0),
+x \notin R \quad \text{if} \quad f(x | \theta_1) < k f(x | \theta_0),
 $$
 其中 $ k \geq 0 $ 是一个常数，用于确保第一类错误的概率不超过 $ \alpha $。
 
@@ -206,8 +206,8 @@ $$
 $$
 \phi(x) =
 \begin{cases}
-1, & \text{if } f(x \| \theta_1) > k f(x \| \theta_0), \\
-0, & \text{if } f(x \| \theta_1) < k f(x \| \theta_0).
+1, & \text{if } f(x | \theta_1) > k f(x | \theta_0), \\
+0, & \text{if } f(x | \theta_1) < k f(x | \theta_0).
 \end{cases}
 $$
 
@@ -220,23 +220,23 @@ $$
 
 1. 定义两个集合：
 $$
-A = \{x : f(x \| \theta_1) > k f(x \| \theta_0)\}, \quad B = \{x : f(x \| \theta_1) < k f(x \| \theta_0)\}.
+A = \{x : f(x | \theta_1) > k f(x | \theta_0)\}, \quad B = \{x : f(x | \theta_1) < k f(x | \theta_0)\}.
 $$
 根据定义，检验 $ \phi(x) $ 在 $ A $ 上取值 1，在 $ B $ 上取值 0。
 
 2. 比较两种检验的功效：
 $$
-P_{\theta_1}(\phi(X) = 1) - P_{\theta_1}(\psi(X) = 1) = \int_A [1 - \psi(x)] f(x \| \theta_1) \, dx - \int_B \psi(x) f(x \| \theta_1) \, dx.
+P_{\theta_1}(\phi(X) = 1) - P_{\theta_1}(\psi(X) = 1) = \int_A [1 - \psi(x)] f(x | \theta_1) \, dx - \int_B \psi(x) f(x | \theta_1) \, dx.
 $$
 
-3. 注意到在 $ A $ 上 $ f(x \| \theta_1) > k f(x \| \theta_0) $，在 $ B $ 上 $ f(x \| \theta_1) < k f(x \| \theta_0) $。因此，可以将上式重写为：
+3. 注意到在 $ A $ 上 $ f(x | \theta_1) > k f(x | \theta_0) $，在 $ B $ 上 $ f(x | \theta_1) < k f(x | \theta_0) $。因此，可以将上式重写为：
 $$
-P_{\theta_1}(\phi(X) = 1) - P_{\theta_1}(\psi(X) = 1) \geq k \left[ \int_A [1 - \psi(x)] f(x \| \theta_0) \, dx - \int_B \psi(x) f(x \| \theta_0) \, dx \right].
+P_{\theta_1}(\phi(X) = 1) - P_{\theta_1}(\psi(X) = 1) \geq k \left[ \int_A [1 - \psi(x)] f(x | \theta_0) \, dx - \int_B \psi(x) f(x | \theta_0) \, dx \right].
 $$
 
 4. 因为 $ \psi(x) $ 是水平为 $ \alpha $ 的检验，且 $ \phi(x) $ 满足第一类错误的概率恰好为 $ \alpha $，所以：
 $$
-\int_A [1 - \psi(x)] f(x \| \theta_0) \, dx - \int_B \psi(x) f(x \| \theta_0) \, dx \geq 0.
+\int_A [1 - \psi(x)] f(x | \theta_0) \, dx - \int_B \psi(x) f(x | \theta_0) \, dx \geq 0.
 $$
 
 5. 因此，$ P_{\theta_1}(\phi(X) = 1) \geq P_{\theta_1}(\psi(X) = 1) $，即 $ \phi(x) $ 是功效最大的检验。
@@ -249,7 +249,7 @@ $$
 
 1. 假设存在一个点 $ x_0 $，使得：
 $$
-f(x_0 \| \theta_1) > k f(x_0 \| \theta_0), \quad \text{但 } \phi^*(x_0) = 0.
+f(x_0 | \theta_1) > k f(x_0 | \theta_0), \quad \text{但 } \phi^*(x_0) = 0.
 $$
 
 2. 构造一个新的检验 $ \phi'(x) $，使得：
@@ -262,8 +262,8 @@ $$
 $$
 
 3. 检查新检验的性质：
-- 新检验的第一类错误概率不会超过原检验，因为 $ x_0 $ 对应的 $ f(x_0 \| \theta_0) $ 很小。
-- 新检验的功效大于原检验，因为 $ f(x_0 \| \theta_1) > k f(x_0 \| \theta_0) $。
+- 新检验的第一类错误概率不会超过原检验，因为 $ x_0 $ 对应的 $ f(x_0 | \theta_0) $ 很小。
+- 新检验的功效大于原检验，因为 $ f(x_0 | \theta_1) > k f(x_0 | \theta_0) $。
 
 4. 这与 $ \phi^*(x) $ 是 UMP 检验的假设矛盾。
 
@@ -272,7 +272,7 @@ $$
 总结
 
 通过充分性和必要性的证明，我们得出结论：Neyman-Pearson 引理成立。具体来说：
-- 如果一个检验满足似然比规则 $ f(x \| \theta_1) > k f(x \| \theta_0) $，则它是 UMP 检验。
+- 如果一个检验满足似然比规则 $ f(x | \theta_1) > k f(x | \theta_0) $，则它是 UMP 检验。
 - 反之，任何 UMP 检验都必须满足该规则。
 
 $$
@@ -283,15 +283,15 @@ $$
 
 **推论 充分统计量**
 
-假设 $T(X)$ 是参数 $\theta$ 的充分统计量，且 $g(t \| \theta_i)$ 是对应于 $\theta_i$ 的 $T$ 的概率密度函数（pdf）或概率质量函数（pmf），其中 $i = 0, 1$。那么，基于 $T$ 的任何检验，其拒绝域为 $S$（即 $T$ 的样本空间的一个子集），如果满足以下条件，则该检验是水平为 $\alpha$ 的一致最大功效 (UMP) 检验：
+假设 $T(X)$ 是参数 $\theta$ 的充分统计量，且 $g(t | \theta_i)$ 是对应于 $\theta_i$ 的 $T$ 的概率密度函数（pdf）或概率质量函数（pmf），其中 $i = 0, 1$。那么，基于 $T$ 的任何检验，其拒绝域为 $S$（即 $T$ 的样本空间的一个子集），如果满足以下条件，则该检验是水平为 $\alpha$ 的一致最大功效 (UMP) 检验：
 
 1.
 $$
-t \in S \quad \text{当且仅当} \quad g(t \| \theta_1) > k g(t \| \theta_0)
+t \in S \quad \text{当且仅当} \quad g(t | \theta_1) > k g(t | \theta_0)
 $$
 2.
 $$
-t \in S^c \quad \text{当且仅当} \quad g(t \| \theta_1) < k g(t \| \theta_0)
+t \in S^c \quad \text{当且仅当} \quad g(t | \theta_1) < k g(t | \theta_0)
 $$
 对于某个 $k \geq 0$，并且
 3.
@@ -301,13 +301,13 @@ $$
 
 **定义 MLR**
 
-如果对于一个具有实值参数 $\theta$ 的单变量随机变量 $T$，其概率密度函数（pdf）或概率质量函数（pmf）族 $\{ g(t \| \theta) : \theta \in \Theta \}$ 满足：对于任意 $\theta_2 > \theta_1$，比值 $\frac{g(t \| \theta_2)}{g(t \| \theta_1)}$ 在集合 $\{ t : g(t \| \theta_1) > 0 \text{ 或 } g(t \| \theta_2) > 0 \}$ 上是关于 $t$ 的单调非减函数，则称该族具有 **单调似然比性质（Monotone Likelihood Ratio, MLR）**。
+如果对于一个具有实值参数 $\theta$ 的单变量随机变量 $T$，其概率密度函数（pdf）或概率质量函数（pmf）族 $\{ g(t | \theta) : \theta \in \Theta \}$ 满足：对于任意 $\theta_2 > \theta_1$，比值 $\frac{g(t | \theta_2)}{g(t | \theta_1)}$ 在集合 $\{ t : g(t | \theta_1) > 0 \text{ 或 } g(t | \theta_2) > 0 \}$ 上是关于 $t$ 的单调非减函数，则称该族具有 **单调似然比性质（Monotone Likelihood Ratio, MLR）**。
 
 注意，如果 $0 < c$，则 $\frac{c}{0}$ 被定义为 $\infty$。
 
 **定理 Karlin-Rubin**
 
-考虑检验假设 $H_0: \theta \leq \theta_0$ 对于备择假设 $H_1: \theta > \theta_0$。假设 $T$ 是参数 $\theta$ 的充分统计量，且 $T$ 的概率密度函数（pdf）或概率质量函数（pmf）族 $\{ g(t \| \theta): \theta \in \Theta \}$ 具有单调似然比性质（MLR）。那么，对于任意 $t_0$，如果拒绝 $H_0$ 当且仅当 $T > t_0$，则该检验是一个水平为 $\alpha$ 的一致最大功效 (UMP) 检验，其中 $\alpha = P_{\theta_0}(T > t_0)$。
+考虑检验假设 $H_0: \theta \leq \theta_0$ 对于备择假设 $H_1: \theta > \theta_0$。假设 $T$ 是参数 $\theta$ 的充分统计量，且 $T$ 的概率密度函数（pdf）或概率质量函数（pmf）族 $\{ g(t | \theta): \theta \in \Theta \}$ 具有单调似然比性质（MLR）。那么，对于任意 $t_0$，如果拒绝 $H_0$ 当且仅当 $T > t_0$，则该检验是一个水平为 $\alpha$ 的一致最大功效 (UMP) 检验，其中 $\alpha = P_{\theta_0}(T > t_0)$。
 
 Karlin-Rubin 定理给出了找到一个UMP校验的最简单方式。
 

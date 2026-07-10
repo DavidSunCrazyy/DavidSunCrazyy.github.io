@@ -20,7 +20,7 @@ $\theta \in \Theta$ 是参数，$\Theta$ 是参数空间。
 
 **引理**
 
-如果 $p(\mathbf{x}\|\theta)$ 是 $\mathbf{X}$ 的联合概率密度函数（pdf）或联合概率质量函数（pmf），且 $q(t\|\theta)$ 是 $T(\mathbf{X})$ 的概率密度函数（pdf）或概率质量函数（pmf），那么 $T(\mathbf{X})$ 是 $\theta$ 的**充分统计量**，当且仅当对于样本空间中的每一个 $\mathbf{x}$，比值 $p(\mathbf{x}\|\theta) / q(T(\mathbf{x})\|\theta)$ 作为 $\theta$ 的函数是常数。
+如果 $p(\mathbf{x}|\theta)$ 是 $\mathbf{X}$ 的联合概率密度函数（pdf）或联合概率质量函数（pmf），且 $q(t|\theta)$ 是 $T(\mathbf{X})$ 的概率密度函数（pdf）或概率质量函数（pmf），那么 $T(\mathbf{X})$ 是 $\theta$ 的**充分统计量**，当且仅当对于样本空间中的每一个 $\mathbf{x}$，比值 $p(\mathbf{x}|\theta) / q(T(\mathbf{x})|\theta)$ 作为 $\theta$ 的函数是常数。
 
 **命题 充分性原理 (Sufficiency Principle)**
 
@@ -29,9 +29,9 @@ $\theta \in \Theta$ 是参数，$\Theta$ 是参数空间。
 
 **定理 Factorization Theorem**
 
-设 $f(\mathbf{x}\|\theta)$ 表示样本 $X$ 的联合概率密度函数（pdf）或联合概率质量函数（pmf）。统计量 $T(\mathbf{X})$ 是 $\theta$ 的**充分统计量**，当且仅当存在函数 $g(t\|\theta)$ 和 $h(\mathbf{x})$，使得对于所有样本点 $\mathbf{x}$ 和所有参数点 $\theta$，有：
+设 $f(\mathbf{x}|\theta)$ 表示样本 $X$ 的联合概率密度函数（pdf）或联合概率质量函数（pmf）。统计量 $T(\mathbf{X})$ 是 $\theta$ 的**充分统计量**，当且仅当存在函数 $g(t|\theta)$ 和 $h(\mathbf{x})$，使得对于所有样本点 $\mathbf{x}$ 和所有参数点 $\theta$，有：
 $$
-f(\mathbf{x}\|\theta) = g(T(\mathbf{x})\|\theta) h(\mathbf{x}).
+f(\mathbf{x}|\theta) = g(T(\mathbf{x})|\theta) h(\mathbf{x}).
 $$
 
 **证明**
@@ -137,7 +137,7 @@ $\forall \mathbf{x}, \mathbf{y}$ as long as $T'(\mathbf{x}) = T'(\mathbf{y})$ $\
 
 $$
 \begin{aligned}
-F_R(r\|\theta) & = P_\theta (R \leq r) \\
+F_R(r|\theta) & = P_\theta (R \leq r) \\
 & = P_\theta (\max X_i - \min X_i \leq r) \\
 & = P_\theta (\max (Z_i + \theta) - \min (Z_i + \theta) \leq r) \\
 & = P_\theta (\max Z_i - \min Z_i + \theta - \theta \leq r) \\
@@ -158,7 +158,7 @@ $$
 事实上，若令 $X_i = \sigma Z_i$，则 $Z_1, \cdots, Z_n$ 是取自 $F(x)$（即取 $\sigma = 1$）总体的随机样本。于是，$X_1 / X_n, \cdots, X_{n-1} / X_n$ 的累积分布函数为
 
 $$
-F(y_1, \cdots, y_{n-1} \| \sigma) = P_\sigma (X_1 / X_n \leq y_1, \cdots, X_{n-1} / X_n \leq y_{n-1})
+F(y_1, \cdots, y_{n-1} | \sigma) = P_\sigma (X_1 / X_n \leq y_1, \cdots, X_{n-1} / X_n \leq y_{n-1})
 $$
 $$
 = P_\sigma (\sigma Z_1 / (\sigma Z_n) \leq y_1, \cdots, \sigma Z_{n-1} / (\sigma Z_n) \leq y_{n-1})

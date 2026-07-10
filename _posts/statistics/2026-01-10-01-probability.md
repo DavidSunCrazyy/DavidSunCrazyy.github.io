@@ -43,9 +43,9 @@ $$
 假设 $g(x)$ 的反函数为 $x = h(y)$（即 $h(y) = g^{-1}(y)$）。
 
 则随机变量 $Y$ 的概率密度函数 $f_Y(y)$ 为：
-$$f_Y(y) = f_X(h(y)) \left\| \frac{d}{dy} h(y) \right\|$$
+$$f_Y(y) = f_X(h(y)) \left| \frac{d}{dy} h(y) \right|$$
 或者，更详细地表示为：
-$$f_Y(y) = f_X(g^{-1}(y)) \left\| \frac{d}{dy} g^{-1}(y) \right\|$$
+$$f_Y(y) = f_X(g^{-1}(y)) \left| \frac{d}{dy} g^{-1}(y) \right|$$
 其中， $y$ 的取值范围是 $X$ 的取值范围通过函数 $g(x)$ 映射后得到的范围。
 
 **例子 Gamma Distribution**
