@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Differential Geometry 切空间 (Tangent Spaces)"
 permalink: /posts/differential-geometry-05-tangent-spaces/
-tags: differential-geometry
+categories: differential-geometry
+tags: [differential-geometry, tangent-spaces, derivations, cotangent-spaces, tangent-bundle, vector-bundles]
 use_math: true
 ---
 

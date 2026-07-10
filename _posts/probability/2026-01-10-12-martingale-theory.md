@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Probability Theory I 鞅论专题"
 permalink: /posts/martingale-theory/
-tags: probability-theory
+categories: probability-theory
+tags: [probability-theory, martingales, stopping-times, optional-stopping, doob-decomposition, martingale-convergence]
 use_math: true
 ---
 

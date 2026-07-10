@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Differential Geometry 子流形 (Submanifolds)"
 permalink: /posts/differential-geometry-04-submanifolds/
-tags: differential-geometry
+categories: differential-geometry
+tags: [differential-geometry, submanifolds, embeddings, immersions, regular-level-sets, whitney-embedding]
 use_math: true
 ---
 

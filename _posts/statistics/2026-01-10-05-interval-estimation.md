@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Statistical Inference 区间估计"
 permalink: /posts/statistical-inference/interval-estimation/
-tags: statistical-inference
+categories: statistical-inference
+tags: [statistical-inference, interval-estimation, confidence-intervals, pivotal-quantities, bayesian-credible-intervals]
 use_math: true
 ---
 

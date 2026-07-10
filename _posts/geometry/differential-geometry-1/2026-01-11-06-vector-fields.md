@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Differential Geometry 向量场 (Vector Fields)"
 permalink: /posts/differential-geometry-06-vector-fields/
-tags: differential-geometry
+categories: differential-geometry
+tags: [differential-geometry, vector-fields, lie-bracket, flows, integral-curves, frobenius-theorem]
 use_math: true
 ---
 

@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "第七章：RL 前沿专题 —— LLM 对齐、推理涌现与扩散模型"
 permalink: /posts/ai/reinforcement-learning/llm-alignment-frontiers/
-tags: reinforcement-learning
+categories: reinforcement-learning
+tags: [reinforcement-learning, llm-alignment, rlhf, reasoning-emergence, chain-of-thought, diffusion-models]
 use_math: true
 ---
 

@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Statistical Inference 渐进评估"
 permalink: /posts/statistical-inference/asymptotic-evaluation/
-tags: statistical-inference
+categories: statistical-inference
+tags: [statistical-inference, asymptotic-theory, consistency, asymptotic-normality, delta-method, mle-asymptotics, efficiency]
 use_math: true
 ---
 

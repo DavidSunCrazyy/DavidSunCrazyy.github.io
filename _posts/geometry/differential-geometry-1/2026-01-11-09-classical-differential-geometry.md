@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Differential Geometry 经典微分几何 (Classical Differential Geometry)"
 permalink: /posts/differential-geometry-09-classical-differential-geometry/
-tags: differential-geometry
+categories: differential-geometry
+tags: [differential-geometry, classical-differential-geometry, curves, surfaces, curvature, gauss-bonnet, frenet-frame]
 use_math: true
 ---
 

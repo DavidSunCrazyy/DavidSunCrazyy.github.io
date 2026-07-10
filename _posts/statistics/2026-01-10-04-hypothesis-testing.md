@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Statistical Inference 假设检验"
 permalink: /posts/statistical-inferenc/hypothesis-testing/
-tags: statistical-inference
+categories: statistical-inference
+tags: [statistical-inference, hypothesis-testing, neyman-pearson, likelihood-ratio, p-value, power, ump-tests]
 use_math: true
 ---
 

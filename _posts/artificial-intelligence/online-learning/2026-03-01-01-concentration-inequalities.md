@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Online Learning 集中不等式"
 permalink: /posts/ai/online-learning/concentration-inequalities/
-tags: online-learning
+categories: online-learning
+tags: [online-learning, concentration-inequalities, hoeffding, bernstein, chernoff-bound, subgaussian]
 use_math: true
 ---
 

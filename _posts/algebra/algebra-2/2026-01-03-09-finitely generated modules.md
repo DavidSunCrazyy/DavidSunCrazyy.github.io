@@ -1,9 +1,11 @@
 ---
+note: true
 layout: post
 title: "Algebra II Structure of Finitely Generated Modules"
 date: 2026-01-03 00:00:00 +0800
 permalink: /posts/algebra2/finitely-generated-modules/
-tags: algebra
+categories: algebra
+tags: [module-theory, finitely-generated-modules, pid-modules, structure-theorem, rational-canonical-form]
 use_math: true
 ---
 

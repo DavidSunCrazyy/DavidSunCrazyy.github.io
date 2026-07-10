@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Numerical Analysis II 最佳平方逼近"
 permalink: /posts/numerical-analysis-2/03-最佳平方逼近/
-tags: numerical-analysis
+categories: numerical-analysis
+tags: [numerical-analysis, least-squares, orthogonal-polynomials, legendre-polynomials, fourier-series, gram-schmidt]
 use_math: true
 ---
 

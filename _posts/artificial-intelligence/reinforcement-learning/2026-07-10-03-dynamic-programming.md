@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "第三章：动态规划 —— 模型已知时的精确求解"
 permalink: /posts/ai/reinforcement-learning/dynamic-programming/
-tags: reinforcement-learning
+categories: reinforcement-learning
+tags: [reinforcement-learning, dynamic-programming, policy-iteration, value-iteration, bellman-optimality, planning]
 use_math: true
 ---
 

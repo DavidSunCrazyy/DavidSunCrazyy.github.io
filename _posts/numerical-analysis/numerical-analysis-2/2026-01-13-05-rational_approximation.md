@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Numerical Analysis II 有理逼近"
 permalink: /posts/numerical-analysis-2/05-有理逼近/
-tags: numerical-analysis
+categories: numerical-analysis
+tags: [numerical-analysis, rational-approximation, pade-approximation, continued-fractions, remez-algorithm]
 use_math: true
 ---
 

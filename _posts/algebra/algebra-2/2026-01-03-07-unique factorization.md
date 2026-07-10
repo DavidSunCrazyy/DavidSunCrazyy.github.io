@@ -1,9 +1,11 @@
 ---
+note: true
 layout: post
 title: "Algebra II Unique Factorization"
 date: 2026-01-03 00:00:00 +0800
 permalink: /posts/algebra2/unique-factorization/
-tags: algebra
+categories: algebra
+tags: [ring-theory, ufd, pid, euclidean-domains, gauss-lemma, noetherian-rings]
 use_math: true
 ---
 

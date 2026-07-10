@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Statistical Inference 点估计"
 permalink: /posts/statistical-inference/point-estimation/
-tags: statistical-inference
+categories: statistical-inference
+tags: [statistical-inference, point-estimation, maximum-likelihood, method-of-moments, umvue, cramer-rao-bound, bayes-estimators]
 use_math: true
 ---
 

@@ -1,9 +1,11 @@
 ---
+note: true
 layout: post
 title: "Algebra II Solvable Groups"
 date: 2026-01-03 00:00:00 +0800
 permalink: /posts/algebra2/solvable-groups/
-tags: algebra
+categories: algebra
+tags: [group-theory, solvable-groups, nilpotent-groups, composition-series, jordan-holder-theorem]
 use_math: true
 ---
 

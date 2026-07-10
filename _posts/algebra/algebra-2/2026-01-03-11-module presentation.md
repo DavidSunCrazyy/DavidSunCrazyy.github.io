@@ -1,9 +1,11 @@
 ---
+note: true
 layout: post
 title: "Algebra II Module Presentations and Canonical Forms"
 date: 2026-01-03 00:00:00 +0800
 permalink: /posts/algebra2/module-presentation/
-tags: algebra
+categories: algebra
+tags: [module-theory, smith-normal-form, jordan-canonical-form, rational-canonical-form, matrix-decomposition]
 use_math: true
 ---
 

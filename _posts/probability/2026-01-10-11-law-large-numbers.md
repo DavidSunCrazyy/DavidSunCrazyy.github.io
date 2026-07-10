@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Probability Theory I 大数定律专题"
 permalink: /posts/law-large-numbers/
-tags: probability-theory
+categories: probability-theory
+tags: [probability-theory, law-of-large-numbers, ergodic-theory, kolmogorov-inequality, borel-cantelli]
 use_math: true
 ---
 

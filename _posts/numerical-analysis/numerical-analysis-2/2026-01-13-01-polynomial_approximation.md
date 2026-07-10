@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Numerical Analysis II 多项式逼近一般理论"
 permalink: /posts/numerical-analysis-2/01-多项式逼近一般理论/
-tags: numerical-analysis
+categories: numerical-analysis
+tags: [numerical-analysis, polynomial-approximation, weierstrass-theorem, bernstein-polynomials, chebyshev-polynomials]
 use_math: true
 ---
 

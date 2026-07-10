@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Numerical Analysis II 高维分片多项式逼近"
 permalink: /posts/numerical-analysis-2/04-高维分片多项式逼近/
-tags: numerical-analysis
+categories: numerical-analysis
+tags: [numerical-analysis, finite-element-method, piecewise-polynomials, splines, b-splines, meshes]
 use_math: true
 ---
 

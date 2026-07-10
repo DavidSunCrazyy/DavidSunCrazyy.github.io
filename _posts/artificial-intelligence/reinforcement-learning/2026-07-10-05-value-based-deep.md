@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "第五章：价值函数逼近与 Deep Q-Network"
 permalink: /posts/ai/reinforcement-learning/value-based-deep/
-tags: reinforcement-learning
+categories: reinforcement-learning
+tags: [reinforcement-learning, deep-rl, dqn, function-approximation, experience-replay, target-network]
 use_math: true
 ---
 

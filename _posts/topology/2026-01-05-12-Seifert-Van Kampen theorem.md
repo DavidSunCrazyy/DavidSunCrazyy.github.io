@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Topology Seifert-Van Kampen theorem"
 permalink: /posts/topology-seifert-van-kampen-theorem/
-tags: topology
+categories: topology
+tags: [topology, seifert-van-kampen, fundamental-group, free-products, amalgamated-products, pushouts]
 use_math: true
 ---
 

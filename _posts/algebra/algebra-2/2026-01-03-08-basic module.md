@@ -1,9 +1,11 @@
 ---
+note: true
 layout: post
 title: "Algebra II Basic Properties of Modules"
 date: 2026-01-03 00:00:00 +0800
 permalink: /posts/algebra2/module-basics/
-tags: algebra
+categories: algebra
+tags: [module-theory, free-modules, exact-sequences, hom-functors, tensor-products]
 use_math: true
 ---
 

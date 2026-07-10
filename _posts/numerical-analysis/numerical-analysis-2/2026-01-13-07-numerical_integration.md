@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Numerical Analysis II 数值积分"
 permalink: /posts/numerical-analysis-2/07-数值积分/
-tags: numerical-analysis
+categories: numerical-analysis
+tags: [numerical-analysis, numerical-integration, quadrature, gauss-quadrature, romberg-integration, adaptive-quadrature]
 use_math: true
 ---
 

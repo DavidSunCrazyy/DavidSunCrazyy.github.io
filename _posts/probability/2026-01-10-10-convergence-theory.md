@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Probability Theory I 收敛理论"
 permalink: /posts/convergence-theory/
-tags: probability-theory
+categories: probability-theory
+tags: [probability-theory, convergence, almost-sure-convergence, convergence-in-probability, convergence-in-distribution, slutsky-theorem]
 use_math: true
 ---
 

@@ -1,9 +1,11 @@
 ---
+note: true
 layout: post
 title: "Algebra II Sylow Theorem"
 date: 2026-01-03 00:00:00 +0800
 permalink: /posts/algebra2/sylow-theorem/
-tags: algebra
+categories: algebra
+tags: [group-theory, sylow-theorems, p-groups, group-actions, class-equation]
 use_math: true
 ---
 

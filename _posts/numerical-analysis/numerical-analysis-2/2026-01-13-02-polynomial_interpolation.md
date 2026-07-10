@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Numerical Analysis II 多项式插值"
 permalink: /posts/numerical-analysis-2/02-多项式插值/
-tags: numerical-analysis
+categories: numerical-analysis
+tags: [numerical-analysis, interpolation, lagrange-interpolation, newton-divided-differences, hermite-interpolation, splines]
 use_math: true
 ---
 

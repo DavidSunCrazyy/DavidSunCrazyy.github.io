@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Probability Theory I 常用概率分布"
 permalink: /posts/common-probability-distributions/
-tags: probability-theory
+categories: probability-theory
+tags: [probability-theory, probability-distributions, gaussian, poisson, binomial, exponential, gamma-distribution]
 use_math: true
 ---
 

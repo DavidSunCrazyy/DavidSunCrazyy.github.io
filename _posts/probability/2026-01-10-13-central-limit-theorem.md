@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Probability Theory I 中心极限定理专题"
 permalink: /posts/central-limit-theorem/
-tags: probability-theory
+categories: probability-theory
+tags: [probability-theory, central-limit-theorem, lindeberg-condition, stable-laws, characteristic-functions]
 use_math: true
 ---
 

@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "第一章：什么是强化学习？"
 permalink: /posts/ai/reinforcement-learning/foundations/
-tags: reinforcement-learning
+categories: reinforcement-learning
+tags: [reinforcement-learning, rl-basics, agent-environment, reward-signal, exploration-vs-exploitation]
 use_math: true
 ---
 

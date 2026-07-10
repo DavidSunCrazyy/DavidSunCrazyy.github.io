@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Numerical Analysis II 常微分方程初值问题的数值方法"
 permalink: /posts/numerical-analysis-2/08-数值常微分方程/
-tags: numerical-analysis
+categories: numerical-analysis
+tags: [numerical-analysis, numerical-ode, runge-kutta, euler-method, stiffness, multistep-methods, stability-analysis]
 use_math: true
 ---
 

@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Online Learning 导论"
 permalink: /posts/ai/online-learning/introduction/
-tags: online-learning
+categories: online-learning
+tags: [online-learning, regret-analysis, overview, decision-theory]
 use_math: true
 ---
 

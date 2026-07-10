@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Statistical Inference 数据简化原理"
 permalink: /posts/statistical-inference/data-reduction/
-tags: statistical-inference
+categories: statistical-inference
+tags: [statistical-inference, sufficiency, completeness, ancillarity, factorization-theorem, basu-theorem, exponential-families]
 use_math: true
 ---
 

@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Complex Analysis 全纯函数与复积分"
 permalink: /posts/complex-analysis-holomorphic/
-tags: complex-analysis
+categories: complex-analysis
+tags: [complex-analysis, holomorphic-functions, cauchy-integral, cauchy-riemann-equations, analytic-functions]
 use_math: true
 ---
 

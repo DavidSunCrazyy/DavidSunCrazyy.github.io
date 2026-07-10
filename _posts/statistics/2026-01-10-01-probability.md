@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Statistical Inference 概率论基础"
 permalink: /posts/statistical-inference/probability/
-tags: statistical-inference
+categories: statistical-inference
+tags: [statistical-inference, probability-foundations, random-variables, distributions, moment-generating-functions]
 use_math: true
 ---
 

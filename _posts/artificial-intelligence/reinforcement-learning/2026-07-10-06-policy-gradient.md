@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "第六章：策略梯度方法 —— 从 REINFORCE 到 PPO"
 permalink: /posts/ai/reinforcement-learning/policy-gradient/
-tags: reinforcement-learning
+categories: reinforcement-learning
+tags: [reinforcement-learning, policy-gradient, reinforce, actor-critic, ppo, trpo, advantage-function]
 use_math: true
 ---
 

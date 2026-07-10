@@ -1,9 +1,11 @@
 ---
+note: true
 layout: post
 title: "Algebra II Introduction to Commutative Algebra"
 date: 2026-01-03 00:00:00 +0800
 permalink: /posts/algebra2/intro-commutative-algebra/
-tags: algebra
+categories: algebra
+tags: [commutative-algebra, prime-ideals, maximal-ideals, localization, nakayama-lemma]
 use_math: true
 ---
 

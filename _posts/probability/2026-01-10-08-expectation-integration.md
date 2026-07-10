@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Probability Theory I 期望与积分理论"
 permalink: /posts/expectation-integration-theory/
-tags: probability-theory
+categories: probability-theory
+tags: [probability-theory, expectation, lebesgue-integral, radon-nikodym, conditional-expectation, characteristic-functions]
 use_math: true
 ---
 

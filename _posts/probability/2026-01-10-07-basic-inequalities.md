@@ -1,8 +1,10 @@
 ---
+note: true
 layout: post
 title: "Probability Theory I 概率论基本不等式"
 permalink: /posts/probability-basic-inequalities/
-tags: probability-theory
+categories: probability-theory
+tags: [probability-theory, inequalities, markov-inequality, chebyshev-inequality, jensen-inequality, cauchy-schwarz]
 use_math: true
 ---
 
