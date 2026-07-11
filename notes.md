@@ -5,8 +5,8 @@ permalink: /notes/
 ---
 
 <div class="categories">
-  {% assign category_names = "Algebra|algebra,Category Theory|category-theory,Real Analysis|real-analysis,Complex Analysis|complex-analysis,Topology|topology,Differential Geometry|differential-geometry,Numerical Analysis|numerical-analysis,Probability Theory|probability-theory,Statistical Inference|statistical-inference,Online Learning|online-learning,Reinforcement Learning|reinforcement-learning" | split: "," %}
-  {% assign category_order = "algebra,category-theory,real-analysis,complex-analysis,topology,differential-geometry,numerical-analysis,probability-theory,statistical-inference,online-learning,reinforcement-learning" | split: "," %}
+  {% assign category_names = "Algebra|algebra,Category Theory|category-theory,Real Analysis|real-analysis,Complex Analysis|complex-analysis,Topology|topology,Differential Geometry|differential-geometry,Numerical Analysis|numerical-analysis,Probability Theory|probability-theory,Statistical Inference|statistical-inference,Online Learning|online-learning,Reinforcement Learning|reinforcement-learning,Generative Model|generative-model" | split: "," %}
+  {% assign category_order = "algebra,category-theory,real-analysis,complex-analysis,topology,differential-geometry,numerical-analysis,probability-theory,statistical-inference,online-learning,reinforcement-learning,generative-model" | split: "," %}
 
   {% for category_slug in category_order %}
     {% assign cat_posts = site.categories[category_slug] %}
