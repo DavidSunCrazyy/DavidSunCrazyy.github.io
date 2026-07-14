@@ -27,7 +27,7 @@ $$f: \mathbb{R} \to \mathbb{C}, \quad f(t) := \mathbb{E}[e^{itX}] = \int e^{itx}
 ### 1.2 基本性质
 
 1. **初值**：$f(0) = 1$
-2. **有界性**：$\|f(t)\| \le 1$
+2. **有界性**：$|f(t)| \le 1$
 3. **共轭对称性**：$f(-t) = \overline{f(t)}$
 4. **一致连续性**：$f$ 一致连续
 
@@ -44,7 +44,7 @@ $$f: \mathbb{R} \to \mathbb{C}, \quad f(t) := \mathbb{E}[e^{itX}] = \int e^{itx}
 
 2. **凸组合**：设 $\{f_n\}$ 为特征函数，$\{\lambda_n\}$ 满足 $\sum_n \lambda_n = 1$，则 $\sum_n \lambda_n f_n$ 是特征函数。
 
-3. **模平方**：若 $f$ 是特征函数，则 $\|f\|^2$ 也是。
+3. **模平方**：若 $f$ 是特征函数，则 $|f|^2$ 也是。
 
 ### 1.5 常见分布的特征函数
 
@@ -70,7 +70,7 @@ $$\mu[(x,y)] + \frac{1}{2}\mu[\{x\}] + \frac{1}{2}\mu[\{y\}] = \lim_{T \to \inft
 
 $$\lim_{T \to \infty} \frac{1}{2T} \int_{-T}^T e^{-itx} f(t) \, dt = \mu[\{x\}]$$
 
-$$\lim_{T \to \infty} \frac{1}{2T} \int_{-T}^T \|f(t)\|^2 \, dt = \sum_{x \in \mathbb{R}} \mu[\{x\}]^2$$
+$$\lim_{T \to \infty} \frac{1}{2T} \int_{-T}^T |f(t)|^2 \, dt = \sum_{x \in \mathbb{R}} \mu[\{x\}]^2$$
 
 ### 1.7 特征函数与收敛
 
@@ -119,7 +119,7 @@ $$\sqrt{n}(\bar{X}_n - m) \implies \mathcal{N}(0, \sigma^2)$$
 如果满足：
 1. **林德伯格条件**：对于所有 $\epsilon > 0$，有
 
-$$\sum_{m=1}^n \mathbb{E}[X_{n,m}^2 \mathbb{1}_{\{\|X_{n,m}\|>\epsilon\}}] \to 0 \quad \text{当 } n \to \infty$$
+$$\sum_{m=1}^n \mathbb{E}[X_{n,m}^2 \mathbb{1}_{\{|X_{n,m}|>\epsilon\}}] \to 0 \quad \text{当 } n \to \infty$$
 
 2. **方差条件**：
 
@@ -135,7 +135,7 @@ $$\sum_{m=1}^n X_{n,m} \implies \mathcal{N}(0, \sigma^2)$$
 
 **等价表述**：对于任意 $\epsilon > 0$，
 
-$$\sum_{m=1}^n \mathbb{E}[X_{n,m}^2 \mathbb{1}_{\{\|X_{n,m}\|>\epsilon\}}] = o\left(\sum_{m=1}^n \mathbb{E}[X_{n,m}^2]\right)$$
+$$\sum_{m=1}^n \mathbb{E}[X_{n,m}^2 \mathbb{1}_{\{|X_{n,m}|>\epsilon\}}] = o\left(\sum_{m=1}^n \mathbb{E}[X_{n,m}^2]\right)$$
 
 ### 3.3 退化情形
 
@@ -153,7 +153,7 @@ $$\sum_{m=1}^n \mathbb{E}[X_{n,m}^2 \mathbb{1}_{\{\|X_{n,m}\|>\epsilon\}}] = o\l
 
 若 $\exists \delta > 0$ 使得
 
-$$\lim_{n \to \infty} \alpha_n^{-2-\delta} \sum_{m=1}^n \mathbb{E}[\|Y_m - \mathbb{E}[Y_m]\|^{2+\delta}] = 0$$
+$$\lim_{n \to \infty} \alpha_n^{-2-\delta} \sum_{m=1}^n \mathbb{E}[|Y_m - \mathbb{E}[Y_m]|^{2+\delta}] = 0$$
 
 则
 
@@ -163,11 +163,11 @@ $$\frac{S_n - \mathbb{E}[S_n]}{\alpha_n} \implies \mathcal{N}(0,1)$$
 
 条件简化为：
 
-$$\lim_{n \to \infty} \frac{1}{\alpha_n^3} \sum_{m=1}^n \mathbb{E}[\|Y_m - \mathbb{E}[Y_m]\|^3] = 0$$
+$$\lim_{n \to \infty} \frac{1}{\alpha_n^3} \sum_{m=1}^n \mathbb{E}[|Y_m - \mathbb{E}[Y_m]|^3] = 0$$
 
 ### 4.3 与林德伯格条件的关系
 
-李雅普诺夫条件蕴含林德伯格条件（利用 $X^2 \mathbb{1}_{\|X\|>\epsilon} \le \|X\|^{2+\delta}/\epsilon^{\delta}$），因此是更强的条件。
+李雅普诺夫条件蕴含林德伯格条件（利用 $X^2 \mathbb{1}_{|X|>\epsilon} \le |X|^{2+\delta}/\epsilon^{\delta}$），因此是更强的条件。
 
 ---
 
@@ -242,14 +242,14 @@ $$\mathbb{P}[S_n = k] \approx \frac{1}{\sqrt{2\pi np(1-p)}} \exp\left(-\frac{(k-
 
 1. 计算每个 $X_{n,m}$ 的二阶矩
 2. 验证方差收敛：$\sum_m \mathbb{E}[X_{n,m}^2] \to \sigma^2$
-3. 对于任意 $\epsilon > 0$，估计 $$\sum_m \mathbb{E}[X_{n,m}^2 \mathbb{1}_{\|_{n,m}\|>\epsilon}]$$
+3. 对于任意 $\epsilon > 0$，估计 $$\sum_m \mathbb{E}[X_{n,m}^2 \mathbb{1}_{|_{n,m}|>\epsilon}]$$
 4. 验证该尾项趋于 0
 
 ### 8.3 应用李雅普诺夫定理的步骤
 
 1. 选择合适的 $\delta > 0$（通常 $\delta = 1$）
 2. 计算 $\alpha_n^2 = \operatorname{Var}(S_n)$
-3. 计算 $\sum_m \mathbb{E}[\|Y_m - \mathbb{E}[Y_m]\|^{2+\delta}]$
+3. 计算 $\sum_m \mathbb{E}[|Y_m - \mathbb{E}[Y_m]|^{2+\delta}]$
 4. 验证比值趋于 0
 
 ---
@@ -270,7 +270,7 @@ $$\mathbb{P}[S_n = k] \approx \frac{1}{\sqrt{2\pi np(1-p)}} \exp\left(-\frac{(k-
 
 ### 9.3 例3：李雅普诺夫条件
 
-设 $\{Y_j\}$ 独立，$\mathbb{E}[Y_j] = 0$，$\mathbb{E}[\|Y_j\|^3] \le M < \infty$。
+设 $\{Y_j\}$ 独立，$\mathbb{E}[Y_j] = 0$，$\mathbb{E}[|Y_j|^3] \le M < \infty$。
 
 若 $n \to \infty$ 时 $\operatorname{Var}(S_n) \to \infty$，则李雅普诺夫条件（$\delta=1$）满足。
 

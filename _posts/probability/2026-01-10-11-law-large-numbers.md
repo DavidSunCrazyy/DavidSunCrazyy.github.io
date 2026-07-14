@@ -38,7 +38,7 @@ $$\sum_n \mathbb{P}[E_n] = \infty \implies \mathbb{P}[E_n \text{ i.o.}] = 1$$
 
 **引理**：$X_n \to X$ a.s. 当且仅当
 
-$$\mathbb{P}[\|X_n-X\| > \epsilon \text{ i.o.}] = 0, \quad \forall \epsilon > 0$$
+$$\mathbb{P}[|X_n-X| > \epsilon \text{ i.o.}] = 0, \quad \forall \epsilon > 0$$
 
 **推论**：依概率收敛蕴含沿子序列的几乎必然收敛。
 
@@ -52,15 +52,15 @@ Kolmogorov 不等式是独立随机变量和的极大值概率估计，是证明
 
 **定理** 设 $\{X_n\}$ 为独立随机变量。若 $\mathbb{E}[X_n] = 0$ 且 $\mathbb{E}[X_n^2] < \infty$。定义 $S_n = \sum_{j=1}^n X_j$。则有
 
-$$\mathbb{P}\left[\max_{1 \le j \le n} \|S_j\| \ge \varepsilon\right] \le \frac{\mathbb{E}[S_n^2]}{\varepsilon^2}$$
+$$\mathbb{P}\left[\max_{1 \le j \le n} |S_j| \ge \varepsilon\right] \le \frac{\mathbb{E}[S_n^2]}{\varepsilon^2}$$
 
 **意义**：这个不等式将部分和的最大值与最终和的方差联系起来。
 
 ### 2.2 逆形式
 
-**定理** 设 $\{X_n\}$ 为有界的独立随机变量：存在常数 $A$ 使得对所有 $n$，$\|X_n\| \le A$ 几乎必然成立。定义 $S_n = \sum_{j=1}^n X_j$。则有
+**定理** 设 $\{X_n\}$ 为有界的独立随机变量：存在常数 $A$ 使得对所有 $n$，$|X_n| \le A$ 几乎必然成立。定义 $S_n = \sum_{j=1}^n X_j$。则有
 
-$$\mathbb{P}\left[\max_{1 \le j \le n} \|S_j\| \le B\right] \le \frac{(2B+A)^2}{\operatorname{Var}(S_n)}$$
+$$\mathbb{P}\left[\max_{1 \le j \le n} |S_j| \le B\right] \le \frac{(2B+A)^2}{\operatorname{Var}(S_n)}$$
 
 ---
 
@@ -121,8 +121,8 @@ $$\frac{S_n - \mathbb{E}[S_n]}{n} \to 0 \quad \text{依概率}$$
 
 **定理** 设 $\{X_n\}$ 为独立同分布。定义 $S_n = \sum_{j=1}^n X_j$。则有：
 
-- $\mathbb{E}[\|X_1\|] < \infty \implies \frac{S_n}{n} \to \mathbb{E}[X_1]$ 几乎必然
-- $\mathbb{E}[\|X_1\|] = \infty \implies \limsup_n \frac{\|S_n\|}{n} = \infty$ 几乎必然
+- $\mathbb{E}[|X_1|] < \infty \implies \frac{S_n}{n} \to \mathbb{E}[X_1]$ 几乎必然
+- $\mathbb{E}[|X_1|] = \infty \implies \limsup_n \frac{|S_n|}{n} = \infty$ 几乎必然
 
 **意义**：第一个结论是经典的强大数定律；第二个结论说明如果期望不存在，平均不会收敛到任何有限值。
 
@@ -146,13 +146,13 @@ $$\frac{S_n}{n} \to m \quad \text{依概率}$$
 
 ### 8.1 定理陈述
 
-**定理** 设 $\{X_n\}$ 为独立随机变量，对固定常数（存在）$A > 0$ 定义截断：$Y_n = X_n \mathbb{1}_{\{\|X_n\| < A\}}$。
+**定理** 设 $\{X_n\}$ 为独立随机变量，对固定常数（存在）$A > 0$ 定义截断：$Y_n = X_n \mathbb{1}_{\{|X_n| < A\}}$。
 
 则级数 $\sum_n X_n$ 几乎必然收敛当且仅当以下三个级数都收敛：
 
 $$
 \begin{aligned}
-&\sum_n \mathbb{P}[\|X_n\| > A] \\
+&\sum_n \mathbb{P}[|X_n| > A] \\
 &\sum_n \mathbb{E}[Y_n] \\
 &\sum_n \operatorname{var}(Y_n)
 \end{aligned}
@@ -194,7 +194,7 @@ $$\sum_n \mathbb{P}[X_n \ne Y_n] < \infty$$
 
 **定理**
 
-$$\mathbb{P}\left(\max_{m<j \le n} \|S_{m,j}\| > \varepsilon+\lambda\right) \cdot \min_{m<k \le n} \mathbb{P}(\|S_{k,n}\|\le \varepsilon) \le \mathbb{P}(\|S_{m,n}\| > \lambda)$$
+$$\mathbb{P}\left(\max_{m<j \le n} |S_{m,j}| > \varepsilon+\lambda\right) \cdot \min_{m<k \le n} \mathbb{P}(|S_{k,n}|\le \varepsilon) \le \mathbb{P}(|S_{m,n}| > \lambda)$$
 
 其中 $S_{m,j} = \sum_{i=m+1}^j X_i$。
 
@@ -202,16 +202,16 @@ $$\mathbb{P}\left(\max_{m<j \le n} \|S_{m,j}\| > \varepsilon+\lambda\right) \cdo
 
 $$
 \begin{aligned}
-&\bigcup_{k=m+1}^n \{\max_{m<j \le k-1} \|S_{m,j}\| \le \varepsilon+\lambda, \|S_{m,k}\| > \varepsilon+\lambda; \|S_{k,n}\| \le \varepsilon\} \\
-&\subset \{\|S_{m,n} > \lambda\|\}
+&\bigcup_{k=m+1}^n \{\max_{m<j \le k-1} |S_{m,j}| \le \varepsilon+\lambda, |S_{m,k}| > \varepsilon+\lambda; |S_{k,n}| \le \varepsilon\} \\
+&\subset \{|S_{m,n} > \lambda|\}
 \end{aligned}
 $$
 
 $$
-\sum_{k=m+1}^n \mathbb{P}(\max_{m<j \le k-1} \|S_{m,j}\| \le \varepsilon+\lambda, \|S_{m,k}\| > \varepsilon+\lambda) \cdot \mathbb{P}(\|S_{k,n}\| \le \varepsilon) \le \mathbb{P}(\|S_{m,n}\| > \lambda)
+\sum_{k=m+1}^n \mathbb{P}(\max_{m<j \le k-1} |S_{m,j}| \le \varepsilon+\lambda, |S_{m,k}| > \varepsilon+\lambda) \cdot \mathbb{P}(|S_{k,n}| \le \varepsilon) \le \mathbb{P}(|S_{m,n}| > \lambda)
 $$
 
-用 $\min_{m<j \le n} \mathbb{P}(\|S_{m,j}\| \le \varepsilon)$ 替代 $\mathbb{P}(\|S_{k,n}\| \le \varepsilon)$。
+用 $\min_{m<j \le n} \mathbb{P}(|S_{m,j}| \le \varepsilon)$ 替代 $\mathbb{P}(|S_{k,n}| \le \varepsilon)$。
 
 ---
 

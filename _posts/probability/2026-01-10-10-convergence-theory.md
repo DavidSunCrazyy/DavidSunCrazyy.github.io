@@ -24,11 +24,11 @@ $$\lim_n X_n(\omega) = X(\omega), \quad \forall \omega \in \Omega \setminus \mat
 
 **等价刻画**：序列 $\{X_n\}$ 几乎必然收敛到 $X$ 当且仅当，对任意 $\epsilon > 0$，有
 
-$$\lim_{m \to \infty} \mathbb{P}[\|X_n-X\| \le \epsilon, \forall n \ge m] = 1$$
+$$\lim_{m \to \infty} \mathbb{P}[|X_n-X| \le \epsilon, \forall n \ge m] = 1$$
 
 或等价地：
 
-$$\mathbb{P}[\|X_n-X\| > \epsilon \text{ i.o.}] = 0, \quad \forall \epsilon > 0$$
+$$\mathbb{P}[|X_n-X| > \epsilon \text{ i.o.}] = 0, \quad \forall \epsilon > 0$$
 
 其中 "i.o." 表示 "infinitely often"（无穷次发生）。
 
@@ -36,7 +36,7 @@ $$\mathbb{P}[\|X_n-X\| > \epsilon \text{ i.o.}] = 0, \quad \forall \epsilon > 0$
 
 **定义** 随机变量序列 $\{X_n\}$ 依概率收敛到随机变量 $X$，如果对每个 $\epsilon > 0$，有
 
-$$\lim_n \mathbb{P}[\|X_n-X\| > \epsilon] = 0$$
+$$\lim_n \mathbb{P}[|X_n-X| > \epsilon] = 0$$
 
 记作：$X_n \xrightarrow{P} X$ 或 $X_n \to X$ in probability。
 
@@ -48,7 +48,7 @@ $$\lim_n \mathbb{P}[\|X_n-X\| > \epsilon] = 0$$
 
 **定义** 假设 $p \ge 1$。随机变量序列 $\{X_n\}$ 在 $L^p$ 中收敛到随机变量 $X$，如果 $X_n \in L^p, X \in L^p$ 且
 
-$$\lim_n \mathbb{E}[\|X_n-X\|^p] = 0$$
+$$\lim_n \mathbb{E}[|X_n-X|^p] = 0$$
 
 记作：$X_n \xrightarrow{L^p} X$。
 
@@ -86,7 +86,7 @@ $$\inf_{\alpha \in A} \mu_\alpha(I) \ge 1 - \epsilon$$
 
 **引理**：设 $\{\mu_n\}$ 为概率测度序列且 $\mu_n \implies \mu$，其中 $\mu$ 也是概率测度，则 $\{\mu_n, n \ge 1\}$ 是胎紧的。
 
-**Prohorov 定理**：设 $\{\mu_\alpha \| \alpha \in A\}$ 为概率测度族。任意序列存在弱收敛到概率测度的子序列，当且仅当该族是*胎紧的*。
+**Prohorov 定理**：设 $\{\mu_\alpha | \alpha \in A\}$ 为概率测度族。任意序列存在弱收敛到概率测度的子序列，当且仅当该族是*胎紧的*。
 
 ### 2.3 弱收敛的判据
 
@@ -134,7 +134,7 @@ $$\alpha_n X_n + \beta_n \implies aX + b$$
 
 **定义** 随机变量集合 $\{X_i, i \in I\}$ 是一致可积的（UI），如果
 
-$$\sup_i \mathbb{E}[\|X_i\|\mathbb{1}_{\{\|X_i\| \ge \alpha\}}] \to 0 \quad \text{当 } \alpha \to \infty$$
+$$\sup_i \mathbb{E}[|X_i|\mathbb{1}_{\{|X_i| \ge \alpha\}}] \to 0 \quad \text{当 } \alpha \to \infty$$
 
 ### 4.2 重要结论
 
@@ -157,33 +157,20 @@ $$L^p \text{ 中有界} \implies \text{UI} \implies L^1 \text{ 中有界}$$
 
 ## 五、收敛方式之间的关系
 
-### 5.1 蕴含关系图
+### 5.1 蕴含关系
 
-```
-           几乎必然收敛
-                 │
-                 ├───────────┐
-                 ▼           ▼
-              依概率收敛    L^p 收敛 (p ≥ 1)
-                 │           │
-                 └─────┬─────┘
-                       ▼
-                 依分布收敛
-```
-
-**说明**：
 - 几乎必然收敛 $\implies$ 依概率收敛
 - $L^p$ 收敛 $\implies$ 依概率收敛
 - 依概率收敛 $\implies$ 依分布收敛
 
 **重要**：
-- 依分布收敛 ⇏ 依概率收敛（除非极限是常数）
+- 依分布收敛 $⇏$ 依概率收敛（除非极限是常数）
 - 几乎必然收敛和 $L^p$ 收敛一般不能相互推出
 
 ### 5.2 依概率收敛与几乎必然收敛
 
 **Borel-Cantelli 引理的联系**：
-$$X_n \to X \text{ a.s.} \iff \mathbb{P}[\|X_n-X\| > \epsilon \text{ i.o.}] = 0, \quad \forall \epsilon > 0$$
+$$X_n \to X \text{ a.s.} \iff \mathbb{P}[|X_n-X| > \epsilon \text{ i.o.}] = 0, \quad \forall \epsilon > 0$$
 
 **依概率收敛的性质**：依概率收敛蕴含沿子序列的几乎必然收敛。
 
@@ -203,9 +190,9 @@ $$Y_n \to Y \text{ a.s.}, \quad \mathcal{L}(Y_n) = \mathcal{L}(X_n), \quad \math
 
 | 收敛类型 | 判据 | 典型应用 |
 |---------|------|----------|
-| a.s. 收敛 | $\forall \epsilon > 0$: $\mathbb{P}[\|X_n-X\|>\epsilon \text{ i.o.}] = 0$ | 强大数定律 |
-| 依概率收敛 | $\forall \epsilon > 0$: $\lim_n \mathbb{P}[\|X_n-X\|>\epsilon] = 0$ | 弱大数定律 |
-| $L^1$ 收敛 | $\lim_n \mathbb{E}[\|X_n-X\|] = 0$（需要 UI 条件） | 鞅收敛 |
+| a.s. 收敛 | $\forall \epsilon > 0$: $\mathbb{P}[\vert X_n-X \vert>\epsilon \text{ i.o.}] = 0$ | 强大数定律 |
+| 依概率收敛 | $\forall \epsilon > 0$: $\lim_n \mathbb{P}[\vert X_n-X \vert>\epsilon] = 0$ | 弱大数定律 |
+| $L^1$ 收敛 | $\lim_n \mathbb{E}[\vert X_n-X \vert] = 0$（需要 UI 条件） | 鞅收敛 |
 | 依分布收敛 | $\forall f \in C_b$: $\lim_n \mathbb{E}[f(X_n)] = \mathbb{E}[f(X)]$ | 中心极限定理 |
 
 ---
@@ -226,27 +213,6 @@ $$Y_n \to Y \text{ a.s.}, \quad \mathcal{L}(Y_n) = \mathcal{L}(X_n), \quad \math
 **Vitali 收敛定理**：设 $\{X_n\} \subset L^1$。则 $X_n \xrightarrow{L^1} X$ 当且仅当：
 1. $X_n \xrightarrow{P} X$
 2. $\{X_n\}$ 是 UI 的
-
----
-
-## 八、实际应用指南
-
-### 8.1 选择合适的收敛类型
-
-| 问题类型 | 推荐收敛类型 | 理由 |
-|---------|-------------|------|
-| 证明路径性质 | 几乎必然收敛 | 最强的收敛，适用于所有样本路径 |
-| 统计推断 | 依概率收敛 | 足够用于估计量的相合性 |
-| $L^p$ 估计 | $L^p$ 收敛 | 直接控制误差的 $p$ 阶矩 |
-| 极限分布 | 依分布收敛 | 用于渐近分布理论 |
-| 鞅论 | 几乎必然 + $L^1$ | 鞅收敛定理给出两者 |
-
-### 8.2 证明技巧
-
-1. **证明 a.s. 收敛**：使用 Borel-Cantelli 引理
-2. **证明依概率收敛**：使用切比雪夫不等式或直接估计
-3. **证明 $L^1$ 收敛**：验证一致可积性 + 依概率收敛
-4. **证明依分布收敛**：使用特征函数或矩母函数
 
 ---
 
