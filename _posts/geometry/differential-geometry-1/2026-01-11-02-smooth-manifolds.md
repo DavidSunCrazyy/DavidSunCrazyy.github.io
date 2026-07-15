@@ -2,7 +2,7 @@
 note: true
 layout: post
 title: "Differential Geometry 光滑流形 (Smooth Manifolds)"
-permalink: /posts/differential-geometry-02-smooth-manifolds/
+permalink: /posts/differential-geometry/02-smooth-manifolds/
 categories: differential-geometry
 tags: [differential-geometry, smooth-manifolds, differentiable-structures, diffeomorphisms, partitions-of-unity]
 use_math: true

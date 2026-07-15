@@ -2,7 +2,7 @@
 note: true
 layout: post
 title: "Differential Geometry de Rham上同调 (de Rham Cohomology)"
-permalink: /posts/differential-geometry-08-de-rham-cohomology/
+permalink: /posts/differential-geometry/08-de-rham-cohomology/
 categories: differential-geometry
 tags: [differential-geometry, de-rham-cohomology, closed-forms, exact-forms, poincare-lemma, mayer-vietoris]
 use_math: true

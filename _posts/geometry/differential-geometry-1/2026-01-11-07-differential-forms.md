@@ -2,7 +2,7 @@
 note: true
 layout: post
 title: "Differential Geometry 微分形式 (Differential Forms)"
-permalink: /posts/differential-geometry-07-differential-forms/
+permalink: /posts/differential-geometry/07-differential-forms/
 categories: differential-geometry
 tags: [differential-geometry, differential-forms, exterior-derivative, wedge-product, pullback, stokes-theorem]
 use_math: true
