@@ -3,7 +3,7 @@ note: true
 layout: post
 title: "有限差分方法（二）：相容性、收敛性与Fourier稳定性分析"
 permalink: /posts/finite-difference/02-consistency-convergence-stability/
-categories: numerical-analysis
+categories: finite-difference-method
 tags: [numerical-analysis, finite-difference-method, consistency, convergence, stability, lax-equivalence-theorem, fourier-analysis, von-neumann, du-fort-frankel]
 use_math: true
 ---

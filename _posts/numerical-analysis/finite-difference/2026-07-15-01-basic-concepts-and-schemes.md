@@ -3,7 +3,7 @@ note: true
 layout: post
 title: "有限差分方法（一）：网格剖分与差分格式建立"
 permalink: /posts/finite-difference/01-basic-concepts-and-schemes/
-categories: numerical-analysis
+categories: finite-difference-method
 tags: [numerical-analysis, finite-difference-method, grid-meshing, taylor-expansion, difference-schemes, crank-nicolson]
 use_math: true
 ---

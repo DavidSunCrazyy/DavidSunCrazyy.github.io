@@ -3,7 +3,7 @@ note: true
 layout: post
 title: "有限差分方法（五）：最大值原理与能量方法"
 permalink: /posts/finite-difference/05-maximum-principle-and-energy-method/
-categories: numerical-analysis
+categories: finite-difference-method
 tags: [numerical-analysis, finite-difference-method, maximum-principle, comparison-theorem, energy-method, stability-analysis, summation-by-parts]
 use_math: true
 ---

@@ -3,7 +3,7 @@ note: true
 layout: post
 title: "有限差分方法（三）：一阶双曲型方程与CFL条件"
 permalink: /posts/finite-difference/03-first-order-hyperbolic-equations/
-categories: numerical-analysis
+categories: finite-difference-method
 tags: [numerical-analysis, finite-difference-method, hyperbolic-equations, upwind-scheme, lax-friedrichs, leap-frog, lax-wendroff, cfl-condition]
 use_math: true
 ---

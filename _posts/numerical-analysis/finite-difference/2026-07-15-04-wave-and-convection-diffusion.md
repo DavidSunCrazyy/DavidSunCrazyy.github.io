@@ -3,7 +3,7 @@ note: true
 layout: post
 title: "有限差分方法（四）：波动方程与对流扩散方程"
 permalink: /posts/finite-difference/04-wave-and-convection-diffusion/
-categories: numerical-analysis
+categories: finite-difference-method
 tags: [numerical-analysis, finite-difference-method, wave-equation, convection-diffusion, stability-analysis]
 use_math: true
 ---
