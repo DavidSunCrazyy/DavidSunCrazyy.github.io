@@ -1,8 +1,28 @@
 # 让 kramdown 原生识别 $...$ 作为行内数学分隔符
 # kramdown 自带的 math_engine 只认 $$...$$，不认 $...$
-# 这个扩展添加了一个 span parser，在遇到 $ 时直接消耗整个 $...$ 块
-# 这样 kramdown 的 emphasis 解析器就看不到 _ 了
+# 这个扩展包含两部分：
+# 1. Jekyll Hook: 在 kramdown 处理之前替换数学环境中的 | 为 \vert
+# 2. kramdown 扩展: 注册 $...$ 行内数学解析器 + 二次保险替换 |
 
+require 'jekyll'
+
+# Part 1: Jekyll Hook - 预处理数学环境中的 |
+# 在 Jekyll 层面工作，比 monkey-patch kramdown 更可靠，CI 环境也稳定
+Jekyll::Hooks.register [:posts, :pages, :documents], :pre_render do |doc|
+  next unless doc.respond_to?(:content) && doc.content.is_a?(String)
+
+  # 处理 $$...$$ 显示数学块
+  doc.content = doc.content.gsub(/\$\$(.+?)\$\$/m) do |match|
+    match.gsub(/(?<!\\)\|/) { '\vert ' }
+  end
+
+  # 处理 $...$ 行内数学（排除 $$...$$）
+  doc.content = doc.content.gsub(/(?<!\$)\$(.+?)\$(?!\$)/m) do |match|
+    match.gsub(/(?<!\\)\|/) { '\vert ' }
+  end
+end
+
+# Part 2: kramdown 扩展 - 注册 $...$ 行内数学解析器
 module Kramdown
   module Parser
     class Kramdown
@@ -17,19 +37,16 @@ module Kramdown
       alias_method :__original_initialize, :initialize
 
       def initialize(source, options)
-        # 预处理：保护数学环境中的 | 不被 kramdown 表格解析器误识别
-        # | 在 LaTeX 中用于条件概率 P(A|B)、绝对值 |x|、集合定义等
-        # kramdown GFM 会将其识别为表格列分隔符，导致渲染错误
-        # 解决方案：将数学环境内的字面量 | 替换为 \vert（MathJax 渲染效果相同）
+        # 二次保险：在 kramdown 层面也替换 |
+        # 如果 Jekyll Hook 已经处理过（Jekyll 场景），这里就是 no-op
+        # 如果直接使用 kramdown CLI（非 Jekyll 场景），这里仍然生效
 
         # Step 1: 处理 $$...$$ 显示数学块（行间公式）
         source = source.gsub(/\$\$(.+?)\$\$/m) do |match|
-          # 仅替换未被反斜杠转义的 |（保留 \| 如范数符号）
           match.gsub(/(?<!\\)\|/) { '\vert ' }
         end
 
         # Step 2: 处理 $...$ 行内数学
-        # 使用负向断言 (?<!\$)\$ 和 \$(?!\$) 确保匹配的是单个 $ 而不是 $$ 的一部分
         source = source.gsub(/(?<!\$)\$(.+?)\$(?!\$)/m) do |match|
           match.gsub(/(?<!\\)\|/) { '\vert ' }
         end
@@ -41,7 +58,6 @@ module Kramdown
       def parse_inline_math_single
         start_line_number = @src.current_line_number
         @src.pos += @src.matched_size
-        # @src[1] 是捕获组，即 $ 之间的数学内容
         @tree.children << Element.new(
           :math, @src[1], nil,
           category: :span,
