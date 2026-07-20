@@ -8,13 +8,13 @@ tags: [numerical-analysis, least-squares, qr-decomposition, householder, givens-
 use_math: true
 ---
 
-本文介绍最小二乘问题的基本理论与求解方法，包括法方程组、Moore-Penrose 广义逆、Householder 变换与 Givens 变换，以及 QR 分解的计算方法与在最小二乘问题中的应用。
+前面几章讨论的是方阵方程组 $Ax = b$。但实际中经常遇到方程个数多于未知数个数的情况——比如用大量观测数据拟合一个简单模型。这时方程组通常没有精确解，我们需要找一个"最佳近似"解。最小二乘法就是为此设计的：它最小化残差的 2-范数。
 
 # 第三章 最小二乘问题的解法
 
 ## 3.1 最小二乘问题
 
-定义: 设 $A \in \mathbb{R}^{m \times n}$ , $b \in \mathbb{R}^m$ , 确定 $x \in \mathbb{R}^n$ 使得
+**定义:** 设 $A \in \mathbb{R}^{m \times n}$ , $b \in \mathbb{R}^m$ , 确定 $x \in \mathbb{R}^n$ 使得
 
 $$
 \| b - A x \| _ {2} = \min _ {y \in \mathbb {R} ^ {n}} \| A y - b \| _ {2}
@@ -28,35 +28,23 @@ $$
 A x = b \quad , \quad A \in \mathbb {R} ^ {m \times n}
 $$
 
-的最小二乘解
+的最小二乘解，其中 $m > n$ 称为超定方程组，$m < n$ 称为欠定方程组.
 
-$m > n$ ，超定方程组
+根据 $m, n$ 以及 $\operatorname{rank}(A)$，最小二乘问题可分为以下几种情形：
 
-$m<n$ ，欠定方程组.
-
-根据 $m, n$ 以及 $\operatorname{rank}(A)$，最小二乘问题可分为
-
-几种情形：
-
-(1): $m = n$ :
-
-(a). $\operatorname{rank}(A) = m = n$
-
+(1) $m = n$:
+(a) $\operatorname{rank}(A) = m = n$
 (b) $\operatorname{rank}(A)=k<m=n$
 
-(2): $m > n$
-
+(2) $m > n$
 (a) $\operatorname{rank}(A)=n<m$
-
 (b) $\operatorname{rank}(A)=k<n<m$
 
 (3) $m < n$
-
 (a) $\operatorname{rank}(A)=m<n$
-
 (b) $\operatorname{rank}(A) < m < n$
 
-定义：设 $A \in \mathbb{R}^{m \times n}$ ， $A$ 的值域定义为
+**定义：** 设 $A \in \mathbb{R}^{m \times n}$ ， $A$ 的值域定义为
 
 $$
 R (A) = \{y \in \mathbb {R} ^ {m}, y = A x, x \in \mathbb {R} ^ {n} \}
@@ -74,25 +62,23 @@ $$
 S ^ {\perp} = \{y \in \mathbb {R} ^ {n}, y ^ {\top} x = 0, \forall x \in S \}
 $$
 
-定理：方程组（3.1.1）的解存在的充要条件为
+**定理：** 方程组（3.1.1）的解存在的充要条件为
 
 $$
 \operatorname{rank} (A) = \operatorname{rank} ([ A, b ])
 $$
 
-定理：若 $x$ 是 $A{x} = b$ 的解，则方程组的全部
-
-解的集合是
+**定理：** 若 $x$ 是 $A{x} = b$ 的解，则方程组的全部解的集合是
 
 $$
 x + N(A)
 $$
 
-定理: $Ax = b$ 的最小二乘解, 总是存在, 其解唯一的充分必要条件为 $N(A) = 0$
+**定理:** $Ax = b$ 的最小二乘解, 总是存在, 其解唯一的充分必要条件为 $N(A) = 0$
 
-证明: $\forall b \in \mathbb{R}^{m}$ , $b$ 可以唯一表示为
+**证明:** $\forall b \in \mathbb{R}^{m}$ , $b$ 可以唯一表示为
 
-$b = {b}_{1} + {b}_{2},\;$ 其中 ${b}_{1} \in  R\left( A\right) ,{b}_{2} \in  R\left( A\right) ^{\perp}$
+$b = {b}_{1} + {b}_{2},\;$ 其中 ${b}_{1} \in R\left( A\right) ,{b}_{2} \in R\left( A\right)^{\perp}$
 
 $\forall x \in \mathbb{R}^{n},\quad b_{1}-Ax \in R(A) \text{与 } b_{2} \text{正交则}$
 
@@ -100,23 +86,17 @@ $$
 \begin{array}{r l} {\| r (x) \| _ {2} ^ {2}} & = {\| b - A x \| _ {2} ^ {2} = \| (b _ {1} - A x) + b _ {2} \| _ {2} ^ {2}} \\ & = {\| b _ {1} - A x \| _ {2} ^ {2} + \| b _ {2} \| _ {2} ^ {2}} \end{array}
 $$
 
-由此可得 $\|r(x)\|_{2}^{2}$ 达到极小当且仅当 $\|b_{1}-Ax\|_{2}^{2}$
+由此可得 $\|r(x)\|_{2}^{2}$ 达到极小当且仅当 $\|b_{1}-Ax\|_{2}^{2}$ 达到极小。由于 $b_{1} \in R(A)$ 即存在 $x \in \mathbb{R}^{n}$ 使得 $A x = b_{1}$，此时 $\| {b}_{1} - {Ax} \|_{2}^{2} = 0$ 达到极小。
 
-达到极小
-
-由于 $b_{1} \in R(A)$ 即存在 $x \in \mathbb{R}^{n}$ 使得 $A x = b_{1}$
-
-此时 $\| {b}_{1} - {Ax} \|_{2}^{2} = 0$ 达到极小
-
-定理: $x$ 是 $A x = b$ 的最小二乘解 当且仅当
+**定理:** $x$ 是 $A x = b$ 的最小二乘解 当且仅当
 
 $$
 A ^ {T} A x = A ^ {T} b
 $$
 
-证明：设 $x$ 是最小二乘解．则有
+**证明：** 设 $x$ 是最小二乘解．则有
 
-${Ax} = {b}_{1} \in  R\left( A\right)$ 并且
+${Ax} = {b}_{1} \in R\left( A\right)$ 并且
 
 $$
 r (x) = b - A x = b - b _ {1} = b _ {2} \in R (A) ^ {\perp}
@@ -142,7 +122,7 @@ $$
 x = (A ^ {T} A) ^ {- 1} A ^ {T} b
 $$
 
-令 ${A}^{ \dagger  } = {\left( {A}^{T}A\right) }^{-1}{A}^{T}$ 则有
+令 ${A}^{ \dagger } = {\left( {A}^{T}A\right) }^{-1}{A}^{T}$ 则有
 
 $$
 x = A ^ {\dagger} b
@@ -150,7 +130,7 @@ $$
 
 其中 $A^{\dagger}$ 是 $A$ 的 Moore - Penrose 广义逆.
 
-定义：若 $x \in \mathbb{R}^{n \times m}$ 满足
+**定义：** 若 $x \in \mathbb{R}^{n \times m}$ 满足
 
 $$
 A X A = A, \quad X A X = X, \quad (A X) ^ {T} = A X, \quad (X A) ^ {T} = X A
@@ -166,7 +146,7 @@ $$
 
 的解.
 
-定理：设 $b_{1}, \tilde{b}_{1}$ 分别为 $b$ 和 $\tilde{b}$ 在 $R(A)$ 上的正交投影 若 $b_{1} \neq 0$ 则
+**定理：** 设 $b_{1}, \tilde{b}_{1}$ 分别为 $b$ 和 $\tilde{b}$ 在 $R(A)$ 上的正交投影 若 $b_{1} \neq 0$ 则
 
 $$
 \frac {\| \delta x \| _ {2}}{\| x \| _ {2}} \le \mathcal{K}_ {2} (A) \frac {\| b _ {1} - \tilde {b} _ {1} \| _ {2}}{\| b _ {1} \| _ {2}}
@@ -174,7 +154,7 @@ $$
 
 其中 $\mathcal{K}_{2}(A)=\|A\|_{2}\|A^{\dagger}\|_{2}$
 
-证明：设 $b$ 在 $R(A)^{\perp}$ 上的正交投影为 $b_{2}$ ，则 $A^{T}b_{2}=0$ 那么
+**证明：** 设 $b$ 在 $R(A)^{\perp}$ 上的正交投影为 $b_{2}$ ，则 $A^{T}b_{2}=0$ 那么
 
 $$
 A ^ {\dagger} b = A ^ {\dagger} b _ {1} + A ^ {\dagger} b _ {2} = A ^ {\dagger} b _ {1}
@@ -192,9 +172,9 @@ $$
 \frac {\| \delta x \| _ {2}}{\| x \| _ {2}} \leq \mathcal{K}_ {2} (A) \frac {\| b _ {1} - \tilde {b} _ {1} \| _ {2}}{\| A \| _ {2} \| x \| _ {2}} \leq \mathcal{K}_ {2} (A) \frac {\| b _ {1} - \tilde {b} _ {1} \| _ {2}}{\| b _ {1} \| _ {2}}
 $$
 
-定理: 若 $A$ 列满秩, 则 $\mathcal{K}_{2}(A)^{2} = \text{cond}_{2}(A^{T}A)$
+**定理:** 若 $A$ 列满秩, 则 $\mathcal{K}_{2}(A)^{2} = \text{cond}_{2}(A^{T}A)$
 
-证明：首先有
+**证明：** 首先有
 
 $$
 \| A \| _ {2} ^ {2} = \rho (A ^ {T} A) = \| A ^ {T} A \| _ {2}
@@ -214,7 +194,7 @@ $$
 
 #### Householder 变换
 
-定义: 设 $w \in \mathbb{R}^n$ 满足 $||w||_2 = 1$ , 定义 $P \in \mathbb{R}^{n \times n}$ 为
+**定义:** 设 $w \in \mathbb{R}^n$ 满足 $||w||_2 = 1$ , 定义 $P \in \mathbb{R}^{n \times n}$ 为
 
 $$
 P = I - 2 \omega \omega^ {T}
@@ -226,14 +206,14 @@ Householder 变换具有以下性质：
 
 (1) (对称性) ${P}^{T} = P$
 
-(2) (正交性) ${p}^{T}p = I$
+(2) (正交性) ${P}^{T}p = I$
 
 $$
 \|w\|_{2}^{2} = w^{T} w = 1
 $$
 
 $$
-p ^ {T} p = I - 4 \omega \omega^ {T} + 4 \omega \omega^ {T} \omega \omega^ {T} = I
+P ^ {T} P = I - 4 \omega \omega^ {T} + 4 \omega \omega^ {T} \omega \omega^ {T} = I
 $$
 
 (3) (反射性) $\forall x \in R^{n}$ , $Px$ 与 $x$ 关于超平面 $span\{w\}^{\perp}$ 镜像对称
@@ -241,20 +221,20 @@ $$
 设 $x = u + \alpha w$ $u \in \operatorname{span}\{w\}^{\perp}, \quad \alpha \in \mathbb{R}$
 
 $$
-\begin{array}{r l} {p _ {x}} & {= (I - 2 w w ^ {T}) (u + \alpha w)} \\ & {= u + \alpha w - 2 w w ^ {T} u - 2 \alpha w w ^ {T} w} \end{array}
+\begin{array}{r l} {P _ {x}} & {= (I - 2 w w ^ {T}) (u + \alpha w)} \\ & {= u + \alpha w - 2 w w ^ {T} u - 2 \alpha w w ^ {T} w} \end{array}
 $$
 
 $$
 w ^ {T} w = 1, \quad w ^ {T} u = 0 \quad \Rightarrow \quad Px = u - \alpha w
 $$
 
-定理: $\forall x \in \mathbb{R}^{n}, x \neq 0$ , 则存在 $w \in \mathbb{R}^{n}$ , $\|w\|_{2} = 1$ , 使
+**定理:** $\forall x \in \mathbb{R}^{n}, x \neq 0$ , 则存在 $w \in \mathbb{R}^{n}$ , $\|w\|_{2} = 1$ , 使
 
 得 $Px = \alpha e_{1}$
 
 其中 P 是由 w 给出的 Householder 变换， $\alpha = \pm \|x\|_{2}$
 
-证明：取 $\alpha = \pm \|x\|_{2}$ 令
+**证明：** 取 $\alpha = \pm \|x\|_{2}$ 令
 
 $$
 \omega = \frac {x - \alpha e _ {1}}{\| x - \alpha e _ {1} \| _ {2}}
@@ -272,7 +252,7 @@ $$
 
 #### Givens 变换
 
-定义: $\theta \in \mathbb{R},\quad S = \sin \theta ,\quad C = \cos \theta$
+**定义:** $\theta \in \mathbb{R},\quad S = \sin \theta ,\quad C = \cos \theta$
 
 $$
 J (i, k, \theta) = \begin{array}{c} {\left[ \begin{array}{c c c c c c c c c} {1} & {} & {} & {} & {} & {} & {} & {} & {} \\ {} & {\ddots} & {} & {} & {} & {} & {} & {} & {} \\ {} & {} & {1} & {} & {} & {} & {} & {} & {} \\ {} & {} & {} & {c} & {0} & {\dots} & {0} & {s} & {} \\ {} & {} & {} & {0} & {1} & {} & {} & {0} & {} \\ {} & {} & {} & {\vdots} & {\ddots} & {} & {} & {\vdots} & {} \\ {} & {} & {} & {0} & {} & {\ddots} & {1} & {0} & {} \\ {} & {} & {} & {- s} & {0} & {\dots} & {0} & {c} & {} \\ {} & {} & {} & {} & {} & {} & {} & {1} & {} \\ {} & {} & {} & {} & {} & {} & {} & {} & {\ddots} \\ {} & {} & {} & {} & {} & {} & {} & {1} & {} \\ \end{array} \right]} \end{array} 
@@ -302,7 +282,7 @@ $$
 
 若 ${x}_{k} = 0$ ,取 $c = 1,s = 0$
 
-若 ${x}_{k} \neq  0,$
+若 ${x}_{k} \neq 0,$
 
 $|x_{k}| \geq |x_{i}|$ 时, $t = \frac{x_{i}}{x_{k}}$ , $s = \text{sgn}(x_{k})(1 + t^{2})^{-\frac{1}{2}}$ , $c = st$
 
@@ -310,7 +290,7 @@ $|x_{k}|<|x_{i}|$ 时, $t=\frac{x_{k}}{x_{i}}$ , $c=\operatorname{sgn}(x_{i})(1+
 
 ## 3.3 矩阵的QR分解
 
-定理：设 $A \in  {\mathbb{R}}^{m \times  n}$ , $m \geq  n$ ,则存在正交矩阵 $Q \in  {R}^{m \times  m}$ 和上三角矩阵 $R \in  {R}^{n \times  n}$ 使得
+**定理：** 设 $A \in {\mathbb{R}}^{m \times n}$ , $m \geq n$ ,则存在正交矩阵 $Q \in {R}^{m \times m}$ 和上三角矩阵 $R \in {R}^{n \times n}$ 使得
 
 $$
 A = Q \left[ \begin{array}{l} R \\ 0 \end{array} \right]
@@ -318,9 +298,7 @@ $$
 
 如果 $m=n$ , A 非奇异且规定 $R$ 的对角元素为正值, 则这种分解是唯一的.
 
-证明：由 Householder 变换，Givens 变换或者 Gram-Schmidt
-
-正交化 容易 构造 Q, R 使得 $A = Q \left[ \begin{matrix} R \\ 0 \end{matrix} \right]$
+**证明：** 由 Householder 变换，Givens 变换或者 Gram-Schmidt 正交化容易构造 Q, R 使得 $A = Q \left[ \begin{matrix} R \\ 0 \end{matrix} \right]$
 
 下面证唯一性. 设 $A$ 非奇异, 且有
 
@@ -406,7 +384,7 @@ $J(2,m,\theta_{2m})\cdots J(2,3,\theta_{23})a_{2}^{(2)}$ 除前两个元素
 
 采用 QR 分解可以方便的求解 最小二乘问题
 
-设 $A \in  {\mathbb{R}}^{m \times  n},m \geq  n,\operatorname{rank}\left( A\right)  = n$
+设 $A \in {\mathbb{R}}^{m \times n},m \geq n,\operatorname{rank}\left( A\right) = n$
 
 $A$ 有 QR 分解
 
@@ -425,6 +403,10 @@ $\Leftrightarrow \min \| Rx - C_{1} \|_{2}$
 $\Leftrightarrow Rx = C_{1}$
 
 R 为上三角矩阵， ${Rx} = {C}_{1}$ 很容易求解.
+
+---
+
+**本章小结：** 最小二乘问题的最直接解法是法方程组 $A^T A x = A^T b$，但当 $A$ 条件数较大时，法方程组的条件数会平方恶化。QR 分解通过正交变换直接处理原问题，避免了这一缺陷，是数值上更可靠的方法。Householder 变换和 Givens 变换是构造 QR 分解的两大工具：前者效率更高，后者适合处理稀疏矩阵。下一章我们回到方阵方程组，讨论迭代解法。
 
 [← 上一篇：矩阵的条件数及误差分析](/posts/numerical-analysis-1/03-condition-number-error-analysis/)
 

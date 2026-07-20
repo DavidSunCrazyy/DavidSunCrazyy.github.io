@@ -8,7 +8,9 @@ tags: [numerical-analysis, fixed-point-iteration, contraction-mapping, convergen
 use_math: true
 ---
 
-本文介绍单个方程不动点迭代法的一般理论，包括不动点的存在唯一性（压缩映射原理）、局部收敛性与收敛阶的定义，以及 Aitken 加速方法和 Steffensen 迭代法。
+前面我们讨论了线性方程组的各种解法。现在转向非线性方程 $f(x) = 0$。最简单的思路是把方程改写为 $x = \varphi(x)$，然后反复迭代 $x_{k+1} = \varphi(x_k)$——这就是不动点迭代法。本章从压缩映射原理出发，逐步引入收敛阶的概念，最后介绍 Aitken 和 Steffensen 两种加速技巧。
+
+# 非线性方程（组）的数值解法
 
 ## 1. 单个方程的不动点迭代法
 
@@ -40,7 +42,7 @@ $$
 
 称为不动点迭代， $\varphi$ 称为迭代函数
 
-例5.1.1 求 ${x}^{3} + 4{x}^{2} - {10} = 0$ 在 $\left\lbrack  {1,2}\right\rbrack$ 上的根
+**例5.1.1** 求 ${x}^{3} + 4{x}^{2} - {10} = 0$ 在 $\left\lbrack {1,2}\right\rbrack$ 上的根
 
 方法1. 改写为 $x = x - {x}^{3} - 4{x}^{2} + {10}$ 即
 
@@ -48,29 +50,45 @@ $$
 \varphi_ {1} (x) = x - x ^ {3} - 4 x ^ {2} + 10
 $$
 
-方法2. ${\varphi }_{2}\left( x\right)  = \frac{1}{2}\left( {10} - {x}^{3}\right)  \frac{1}{2}$
+方法2. ${\varphi }_{2}\left( x\right) = \frac{1}{2}\left( {10} - {x}^{3}\right)^{\frac{1}{2}}$
 
 方法3. $\varphi_{3}(x)=\left(\frac{10}{x}-4x\right)^{\frac{1}{2}}$
 
 方法4. $\varphi_{4}(x)=\left(\frac{10}{4+x}\right)^{1/2}$
 
-<table><tr><td>k</td><td>方法1</td><td>方法2</td><td>方法3</td><td>方法4</td></tr><tr><td>0</td><td>1.5</td><td>1.5</td><td>1.5</td><td>1.5</td></tr><tr><td>1</td><td>-0.875</td><td>1.286 953 8</td><td>0.816 5</td><td>1.348 399 7</td></tr><tr><td>2</td><td>6.732</td><td>1.402 540 8</td><td>2.996 9</td><td>1.367 376 4</td></tr><tr><td>3</td><td>-469.7</td><td>1.345 458 4</td><td>(-8.65) $\frac{1}{2}$ </td><td>1.364 957 0</td></tr><tr><td>4</td><td> $1.03\times 10^8$ </td><td>1.375 170 3</td><td></td><td>1.365 264 7</td></tr><tr><td>5</td><td></td><td>1.360 094 2</td><td></td><td>1.365 225 6</td></tr><tr><td>⋮</td><td></td><td>⋮</td><td></td><td>⋮</td></tr><tr><td>8</td><td></td><td>1.365 916 7</td><td></td><td>1.365 230 0</td></tr><tr><td>⋮</td><td></td><td>⋮</td><td></td><td></td></tr><tr><td>15</td><td></td><td>1.365 223 7</td><td></td><td></td></tr><tr><td>⋮</td><td></td><td>⋮</td><td></td><td></td></tr><tr><td>20</td><td></td><td>1.365 230 2</td><td></td><td></td></tr><tr><td>⋮</td><td></td><td>⋮</td><td></td><td></td></tr><tr><td>23</td><td></td><td>1.365 230 0</td><td></td><td></td></tr></table>
+| $k$ | 方法1 | 方法2 | 方法3 | 方法4 |
+|-----|-------|-------|-------|-------|
+| 0 | 1.5 | 1.5 | 1.5 | 1.5 |
+| 1 | −0.875 | 1.286 953 8 | 0.816 5 | 1.348 399 7 |
+| 2 | 6.732 | 1.402 540 8 | 2.996 9 | 1.367 376 4 |
+| 3 | −469.7 | 1.345 458 4 | $(-8.65)^{1/2}$ | 1.364 957 0 |
+| 4 | $1.03\times10^8$ | 1.375 170 3 | | 1.365 264 7 |
+| 5 | | 1.360 094 2 | | 1.365 225 6 |
+| $\vdots$ | | $\vdots$ | | $\vdots$ |
+| 8 | | 1.365 916 7 | | 1.365 230 0 |
+| $\vdots$ | | $\vdots$ | | |
+| 15 | | 1.365 223 7 | | |
+| $\vdots$ | | $\vdots$ | | |
+| 20 | | 1.365 230 2 | | |
+| $\vdots$ | | $\vdots$ | | |
+| 23 | | 1.365 230 0 | | |
 
-定理 5.1.1 设 $\varphi \in C[a,b]$ ，且满足
-
-$a \leq \varphi(x) \leq b, \quad \forall x \in [a,b]$ (5.1.1)
+**定理 5.1.1** 设 $\varphi \in C[a,b]$ ，且满足
+ 
+$$
+a \leq \varphi(x) \leq b, \quad \forall x \in [a,b] \tag{5.1.1}
+$$ 
 
 则 $\varphi$ 在 $[a, b]$ 上一定存在不动点.
 
 若又存在 $L \in (0,1)$ 使得
-
 $$
-| \varphi (x) - \varphi (y) | \leq L | x - y |, \quad \forall x, y \in [ a, b ] (5. 1. 2)
+| \varphi (x) - \varphi (y) | \leq L | x - y |, \quad \forall x, y \in [ a, b ] \tag{5.1.2}
 $$
 
 则 $\varphi$ 在 $[a,b]$ 上的不动点唯一.
 
-证明：若 $\varphi(a)=a$ 或者 $\varphi(b)=b$ 成立 则不动点存在.
+**证明：** 若 $\varphi(a)=a$ 或者 $\varphi(b)=b$ 成立 则不动点存在.
 
 设 $\varphi(a)>a,\quad\varphi(b)<b$ 令
 
@@ -91,14 +109,14 @@ $$
 若 $\varphi$ 有两个不动点, $x_{1}^{*}$ , $x_{2}^{*} \in [a,b]$ 且 $x_{1}^{*} \neq x_{2}^{*}$ 则
 
 $$
-| x _ {1} ^ {*} - x _ {2} ^ {*} | = | \varphi (x _ {1} ^ {*}) - \varphi (x _ {2} ^ {*}) | \le L | x _ {1} ^ {*} - x _ {2} ^ {*} | <   | x _ {1} ^ {*} - x _ {2} ^ {*} |
+| x _ {1} ^ {*} - x _ {2} ^ {*} | = | \varphi (x _ {1} ^ {*}) - \varphi (x _ {2} ^ {*}) | \le L | x _ {1} ^ {*} - x _ {2} ^ {*} | < | x _ {1} ^ {*} - x _ {2} ^ {*} |
 $$
 
 矛盾.
 
 (5.1.2) 称为 Lipschitz 条件，L 称为 Lipschitz 常数
 
-推论：设 $\varphi \in C'[a,b]$ ，满足 (5.1.1) 且存在常数
+**推论：** 设 $\varphi \in C'[a,b]$ ，满足 (5.1.1) 且存在常数
 
 $L \in (0,1) \text{ 使}$
 
@@ -108,7 +126,7 @@ $$
 
 则 $\varphi$ 在 $[a, b]$ 上存在唯一的不动点.
 
-## 定理 5.1.2 设 $\varphi \in C[a,b]$ 满足 (5.1.1), (5.1.2)
+**定理 5.1.2** 设 $\varphi \in C[a,b]$ 满足 (5.1.1), (5.1.2)
 
 其中 $L \in (0,1)$ 则对任意 $x_0 \in [a,b]$ 由迭代法
 
@@ -128,7 +146,7 @@ $$
 | x ^ {*} - x _ {k} | \le \frac {L ^ {k}}{1 - L} | x _ {1} - x _ {0} |
 $$
 
-证明：由定理 5.1.1， $\varphi$ 在 $[a,b]$ 上有唯一的不动点， $x^{*}$ 且
+**证明：** 由**定理 5.1.1，** $\varphi$ 在 $[a,b]$ 上有唯一的不动点， $x^{*}$ 且
 
 $$
 \begin{array}{r l} {| x _ {k} - x ^ {*} |} & {= | \varphi (x _ {k - 1}) - \varphi (x ^ {*}) |} \\ & {\le L | x _ {k - 1} - x ^ {*} | \le \dots \le L ^ {k} | x _ {0} - x ^ {*} |} \end{array}
@@ -140,7 +158,7 @@ $$
 \begin{array}{r l} {| x _ {k + p} - x _ {k} |} & {= | x _ {k + p} - x _ {k + p - 1} + x _ {k + p - 1} - \dots + x _ {k + 1} - x _ {k} |} \\ & {\leq | x _ {k + p} - x _ {k + p - 1} | + \dots + | x _ {k + 1} - x _ {k} |} \\ & {\leq (L ^ {p - 1} + L ^ {p - 2} + \dots + L + 1) | x _ {k + 1} - x _ {k} |} \\ & {\leq \frac {1}{1 - L} | x _ {k + 1} - x _ {k} |} \\ & {\leq \frac {L}{1 - L} | x _ {k} - x _ {k - 1} | \leq \dots \leq \frac {L ^ {k}}{1 - L} | x _ {1} - x _ {0} |} \end{array}
 $$
 
-令 $p \to  \infty$ 可得
+令 $p \to \infty$ 可得
 
 $$
 | x ^ {*} - x _ {k} | \leq \frac {L}{1 - L} | x _ {k} - x _ {k - 1} |
@@ -150,7 +168,7 @@ $$
 | x ^ {*} - x _ {k} | \leq \frac {L ^ {k}}{1 - L} | x _ {1} - x _ {0} |
 $$
 
-例5.1.2 迭代法1: ${\varphi }_{i}\left( x\right)  = x - {x}^{3} - 4{x}^{2} + {10}$
+**例5.1.2** 迭代法1: ${\varphi }_{i}\left( x\right) = x - {x}^{3} - 4{x}^{2} + {10}$
 
 $$
 \varphi_ {1} ^ {\prime} (x) = 1 - 3 x ^ {2} - 8 x \quad \mathrm{且}
@@ -191,28 +209,26 @@ $x^{*} \approx 1.365$ , $|\varphi'(x^{*})| \approx 3.4$
 迭代法 4: $\varphi_{4}(x)=\left(\frac{10}{4+x}\right)^{\frac{1}{2}}$
 
 $$
-| \varphi_ {4} ^ {\prime} (x) | = \frac {\sqrt {10}}{2} \frac {1}{(4 + x) ^ {\frac {3}{2}}} \leq \frac {\sqrt {10}}{2} \cdot \frac {1}{5 ^ {\frac {3}{2}}} <   0. 1 5, \forall x \in [ 1, 2 ]
+| \varphi_ {4} ^ {\prime} (x) | = \frac {\sqrt {10}}{2} \frac {1}{(4 + x) ^ {\frac {3}{2}}} \leq \frac {\sqrt {10}}{2} \cdot \frac {1}{5 ^ {\frac {3}{2}}} < 0. 1 5, \forall x \in [ 1, 2 ]
 $$
 
 且有 $1 \leq \varphi_{4}(x) \leq 2$ ， $\forall x \in [1, 2]$
 
-定义 5.1.1. 设 $\varphi$ 在区间 $I$ 上有不动点 $x^{*}$ , 如果存在 $x^{*}$ 的一个邻域 $S \subset I$ , 对任意 $x_{0} \in S$ , 迭代法产生的序列 $\{x_{k}\} \subset S$ 且 $x_{k}$ 收敛到 $x^{*}$ , 就称迭代法局部收敛
+**定义 5.1.1.** 设 $\varphi$ 在区间 $I$ 上有不动点 $x^{*}$ , 如果存在 $x^{*}$ 的一个邻域 $S \subset I$ , 对任意 $x_{0} \in S$ , 迭代法产生的序列 $\{x_{k}\} \subset S$ 且 $x_{k}$ 收敛到 $x^{*}$ , 就称迭代法局部收敛
 
-定理 5.1.3 设 $x^{*}$ 为 $\varphi$ 的不动点， $\varphi'$ 在 $x^{*}$ 的某个邻域
+**定理 5.1.3** 设 $x^{*}$ 为 $\varphi$ 的不动点， $\varphi'$ 在 $x^{*}$ 的某个邻域 $S$ 上存在连续且 $|\varphi'(x^*)| < 1$ ，则迭代法局部收敛
 
-$S$ 上存在连续且 $|\varphi'(x^*)| < 1$ ，则迭代法局部收敛
+**定义 5.1.2.** 设序列 $\{x_k\}$ 收敛到 $x^\ast$ , 记 $e_k = x_k - x^\ast$ .
 
-定义 5.1.2. 设序列 $\{x_k\}$ 收敛到 $x^*$ , 记 $e_k = x_k - x^*$ .
-
-(1) 若存在 $P \geq  1$ 及 $C \neq  0\;\left( {P = 1\text{时,}0 < c < 1}\right)$
+(1) 若存在 $p \geq 1$ 及 $C \neq 0\;\left( {p = 1\text{时,}0 < c < 1}\right)$
 
 $$
 \lim _ {k \to \infty} \frac {\left| e _ {k + 1} \right|}{\left| e _ {k} \right| ^ {p}} = c
 $$
 
-则称 $\{x_{k}\}$ 为 P 阶收敛，C 称为渐近误差常数.
+则称 $\{x_{k}\}$ 为 $p$ 阶收敛，$C$ 称为渐近误差常数.
 
-(2) 若存在 $P \geq 1$ 及 C > 0 (P = 1 时 0 < C < 1)
+(2) 若存在 $p \geq 1$ 及 $C > 0$ ($p = 1$ 时 $0 < C < 1$)
 
 正整数 $k$ ，使得 $k > K$ 时
 
@@ -220,15 +236,15 @@ $$
 | e _ {k + 1} | \le C | e _ {k} | ^ {p}
 $$
 
-则称 $\{x_{k}\}$ 至少 P 阶收敛
+则称 $\{x_{k}\}$ 至少 $p$ 阶收敛
 
-若 $P = 1$ ，称线性收敛 ( $0 < c < 1$ )
+若 $p = 1$ ，称线性收敛 ( $0 < c < 1$ )
 
 $p = 2$ ，称平方收敛
 
-P>1，称超线性收敛.
+$p > 1$，称超线性收敛.
 
-定理 5.1.4 设 $x^{*}$ 是 $\varphi$ 的不动点，整数 P > 1
+**定理 5.1.4** 设 $x^{*}$ 是 $\varphi$ 的不动点，整数 $p > 1$
 
 $\varphi^{(p)}$ 在 $x^{*}$ 的邻域上连续，且满足
 
@@ -240,29 +256,41 @@ $$
 \varphi^ {(p)} (x ^ {*}) \neq 0
 $$
 
-则由迭代法产生的序列 $\{x_{k}\}$ 在 $x^{*}$ 的邻域 P 阶收敛，且
+则由迭代法产生的序列 $\{x_{k}\}$ 在 $x^{*}$ 的邻域 $p$ 阶收敛，且
 
 $$
 \lim _ {k \to \infty} \frac {e _ {k + 1}}{e _ {k} ^ {p}} = \frac {\varphi^ {(p)} (x ^ {*})}{p !}
 $$
 
-证明：因为 $\varphi'(x^{*})=0$ 所以 $\{x_{k}\}$ 局部收敛.
+**证明：** 因为 $\varphi'(x^{*})=0$，所以 $\{x_{k}\}$ 局部收敛。
 
 由 Taylor 展开得
 
-$\varphi(x_k) = \varphi(x^*) + \frac{\varphi^{(p)}(\xi_k)}{p!}(x_k - x^*)^p, \quad \xi_k \text{在} x_k, x^* \text{之间}$
-
-$\Rightarrow  {x}_{k + 1} - {x}^{ * } = \varphi \left( {x}_{k}\right)  - \varphi \left( {x}^{ * }\right)  = \frac{\varphi }^{\left( p\right) }\left( {\xi }_{k}\right) }{p!}{\left( {x}_{k} - {x}^{ * }\right) }^{p}$
-
 $$
-\Rightarrow \frac {e _ {k + 1}{e _ {k} ^ {p}} = \frac {\varphi^{(p)} (\xi_ {k})}{p !}, \lim _ {k \to \infty} \xi_ {k} = x ^ {*}
+\varphi(x_k) = \varphi(x^*) + \frac{\varphi^{(p)}(\xi_k)}{p!}(x_k - x^*)^p, \quad \xi_k \text{ 在 } x_k \text{ 与 } x^* \text{ 之间}.
 $$
 
+于是
+
 $$
-\Rightarrow \lim _ {k \to \infty} \frac {e_ {k + 1}}{e_ {k} ^ {p}} = \frac {\varphi^ {(p)} (x ^ {*})}{p !}
+x_{k+1} - x^* = \varphi(x_k) - \varphi(x^*) = \frac{\varphi^{(p)}(\xi_k)}{p!}(x_k - x^*)^p.
 $$
 
-## 例 5.1.3. 在例 5.1.1 中 ${x}^{ * } \approx  {1.365}$
+记 $e_k = x_k - x^*$，则
+
+$$
+\frac{e_{k+1}}{e_k^p} = \frac{\varphi^{(p)}(\xi_k)}{p!}.
+$$
+
+由 $x_k \to x^*$ 可知 $\xi_k \to x^*$，故
+
+$$
+\lim_{k \to \infty} \frac{e_{k+1}}{e_k^p} = \frac{\varphi^{(p)}(x^*)}{p!}.
+$$
+
+因此收敛阶为 $p$。
+
+**例 5.1.3** 在例 5.1.1 中 ${x}^{ * } \approx {1.365}$
 
 $$
 \varphi_ {2} ^ {\prime} (x ^ {*}) \neq 0, \quad \varphi_ {4} ^ {\prime} (x ^ {*}) \neq 0
@@ -272,12 +300,12 @@ $$
 
 ## 2. 加速收敛的方法
 
-\- Aitken 加速方法
+### Aitken 加速方法
 
 设 $\{x_{k}\}$ 线性收敛到 $x^{*}$ ，记 $e_{k}=x_{k}-x^{*}$ 则有
 
 $$
-\lim _ {k \to \infty} \frac {\left| e _ {k + 1} \right|}{\left| e _ {k} \right|} = c, \quad 0 <   c <   1
+\lim _ {k \to \infty} \frac {\left| e _ {k + 1} \right|}{\left| e _ {k} \right|} = c, \quad 0 < c < 1
 $$
 
 当 $k > 1$ 时有
@@ -286,7 +314,7 @@ $$
 x _ {k + 1} - x ^ {*} \approx c (x _ {k} - x ^ {*}), x _ {k + 2} - x ^ {*} \approx c (x _ {k + 1} - x ^ {*})
 $$
 
-其中 $\left| c\right|  = C$ ,即
+其中 $\left| c\right| = C$ ,即
 
 $$
 \frac {x _ {k + 1} - x ^ {*}}{x _ {k} - x ^ {*}} \approx \frac {x _ {k + 2} - x ^ {*}}{x _ {k + 1} - x ^ {*}}
@@ -300,21 +328,22 @@ $$
 
 $\overline{x}_k$ 是 $x^*$ 的近似值 从而可得到新的序列 $\{\overline{x}_k\}$
 
-定理 5.2.1 设存在 $|\lambda| < 1$ 使得
+**定理 5.2.1** 设存在 $|\lambda| < 1$ 使得
 
 $$
 x _ {k + 1} - x ^ {*} = (\lambda + \delta_ {k}) (x _ {k} - x ^ {*})
 $$
 
-其中 $\lim_{k\to\infty}\delta_{k}=0$ ，则对充分大的k，(5.2.1)定义的 $\overline{x}_{k}$
-
-存在，并且
+其中 $\lim_{k\to\infty}\delta_{k}=0$ ，则对充分大的$k$，(5.2.1) 定义的 $\overline{x}_{k}$ 存在，并且
 
 $$
 \lim _ {k \to \infty} \frac {\overline {x} _ {k} - x ^ {*}}{x _ {k} - x ^ {*}} = 0
 $$
 
-证明：记 ${e}_{k} = {x}_{k} - {x}^{ * }$ ,由定理条件有 $\mathop{\lim }\limits_{k \to  \infty }\frac{e}_{k + 1}{e}_{k} = \lambda$
+**证明：** 记 ${e}_{k} = {x}_{k} - {x}^\ast$ ,由定理条件有 
+$$
+\lim_{k \to \infty}\frac{e_{k + 1}}{e_{k}} = \lambda
+$$
 
 $$
 \begin{array}{r l} {\Delta^ {2} x _ {k}} & {= x _ {k + 2} - 2 x _ {k + 1} + x _ {k}} \\ & {= e _ {k + 2} - 2 e _ {k + 1} + e _ {k}} \\ & {= e _ {k} \left[ (\lambda + \delta_ {k + 1}) (\lambda + \delta_ {k}) - 2 (\lambda + \delta_ {k}) + 1 \right]} \\ & {= e _ {k} \left[ (\lambda - 1) ^ {2} + \mu_ {k} \right]} \end{array}
@@ -334,12 +363,18 @@ $$
 \lim _ {k \to \infty} \frac {\overline {x} _ {k} - x ^ {*}}{x _ {k} - x ^ {*}} = \lim _ {k \to \infty} \left(1 - \frac {[ \lambda - 1 + \delta_ {k} ] ^ {2}}{(\lambda - 1) ^ {2} + \mu_ {k}}\right) = 0
 $$
 
-\- Steffensen 迭代法
+
+### Steffensen 迭代法
 
 将 Aitken 加速与不动点迭代结合起来, 可以得到 Steffensen 迭代法:
 
 $$
-\left\{ \begin{array}{l l} y _ {k} = \varphi (x _ {k}) \\ z _ {k} = \varphi (y _ {k}) \\ x _ {k + 1} = x _ {k} - \frac {(y _ {k} - x _ {k}) ^ {2}}{z _ {k} - 2 y _ {k} + x _ {k}} \end{array} \right.\tag{5.2.1}
+\begin{cases}
+y_k = \varphi(x_k) \\
+z_k = \varphi(y_k) \\
+x_{k+1} = x_k - \dfrac{(y_k - x_k)^2}{z_k - 2y_k + x_k}
+\end{cases}
+\tag{5.2.1}
 $$
 
 (5.2.1) 可以写成不动点迭代的形式
@@ -354,13 +389,11 @@ $$
 \begin{array}{r l} {\psi (x) = x - \frac {[ \varphi (x) - x ] ^ {2}}{\varphi (\varphi (x)) - 2 \varphi (x) + x}} \\ {= \frac {x \varphi (\varphi (x)) - \varphi (x) ^ {2}}{\varphi (\varphi (x)) - 2 \varphi (x) + x}} \end{array}\tag{5.2.2}
 $$
 
-## 定理 5.2.2 若 $x^{*}$ 是 $\psi$ 的不动点，则 $x^{*}$ 是 $\varphi$ 的不动点
+**定理 5.2.2** 若 $x^{*}$ 是 $\psi$ 的不动点，则 $x^{*}$ 是 $\varphi$ 的不动点。
 
-若 $x^{*}$ 是 $\varphi$ 的不动点，设 $\varphi'$ 存在连续， $\varphi'(x^{*}) \neq 1$
+若 $x^{*}$ 是 $\varphi$ 的不动点，设 $\varphi'$ 存在连续， $\varphi'(x^{*}) \neq 1$，则 $x^{*}$ 是 $\psi$ 的不动点
 
-则 $x^{*}$ 是 $\varphi$ 的不动点
-
-证明：若 $x^{*}$ 是 $\psi$ 的不动点，代入 (5.2.2) 得
+**证明：** 若 $x^{*}$ 是 $\psi$ 的不动点，代入 (5.2.2) 得
 
 $$
 \frac {\left[ \varphi (x ^ {*}) - x ^ {*} \right] ^ {2}}{\varphi (\varphi (x ^ {*})) - 2 \varphi (x ^ {*}) + x ^ {*}} = 0
@@ -376,9 +409,9 @@ $$
 x ^ {*} \varphi (\varphi (x ^ {*})) - \varphi (x ^ {*}) ^ {2} = 0
 $$
 
-$\Rightarrow  {\left( \varphi \left( {x}^{ * }\right)  - {x}^{ * }\right) }^{2} = 0$
+$\Rightarrow {\left( \varphi \left( {x}^{ * }\right) - {x}^{ * }\right) }^{2} = 0$
 
-$\Rightarrow  \varphi \left( {x}^{ * }\right)  = {x}^{ * }$
+$\Rightarrow \varphi \left( {x}^{ * }\right) = {x}^{ * }$
 
 若 $x^{*}$ 是 $\varphi$ 的不动点，代入 (5.2.2) 第一式，利用
 
@@ -390,13 +423,17 @@ $$
 
 所以有 $\psi(x^{*})=x^{*}$
 
-定理 5.2.3. 设 $x^{*}$ 是 $\varphi$ 的不动点，在 $x^{*}$ 邻域 $\varphi$ 有 $p+1$ 阶
+**定理 5.2.3.** 设 $x^{*}$ 是 $\varphi$ 的不动点，在 $x^{*}$ 邻域 $\varphi$ 有 $p+1$ 阶
 
-导数存在且连续．对 P=1 若 $\varphi'(x^{*}) \neq 1$ ，则
+导数存在且连续．对 $p=1$ 若 $\varphi'(x^{*}) \neq 1$ ，则
 
 Steffensen 迭代法二阶收敛. 若 $x_{k+1} = \varphi(x_k)$
 
-P 阶收敛 (P>1) 则 Steffensen 迭代法 2P-1 阶收敛.
+$p$ 阶收敛 (P>1) 则 Steffensen 迭代法 $2p-1$ 阶收敛.
+
+---
+
+**本章小结：** 不动点迭代是求解非线性方程最基本的工具。压缩映射原理保证了全局收敛性，收敛阶刻画了收敛速度——线性收敛每步固定比例衰减，高阶收敛则越来越快。Aitken 和 Steffensen 方法可以在不增加导数计算的前提下提升收敛速度。下一章介绍的 Newton 法利用导数信息，天然具有二阶收敛。
 
 [← 上一篇：多重网格法](/posts/numerical-analysis-1/07-multigrid/)
 

@@ -8,359 +8,345 @@ tags: [numerical-analysis, power-method, eigenvalue, gershgorin, deflation]
 use_math: true
 ---
 
-本文介绍特征值的估计与扰动理论（Gershgorin 圆盘定理、Bauer-Fike 定理）、幂法与逆幂法（含原点位移），以及特征值的收缩方法（Householder 收缩与 Wielandt 收缩）。
+线性方程组的求解方法我们已经讨论得很充分了。现在转向数值代数中另一个核心问题：矩阵的特征值和特征向量。幂法是最简单实用的特征值计算方法——它利用"矩阵反复右乘一个向量，该向量会逐渐与最大特征值对应的特征向量对齐"这一朴素想法。本章先建立特征值扰动理论，再介绍幂法和反幂法。
 
-## 1. 特征值的估计和扰动
+# 矩阵特征值问题的数值方法
 
-定理 6.1.1 (Gershgorin) $A = [a_{ij}] \in \mathbb{C}^{n \times n}$ 则 $A$ 的
+## 6.1. 特征值的估计和扰动
 
-特征值 $\lambda\in\bigcup_{i=1}^{n}D_{i}$ ，其中 $D_{i}$ 为复平面上从 $a_{ii}$ 为中心
+在迭代求解特征值之前，我们首先需要知道特征值大致落在复平面的什么位置。Gershgorin 圆盘定理提供了一个极其简单的估计工具：每个特征值一定落在以对角元为中心、以该行非对角元绝对值之和为半径的某个圆盘之中。
 
-$r_{i}=\sum\limits_{j=1\atop j\neq i}^{n}|a_{ij}|$ 为半径的圆盘，即
+**定理 6.1.1** (Gershgorin) 设 $A = [a_{ij}] \in \mathbb{C}^{n \times n}$，则 $A$ 的所有特征值满足
 
 $$
-D _ {i} = \{z \mid | z - a _ {i i} | \leq r _ {i}, z \in \mathbb {C} \}, i = 1, 2, \dots , n
+\lambda \in \bigcup_{i=1}^{n} D_{i}, \quad
+D_{i} = \{z \mid |z - a_{ii}| \leq r_{i}, \; z \in \mathbb{C}\}, \quad
+r_{i} = \sum_{\substack{j=1 \\ j \neq i}}^{n} |a_{ij}|
 $$
 
-证明：令 D = diag {a\_{11}, a\_{22}, ..., a\_{nn}}，设 $\lambda \in \sigma(A)$
+即每个特征值都落在以 $a_{ii}$ 为圆心、$r_i$ 为半径的 $n$ 个圆盘的并集之中。
 
-x为相应的特征向量，则有
+**证明：** 记 $D = \operatorname{diag}\{a_{11}, a_{22}, \dots, a_{nn}\}$，设 $\lambda \in \sigma(A)$ 且 $x$ 为相应的特征向量。将 $Ax = \lambda x$ 改写为 $(A - D)x = (\lambda I - D)x$。若 $\lambda \neq a_{ii}$（否则 $\lambda$ 显然落在第 $i$ 个圆盘内），则 $\lambda I - D$ 可逆，两边左乘 $(\lambda I - D)^{-1}$ 得
 
 $$
-(A - D) x = (\lambda I - D) x
+(\lambda I - D)^{-1} (A - D) x = x
 $$
 
-不妨设 $\lambda \neq a_{ii}$ , 则有
+取无穷范数并利用相容性：
 
 $$
-(\lambda I - D) ^ {- 1} (A - D) x = x
+\|x\|_{\infty} \leq \|(\lambda I - D)^{-1}(A - D)\|_{\infty} \|x\|_{\infty}
+\quad\Rightarrow\quad
+\|(\lambda I - D)^{-1}(A - D)\|_{\infty} \geq 1
 $$
 
-$\Rightarrow ||x||_{\infty} \leq ||(\lambda I - D)^{-1}(A - D)||_{\infty} ||x||_{\infty}$
+注意到 $(\lambda I - D)^{-1}(A - D)$ 的第 $i$ 行第 $j$ 列元素为 $\frac{a_{ij}}{\lambda - a_{ii}}$（$j \neq i$），对角元为 $0$，因此该矩阵的无穷范数为
 
-$\Rightarrow \|(\lambda I - D)^{-1}(A - D)\|_{\infty} \geq 1$
-
 $$
-\max _ {1 \le i \le n} \frac {r _ {i}}{| \lambda - a _ {i i} |} \ge 1
+\|(\lambda I - D)^{-1}(A - D)\|_{\infty} = \max_{1 \leq i \leq n} \frac{r_i}{|\lambda - a_{ii}|}
 $$
 
-定理 6.1.2 设 定理 6.1.1 中的 n 个圆盘中，有 m 个圆盘构成了一个连通区域 S，且 S 与其余 n-m 个圆盘严格分离，则在 S 中有且只有 A 的 m 个特征值
+于是 $\displaystyle\max_{1 \leq i \leq n} \frac{r_i}{|\lambda - a_{ii}|} \geq 1$，即存在某个 $i$ 使得 $|\lambda - a_{ii}| \leq r_i$，故 $\lambda \in \bigcup_{i=1}^{n} D_i$。
 
-证明：记 $D = \operatorname{diag}\left\{  {a}_{11}\cdots {a}_{nn}\right\} \; ,\;{A}_{\theta } = D + \theta \left( {A - D}\right)$ $\theta  \in  \left\lbrack  {0,1}\right\rbrack$ .
+定理 6.1.1 告诉我们特征值落在所有圆盘的并集中，但它没有说明每个圆盘里到底有多少个特征值。下面的定理解决了这个问题。
 
-$A_{\theta}$ 的特征多项式的系数是 $\theta$ 的多项式，从而 $A_{0}$ 的特征值是 $\theta$ 的连续函数。令
+**定理 6.1.2** 设定理 6.1.1 中的 $n$ 个圆盘里有 $m$ 个构成了一个连通区域 $S$，且 $S$ 与其余 $n-m$ 个圆盘严格分离（即不相交），则在 $S$ 中有且仅有 $A$ 的 $m$ 个特征值（重特征值按重数计算）。
 
-$$
-D _ {i} (\theta) = \{z | | z - a _ {i i} | \leq \theta r _ {i} \}, i = 1, 2, \dots , n
-$$
+**证明思路：** 记 $D = \operatorname{diag}\{a_{11}, \dots, a_{nn}\}$，构造一族矩阵 $A_{\theta} = D + \theta(A - D)$，$\theta \in [0, 1]$。当 $\theta = 0$ 时 $A_0 = D$，其特征值就是对角元 $a_{ii}$，每个正好落在一个圆盘中心。当 $\theta$ 从 $0$ 连续变化到 $1$ 时，$A_{\theta}$ 的特征值也连续变化，而圆盘半径从 $0$ 逐渐扩大到 $r_i$。由于 $S$ 与其余圆盘始终严格分离，特征值无法「跳跃」到另一个连通区域，因此 $S$ 中始终保持 $m$ 个特征值。$\square$
 
-有 $D_{i}(\theta) \subset D_{i}$ 不失一般性，设前 $m$ 个圆盘连通即 $S = \bigcup_{i=1}^{m} D_{i}$ ，令 $S(\theta) = \bigcup_{i=1}^{m} D_{i}(\theta)$ $\overline{S}(\theta) = \bigcup_{i=m+1}^{n} D_{i}(\theta)$ 则有 $S(\theta)$ 与 $\overline{S}(\theta)$ 严格分离利用 $A_{\theta}$ 的特征值关于 $\theta$ 连续 易证定理结论
+这个定理在应用中非常方便。来看一个具体例子：
 
-例
+**例** 考虑矩阵
 
 $$
-A = \left[ \begin{array}{l l l} 0.9 & 0.01 & 0.12 \\ 0.01 & 0.8 & 0.13 \\ 0.01 & 0.02 & 0.4 \end{array} \right]
+A = \begin{bmatrix}
+0.9 & 0.01 & 0.12 \\
+0.01 & 0.8 & 0.13 \\
+0.01 & 0.02 & 0.4
+\end{bmatrix}
 $$
 
-A对应的圆盘为 $D_{1}=\{|z-0.9|\leq0.13\}$ $D_{2}=\{|z-0.8|\leq0.14\}$ ， $D_{3}=\{|z-0.4|\leq0.03\}$ $D_{3}$ 与 $D_{1}\cup D_{2}$ 严格分离则 $D_{3}$ 中包含A的一个特征值记为 $\lambda_{3}$ 且 $\lambda_{3}$ 为实特征值
+$A$ 对应的三个 Gershgorin 圆盘为：
+- $D_1 = \{|z - 0.9| \leq 0.13\}$（$r_1 = 0.01 + 0.12 = 0.13$）
+- $D_2 = \{|z - 0.8| \leq 0.14\}$（$r_2 = 0.01 + 0.13 = 0.14$）
+- $D_3 = \{|z - 0.4| \leq 0.03\}$（$r_3 = 0.01 + 0.02 = 0.03$）
 
-令 B = diag(1, 1, 0.1), 则
-
-$$
-B ^ {- 1} A B = \left[ \begin{array}{l l l} 0.9 & 0.01 & 0.012 \\ 0.01 & 0.8 & 0.013 \\ 0.1 & 0.2 & 0.4 \end{array} \right]
-$$
+$D_1$ 与 $D_2$ 相交构成一个连通区域，而 $D_3$ 与该区域严格分离。由定理 6.1.2，$D_3$ 中包含 $A$ 的恰好一个特征值，记为 $\lambda_3$。由于实矩阵的复特征值成对出现，而 $D_3$ 关于实轴对称且只含一个特征值，因此 $\lambda_3$ 必为实特征值。
 
-$$
-\overline {D} _ {1} = \{|z - 0.9| \leq 0.022\}, \quad \overline {D} _ {2} = \{|z - 0.8| \leq 0.023\}
-$$
+为了进一步分离 $D_1$ 和 $D_2$，我们可以利用相似变换缩放矩阵的某些行/列来缩小圆盘半径。令 $B = \operatorname{diag}(1, 1, 0.1)$，考虑相似变换 $B^{-1}AB$：
 
 $$
-\widehat {D} _ {3} = \{|z - 0.4| \leq 0.3\}
+B^{-1}AB = \begin{bmatrix}
+0.9 & 0.01 & 0.012 \\
+0.01 & 0.8 & 0.013 \\
+0.1 & 0.2 & 0.4
+\end{bmatrix}
 $$
 
-$\overline{D}_{1}, \overline{D}_{2}, \overline{D}_{3}$ 均严格分离 则有
+变换后的圆盘变为：
+- $\overline{D}_1 = \{|z - 0.9| \leq 0.022\}$（$0.01 + 0.012 = 0.022$）
+- $\overline{D}_2 = \{|z - 0.8| \leq 0.023\}$（$0.01 + 0.013 = 0.023$）
+- $\widehat{D}_3 = \{|z - 0.4| \leq 0.3\}$（$0.1 + 0.2 = 0.3$）
 
-$$
-\vert \lambda_ {1} - 0.9 \vert \le 0.022, \quad \vert \lambda_ {2} - 0.8 \vert \le 0.023
-$$
+三个圆盘现在全部严格分离。注意 $\widehat{D}_3$ 的半径虽然变大了，但由于原本的 $D_3$ 半径只有 $0.03$，我们可以从中取更紧的界。最终得到：
 
 $$
-|\lambda_ {3} - 0.4| \leq 0.03
+|\lambda_1 - 0.9| \leq 0.022, \quad |\lambda_2 - 0.8| \leq 0.023, \quad |\lambda_3 - 0.4| \leq 0.03
 $$
 
-定理 6.1.3 设 $\mu$ 是矩阵 $A + E \in \mathbb{C}^{n \times n}$ 的一个特征值
+通过选取合适的相似变换矩阵（对角元不全为 $1$），我们可以在不改变特征值的前提下缩小某些圆盘半径、放大另一些，从而获得更精确的特征值估计。
 
-且存在 $X \in \mathbb{C}^{n \times n}$ , $X^{-1} A X = D = \text{diag}(\lambda_1, \cdots, \lambda_n)$ 则 $\min_{\lambda \in \sigma(A)} |\lambda - \mu| \leq \|X^{-1}\|_P \|X\|_P \|E\|_P$
+接下来考虑特征值的扰动问题：当矩阵受到一个小扰动时，其特征值会变化多少？Bauer-Fike 定理给出了一个上界。
 
-其中 $\left( 1,1\right) p$ 为矩阵的 $P$ 范数, $P = 1,2,\infty$
+**定理 6.1.3** (Bauer-Fike) 设 $\mu$ 是 $A + E \in \mathbb{C}^{n \times n}$ 的一个特征值，且存在 $X \in \mathbb{C}^{n \times n}$ 使得 $X^{-1}AX = D = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$（即 $A$ 可对角化）。则
 
-证明：设 $\mu \notin \sigma(A)$ 则有
-
 $$
-A + E - \mu I = X [ D - \mu I + X ^ {- 1} E X ] X ^ {- 1}
+\min_{\lambda \in \sigma(A)} |\lambda - \mu| \leq \|X^{-1}\|_p \|X\|_p \|E\|_p
 $$
 
-$\mu$ 为 $A + E$ 的特征值，所以 $D - \mu I + X^{-1} E X$ 奇异
+其中 $\|\cdot\|_p$ 为矩阵的 $p$-范数，$p = 1, 2, \infty$。
 
-存在 $y \in \mathbb{C}^n$ 使得
+**证明：** 若 $\mu \in \sigma(A)$ 则不等式左边为 $0$，显然成立。下设 $\mu \notin \sigma(A)$。由 $A = XDX^{-1}$ 可得
 
 $$
-(D - \mu I) y = - (x ^ {- 1} E x) y
+A + E - \mu I = X\bigl[D - \mu I + X^{-1}EX\bigr] X^{-1}
 $$
-
-$\Rightarrow y = - (D - \mu I)^{-1}(X^{-1} E X) y$
 
-$\Rightarrow \|(D - \mu I)^{-1}\|_P \cdot \|X^{-1}\|_P \cdot \|E\|_P \cdot \|X\|_P \geq 1$
+因为 $\mu$ 是 $A + E$ 的特征值，$A + E - \mu I$ 奇异，从而 $D - \mu I + X^{-1}EX$ 也奇异。于是存在非零向量 $y \in \mathbb{C}^n$ 使得
 
 $$
-\| X ^ {- 1} \| _ {p} \quad \| X \| _ {p} \| E \| _ {p} \geq \| (D - \mu) ^ {- 1} \| _ {p} ^ {- 1} = \min _ {\lambda \in \sigma (A)} |\lambda - \mu|
+(D - \mu I)y = -(X^{-1}EX)y
 $$
 
-$\|X^{-1}\| \|X\|$ 称为矩阵 A 关于特征值问题的条件数设 $A \in \mathbb{C}^{n \times n}$ ， $\lambda$ 为 A 的一个单特征值，x, y 分别为 A 的左右特征向量。即
+由于 $\mu \notin \sigma(A)$，$D - \mu I$ 可逆，左乘其逆得 $y = -(D - \mu I)^{-1}(X^{-1}EX)y$。取范数并消去 $\|y\|$：
 
 $$
-A x = \lambda x, \quad y ^ {H} A = \lambda y ^ {H}
+1 \leq \|(D - \mu I)^{-1}\|_p \cdot \|X^{-1}\|_p \cdot \|E\|_p \cdot \|X\|_p
 $$
 
-设 $\| x\| _2 = \| y\| _2 = 1$ . 可以证明存在可微函数
+而 $(D - \mu I)^{-1}$ 是对角矩阵，其 $p$-范数为 $\max_i |\lambda_i - \mu|^{-1} = (\min_i |\lambda_i - \mu|)^{-1}$，因此
 
-$x(\varepsilon), \lambda(\varepsilon)$ 使得
-
 $$
-(A + \varepsilon F) x (\varepsilon) = \lambda (\varepsilon) x (\varepsilon), \quad \| F \| _ {2} = 1
+\|X^{-1}\|_p \|X\|_p \|E\|_p \geq \|(D - \mu I)^{-1}\|_p^{-1} = \min_{\lambda \in \sigma(A)} |\lambda - \mu|
 $$
 
-其中 $\lambda(0)=\lambda,\quad x(0)=x$ 。对 $\varepsilon$ 求导得
+$\|X^{-1}\| \|X\|$ 称为矩阵 $A$ 关于特征值问题的**条件数**。当 $A$ 是正规矩阵时，可以取 $X$ 为酉矩阵，此时条件数为 $1$——正规矩阵的特征值问题是最稳定的。
 
-$$
-F x + A \dot {x} (0) = \dot {\lambda} (0) x + \lambda \dot {x} (0)
-$$
+对于单个特征值，我们还可以给出更精细的条件数。设 $A \in \mathbb{C}^{n \times n}$，$\lambda$ 为 $A$ 的一个单特征值，$x$ 和 $y$ 分别为对应的右、左特征向量：
 
 $$
-\Rightarrow y ^ {H} F x + y ^ {H} A \dot {x} (0) = \dot {\lambda} (0) y ^ {H} x + \lambda y ^ {H} \dot {x} (0)
+Ax = \lambda x, \quad y^H A = \lambda y^H, \quad \|x\|_2 = \|y\|_2 = 1
 $$
 
-$$
-y ^ {H} A = \lambda y ^ {H} \Rightarrow \dot{\lambda} (0) = - \frac {y ^ {H} F x}{y ^ {H} x}
-$$
+考虑扰动 $A + \varepsilon F$（$\|F\|_2 = 1$），可以证明存在可微函数 $x(\varepsilon)$ 和 $\lambda(\varepsilon)$ 使得
 
 $$
-\Rightarrow | \dot {\lambda} (0) | \leq \frac {1}{| y ^ {H} x |}
+(A + \varepsilon F) x(\varepsilon) = \lambda(\varepsilon) x(\varepsilon), \quad \lambda(0) = \lambda, \; x(0) = x
 $$
 
-$\frac{1}{|y^{H}x|}$ 称为 A 关于特征值 $\lambda$ 的条件数
+对 $\varepsilon$ 求导并在 $\varepsilon = 0$ 处取值：
 
-## 2. 幂法和逆幂法.
-
-设 $z = (z_1 \cdots z_n)^T \in \mathbb{R}^n$ , 定义
-
 $$
-\max (z) = z _ {i}, \text{其中} | z _ {i} | = \| z \| _ {\infty}
+Fx + A\dot{x}(0) = \dot{\lambda}(0)x + \lambda \dot{x}(0)
 $$
 
-幂法为
+两边左乘 $y^H$ 并利用 $y^H A = \lambda y^H$：
 
 $$
-v ^ {(0)} \in \mathbb {R} ^ {n}
+y^H F x + \lambda y^H \dot{x}(0) = \dot{\lambda}(0) y^H x + \lambda y^H \dot{x}(0)
 $$
 
-$$
-k = 1, 2, \dots
-$$
+消去 $\lambda y^H \dot{x}(0)$ 后得到 $\dot{\lambda}(0) = \frac{y^H F x}{y^H x}$，因此
 
 $$
-z ^ {(k)} = A v ^ {(k - 1)}
+|\dot{\lambda}(0)| \leq \frac{1}{|y^H x|}
 $$
 
-$$
-m _ {k} = \max (z ^ {(k)})
-$$
+量 $\frac{1}{|y^H x|}$ 称为 $A$ 关于特征值 $\lambda$ 的**特征值条件数**。注意 $y^H x$ 是左右特征向量的内积：当 $A$ 为对称矩阵时左右特征向量相同，$|y^H x| = 1$，条件数为 $1$；当 $A$ 严重非正规时左右特征向量近乎正交，条件数可以非常大，这意味着特征值对扰动极其敏感。
 
-$$
-v ^ {(k)} = z ^ {(k)} / m _ {k}
-$$
+## 6.2. 幂法和逆幂法
 
-定理 6.2.1 $A \in \mathbb{R}^{n \times n}$ 存在 $n$ 个线性无关的特征
+有了特征值估计和扰动分析的基础，我们现在转向具体的计算方法。幂法的核心直觉非常简单：将一个向量反复乘以矩阵 $A$，它会在模最大的特征值对应的特征向量方向上不断增长。
 
-向量 $x_{1}, x_{2}, \cdots, x_{n}$ 对应的特征值满足
+为了便于描述算法，先定义向量的「最大分量」记号：对 $z = (z_1, \dots, z_n)^T \in \mathbb{R}^n$，定义
 
 $$
-| \lambda_ {1} | > | \lambda_ {2} | \geq \cdots \geq | \lambda_ {n} |
+\max(z) = z_i, \quad \text{其中 } |z_i| = \|z\|_{\infty}
 $$
 
-且 $v^{(0)}$ 在 $x_1$ 方向投影非零则有
+即 $\max(z)$ 取 $z$ 中绝对值最大的那个分量（其值可正可负，与其本身符号一致）。注意这里 $\max$ 并非通常意义下的最大值，而是一个特殊的记号。
 
+**幂法迭代格式**如下：
+
 $$
-\lim _ {k \to \infty} v ^ {(k)} = \frac {x _ {1}}{\max (x _ {1})}
+\begin{aligned}
+&v^{(0)} \in \mathbb{R}^n \quad \text{(任意初始向量)} \\
+&\text{for } k = 1, 2, \dots: \\
+&\qquad z^{(k)} = A v^{(k-1)} \\
+&\qquad m_k = \max(z^{(k)}) \\
+&\qquad v^{(k)} = z^{(k)} / m_k
+\end{aligned}
 $$
+
+每一步将当前向量乘 $A$，然后用最大分量做归一化，防止向量溢出或趋于零。$m_k$ 收敛到主特征值，$v^{(k)}$ 收敛到对应的特征向量。
 
+**定理 6.2.1** 设 $A \in \mathbb{R}^{n \times n}$ 有 $n$ 个线性无关的特征向量 $x_1, x_2, \dots, x_n$，对应的特征值满足
+
 $$
-\lim _ {k \to \infty} m _ {k} = \lambda_1
+|\lambda_1| > |\lambda_2| \geq \cdots \geq |\lambda_n|
 $$
 
-证明: $v^{(k)} = \frac{A v^{(k-1)}}{m_k} = \cdots = \frac{A^k v^{(0)}}{m_k m_{k-1} \cdots m_1}$
+且初始向量 $v^{(0)}$ 在 $x_1$ 方向上的投影非零（即 $v^{(0)}$ 的展开式中 $\alpha_1 \neq 0$），则
 
-由 $v^{(k)}$ 的最大分量为 1 可得
-
 $$
-v ^ {(k)} = \frac {A ^ {k} v ^ {(0)}}{\max (A ^ {k} v ^ {(0)})}
+\lim_{k \to \infty} v^{(k)} = \frac{x_1}{\max(x_1)}, \qquad
+\lim_{k \to \infty} m_k = \lambda_1
 $$
 
-设 $v^{(0)} = \sum_{i=1}^{n} \alpha_i x_i$
+**证明：** 首先注意到
 
 $$
-A ^ {k} v ^ {(0)} = \lambda_ {1} ^ {k} [ \alpha_ {1} x _ {1} + \sum_ {i = 2} ^ {n} \alpha_ {i} (\frac {\lambda_ {i}}{\lambda_ {1}}) ^ {k} x _ {i} ]
+v^{(k)} = \frac{A v^{(k-1)}}{m_k} = \cdots = \frac{A^k v^{(0)}}{m_k m_{k-1} \cdots m_1}
 $$
+
+由于每次归一化使 $v^{(k)}$ 的最大分量为 $1$，等价地有
 
 $$
-\Rightarrow \lim _ {k \to \infty} \frac {A ^ {k} v ^ {(0)}}{\lambda_ {1} ^ {k} \alpha_ {1}} = x _ {1}
+v^{(k)} = \frac{A^k v^{(0)}}{\max(A^k v^{(0)})}
 $$
 
+将 $v^{(0)}$ 按特征向量展开：$v^{(0)} = \sum_{i=1}^{n} \alpha_i x_i$，其中 $\alpha_1 \neq 0$。则
+
 $$
-\Rightarrow \lim _ {k \to \infty} \frac {A ^ {k} v ^ {(0)}}{\max (A ^ {k} v ^ {(0)})} = \frac {x _ {1}}{\max (x _ {1})}
+A^k v^{(0)} = \lambda_1^k \left[ \alpha_1 x_1 + \sum_{i=2}^{n} \alpha_i \left(\frac{\lambda_i}{\lambda_1}\right)^k x_i \right]
 $$
 
-## 另一方面
+当 $k \to \infty$ 时，由于 $|\lambda_i / \lambda_1| < 1$（$i \geq 2$），求和项趋于零，因此
 
 $$
-\begin{array}{r l} {m _ {k}} & {= \max (z ^ {(k)}) = \max (A v ^ {(k - 1)})} \\ & {= \frac {\max (A ^ {k} v ^ {(0)})}{\max (A ^ {k - 1} v ^ {(0)})}} \\ & {= \lambda_ {1} \frac {\max (\alpha_ {1} x _ {1} + \sum_ {i = 2} ^ {n} \alpha_ {i} (\frac {\lambda_ {i}}{\lambda_ {1}}) ^ {k} x _ {i})}{\max (\alpha_ {1} x _ {1} + \sum_ {i = 2} ^ {n} \alpha_ {i} (\frac {\lambda_ {i}}{\lambda_ {1}}) ^ {k - 1} x _ {i})}} \end{array}
+\lim_{k \to \infty} \frac{A^k v^{(0)}}{\lambda_1^k \alpha_1} = x_1
+\quad\Rightarrow\quad
+\lim_{k \to \infty} \frac{A^k v^{(0)}}{\max(A^k v^{(0)})} = \frac{x_1}{\max(x_1)}
 $$
+
+这就证明了特征向量的收敛性。对于 $m_k$，注意到
 
 $$
-\Rightarrow \lim _ {k \to \infty} m _ {k} = \lambda_ {1}
+\begin{aligned}
+m_k &= \max(z^{(k)}) = \max(A v^{(k-1)})
+     = \frac{\max(A^k v^{(0)})}{\max(A^{k-1} v^{(0)})} \\
+    &= \lambda_1 \cdot \frac{\max\!\left(\alpha_1 x_1 + \sum_{i=2}^{n} \alpha_i (\frac{\lambda_i}{\lambda_1})^k x_i\right)}
+                            {\max\!\left(\alpha_1 x_1 + \sum_{i=2}^{n} \alpha_i (\frac{\lambda_i}{\lambda_1})^{k-1} x_i\right)}
+\end{aligned}
 $$
 
-### 逆幂法.
+取极限 $k \to \infty$，分子和分母中的求和项均趋于零，因此 $\lim_{k \to \infty} m_k = \lambda_1$。
 
-$A \in  {\mathbb{R}}^{n \times  n}$ 非奇异 有 $n$ 个线性无关的特征向量
+收敛速度取决于比值 $|\lambda_2 / \lambda_1|$：这个比值越小，收敛越快。当 $|\lambda_2| \approx |\lambda_1|$ 时幂法收敛非常慢，这时需要考虑加速技巧或换用其他方法。
 
-$x_{1} \cdots x_{n}$ 对应的特征值满足
+### 逆幂法
 
-$$
-| \lambda_ {1} | \geq | \lambda_ {2} | \geq \dots \geq | \lambda_ {n - 1} | > | \lambda_ {n} | > 0
-$$
+幂法求的是模最大的特征值。如果我们想求模最小的特征值呢？一个自然的想法是：对 $A^{-1}$ 应用幂法。因为 $A^{-1}$ 的特征值是 $1/\lambda_i$，模最大的那个正好对应 $A$ 的模最小的特征值。
 
-将幂法用于 ${A}^{-1}$ 可得逆幂法.
+设 $A \in \mathbb{R}^{n \times n}$ 非奇异且有 $n$ 个线性无关的特征向量 $x_1, \dots, x_n$，对应的特征值满足
 
 $$
-A z ^ {(b)} = v ^ {(b - 1)}
+|\lambda_1| \geq |\lambda_2| \geq \cdots \geq |\lambda_{n-1}| > |\lambda_n| > 0
 $$
 
-$$
-m _ {k} = \max (z ^ {(k)})
-$$
+则对 $A^{-1}$ 应用幂法，得到**逆幂法**：
 
 $$
-v ^ {(k)} = \frac {z ^ {(k)}}{m _ {k}}
+\begin{aligned}
+&\text{for } k = 1, 2, \dots: \\
+&\qquad A z^{(k)} = v^{(k-1)} \quad \text{(解线性方程组而非求逆)} \\
+&\qquad m_k = \max(z^{(k)}) \\
+&\qquad v^{(k)} = z^{(k)} / m_k
+\end{aligned}
 $$
 
-在逆幂法基础上选择参数 $\delta \neq \lambda_i$ $i=1 \cdots n$
+注意实现时并不显式计算 $A^{-1}$（求逆开销大且数值不稳定），而是每步求解一个线性方程组 $A z^{(k)} = v^{(k-1)}$。由于 $A$ 不变，可以预先对 $A$ 做 LU 分解，之后每步只需 $O(n^2)$ 的回代操作。
 
-将幂法用于 $(A-\delta I)^{-1}$ 可得原点位移的逆幂法
+### 原点位移的逆幂法
 
-$$
-(A - \delta I) z ^ {(k)} = v ^ {(k - 1)}
-$$
+逆幂法的思想可以进一步推广：如果我们想求离某个给定值 $\delta$ 最近的特征值，只需对 $(A - \delta I)^{-1}$ 应用幂法。$(A - \delta I)^{-1}$ 的特征值是 $1/(\lambda_i - \delta)$，模最大的对应 $\lambda_i$ 中离 $\delta$ 最近的那个。这就是**原点位移的逆幂法**：
 
 $$
-m _ {k} = \max (z ^ {(k)})
+\begin{aligned}
+&\text{for } k = 1, 2, \dots: \\
+&\qquad (A - \delta I) z^{(k)} = v^{(k-1)} \\
+&\qquad m_k = \max(z^{(k)}) \\
+&\qquad v^{(k)} = z^{(k)} / m_k
+\end{aligned}
 $$
 
-$$
-v ^ {(k)} = \frac {z ^ {(k)}}{m _ {k}}
-$$
+这个方法的威力在于：如果 $\delta$ 非常接近某个特征值 $\lambda_i$，那么 $|\lambda_i - \delta|^{-1}$ 会远大于其他 $|\lambda_j - \delta|^{-1}$，收敛速度极快——常常只需一两步迭代就能得到高精度的特征向量。这使它成为计算单个特征值的利器。
 
 ### 收缩方法
 
-设 $|\lambda_1| > |\lambda_2| > |\lambda_3| \geq \cdots \geq |\lambda_n|$ 收缩
+幂法只能求出模最大的特征值（及其特征向量）。如果想求次大特征值，就需要用到**收缩（deflation）**技术：在求出 $\lambda_1$ 和 $x_1$ 之后，将原问题降阶，消除 $\lambda_1$ 的影响，从而继续用幂法求 $\lambda_2$。
 
-方法为 求出 $\lambda_{1}$ 后求 $\lambda_{2}$ 的方法
+以下假设特征值满足严格不等式 $|\lambda_1| > |\lambda_2| > |\lambda_3| \geq \cdots \geq |\lambda_n|$。
 
-方法1. 设 $x_1, x_2$ 已知，计算 Householder 矩阵
-
-H，使得 $Hx_{1}=e_{1}$ （设 $\|x_{1}\|_{2}=1$ ）
-
-由 $A{x}_{1} = {\lambda }_{1}{x}_{1}$ 得
+**方法一：Householder 相似变换。** 假设已求得 $x_1$（且已归一化使 $\|x_1\|_2 = 1$）。构造 Householder 矩阵 $H$ 使得 $H x_1 = e_1$（即将 $x_1$ 变换到第一个坐标轴方向）。由 $A x_1 = \lambda_1 x_1$ 可得
 
 $$
-H A H ^ {- 1} e _ {1} = \lambda_ {1} e _ {1}
+H A H^{-1} e_1 = \lambda_1 e_1
 $$
 
-即
+这意味着 $HAH^{-1}$ 的第一列除了 $(1,1)$ 位置为 $\lambda_1$ 外其余元素全为零。记
 
 $$
-A _ {2} = H A H ^ {- 1} = \left[ \begin{array}{l l} \lambda_ {1} & b _ {1} ^ {T} \\ 0 & B _ {2} \end{array} \right]
+A_2 = H A H^{-1} = \begin{bmatrix}
+\lambda_1 & b_1^\top \\
+0 & B_2
+\end{bmatrix}, \quad B_2 \in \mathbb{R}^{(n-1) \times (n-1)}
 $$
 
-其中 $B_{2} \in \mathbb{R}^{(n-1) \times (n-1)}$ 具有特征值 $\lambda_{2} \cdots \lambda_{n}$
-
-利用幂法求 $B_{2}$ 的主特征值 $\lambda_{2}$ 及特征向量
-
-$y_{2}$ 满足 $B_{2}y_{2}=\lambda_{2}y_{2}$
-
-则 ${A}_{2}$ 的特征向量为 ${z}_{2} = \begin{bmatrix} {\frac{b}_{1}^{T}{y}_{2}{\lambda }_{2} - {\lambda }_{1}} \\  y_{2} \end{bmatrix}$
-
-A 相应的特征向量为 $H^{-1}z_{2}$
-
-\- 定理 6.2.2 $A = [a_{ij}] \in \mathbb{R}^{n \times n}$ 特征值为
-
-$x_{1} \cdots x_{n}, x_{1} \cdots x_{n}$ 为相应的特征向量.
-
-且 $\lambda_{1}$ 的重数为 1， $v \in \mathbb{R}^{n}$ 满足 $v^{T}x_{1} = 1$ 则
+由于相似变换不改变特征值，$B_2$ 的特征值正好是 $\lambda_2, \dots, \lambda_n$。现在对 $B_2$ 应用幂法求其主特征值 $\lambda_2$ 和特征向量，设 $B_2 y_2 = \lambda_2 y_2$。$A_2$ 的对应特征向量为
 
 $$
-B = A - \lambda_ {1} x _ {1} v ^ {T}
+z_2 = \begin{bmatrix}
+\dfrac{b_1^\top y_2}{\lambda_2 - \lambda_1} \\[6pt]
+y_2
+\end{bmatrix}
 $$
 
-的特征值为 0, ${\lambda }_{2}\cdots {\lambda }_{n}$ 对应特征向量为
+（直接验证 $A_2 z_2 = \lambda_2 z_2$ 即可）。最后 $A$ 的特征向量为 $H^{-1} z_2$。
+
+**方法二：秩一修改（Wielandt 收缩）。** 这个方法的想法是：从 $A$ 中减去 $\lambda_1 x_1$ 对应的秩一矩阵，把 $\lambda_1$「抹成」$0$，而其余特征值不变。
+
+**定理 6.2.2** 设 $A \in \mathbb{R}^{n \times n}$ 的特征值为 $\lambda_1, \dots, \lambda_n$，对应特征向量为 $x_1, \dots, x_n$，且 $\lambda_1$ 的重数为 $1$。取 $v \in \mathbb{R}^n$ 满足 $v^T x_1 = 1$，令
 
 $$
-x _ {1}, y _ {2} \dots y _ {n} \quad \text { 且 }
+B = A - \lambda_1 x_1 v^T
 $$
 
-$$
-x _ {i} = (\lambda_ {i} - \lambda_ {1}) y _ {i} + \lambda_ {1} (v ^ {T} y _ {i}) x _ {1}, i = 2 \dots n
-$$
-
-\- Wielandt 收缩方法、
-
-设 ${x}_{1} = \left( {x}_{11}\cdots {x}_{1n}\right) ^{T}$ 令
+则 $B$ 的特征值为 $0, \lambda_2, \dots, \lambda_n$，其中 $0$ 对应特征向量 $x_1$，而 $\lambda_i$（$i \geq 2$）对应的特征向量可用下式从 $B$ 的特征向量还原：
 
 $$
-v = \frac {1}{\lambda_ {1} x _ {1 i}} (a _ {i 1} \dots a _ {i n}) ^ {\mathrm{T}}
+x_i = (\lambda_i - \lambda_1) y_i + \lambda_1 (v^T y_i) x_1, \quad i = 2, \dots, n
 $$
 
-$x_{i}$ 为 $x_{1}$ 的非零分量，则有
+其中 $y_i$ 是 $B$ 对应于 $\lambda_i$ 的特征向量。
+
+**Wielandt 收缩的具体实施：** 取 $x_1 = (x_{11}, \dots, x_{1n})^T$，设 $x_{1i}$ 为 $x_1$ 的某个非零分量。令
 
 $$
-v ^ {T} x _ {1} = \frac {1}{\lambda_ {1} x _ {1 i}} \sum_ {j = 1} ^ {n} a _ {i j} x _ {1 j} = 1
+v = \frac{1}{\lambda_1 x_{1i}} (a_{i1}, \dots, a_{in})^T
 $$
 
-并且
+容易验证 $v^T x_1 = \frac{1}{\lambda_1 x_{1i}} \sum_{j=1}^{n} a_{ij} x_{1j} = 1$（因为 $Ax_1 = \lambda_1 x_1$ 的第 $i$ 个分量正是 $\sum_j a_{ij} x_{1j} = \lambda_1 x_{1i}$）。构造 $B = A - \lambda_1 x_1 v^T$，可以证明 $B$ 的第 $i$ 行全为零。
 
-$$
-B = A - \lambda_1 x_1 v ^ {T}
-$$
+现在设 $y = (y_1, \dots, y_n)$ 是 $B$ 的属于非零特征值 $\lambda$ 的特征向量：$By = \lambda y$。由 $B$ 的第 $i$ 行为零可知 $\lambda y_i = 0$，从而 $y_i = 0$。这意味着 $y$ 的第 $i$ 个分量恒为零，我们可以直接删去 $B$ 的第 $i$ 行和第 $i$ 列，得到一个 $(n-1) \times (n-1)$ 的矩阵 $B'$。$B'$ 的特征值就是 $\lambda_2, \dots, \lambda_n$。
 
-第i行为零
+此时对 $B'$ 应用幂法求其主特征值 $\lambda_2$ 及特征向量 $y_2'$，然后在 $y_2'$ 的第 $i$ 个分量位置插入 $0$ 得到 $(n-1)$ 维向量 $y_2$，再利用定理 6.2.2 中的公式还原出 $A$ 的特征向量 $x_2$。
 
-若 $y$ 为 $B$ 的特征向量, 且 $\lambda \neq 0$ 则
+Wielandt 收缩的巧妙之处在于：每次降阶会消去一行一列，得到的矩阵比原矩阵小一阶，反复操作即可逐一求出所有特征值。
 
-By = λy
+---
 
-$\Rightarrow y_{i}=0,\quad y=(y_{1}\cdots y_{n})$
-
-## 可删去B的第i行第i列得到
-
-${B}^{\prime } \in  {\mathbb{R}}^{\left( n - 1\right)  \times  \left( {n - 1}\right) }$ .
-
-采用幂法 计算 $B'$ 的主特征值 $\lambda_2$ 及特征向
-
-量 $y_{2}^{\prime}$ . 在 $y_{2}^{\prime}$ 第 $c$ 个分量位置插入 0
-
-得到 $y_{2}$ 再利用定理 6.2.2 中的公式可以
-
-得到 ${x}_{2}$
+**本章小结：** Gershgorin 圆盘定理给出了特征值位置的简单估计，通过相似变换可以进一步缩紧圆盘。Bauer-Fike 定理量化了特征值对扰动的敏感度，特征值条件数 $\frac{1}{|y^H x|}$ 则解释了为什么非正规矩阵的特征值难以精确计算。幂法利用反复左乘的原理，计算量小、实现简单，是求最大（或最小）特征值的首选方法；其收敛速度由 $|\lambda_2/\lambda_1|$ 决定。逆幂法配合原点位移技巧，可以快速计算离任意给定值最近的特征值。收缩方法（Householder 降阶和 Wielandt 秩一修改）则使我们能逐个求出所有特征值。下一章介绍的 QR 方法是计算全部特征值的最通用算法。
 
 [← 上一篇：非线性方程组迭代方法](/posts/numerical-analysis-1/10-nonlinear-systems/)
 

@@ -8,44 +8,38 @@ tags: [numerical-analysis, error-analysis, vector-norms, matrix-norms, gram-schm
 use_math: true
 ---
 
-本文介绍数值分析的基本概念，包括误差分析理论、浮点数表示、内积空间与 Gram-Schmidt 正交化、向量与矩阵范数、谱半径、对角占优矩阵与不可约矩阵等基础知识。
+在计算机上求解数学问题，误差是绕不开的话题。它从哪里来？怎么度量？计算过程中如何传播？这些问题的答案直接影响数值方法的可靠性。本章从误差的基本概念出发，引入浮点数表示、内积空间、范数和矩阵性质——后面各章会反复用到这些工具。
 
 # 第一章 引论
 
 ## 1. 误差
 
-定义: $x \in \mathbb{R}$ , $x_{A}$ 是 $x$ 的一个近似值
+用计算机做数值计算，误差不可避免。我们先明确几个基本概念。
 
-$x - x_{A}$ : $x_{A}$ 的误差
+**定义:** $x \in \mathbb{R}$ , $x_{A}$ 是 $x$ 的一个近似值
 
-$\left| {x - {x}_{A}}\right|  : \;{x}_{A}$ 的绝对误差
+$x - x_{A}$ : $x_{A}$ 的误差。
 
-$\frac{|x-x_{A}|}{|x|}$ : $x_{A}$ 的相对误差
+$\left| {x - {x}_{A}}\right|  : \;{x}_{A}$ 的绝对误差。
 
-若存在 $\varepsilon_{A}>0$ ，使得 $\vert x-x_{A}\vert\leq\varepsilon_{A}$
+$\frac{|x-x_{A}|}{|x|}$ : $x_{A}$ 的相对误差。
 
-${\varepsilon }_{A} : {x}_{A}$ 的绝对误差界
+若存在 $\varepsilon_{A}>0$ ，使得 $\vert x-x_{A}\vert\leq\varepsilon_{A}$。
 
-$\frac{\varepsilon_{A}}{|x|}:\quad x_{A}$ 的相对误差界
+${\varepsilon }_{A} : {x}_{A}$ 的绝对误差界。
 
-例：$π$ 圆周率，$π_A = 3.14$. 则
+$\frac{\varepsilon_{A}}{|x|}:\quad x_{A}$ 的相对误差界。
+
+**例：** $π$ 圆周率，$π_A = 3.14$. 则
 
 $\left| {\pi  - {\pi }_{A}}\right|  = {0.0015926}\cdots  \leq  {0.002}$ 绝对误差界
 
 相对误差界： $\frac{0.002}{\pi} \leq 0.00067$
 
-定义： $x_{A}$ 是 $x$ 的一个近似值
+**定义：** $x_{A}$ 是 $x$ 的一个近似值
 
 $$
-x _ {A} = \pm 10^{k} \times 0. d _ {1} d _ {2} \dots d _ {i} \dots
-$$
-
-$$
-d _ {i} \in \{0, 1, 2, \dots , 9 \}, \quad i = 1, 2, \dots
-$$
-
-$$
-d _ {1} \neq 0
+x _ {A} = \pm 10^{k} \times 0. d _ {1} d _ {2} \dots d _ {i} \dots, \quad d _ {i} \in \{0, 1, 2, \dots , 9 \}, \quad i = 1, 2, \dots, \quad d _ {1} \neq 0
 $$
 
 如果 $n$ 满足
@@ -54,11 +48,9 @@ $$
 \vert x - x _ {A} \vert \le 0.5 \times 10^{k - n}
 $$
 
-的最大非负整数，则称 $x_{A}$ 为 $x$
+的最大非负整数，则称 $x_{A}$ 为 $x$ 具有 $n$ 位十进制有效数字的近似值
 
-具有 $n$ 位十进制有效数字的近似值
-
-例： $\pi_{A}=3.14=0.314\times10^{1}$
+**例：** $\pi_{A}=3.14=0.314\times10^{1}$
 
 $\left| {\pi  - {\pi }_{A}}\right|  \leq  {0.5} \times  {10}^{-2} = {0.5} \times  {10}^{1 - 3}$ ,3位有效数字
 
@@ -68,15 +60,17 @@ $$
 
 $|\pi - \pi_{A}| \leq 1 \times 10^{-5} < 0.5 \times 10^{1-5}$ ，5位有效数字
 
-在数值计算中误差大致分为以下四类：
+在数值计算中，误差大致分为以下四类：
 
-(1). 输入误差
+(1) **输入误差**：原始数据本身不精确（如测量误差）。
 
-(2) 舍入误差
+(2) **舍入误差**：计算机用有限位表示实数时产生的误差。
 
-(3) 截断误差
+(3) **截断误差**：用有限项近似无穷过程（如级数截断）产生的误差。
 
-(4) 传播误差
+(4) **传播误差**：前序步骤的误差在后续计算中被放大。
+
+要理解舍入误差，需要先了解计算机如何表示实数。
 
 ## 1.1 浮点数表示与舍入误差
 
@@ -90,9 +84,9 @@ $d_{1}=1,\quad d_{2}\cdots d_{t}\in\{0,1\},\quad J\in\mathbb{Z},\quad L\leq J\le
 
 $0.d_{1}\cdots d_{t}$ 称为尾数，$t$ 称为字长，$J$ 称为阶。
 
-IEEE 标准：单精度：$t=23, L=-126, U=127$
+IEEE 标准：单精度：$t=23, L=-126, U=127$。
 
-双精度: $t = 52, L = -1022, U = 1023$
+双精度: $t = 52, L = -1022, U = 1023$。
 
 $F$: 浮点数的集合
 
@@ -102,30 +96,28 @@ $$
 m = 2 ^ {L - 1}, M = 2 ^ {U} (1 - 2 ^ {- t})
 $$
 
-$x \in  \mathbb{R},\;f\left( x\right)$ 为 $x$ 对应的浮点数
+$x \in \mathbb{R},\;f\left( x\right)$ 为 $x$ 对应的浮点数
 
 若 $m \leq |x| \leq M$ , $f(x) = \arg\min_{y \in F} |x - y|$
 
 $$
-\vert x \vert <   m, \quad f (x) = 0
+\vert x \vert < m, \quad f (x) = 0
 $$
 
 $$
 \vert x \vert > M, \quad f (x) \text {不存在}
 $$
 
-定理1.1. $x \in \mathbb{R}$ 满足 $m \leq |x| \leq M$ , 则存在 $S \in \mathbb{R}$
-
-$|\delta| \leq 2^{-t}$ 使得
+**定理1.1.** $x \in \mathbb{R}$ 满足 $m \leq |x| \leq M$ , 则存在 $S \in \mathbb{R}$, $|\delta| \leq 2^{-t}$ 使得
 
 $$
 f (x) = x (1 + \delta)
 $$
 
-证明：不妨设 $x > 0$ ，
+**证明：** 不妨设 $x > 0$ ，
 
 $$
-2 ^ {\alpha - 1} \le x <   2 ^ {\alpha}
+2 ^ {\alpha - 1} \le x < 2 ^ {\alpha}
 $$
 
 在 $\left[2^{\alpha-1}, 2^{\alpha}\right)$ 中浮点数间距为 $2^{\alpha-t}$
@@ -133,16 +125,15 @@ $$
 故
 
 $$
-| f l (x) - x | \leq \frac {1}{2} \cdot 2 ^ {\alpha - t} = 2 ^ {\alpha - 1} \cdot 2 ^ {- t} \leq x \cdot 2 ^ {- t}
-$$
-
-$$
-\Rightarrow \frac {| f (x) - x |}{x} \le 2 ^ {- t}
+\begin{aligned}
+| f l (x) - x | &\leq \frac {1}{2} \cdot 2 ^ {\alpha - t} = 2 ^ {\alpha - 1} \cdot 2 ^ {- t} \leq x \cdot 2 ^ {- t} \\
+\Rightarrow \frac {| f (x) - x |}{x} &\le 2 ^ {- t}
+\end{aligned}
 $$
 
 $2^{-t}$ 称为机器精度.
 
-例： $x,y \in \mathbb{R}$ ⊕ ⊖ 表示 F 中的加法、减法运算
+**例：** $x,y \in \mathbb{R}$ ⊕ ⊖ 表示 F 中的加法、减法运算
 
 即
 
@@ -150,7 +141,7 @@ $$
 x \oplus y = f l (f l (x) + f l (y))
 $$
 
-由定理1.1
+由**定理1.1**
 
 $$
 \begin{array}{r l} {x \oplus y} & {= (x (1 + \delta_ {x}) + y (1 + \delta_ {y})) (1 + \delta)} \\ & {= x + y + (x \delta_ {x} + y \delta_ {y}) (1 + \delta)} \\ & {\qquad + (x (1 + \delta_ {x}) + y (1 + \delta_ {y})) \delta} \end{array}
@@ -160,7 +151,7 @@ $$
 \begin{array}{r l} {x \ominus y} & {= f_{l} (f_{l} (x) - f_{l} (y))} \\ & {= (x (1 + \delta x) - y (1 + \delta y)) (1 + \delta)} \\ & {= x - y + (x \delta x - y \delta y) (1 + \delta)} \\ & {+ (x (1 + \delta x) - y (1 + \delta y)) \delta} \end{array}
 $$
 
-例: $\ln (1 + x) = \sum_{n=1}^{\infty} (-1)^{n+1} \frac{x^n}{n}$
+**例:** $\ln (1 + x) = \sum_{n=1}^{\infty} (-1)^{n+1} \frac{x^n}{n}$
 
 $$
 \begin{array}{r l} {\mathrm{令} x = 1} \\ {\ln 2} & {= \sum_ {n = 1} ^ {\infty} (- 1) ^ {n + 1} \frac {1}{n}} \end{array}
@@ -176,7 +167,9 @@ $$
 
 练习: Gram-Schmidt 正交化的修正.
 
-### 1.3 传播误差与稳定性
+浮点数运算会引入舍入误差，这些误差不会停留在原地——它们在后续计算中会累积和传播。误差增长的模式决定了数值方法的稳定性。
+
+### 1.2 传播误差与稳定性
 
 设 $\varepsilon_{n}$ 为运算 $n$ 步之后的误差
 
@@ -186,9 +179,9 @@ $$
 
 指数型的误差增长若 $c > 1$ ，则是不稳定的
 
-相应的数值方法在实际计算中不可用、
+相应的数值方法在实际计算中不可用。
 
-例：生成序列 $x_{n}=\frac{1}{3^{n}}$
+**例：** 生成序列 $x_{n}=\frac{1}{3^{n}}$
 
 (1) $x_0 = 1$ , $x_n = \frac{1}{3} x_{n-1}$
 
@@ -218,11 +211,15 @@ $$
 | 9 | $0.000\ 21\times10^{-5}$ | $1.999\ 90\times10^{-5}$ | $0.098\ 414\ 999\ 8$ |
 | 10 | $0.000\ 07\times10^{-5}$ | $1.999\ 97\times10^{-5}$ | $0.295\ 244\ 999\ 9$ |
 
-# 2. 基本概念回顾.
+上表清楚地展示了三种递推方式的稳定性差异：递推 (1) 的误差线性衰减，递推 (2) 的误差基本稳定，递推 (3) 的误差则指数增长——这正是数值不稳定的典型表现。
+
+误差分析告诉我们方法"好不好用"，但要深入理解数值方法，还需要线性代数的基本工具。下面回顾内积空间、范数和矩阵性质等核心概念。
+
+# 2. 基本概念回顾
 
 ## 2.1 内积空间
 
-定义： $V$ 是数域 $P$ 上的一个线性空间.
+**定义：** $V$ 是数域 $P$ 上的一个线性空间.
 
 内积 $(\cdot,\cdot)$ : $V\times V\rightarrow P$ 满足
 
@@ -262,7 +259,7 @@ $$
 (x, y) = \sum_ {i = 1} ^ {n} w _ {i} x _ {i} \overline {y} _ {i}
 $$
 
-例 ($C[a,b]$) $\rho(x)$ 是 [a,b] 上的可积函数，满足
+**例** ($C[a,b]$) $\rho(x)$ 是 [a,b] 上的可积函数，满足
 
 (1) $\rho(x) \geq 0, \forall x \in [a,b]$
 
@@ -290,21 +287,17 @@ $$
 
 构成了 $V$ 的一组正交基
 
-定理（Gram 矩阵） V 是一个内积空间，
+**定理（Gram 矩阵）** V 是一个内积空间，
 
 $$
-u _ {1} \dots u _ {n} \in V \quad \mathrm{令}
-$$
-
-$$
-G = \begin{bmatrix} (u_{1}, u_{1}) & (u_{2}, u_{1}) & \dots & (u_{n}, u_{1}) \\ (u_{1}, u_{2}) & (u_{2}, u_{2}) & \dots & (u_{n}, u_{2}) \\ \vdots & \vdots & \ddots & \vdots \\ (u_{1}, u_{n}) & (u_{2}, u_{n}) & \dots & (u_{n}, u_{n}) \end{bmatrix}
+u _ {1} \dots u _ {n} \in V, \quad \text{令} \quad G = \begin{bmatrix} (u_{1}, u_{1}) & (u_{2}, u_{1}) & \dots & (u_{n}, u_{1}) \\ (u_{1}, u_{2}) & (u_{2}, u_{2}) & \dots & (u_{n}, u_{2}) \\ \vdots & \vdots & \ddots & \vdots \\ (u_{1}, u_{n}) & (u_{2}, u_{n}) & \dots & (u_{n}, u_{n}) \end{bmatrix}
 $$
 
 称为 Gram 矩阵，G 可逆的充分必要条件为
 
 $u_{1}\cdots u_{n}$ 线性无关
 
-证明：若 $u_{1} \cdots u_{n}$ 线性相关，则存在
+**证明：** 若 $u_{1} \cdots u_{n}$ 线性相关，则存在
 
 $0 \neq \alpha = (\alpha_{1}, \cdots, \alpha_{n})^{T}$ 使得
 
@@ -318,9 +311,9 @@ $$
 G _ {\alpha} = \left[ \begin{array}{l} (\sum_ {i = 1} ^ {n} \alpha_ {i} u _ {i}, u _ {i}) \\ \vdots \\ (\sum_ {i = 1} ^ {n} \alpha_ {i} u _ {i}, u _ {n}) \end{array} \right] = 0
 $$
 
-$\Rightarrow  G$ 不可逆
+$\Rightarrow G$ 不可逆
 
-若 $G$ 不可逆, 则存在 $0 \neq  \alpha  = {\left( {\alpha }_{1}\cdots {\alpha }_{n}\right) }^{T}$
+若 $G$ 不可逆, 则存在 $0 \neq \alpha  = {\left( {\alpha }_{1}\cdots {\alpha }_{n}\right) }^{T}$
 
 使得
 
@@ -336,15 +329,17 @@ $$
 \Rightarrow \sum_ {i = 1} ^ {n} \alpha_ {i} u _ {i} = 0
 $$
 
-$\Rightarrow  {u}_{1}\cdots {u}_{n}$ 线性相关
+$\Rightarrow {u}_{1}\cdots {u}_{n}$ 线性相关
+
+内积给了我们"角度"和"正交"的概念，但数值分析中还经常需要度量向量和矩阵的"大小"——这就引入了范数。
 
 ## 2.2 范数、赋范线性空间
 
-定义： $V$ 是一个数域 $P$ 上的线性空间
+**定义：** $V$ 是一个数域 $P$ 上的线性空间
 
 $V$ 上的一个映射 $\|\cdot\|: V \to \mathbb{R}$ 满足:
 
-(1) 正定性 $\left\| u\right\|  \geq  0,\forall u \in  V$ ,且 $\left\| u\right\|  = 0 \Leftrightarrow  u =  \theta$
+(1) 正定性 $\left\| u\right\| \geq 0,\forall u \in V$ ,且 $\left\| u\right\| = 0 \Leftrightarrow u = \theta$
 
 (2) 齐次性 $\|\alpha u\| = |\alpha|\|u\|$ $\forall u \in V, \alpha \in P$
 
@@ -352,7 +347,7 @@ $V$ 上的一个映射 $\|\cdot\|: V \to \mathbb{R}$ 满足:
 
 则称 $\|\cdot\|$ 为 V 的范数，称 V 为赋范线性空间
 
-例： ($\mathbb{R}^{n}$) $\forall x\in \mathbb{R}^{n},\quad x=(x_{1}\cdots x_{n})^{T}$
+**例：** ($\mathbb{R}^{n}$) $\forall x\in \mathbb{R}^{n},\quad x=(x_{1}\cdots x_{n})^{T}$
 
 $\|x\|_{1} = \sum_{i=1}^{n}|x_{i}|$ 1-范数
 
@@ -369,7 +364,7 @@ $$
 $$
 
 
-例 ($C [ a, b ]$) $ f \in C [ a, b ]$
+**例** ($C [ a, b ]$) $ f \in C [ a, b ]$
 
 
 $$
@@ -380,21 +375,15 @@ $$
 \| f \| _ {\infty} = \max _ {x \in [ a, b ]} | f (x) |
 $$
 
-定义： $V$ 上的两种范数 $||\cdot||_{\alpha}$ ， $||\cdot||_{\beta}$ 若存在
-
-${C}_{1}\;{C}_{2} > 0$ 使得
-
-$C_{1}||u||_{\alpha}\leq ||u||_{\beta}\leq C_{2}||u||_{\alpha}$
-
-则称 $ \|\cdot \|_{\alpha}$, $\| \cdot \|_{\beta}$ 是 $V$ 上的等价范数
+**定义：** $V$ 上的两种范数 $||\cdot||_{\alpha}$ ， $||\cdot||_{\beta}$ 若存在 ${C}_{1}\;{C}_{2} > 0$ 使得 $C_{1}||u||_{\alpha}\leq ||u||_{\beta}\leq C_{2}||u||_{\alpha}$，则称 $ \|\cdot \|_{\alpha}$, $\| \cdot \|_{\beta}$ 是 $V$ 上的等价范数
 
 **$\mathbb{R}^n$ 上 范数的等价性**
 
-定理: $A \in \mathbb{R}^{n \times n}$ , $\|\cdot\|$ 是 $\mathbb{R}^n$ 上的范数, 则
+**定理:** $A \in \mathbb{R}^{n \times n}$ , $\|\cdot\|$ 是 $\mathbb{R}^n$ 上的范数, 则
 
 $\| A x\|$ 是 $\mathbb{R}^n$ 上的连续函数
 
-证明: 记 $a_{j}$ 为 $A$ 的第 $j$ 列 对于 $\forall h \in \mathbb{R}^{n}$
+**证明:** 记 $a_{j}$ 为 $A$ 的第 $j$ 列 对于 $\forall h \in \mathbb{R}^{n}$
 
 $$
 \left| \begin{array}{l l} \| A (x + h) \| - \| A x \| & \leq \quad \| A h \| \end{array} \right.
@@ -408,11 +397,11 @@ $$
 
 由此可得 $\|Ax\|$ 的连续性.
 
-推论： $\|x\|$ 是 $\mathbb{R}^{n}$ 上的连续函数.
+**推论：** $\|x\|$ 是 $\mathbb{R}^{n}$ 上的连续函数.
 
-定理： $\mathbb{R}^{n}$ 上所有范数相互等价
+**定理：** $\mathbb{R}^{n}$ 上所有范数相互等价
 
-证明 设 $D = \{ x \in  {\mathbb{R}}^{n},\| x\|_{\infty } = 1\}$
+**证明** 设 $D = \{ x \in {\mathbb{R}}^{n},\| x\|_{\infty } = 1\}$
 
 $D$ 是 ${\mathbb{R}}^{n}$ 上的有界闭集.
 
@@ -432,21 +421,23 @@ $$
 \Rightarrow m \left\| x \right\| _ {\infty} \leq \left\| x \right\| _ {\alpha} \leq M \left\| x \right\| _ {\infty}
 $$
 
+向量范数衡量向量的大小，而数值分析中经常要做矩阵运算——求解线性方程组、计算特征值等。我们需要把范数的概念扩展到矩阵上。
+
 ## 2.3 矩阵范数
 
-定义: $\mathbb{R}^{n\times n}$ 的范数 $\|\cdot \|:\mathbb{R}^{n\times n}\to \mathbb{R}$ 满足
+**定义:** $\mathbb{R}^{n\times n}$ 的范数 $\|\cdot \|:\mathbb{R}^{n\times n}\to \mathbb{R}$ 满足
 
 (1) $\|\mathbf{A}\| \geq 0,\forall A \in \mathbb{R}^{n\times n}\text{且}\|\mathbf{A}\| = 0\Leftrightarrow A = 0$
 
 (2) $\|\alpha A\| = |\alpha| \|A\|$ , $\forall A \in \mathbb{R}^{n \times n}$ , $\alpha \in \mathbb{R}$
 
-(3) $\|\mathbf{A} + \mathbf{B}\| \leq \|\mathbf{A}\| + \|\mathbf{B}\| ,\;\forall \mathbf{A},\mathbf{B} \in  \mathbb{R}^{n\times n}$
+(3) $\|\mathbf{A} + \mathbf{B}\| \leq \|\mathbf{A}\| + \|\mathbf{B}\| ,\;\forall \mathbf{A},\mathbf{B} \in \mathbb{R}^{n\times n}$
 
 (4) $\|\mathbf{A}\mathbf{B}\|\leq\|\mathbf{A}\|\|\mathbf{B}\|,\quad\forall A,B\in\mathbb{R}^{n\times n}$
 
 称 $\|A\|$ 为矩阵 A 的范数
 
-例: ( Frobenius 范数) $A = [a_{ij}] \in \mathbb{R}^{n \times n}$
+**例:** ( Frobenius 范数) $A = [a_{ij}] \in \mathbb{R}^{n \times n}$
 
 $$
 \| A \| _ {F} = \left(\sum_ {i = 1} ^ {n} \sum_ {j = 1} ^ {n} | a _ {i j} | ^ {2}\right) ^ {1 / 2}
@@ -462,15 +453,15 @@ $$
 \begin{array}{r l} {\| A B \| _ {F} ^ {2}} & {= \sum_ {i, j = 1} ^ {n} | a _ {i} ^ {T} b _ {j} | ^ {2} \leq \sum_ {i = 1} ^ {n} \sum_ {j = 1} ^ {n} \| a _ {i} \| _ {2} ^ {2} \| b _ {j} \| _ {2} ^ {2}} \\ & {= (\sum_{i = 1}^{n} \| a_{i} \|_{2}^{2}) (\sum_{j = 1}^{n} \| b_{j} \|_{2}^{2}) = \| A \|_{F}^{2} \| B \|_{F}^{2}} \end{array}
 $$
 
-定义: 对于 $\mathbb{R}^n$ 上给定的一种向量范数 $\|\cdot\|$
+**定义:** 对于 $\mathbb{R}^n$ 上给定的一种向量范数 $\|\cdot\|$
 
 和 $\mathbb{R}^{n \times n}$ 上给定的一种矩阵范数 $\|\cdot\|$
 
-如果 $\left\| A{x}\right\|  \leq  \left\| A\right\| \left\| x\right\| \;\forall x \in  {\mathbb{R}}^{n}, A \in \mathbb{R}^{n \times n}$
+如果 $\left\| A{x}\right\|  \leq  \left\| A\right\| \left\| x\right\| \;\forall x \in {\mathbb{R}}^{n}, A \in \mathbb{R}^{n \times n}$
 
 则称上述矩阵范数与向量范数**相容**。
 
-定理：设 $\|x\|$ 是 $\mathbb{R}^n$ 上任一种向量范数，则
+**定理：** 设 $\|x\|$ 是 $\mathbb{R}^n$ 上任一种向量范数，则
 
 $$
 \| A \| = \max _ {x \neq 0} \frac {\| A x \|}{\| x \|} = \max _ {\| x \| = 1} \| A x \|
@@ -478,16 +469,16 @@ $$
 
 定义了 $\mathbb{R}^{n\times n}$ 上的一个矩阵范数
 
-证明： $\|A\|\geq0$ 显然.
+**证明：** $\|A\|\geq0$ 显然.
 
 若 $A = 0$ 则有 $\| A\|  = 0$ 
 
-若 $A \neq  0$ 设 $A$ 的第$i$列
+若 $A \neq 0$ 设 $A$ 的第$i$列
 
 不是零向量，即 $Ae_j \neq 0$ 则有
 
 $$
-0 <   \left\| A e _ {j} \right\| \leq \left\| A \right\| \left\| e _ {j} \right\| \Rightarrow \left\| A \right\| > 0
+0 < \left\| A e _ {j} \right\| \leq \left\| A \right\| \left\| e _ {j} \right\| \Rightarrow \left\| A \right\| > 0
 $$
 
 $\forall \alpha \in \mathbb{R}$
@@ -513,13 +504,9 @@ $$
 \| A B \| = \| A B y \| \leq \| A \| \| B y \| \leq \| A \| \| B \| \| y \| = \| A \| \| B \|
 $$
 
-定义：对于 $\mathbb{R}^{n}$ 上任意一种向量范数，由
-$\left\| A\right\| = \max_{\left\| x\right\| = 1}\left\| A x\right\|$ 所确定的矩阵范数
-称为 从属于给定向量范数的矩阵范数
+**定义：** 对于 $\mathbb{R}^{n}$ 上任意一种向量范数，由 $\left\| A\right\| = \max_{\left\| x\right\| = 1}\left\| A x\right\|$ 所确定的矩阵范数称为从属于给定向量范数的矩阵范数，简称从属范数或诱导范数
 
-简称 从属范数或诱导范数
-
-定理 设 $A = [a_{ij}] \in \mathbb{R}^{n \times n}$ 则
+**定理** 设 $A = [a_{ij}] \in \mathbb{R}^{n \times n}$ 则
 
 $$
 \| A \| _ {1} = \max _ {1 \le j \le n} \sum_ {i = 1} ^ {n} | a _ {i j} |
@@ -533,7 +520,7 @@ $$
 \| A \| _ {2} = [ \rho (A ^ {T} A) ] ^ {1 / 2}
 $$
 
-证明：记 $a_j$ 为 $A$ 的第 $j$ 个列向量，则有
+**证明：** 记 $a_j$ 为 $A$ 的第 $j$ 个列向量，则有
 
 $$
 \left\| a _ {j} \right\| _ {1} = \sum_ {i = 1} ^ {n} \left| a _ {i j} \right|, j = 1, 2, \dots , n
@@ -544,7 +531,7 @@ $$
 对 $\forall x = (x_1, \cdots, x_n)^T \in \mathbb{R}^n, \quad \|x\|_{1} = 1$ 有
 
 $$
-\begin{array}{r l} {\| A x \| _ {1}} & = {\| \sum_ {j = 1} ^ {n} a _ {j} x _ {j} \| _ {1}} \leq \sum_ {j = 1} ^ {n} | x _ {j} |   \| a _ {j} \| _ {1}, \\ & \leq \| a _ {k} \| _ {1} \sum_ {j = 1} ^ {n} | x _ {j} | = \| a _ {k} \| _ {1}, \end{array}
+\begin{array}{r l} {\| A x \| _ {1}} & = {\| \sum_ {j = 1} ^ {n} a _ {j} x _ {j} \| _ {1}} \leq \sum_ {j = 1} ^ {n} | x _ {j} | \| a _ {j} \| _ {1}, \\ & \leq \| a _ {k} \| _ {1} \sum_ {j = 1} ^ {n} | x _ {j} | = \| a _ {k} \| _ {1}, \end{array}
 $$
 
 特别取 $x = {e}_{k}$
@@ -593,7 +580,7 @@ $$
 
 所以 $\|A\|_{2}^{2}=\lambda_{1}=\rho(A^{\mathrm{T}}A)$
 
-定理: 设 $\| x\|_{\alpha}$ 为 $\mathbb{R}^n$ 上一种向量范数， $\| A\|_{\alpha}$ 是其从属矩阵范数, $P \in  {\mathbb{R}}^{n \times  n}$ 可逆,则
+**定理:** 设 $\| x\|_{\alpha}$ 为 $\mathbb{R}^n$ 上一种向量范数， $\| A\|_{\alpha}$ 是其从属矩阵范数, $P \in {\mathbb{R}}^{n \times  n}$ 可逆,则
 
 (1) $\left\| x\right\|_{P,\alpha} = \left\| Px\right\|_{\alpha}$ 定义了另一种向量范数
 
@@ -603,7 +590,7 @@ $$
 \| A \| _ {P, \alpha} = \| P A P ^ {- 1} \| _ {\alpha}
 $$
 
-定理：（1）设 $\|\cdot\|$ 为 $\mathbb{R}^{n\times n}$ 上任意矩阵范数，则
+**定理：** （1）设 $\|\cdot\|$ 为 $\mathbb{R}^{n\times n}$ 上任意矩阵范数，则
 
 $\forall A \in \mathbb{R}^{n \times n}$ 有
 
@@ -611,13 +598,13 @@ $$
 \rho(A) \leq \| A \|
 $$
 
-(2) $\forall A \in  {\mathbb{R}}^{n \times  n}$ 及 $\varepsilon  > 0$ 至少存在一种从属矩阵范数使得
+(2) $\forall A \in {\mathbb{R}}^{n \times  n}$ 及 $\varepsilon  > 0$ 至少存在一种从属矩阵范数使得
 
 $$
 \| A \| \leq \rho (A) + \varepsilon
 $$
 
-证明：(1) 设 $\lambda$ 是 $A$ 的特征值且 $|\lambda| = \rho(A)$
+**证明：** (1) 设 $\lambda$ 是 $A$ 的特征值且 $|\lambda| = \rho(A)$
 
 $\lambda$对应的特征向量为 $x, x \neq 0$
 
@@ -627,9 +614,9 @@ $$
 \rho (A) \| x y ^ {T} \| = \| \lambda x y ^ {T} \| = \| A x y ^ {T} \| \leq \| A \| \| x y ^ {T} \|
 $$
 
-$\Rightarrow  \rho \left( A\right)  \leq  \|A\|$
+$\Rightarrow \rho \left( A\right) \leq \|A\|$
 
-(2) $\forall A \in  {\mathbb{R}}^{n \times  n}$ 存在 $P \in  {\mathbb{R}}^{n \times  n}$ 使得
+(2) $\forall A \in {\mathbb{R}}^{n \times  n}$ 存在 $P \in {\mathbb{R}}^{n \times  n}$ 使得
 
 $$
 J = P ^ {- 1} A P = \text { diag } [ J _ {1}, J _ {2}, \dots , J _ {s} ]
@@ -661,7 +648,7 @@ $$
 
 $\|J_{\varepsilon}\|_\infty$ 是从属于 $\|D_{\varepsilon}^{-1}P^{-1}x\|_\infty$ 的矩阵范数.
 
-定理：设 $\|\cdot\|$ 是 $\mathbb{R}^{n \times n}$ 上的一种从属范数，矩阵
+**定理：** 设 $\|\cdot\|$ 是 $\mathbb{R}^{n \times n}$ 上的一种从属范数，矩阵
 
 $B \in \mathbb{R}^{n \times n}$ 满足 $\|B\| < 1$ 则 $I + B$ 非奇异且
 
@@ -669,11 +656,11 @@ $$
 \| (I + B) ^ {- 1} \| \leq \frac {1}{1 - \| B \|}
 $$
 
-证明：若 $I+B$ 奇异 则存在 $x≠0$ 使得
+**证明：** 若 $I+B$ 奇异 则存在 $x≠0$ 使得
 
-$\left( {I + B}\right) x = 0 \Rightarrow   - 1$ 是 $B$ 的特征值
+$\left( {I + B}\right) x = 0 \Rightarrow - 1$ 是 $B$ 的特征值
 
-$\Rightarrow  \rho \left( B\right)  \geq  1\;\Rightarrow  \|B\| \geq \rho(B) \geq 1\;$ 矛盾
+$\Rightarrow \rho \left( B\right) \geq 1\;\Rightarrow \|B\| \geq \rho(B) \geq 1\;$ 矛盾
 
 $$
 1 = \left\| I \right\| = \left\| (I + B) (I + B) ^ {- 1} \right\| \geq \left\| (I + B) ^ {- 1} \right\| - \left\| B \right\| \left\| (I + B) ^ {- 1} \right\|
@@ -683,9 +670,9 @@ $$
 \| (I + B) ^ {- 1} \| \leq \frac {1}{1 - \| B \|}
 $$
 
-推论： $A, C \in \mathbb{R}^{n \times n}$ . $A$ 可逆 $\|A^{-1}\| \leq \alpha$ $\|A - c\| \leq \beta, \quad \alpha\beta < 1$ 则 $C$ 可逆且 $\|C^{-1}\| \leq \frac{\alpha}{1 - \alpha\beta}$
+**推论：** $A, C \in \mathbb{R}^{n \times n}$ . $A$ 可逆 $\|A^{-1}\| \leq \alpha$ $\|A - c\| \leq \beta, \quad \alpha\beta < 1$ 则 $C$ 可逆且 $\|C^{-1}\| \leq \frac{\alpha}{1 - \alpha\beta}$
 
-证明 $\|\mathbf{I} - \mathbf{A}^{-1}\mathbf{C}\| = \|\mathbf{A}^{-1}(\mathbf{A} - \mathbf{C})\| \leq \|\mathbf{A}^{-1}\|$ $\|\mathbf{A} - \mathbf{C}\| \leq \alpha \beta < 1$
+**证明** $\|\mathbf{I} - \mathbf{A}^{-1}\mathbf{C}\| = \|\mathbf{A}^{-1}(\mathbf{A} - \mathbf{C})\| \leq \|\mathbf{A}^{-1}\|$ $\|\mathbf{A} - \mathbf{C}\| \leq \alpha \beta < 1$
 
 $\Rightarrow A^{-1}C$ 可逆 $\Rightarrow C$ 可逆
 
@@ -693,7 +680,9 @@ $\Rightarrow A^{-1}C$ 可逆 $\Rightarrow C$ 可逆
 
 ## 2.4 对角占优矩阵
 
-定义 设 $A = [a_{ij}] \in \mathbb{R}^{n \times n}$ 若
+数值分析中有一类特殊的矩阵频繁出现——比如微分方程离散化得到的矩阵，它们的主对角线元素"占主导地位"。这类矩阵有很好的性质，值得单独讨论。
+
+**定义** 设 $A = [a_{ij}] \in \mathbb{R}^{n \times n}$ 若
 
 $$
 | a _ {i i} | > \sum_ {\substack {j = 1 \\ j \neq i}} ^ {n} | a _ {i j} |, \quad i = 1, 2, \dots , n
@@ -705,11 +694,11 @@ $$
 
 且至少有一个取严格大于号，则称 $A$ 弱对角占优
 
-定理 $A = [a_{ij}] \in \mathbb{R}^{n \times n}$ 严格对角占优 则 $a_{i,i} \neq 0, i=1,2,\cdots,n$
+**定理** $A = [a_{ij}] \in \mathbb{R}^{n \times n}$ 严格对角占优 则 $a_{i,i} \neq 0, i=1,2,\cdots,n$
 
 且 A 非奇异
 
-证明：由严格对角占优定义可知 ${a}_{ii} \neq  0\;i = 1\cdots n$
+**证明：** 由严格对角占优定义可知 ${a}_{ii} \neq 0\;i = 1\cdots n$
 
 若 $A$ 奇异 则 存在 $x = (x_1, \cdots, x_n)^T \neq 0$ 使得
 
@@ -731,7 +720,7 @@ $$
 
 矛盾
 
-定义: $A \in \mathbb{R}^{n \times n}, n \geq 2$ 如果存在排列矩阵, 使得
+**定义:** $A \in \mathbb{R}^{n \times n}, n \geq 2$ 如果存在排列矩阵, 使得
 
 $$
 P ^ {T} A P = \left[ \begin{array}{l l} \overline {A} _ {1 1} & \overline {A} _ {1 2} \\ 0 & \overline {A} _ {2 2} \end{array} \right]
@@ -741,11 +730,11 @@ $$
 
 则称 $A$ 为可约矩阵. 否则 $A$ 为不可约矩阵
 
-定理: $A = [a_{ij}] \in \mathbb{R}^{n \times n}$ 不可约 弱对角占优 则 $a_{ii} \neq 0$ $i \geq 1 \cdots n$
+**定理:** $A = [a_{ij}] \in \mathbb{R}^{n \times n}$ 不可约 弱对角占优 则 $a_{ii} \neq 0$ $i \geq 1 \cdots n$
 
 且 $A$ 非奇异
 
-证明：若存在 ${a}_{ii} = 0$ 则第 $i$ 行全为零
+**证明：** 若存在 ${a}_{ii} = 0$ 则第 $i$ 行全为零
 
 与不可约矛盾
 
@@ -774,13 +763,17 @@ $$
 则由 $Ax=0$ 的第k个方程得
 
 $$
-\begin{array}{r l} {| a _ {k k} |} & {= | a _ {k k} x _ {k} | = \left| \sum_ {\substack {j = 1 \\ j \neq k}} ^ {n} a _ {k j} x _ {j} \right|} \\ & {\leq \sum_ {\substack {j = 1 \\ j \neq k}} ^ {n} | a _ {k j} | | x _ {j} | <   \sum_ {\substack {j = 1 \\ j \neq k}} ^ {n} | a _ {k j} |} \end{array}
+\begin{array}{r l} {| a _ {k k} |} & {= | a _ {k k} x _ {k} | = \left| \sum_ {\substack {j = 1 \\ j \neq k}} ^ {n} a _ {k j} x _ {j} \right|} \\ & {\leq \sum_ {\substack {j = 1 \\ j \neq k}} ^ {n} | a _ {k j} | | x _ {j} | < \sum_ {\substack {j = 1 \\ j \neq k}} ^ {n} | a _ {k j} |} \end{array}
 $$
 
 $$
-\vert a _ {k l} \vert \vert x _ {l} \vert <   \vert a _ {k l} \vert
+\vert a _ {k l} \vert \vert x _ {l} \vert < \vert a _ {k l} \vert
 $$
 
 矛盾.
+
+---
+
+**本章小结：** 我们从误差的来源和传播入手，建立了数值稳定性这个核心概念。随后回顾了内积空间、范数和矩阵范数等线性代数工具——这些是后续各章分析算法收敛性和稳定性的基础。严格对角占优和不可约矩阵的性质将在下一章直接解法的稳定性分析中派上用场。
 
 [下一篇：线性方程组的直接解法 →](/posts/numerical-analysis-1/02-direct-methods-linear-systems/)

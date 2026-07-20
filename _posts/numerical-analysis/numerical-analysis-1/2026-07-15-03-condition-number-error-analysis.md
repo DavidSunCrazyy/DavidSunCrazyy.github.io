@@ -8,23 +8,22 @@ tags: [numerical-analysis, condition-number, error-analysis, gaussian-eliminatio
 use_math: true
 ---
 
-本文讨论矩阵条件数的定义与性质、解的扰动分析、以及列主元 Gauss 消去法的舍入误差分析，包括增长因子等概念。
+上一章我们学习了如何用直接法求解 $Ax = b$，但一个重要的问题尚未回答：当 $A$ 或 $b$ 有微小扰动时，解 $x$ 会变化多少？这个问题的答案取决于矩阵的**条件数**——它衡量了矩阵对扰动的敏感程度。本章先引入条件数的概念，再对 Gauss 消去法的舍入误差做严格分析。
 
 ### 3.4 矩阵的条件数
 
-定理: $A \in  {\mathbb{R}}^{n \times  n},\det A \neq  0,x,x + {\delta x}$ 分别满足
+实际计算中，矩阵 $A$ 和右端项 $b$ 往往带有误差（测量误差或舍入误差）。我们需要知道这些误差对解的影响有多大。下面的定理给出了一个普适的误差界。
+
+**定理:** $A \in {\mathbb{R}}^{n \times n},\det A \neq 0,x,x + {\delta x}$ 分别满足
 
 $$
-A x = b, \quad (A + \delta A) (x + \delta x) = b + \delta b
+\begin{aligned}
+A x &= b, \quad (A + \delta A) (x + \delta x) = b + \delta b \\
+\| A ^ {- 1} \| \| \delta A \| &< 1
+\end{aligned}
 $$
 
-其中 $b \neq 0$ 。设 $\|\delta A\|$ 充分小，使得
-
-$$
-\| A ^ {- 1} \| \| \delta A \| <   1
-$$
-
-则有
+其中 $b \neq 0$ 。设 $\|\delta A\|$ 充分小，则有
 
 $$
 \frac {\| \delta x \|}{\| x \|} \leq \frac {\| A \| (\| A ^ {- 1} \|)}{1 - \| A ^ {- 1} \| (\| \delta A \|)} \left(\frac {\| \delta A \|}{\| A \|} + \frac {\| \delta b \|}{\| b \|}\right)
@@ -32,7 +31,7 @@ $$
 
 其中的范数为任一种向量范数及其从属矩阵范数.
 
-证明：首先由 $\left\|  {A}^{-1}\right\|  \left\|  {\delta A}\right\|  < 1$ 可得
+**证明：** 首先由 $\left\|  {A}^{-1}\right\| \left\|  {\delta A}\right\|  < 1$ 可得
 
 $A+\delta A$ 可逆 并且
 
@@ -54,13 +53,15 @@ $$
 \Rightarrow \frac {\| \delta x \|}{\| x \|} \leq \frac {\| A \| (\| A ^ {- 1} \|)}{1 - \| A ^ {- 1} \| (\| \delta A \|)} \left(\frac {\| \delta A \|}{\| A \|} + \frac {\| \delta b \|}{\| b \|}\right)
 $$
 
-定义: $A \in \mathbb{R}^{n \times n}$ , $\det A \neq 0$ , 对任一种从属矩阵范数
+这个上界中出现了一个关键的因子 $\|A\| \cdot \|A^{-1}\|$——它放大（或缩小）了输入扰动对解的影响。这个量非常重要，我们给它一个专门的名字。
+
+**定义:** $A \in \mathbb{R}^{n \times n}$ , $\det A \neq 0$ , 对任一种从属矩阵范数
 
 $$
 \text { cond } (A) = | | A | | | | A ^ {- 1} | |
 $$
 
-称为矩阵 $A$ 的条件数
+称为矩阵 $A$ 的条件数。
 
 矩阵的条件数具有以下性质：
 
@@ -76,11 +77,7 @@ $$
 
 > **证明：** A 正交 $\Rightarrow$ $A^{\top}A = I$，故 $\|A\|_2 = \sqrt{\rho(A^{\top}A)} = 1$。又 $A^{-1}=A^{\top}$ 亦正交，故 $\|A^{-1}\|_2 = 1$。从而 $\text{cond}(A)_2 = 1$。
 
-(4) $\|\mathbf{A}\|_{2} = \max \left\{ y^{\top} A x : \|x\|_{2} = \|y\|_{2} = 1 \right\}$
-
-$$
-\text { cond } (A) _ {2} = \text { cond } (A ^ {\top}) _ {2}
-$$
+(4) $\|\mathbf{A}\|_{2} = \max \left\{ y^{\top} A x : \|x\|_{2} = \|y\|_{2} = 1 \right\}$, $\text{cond}(A)_{2} = \text{cond}(A^{\top})_{2}$
 
 > **证明：** 前一式为谱范数的等价定义（由 $\|A\|_2 = \max_{\|x\|_2=1} \|Ax\|_2$ 及对偶性可得）。后一式由 $\|A^{\top}\|_2 = \|A\|_2$ 及 $\|(A^{\top})^{-1}\|_2 = \|(A^{-1})^{\top}\|_2 = \|A^{-1}\|_2$ 相乘即得。
 
@@ -120,11 +117,11 @@ $$
 
 > **证明：** 由矩阵范数的等价性：$\|A\|_2 \leq \|A\|_1 \leq \sqrt{n}\|A\|_2$（更精确地，$\|A\|_1 \leq n\|A\|_2$ 等）。将这些不等式应用于 A 和 $A^{-1}$ 并相乘，即得各条件数之间的不等式关系。具体地，例如 $\|A\|_1 \leq n\|A\|_2$ 且 $\|A^{-1}\|_1 \leq n\|A^{-1}\|_2$，相乘得 $\text{cond}_1(A) \leq n^2\text{cond}_2(A)$；更精细的估计可利用 $\|A\|_1 \leq \sqrt{n}\|A\|_2$ 得到 $\text{cond}_1(A) \leq n\,\text{cond}_2(A)$。其余不等式同理可得。
 
-定理: $A \in \mathbb{R}^{n \times n}$ , $\det A \neq 0$ , 则
+**定理:** $A \in \mathbb{R}^{n \times n}$ , $\det A \neq 0$ , 则
 
 $\min_{A+\delta A \text{奇异}} \frac{||\delta A||_{2}}{||A||_{2}} = \frac{1}{\text{Cond}(A)_{2}}$
 
-证明：只需证 $\min_{A+\delta A \text{奇异}} \|\delta A\|_{2} = \frac{1}{\|A^{-1}\|_{2}}$
+**证明：** 只需证 $\min_{A+\delta A \text{奇异}} \|\delta A\|_{2} = \frac{1}{\|A^{-1}\|_{2}}$
 
 若 $\vert\vert A^{-1}\vert\vert_{2}\quad\vert\vert\delta A\vert\vert_{2}<1$ 则有 $A+\delta A$ 非奇异
 
@@ -160,7 +157,7 @@ $$
 
 $\Rightarrow \quad \min_{A + \delta A\text{奇异}} ||\delta A||_2 \leq ||\frac{xy^T}{||A^{-1}||_2}||_2 = \frac{1}{||A^{-1}||_2}$
 
-定理: $A \in \mathbb { R } ^ { n \times n } , b \in \mathbb { R } ^ { n } , b \neq 0 , A \text { 非奇异, } x \text { 是 } A x = b \text { 的解, } x \text { 是方程组的一个近似解, } r = b - A \widetilde { x } , \text { 则有 }$
+**定理:** $A \in \mathbb { R } ^ { n \times n } , b \in \mathbb { R } ^ { n } , b \neq 0 , A \text { 非奇异, } x \text { 是 } A x = b \text { 的解, } x \text { 是方程组的一个近似解, } r = b - A \widetilde { x } , \text { 则有 }$
 
 $$
 \frac {1}{\text { cond } (A)} \frac {| | r | |}{| | b | |} \leq \frac {| | \hat {x} - x | |}{| | x | |} \leq \text { cond } (A) \frac {| | r | |}{| | b | |}
@@ -168,7 +165,9 @@ $$
 
 ### 3.5 列主元素消去法的舍入误差分析（扩展内容）
 
-定理：若 $\left|\delta_{i}\right| \leq \varepsilon$ 且 $n\varepsilon \leq 0.01$ 那么
+条件数告诉我们问题的固有敏感度，而算法的舍入误差决定了实际计算精度。对于列主元 Gauss 消去法，我们可以严格**证明：** 其舍入误差的增长由**增长因子** $\rho$ 控制。本节给出完整的误差分析。
+
+**定理：** 若 $\left|\delta_{i}\right| \leq \varepsilon$ 且 $n\varepsilon \leq 0.01$ 那么
 
 $$
 1 - n \varepsilon \leq \prod_ {i = 1} ^ {n} (1 + \delta_ {i}) \leq 1 + (1, 0) n \varepsilon
@@ -180,7 +179,7 @@ $$
 \prod_ {i = 1} ^ {n} (1 + \delta_ {i}) = 1 + \delta , \quad | \delta | \leq 1. 0 1 n \varepsilon
 $$
 
-证明：由 $|\delta i| \leq \varepsilon$ 得
+**证明：** 由 $|\delta i| \leq \varepsilon$ 得
 
 $$
 (1 - \varepsilon) ^ {n} \leq \prod_ {i = 1} ^ {n} (1 + \delta_ {i}) \leq (1 + \varepsilon) ^ {n}
@@ -222,7 +221,7 @@ $$
 (1 + \varepsilon) ^ {n} \le e ^ {n \varepsilon} \le 1 + 1. 0 1 n \varepsilon
 $$
 
-例: $x, y \in F^{n}$ , $F$ 为浮点数集合, 估计 $|f_{l}(x^{T}y) - x^{T}y|$ 的上界
+**例:** $x, y \in F^{n}$ , $F$ 为浮点数集合, 估计 $|f_{l}(x^{T}y) - x^{T}y|$ 的上界
 
 令 ${S}_{1} = {fe}\left( {x}_{1}{y}_{1}\right)  = {x}_{1}y,\left( {1 + {\delta }_{1}}\right) ,\;{|\delta }_{1}| \leq  \varepsilon$
 
@@ -256,7 +255,7 @@ $$
 f l (A B) = A B + E, \quad | E | \leq 1. 0 1 n E | A | | B |
 $$
 
-引理：设 $A = [a_{ij}] \in F^{n \times n}$ 有三角分解且 $1.01nε ≤ 0.01$ ，则用 Gauss 消去法计算得到的单位下三角矩阵 $\tilde{L}$ 与上三角矩阵 $\tilde{U}$ 满足
+**引理：** 设 $A = [a_{ij}] \in F^{n \times n}$ 有三角分解且 $1.01nε ≤ 0.01$ ，则用 Gauss 消去法计算得到的单位下三角矩阵 $\tilde{L}$ 与上三角矩阵 $\tilde{U}$ 满足
 
 $$
 \tilde {L} \tilde {U} = A + E
@@ -264,7 +263,7 @@ $$
 
 其中 $|E| \leq 2.05 n \in |\widetilde{L}||\widetilde{U}|$
 
-证明：设 $\widetilde{U}=[\widetilde{u}_{ij}]$ $\widetilde{L}=[\widetilde{\ell}_{ij}]$ 由 Gauss 消去法
+**证明：** 设 $\widetilde{U}=[\widetilde{u}_{ij}]$ $\widetilde{L}=[\widetilde{\ell}_{ij}]$ 由 Gauss 消去法
 
 的实现过程知
 
@@ -288,7 +287,7 @@ $$
 \widetilde {u} _ {i j} = a _ {i j} (1 + \alpha_ {i}) - \sum_ {k = 1} ^ {i - 1} (\tilde {\ell} _ {i k} \widetilde {u} _ {k j}) (1 + \alpha_ {k})
 $$
 
-其中 $\left| {\alpha }_{k}\right|  \leq  {1.0}\ln \varepsilon$
+其中 $\left| {\alpha }_{k}\right| \leq  {1.0}\ln \varepsilon$
 
 $$
 \begin{array}{r l} {\Rightarrow a _ {i j}} & {= \frac {\tilde {u} _ {i j}}{1 + \alpha_ {i}} + \sum_ {k = 1} ^ {i - 1} (\hat {\ell} _ {i k} \tilde {u} _ {k j}) \frac {1 + \alpha_ {k}}{1 + \alpha_ {i}}} \\ & {= \sum_ {k = 1} ^ {i} \tilde {\ell} _ {i k} \tilde {u} _ {k j} - e _ {i j}} \\ {\mathrm{其中} \tilde {\ell} _ {i i}} & {= 1, e _ {i j} = (\tilde {\ell} _ {i i} \tilde {u} _ {i j}) \frac {\alpha_ {i}}{1 + \alpha_ {i}} + \sum_ {k = 1} ^ {i - 1} (\hat {\ell} _ {i k} \tilde {u} _ {k j}) \frac {\alpha_ {i} - \alpha_ {k}}{1 + \alpha_ {i}}} \end{array}
@@ -322,11 +321,7 @@ $$
 
 注意到交换矩阵的行不引入舍入误差，则有
 
-推论： $A \in F^{n \times n}$ 非奇异， $1.01n\varepsilon \leq 0.01$ ，则用选列
-
-主元的 Gauss 消去法 计算得到的单位 下三角阵
-
-$\tilde{U}$ , 上三角阵 $\tilde{U}$ 以及排列方阵 $\tilde{U}$ 满足.
+**推论：** $A \in F^{n \times n}$ 非奇异， $1.01n\varepsilon \leq 0.01$ ，则用选列主元的 Gauss 消去法计算得到的单位下三角阵 $\tilde{L}$、上三角阵 $\tilde{U}$ 以及排列方阵 $\tilde{P}$ 满足：
 
 $$
 \tilde {L} \tilde {U} = \tilde {P} A + E
@@ -334,11 +329,7 @@ $$
 
 其中 $|E| \leq 2.05n \in |\tilde{L}||\tilde{O}|$
 
-引理: 三角阵 $S \in F^{n \times n}$ 非奇异, $1.01 n \varepsilon \leq 0.01$
-
-则用解三角方程组的方法计算 ${sx} = b$ 得
-
-到的解 $\approx$ 满足
+**引理:** 三角阵 $S \in F^{n \times n}$ 非奇异, $1.01 n \varepsilon \leq 0.01$，则用解三角方程组的方法计算 $Sx = b$ 得到的解 $\tilde{x}$ 满足
 
 $$
 (S + H) \tilde {x} = b
@@ -346,7 +337,7 @@ $$
 
 其中 $|H| \leq 1.01n\varepsilon|S|$
 
-证明：对 n 用数学归纳法．不妨设 S 为下三角 n=1 时显然成立.
+**证明：** 对 n 用数学归纳法．不妨设 S 为下三角 n=1 时显然成立.
 
 假设对于 $n-1$ 阶下三角矩阵引理成立.
 
@@ -445,7 +436,7 @@ $$
 $$
 
 $$
-\Rightarrow \quad | | \delta  A | | _ {\infty} \leq 4. 0 9 n \varepsilon | | \tilde {L} | | _ {\infty} | | \tilde {U} | | _ {\infty}
+\Rightarrow \quad \| \delta A \| _ {\infty} \leq 4.09 n \varepsilon \| \tilde {L} \| _ {\infty} \| \tilde {U} \| _ {\infty}
 $$
 
 注意到 $|\widetilde{L}| \leq 1 \Rightarrow ||\widetilde{L}||_{\infty} \leq n$
@@ -465,6 +456,12 @@ $$
 $$
 \| \delta A \| _ {\infty} \le 4. 0 9 n ^ {3} \rho \varepsilon \| A \| _ {\infty}
 $$
+
+这个上界表明：计算精度主要由机器精度 $\varepsilon$、问题规模 $n$ 和增长因子 $\rho$ 决定。对于大多数实际问题，增长因子 $\rho$ 不大，列主元 Gauss 消去法在实践中是数值稳定的。
+
+---
+
+**本章小结：** 条件数刻画了问题本身对扰动的敏感程度——它是矩阵的内在属性，与算法无关。条件数大意味着矩阵"接近奇异"，求解结果对输入误差非常敏感。列主元 Gauss 消去法的误差分析表明，实际计算误差可以控制在条件数 × 机器精度的量级。下一章将转向另一类重要问题：超定方程组的最小二乘解。
 
 [← 上一篇：线性方程组的直接解法](/posts/numerical-analysis-1/02-direct-methods-linear-systems/)
 
