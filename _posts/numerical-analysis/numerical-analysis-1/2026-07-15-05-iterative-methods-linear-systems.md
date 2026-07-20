@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（五）：线性方程组的迭代解法——Jacobi、Gauss-Seidel与SOR"
+title: "Numerical Analysis I 线性方程组的迭代解法——Jacobi、Gauss-Seidel与SOR"
 permalink: /posts/numerical-analysis-1/05-iterative-methods-linear-systems/
 categories: numerical-analysis
 tags: [numerical-analysis, iterative-methods, jacobi, gauss-seidel, sor]
@@ -88,7 +88,7 @@ $$
 \Rightarrow \lim _ {k \to \infty} \| A ^ {(k)} x \| = 0 \quad \forall x \in \mathbb {R} ^ {n}
 $$
 
-反之，取 $x = {e}_{j}$ 则 $\mathop{\lim }\limits_{{k \to  \infty }}{A}^{\left( k\right) }{e}_{j} = 0$
+反之，取 $x = {e}_{j}$ 则 $\mathop{\lim }\limits_{k \to  \infty }{A}^{\left( k\right) }{e}_{j} = 0$
 
 $$
 \Rightarrow \lim _ {k \to \infty} a _ {i j} ^ {(k)} = 0, i = 1, 2, \dots , n
@@ -112,7 +112,7 @@ $\Rightarrow  \lim _{k \to  \infty } {A}^{\left( k\right) } = 0$
 
 即 ${Bx} = {\lambda x}$ ,从而有 ${B}^{k}x = {\lambda }^{k}x$
 
-$\Rightarrow  {\left| \lambda \right| }^{k}\left| \left| x\right| \right|  = \left| \left| {{B}^{k}x}\right| \right|$
+$\Rightarrow  {\left| \lambda \right| }^{k}\left| \left| x\right| \right|  = \left| \left| {B}^{k}x}\right| \right|$
 
 已知 $\lim_{k\to\infty}B^{k}=0$ 由定理 4.1.1 知
 
@@ -124,7 +124,7 @@ $\Rightarrow  \rho \left( B\right)  < 1$
 
 $2 \Rightarrow 3$ . 由第一章定理可得
 
-$3 \Rightarrow 1$ 由 ${\begin{Vmatrix} B^{k}\end{Vmatrix}} \leq  {\begin{Vmatrix} B\end{Vmatrix}}^{k}$ 可得
+$3 \Rightarrow 1$ 由 ${\begin{Vmatrix} B^{k}\end{Vmatrix} \leq  {\begin{Vmatrix} B\end{Vmatrix}}^{k}$ 可得
 
 定理 4.1.3. 设 $B \in \mathbb{R}^{n \times n}$ ，$\|\cdot\|$ 为任一种矩阵范数，则
 
@@ -344,7 +344,7 @@ Jacobi 迭代收敛 类似可证
 
 A, 2D-A 均正定, D = diag(a\_{11} ... a\_{nn})
 
-证明：记 ${D}^{\frac{1}{2}} = \operatorname{diag}\left( {\sqrt{{a}_{11}},\cdots \sqrt{{a}_{nn}}}\right)$ 则有
+证明：记 ${D}^{\frac{1}{2}} = \operatorname{diag}\left( {\sqrt{a}_{11},\cdots \sqrt{a}_{nn}}\right)$ 则有
 
 $$
 B _ {J} = I - D ^ {- 1} A = D ^ {- \frac {1}{2}} (I - D ^ {- \frac {1}{2}} A D ^ {- \frac {1}{2}}) D ^ {\frac {1}{2}}
@@ -420,7 +420,7 @@ $$
 
 由于 GS 收敛，所以 $\rho(B_{G})<1 \Rightarrow \delta^{(0)}\neq0$
 
-$\Rightarrow  \left( {{\delta}^{\left( 0\right) },{D\delta}^{\left( 0\right) }}\right)  > 0$
+$\Rightarrow  \left( {\delta}^{\left( 0\right) },{D\delta}^{\left( 0\right) }\right)  > 0$
 
 $$
 \Rightarrow (e ^ {(1)}, A e ^ {(1)}) <   (e ^ {(0)}, A e ^ {(0)}) \leq 0
@@ -445,11 +445,11 @@ $$
 将 GS 迭代的结果与 $\alpha_{i}^{(k)}$ 作加权平均可得超松弛迭代法，即
 
 $$
-\overline {{x}} _ {i} ^ {(k + 1)} = \frac {1}{a _ {i i}} (b _ {i} - \sum_ {j = 1} ^ {i - 1} a _ {i j} x _ {j} ^ {(k + 1)} - \sum_ {j = i + 1} ^ {n} a _ {i j} x _ {j} ^ {(k)})
+\overline {x} _ {i} ^ {(k + 1)} = \frac {1}{a _ {i i}} (b _ {i} - \sum_ {j = 1} ^ {i - 1} a _ {i j} x _ {j} ^ {(k + 1)} - \sum_ {j = i + 1} ^ {n} a _ {i j} x _ {j} ^ {(k)})
 $$
 
 $$
-x _ {i} ^ {(k + 1)} = \omega \overline {{x}} _ {i} ^ {(k + 1)} + (1 - \omega) x _ {i} ^ {(k)}
+x _ {i} ^ {(k + 1)} = \omega \overline {x} _ {i} ^ {(k + 1)} + (1 - \omega) x _ {i} ^ {(k)}
 $$
 
 迭代公式为
@@ -525,7 +525,7 @@ A正定 则 D 也正定，记 P = (Dx, x) > 0
 记 $(L x, x) = \alpha + i\beta$ 则有
 
 $$
-(U x, x) = (L ^ {T} x, x) = (x, L x) = \overline {{(L x , x)}} = \alpha - i \beta
+(U x, x) = (L ^ {T} x, x) = (x, L x) = \overline {(L x , x)} = \alpha - i \beta
 $$
 
 代入 $\lambda$ 的表达式有

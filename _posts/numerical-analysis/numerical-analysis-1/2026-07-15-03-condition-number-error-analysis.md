@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（三）：矩阵的条件数及高斯消去法的误差分析"
+title: "Numerical Analysis I 矩阵的条件数及高斯消去法的误差分析"
 permalink: /posts/numerical-analysis-1/03-condition-number-error-analysis/
 categories: numerical-analysis
 tags: [numerical-analysis, condition-number, error-analysis, gaussian-elimination]
@@ -224,7 +224,7 @@ $$
 
 例: $x, y \in F^{n}$ , $F$ 为浮点数集合, 估计 $|f_{l}(x^{T}y) - x^{T}y|$ 的上界
 
-令 ${S}_{1} = {fe}\left( {{x}_{1}{y}_{1}}\right)  = {x}_{1}y,\left( {1 + {\delta }_{1}}\right) ,\;{|\delta }_{1}| \leq  \varepsilon$
+令 ${S}_{1} = {fe}\left( {x}_{1}{y}_{1}\right)  = {x}_{1}y,\left( {1 + {\delta }_{1}}\right) ,\;{|\delta }_{1}| \leq  \varepsilon$
 
 $$
 \begin{array}{r l} {S _ {k}} & {= f \ell (S _ {k - 1} + f \ell (x _ {k} y _ {k}))} \\ & {= (S _ {k - 1} + x _ {k} y _ {k} (1 + \delta_ {k})) (1 + \gamma_ {k}), | \delta_ {k} |, | \gamma_ {k} | \leq \varepsilon .} \end{array}
@@ -256,11 +256,7 @@ $$
 f l (A B) = A B + E, \quad | E | \leq 1. 0 1 n E | A | | B |
 $$
 
-引理：设 $A = [a_{ij}] \in F^{n \times n}$ 有三角分解且
-
-1.01nε ≤ 0.01 ，则用 Gauss 消去法计算得到的单
-
-位下三角矩阵 $\tilde{L}$ 与上三角矩阵 $\tilde{U}$ 满足
+引理：设 $A = [a_{ij}] \in F^{n \times n}$ 有三角分解且 $1.01nε ≤ 0.01$ ，则用 Gauss 消去法计算得到的单位下三角矩阵 $\tilde{L}$ 与上三角矩阵 $\tilde{U}$ 满足
 
 $$
 \tilde {L} \tilde {U} = A + E
@@ -292,7 +288,7 @@ $$
 \widetilde {u} _ {i j} = a _ {i j} (1 + \alpha_ {i}) - \sum_ {k = 1} ^ {i - 1} (\tilde {\ell} _ {i k} \widetilde {u} _ {k j}) (1 + \alpha_ {k})
 $$
 
-其中 $\left| {{\alpha }_{k}}\right|  \leq  {1.0}\ln \varepsilon$
+其中 $\left| {\alpha }_{k}\right|  \leq  {1.0}\ln \varepsilon$
 
 $$
 \begin{array}{r l} {\Rightarrow a _ {i j}} & {= \frac {\tilde {u} _ {i j}}{1 + \alpha_ {i}} + \sum_ {k = 1} ^ {i - 1} (\hat {\ell} _ {i k} \tilde {u} _ {k j}) \frac {1 + \alpha_ {k}}{1 + \alpha_ {i}}} \\ & {= \sum_ {k = 1} ^ {i} \tilde {\ell} _ {i k} \tilde {u} _ {k j} - e _ {i j}} \\ {\mathrm{其中} \tilde {\ell} _ {i i}} & {= 1, e _ {i j} = (\tilde {\ell} _ {i i} \tilde {u} _ {i j}) \frac {\alpha_ {i}}{1 + \alpha_ {i}} + \sum_ {k = 1} ^ {i - 1} (\hat {\ell} _ {i k} \tilde {u} _ {k j}) \frac {\alpha_ {i} - \alpha_ {k}}{1 + \alpha_ {i}}} \end{array}

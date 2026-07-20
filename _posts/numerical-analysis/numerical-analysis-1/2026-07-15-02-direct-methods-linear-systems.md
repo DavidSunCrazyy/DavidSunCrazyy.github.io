@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（二）：线性方程组的直接解法——Gauss消去法与矩阵分解"
+title: "Numerical Analysis I 线性方程组的直接解法——Gauss消去法与矩阵分解"
 permalink: /posts/numerical-analysis-1/02-direct-methods-linear-systems/
 categories: numerical-analysis
 tags: [numerical-analysis, gaussian-elimination, lu-decomposition, cholesky-decomposition, direct-methods]
@@ -332,7 +332,7 @@ $$
 A_{i} = L_{i} L_{i}^{T}
 $$
 
-从 ${A}_{1}$ 开始, ${A}_{1} = {L}_{1}{L}_{1}^{T},{L}_{1} = \left\lbrack  {\sqrt{{a}_{11}}}\right\rbrack$
+从 ${A}_{1}$ 开始, ${A}_{1} = {L}_{1}{L}_{1}^{T},{L}_{1} = \left\lbrack  {\sqrt{a}_{11}}\right\rbrack$
 
 如果 $L_{i-1}$ 已知，则
 
@@ -503,13 +503,13 @@ $$
 
 设 $A \in \mathbb{R}^{n \times n}$ , $A^T = A$ , $A = [a_{ij}] \quad i,j = 1 \cdots n$
 
-令 $k = \arg \max \limits_{{2 \leq  i \leq  n}}|a_{i,i}|$ ，取 ${p}_{i}$ 为交换第 $2$ 行, 第 $k$ 行的置换矩阵，则有
+令 $k = \arg \max \limits_{2 \leq  i \leq  n}|a_{i,i}|$ ，取 ${p}_{i}$ 为交换第 $2$ 行, 第 $k$ 行的置换矩阵，则有
 
 $$
 \widetilde{A}^{(1)} = P_{i} A P_{i}^{T} = \left[\begin{array}{lll} a_{11} & a_{1k} & * \\ a_{k1} & a_{kk} & * \\ * & * & * \end{array}\right] = [\widetilde{a}_{ij}^{(1)}]
 $$
 
-令 ${l}_{i}^{\left( 1\right) } = \frac{{a}_{i1}}{{a}_{k1}},\;i = 3,4,\cdots ,n$
+令 ${l}_{i}^{\left( 1\right) } = \frac{a}_{i1}{a}_{k1},\;i = 3,4,\cdots ,n$
 
 $$
 M_{1} = \left[\begin{array}{cccc} 1 & 0 & & \\ 0 & 1 & & \\ 0 & -l_{3}^{(1)} & \ddots & \\ \vdots & \vdots & & \\ \vdots & \vdots & \ddots & \\ 0 & -l_{n}^{(1)} & & 1 \end{array}\right]

@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（十）：非线性方程组迭代方法——Newton法与拟Newton法"
+title: "Numerical Analysis I 非线性方程组迭代方法——Newton法与拟Newton法"
 permalink: /posts/numerical-analysis-1/10-nonlinear-systems/
 categories: numerical-analysis
 tags: [numerical-analysis, nonlinear-systems, broyden, quasi-newton]

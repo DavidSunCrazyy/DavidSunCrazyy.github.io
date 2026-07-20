@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（四）：最小二乘问题的解法——QR分解与正交变换"
+title: "Numerical Analysis I 最小二乘问题的解法——QR分解与正交变换"
 permalink: /posts/numerical-analysis-1/04-least-squares/
 categories: numerical-analysis
 tags: [numerical-analysis, least-squares, qr-decomposition, householder, givens-rotation]
@@ -275,7 +275,7 @@ $$
 定义: $\theta \in \mathbb{R},\quad S = \sin \theta ,\quad C = \cos \theta$
 
 $$
-J (i, k, \theta) = \begin{array}{c} {{\left[ \begin{array}{c c c c c c c c c} {{1}} & {} & {} & {} & {} & {} & {} & {} & {} \\ {} & {{\ddots}} & {} & {} & {} & {} & {} & {} & {} \\ {} & {} & {{1}} & {} & {} & {} & {} & {} & {} \\ {} & {} & {} & {{c}} & {{0}} & {{\dots}} & {{0}} & {{s}} & {} \\ {} & {} & {} & {{0}} & {{1}} & {} & {} & {{0}} & {} \\ {} & {} & {} & {{\vdots}} & {{\ddots}} & {} & {} & {{\vdots}} & {} \\ {} & {} & {} & {{0}} & {} & {{\ddots}} & {{1}} & {{0}} & {} \\ {} & {} & {} & {{- s}} & {{0}} & {{\dots}} & {{0}} & {{c}} & {} \\ {} & {} & {} & {} & {} & {} & {} & {{1}} & {} \\ {} & {} & {} & {} & {} & {} & {} & {} & {{\ddots}} \\ {} & {} & {} & {} & {} & {} & {} & {{1}} & {} \\ \end{array} \right]}} \end{array} 
+J (i, k, \theta) = \begin{array}{c} {\left[ \begin{array}{c c c c c c c c c} {1} & {} & {} & {} & {} & {} & {} & {} & {} \\ {} & {\ddots} & {} & {} & {} & {} & {} & {} & {} \\ {} & {} & {1} & {} & {} & {} & {} & {} & {} \\ {} & {} & {} & {c} & {0} & {\dots} & {0} & {s} & {} \\ {} & {} & {} & {0} & {1} & {} & {} & {0} & {} \\ {} & {} & {} & {\vdots} & {\ddots} & {} & {} & {\vdots} & {} \\ {} & {} & {} & {0} & {} & {\ddots} & {1} & {0} & {} \\ {} & {} & {} & {- s} & {0} & {\dots} & {0} & {c} & {} \\ {} & {} & {} & {} & {} & {} & {} & {1} & {} \\ {} & {} & {} & {} & {} & {} & {} & {} & {\ddots} \\ {} & {} & {} & {} & {} & {} & {} & {1} & {} \\ \end{array} \right]} \end{array} 
 $$
 
 称为 $n\times n$ 的 Givens 矩阵或 Givens 变换
@@ -361,13 +361,13 @@ $$
 计算 Householder 矩阵 $P_{2} \in \mathbb{R}^{(m-1) \times (m-1)}$ 使得
 
 $$
-\overline {{P}} _ {2} a _ {2} ^ {(1)} = \alpha_ {2} (1, 0, \dots , 0) \in \mathbb {R} ^ {m - 1}
+\overline {P} _ {2} a _ {2} ^ {(1)} = \alpha_ {2} (1, 0, \dots , 0) \in \mathbb {R} ^ {m - 1}
 $$
 
 令
 
 $$
-P _ {2} = \left[ \begin{array}{l l} 1 & 0 \\ 0 & \overline {{P}} _ {2} \end{array} \right]
+P _ {2} = \left[ \begin{array}{l l} 1 & 0 \\ 0 & \overline {P} _ {2} \end{array} \right]
 $$
 
 $$

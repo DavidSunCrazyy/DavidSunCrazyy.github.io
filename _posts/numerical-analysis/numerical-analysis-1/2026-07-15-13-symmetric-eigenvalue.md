@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（十三）：对称矩阵特征值的计算——Jacobi方法与二分法"
+title: "Numerical Analysis I 对称矩阵特征值的计算——Jacobi方法与二分法"
 permalink: /posts/numerical-analysis-1/13-symmetric-eigenvalue/
 categories: numerical-analysis
 tags: [numerical-analysis, symmetric-eigenvalue, jacobi-method, bisection-method]
@@ -210,7 +210,7 @@ $\Rightarrow 2(a_{pq}^{(k)})^2 \geq \frac{2}{n(n-1)} \text{off} (A_k)$
 
 $\Rightarrow \text{off} (A_{k+1}) \leq (1 - \frac{1}{N}) \text{off} (A_k), N = \frac{n(n-1)}{2}$
 
-$\Rightarrow  \mathop{\lim }\limits_{{k} \to  \infty }{\text{off}}\left( {A}_{k}\right)  = 0$
+$\Rightarrow  \mathop{\lim }\limits_{k} \to  \infty }{\text{off}\left( {A}_{k}\right)  = 0$
 
 下面证明存在特征值的一个排列 $\lambda_{1}\cdots\lambda_{n}$
 
@@ -266,7 +266,7 @@ $$
 \begin{array}{r l} {| a _ {p p} ^ {(k _ {0} + 1)} - \lambda_ {j} |} & {\geq | \lambda_ {p} - \lambda_ {j} | - |a _ {p p} ^ {(k _ {0})} - \lambda_ {p}| - | t a _ {p q} ^ {(k _ {0})} |} \\ & {\geq \delta - 2 \varepsilon \geq 2 \varepsilon} \\ & {\uparrow} \\ {| t | \leq 1} \end{array}
 $$
 
-由此可得 $\left| {{a}_{pp}^{\left( {{k}_{0} + 1}\right) } - {\lambda }_{p}}\right|  < \varepsilon$
+由此可得 $\left| {a}_{pp}^{\left( {k}_{0} + 1}\right) } - {\lambda }_{p}\right|  < \varepsilon$
 
 同理可证 $|a_{qq}^{(k_0 + 1)} - \lambda_q| < \varepsilon$
 
@@ -472,9 +472,9 @@ $$
 
 则 $\lambda_{m} \in [l_{0}, u_{0}]$
 
-令 ${r}_{1} = \left( {{l}_{0} + {u}_{0}}\right) /2$
+令 ${r}_{1} = \left( {l}_{0} + {u}_{0}\right) /2$
 
-若 ${S}_{n}\left( {r}_{1}\right)  \geq  m$ 则 ${\lambda }_{m} \in  \left\lbrack  {{l}_{0},{r}_{1}}\right\rbrack$
+若 ${S}_{n}\left( {r}_{1}\right)  \geq  m$ 则 ${\lambda }_{m} \in  \left\lbrack  {l}_{0},{r}_{1}\right\rbrack$
 
 否则 $\lambda_{m} \in [r_{1}, u_{0}]$
 
@@ -495,7 +495,7 @@ g _ {1} (\lambda) = P _ {1} (\lambda) = \alpha_ {1} - \lambda
 $$
 
 $$
-g _ {i} (\lambda) = \alpha_ {i} - \lambda - \frac {\beta_ {i} ^ {2}}{g _ {i - 1} (\lambda)}, i = 2, \dots , n
+g _ {i} (\lambda) = \alpha_ {i} - \lambda - \frac {\beta_ {i} ^ {2}{g _ {i - 1} (\lambda)}, i = 2, \dots , n
 $$
 
 $S_{n}(\mu)$ 为 $g_{1}(\mu)$ … $g_{n}(\mu)$ 中负数的个数.

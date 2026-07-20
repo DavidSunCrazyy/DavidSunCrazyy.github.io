@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（十一）：幂法——特征值估计、幂法与收缩方法"
+title: "Numerical Analysis I 幂法——特征值估计、幂法与收缩方法"
 permalink: /posts/numerical-analysis-1/11-power-method/
 categories: numerical-analysis
 tags: [numerical-analysis, power-method, eigenvalue, gershgorin, deflation]
@@ -46,7 +46,7 @@ $$
 
 定理 6.1.2 设 定理 6.1.1 中的 n 个圆盘中，有 m 个圆盘构成了一个连通区域 S，且 S 与其余 n-m 个圆盘严格分离，则在 S 中有且只有 A 的 m 个特征值
 
-证明：记 $D = \operatorname{diag}\left\{  {{a}_{11}\cdots {a}_{nn}}\right\} \; ,\;{A}_{\theta } = D + \theta \left( {A - D}\right)$ $\theta  \in  \left\lbrack  {0,1}\right\rbrack$ .
+证明：记 $D = \operatorname{diag}\left\{  {a}_{11}\cdots {a}_{nn}\right\} \; ,\;{A}_{\theta } = D + \theta \left( {A - D}\right)$ $\theta  \in  \left\lbrack  {0,1}\right\rbrack$ .
 
 $A_{\theta}$ 的特征多项式的系数是 $\theta$ 的多项式，从而 $A_{0}$ 的特征值是 $\theta$ 的连续函数。令
 
@@ -71,7 +71,7 @@ B ^ {- 1} A B = \left[ \begin{array}{l l l} 0.9 & 0.01 & 0.012 \\ 0.01 & 0.8 & 0
 $$
 
 $$
-\overline {{D}} _ {1} = \{|z - 0.9| \leq 0.022\}, \quad \overline {{D}} _ {2} = \{|z - 0.8| \leq 0.023\}
+\overline {D} _ {1} = \{|z - 0.9| \leq 0.022\}, \quad \overline {D} _ {2} = \{|z - 0.8| \leq 0.023\}
 $$
 
 $$
@@ -298,7 +298,7 @@ $$
 
 $y_{2}$ 满足 $B_{2}y_{2}=\lambda_{2}y_{2}$
 
-则 ${A}_{2}$ 的特征向量为 ${z}_{2} = \begin{bmatrix} {\frac{{b}_{1}^{T}{y}_{2}}{{\lambda }_{2} - {\lambda }_{1}}} \\  y_{2} \end{bmatrix}$
+则 ${A}_{2}$ 的特征向量为 ${z}_{2} = \begin{bmatrix} {\frac{b}_{1}^{T}{y}_{2}{\lambda }_{2} - {\lambda }_{1}} \\  y_{2} \end{bmatrix}$
 
 A 相应的特征向量为 $H^{-1}z_{2}$
 
@@ -324,7 +324,7 @@ $$
 
 \- Wielandt 收缩方法、
 
-设 ${x}_{1} = \left( {{x}_{11}\cdots {x}_{1n}}\right) ^{T}$ 令
+设 ${x}_{1} = \left( {x}_{11}\cdots {x}_{1n}\right) ^{T}$ 令
 
 $$
 v = \frac {1}{\lambda_ {1} x _ {1 i}} (a _ {i 1} \dots a _ {i n}) ^ {\mathrm{T}}

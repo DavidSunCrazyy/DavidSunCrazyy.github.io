@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（一）：基本概念——误差、内积空间、范数与矩阵性质"
+title: "Numerical Analysis I 基本概念——误差、内积空间、范数与矩阵性质"
 permalink: /posts/numerical-analysis-1/01-basic-concepts/
 categories: numerical-analysis
 tags: [numerical-analysis, error-analysis, vector-norms, matrix-norms, gram-schmidt]
@@ -259,7 +259,7 @@ $$
 设 $x, y \in \mathbb{C}^n$ ，带权内积
 
 $$
-(x, y) = \sum_ {i = 1} ^ {n} w _ {i} x _ {i} \overline {{y}} _ {i}
+(x, y) = \sum_ {i = 1} ^ {n} w _ {i} x _ {i} \overline {y} _ {i}
 $$
 
 例 ($C[a,b]$) $\rho(x)$ 是 [a,b] 上的可积函数，满足
@@ -404,7 +404,7 @@ $$
 = \| \sum_ {j = 1} ^ {n} h _ {j} a _ {j} \| \leq \sum_ {j = 1} ^ {n} | h _ {j} | \| a _ {j} \| \leq M \max _ {1 \leq j \leq n} | h _ {j} |
 $$
 
-其中 $M = \mathop{\sum }\limits_{{j = 1}}^{n}\left\| {a}_{j}\right\| .$
+其中 $M = \mathop{\sum }\limits_{j = 1}^{n}\left\| {a}_{j}\right\| .$
 
 由此可得 $\|Ax\|$ 的连续性.
 
@@ -539,7 +539,7 @@ $$
 \left\| a _ {j} \right\| _ {1} = \sum_ {i = 1} ^ {n} \left| a _ {i j} \right|, j = 1, 2, \dots , n
 $$
 
-设 ${a}_{k}$ 为其中 1 范数最大的,即 $\| {a}_{k}\|_{1} = \mathop{\max }\limits_{{1 \leq  j \leq  n}}\left\| {a}_{j}\right\| ,$
+设 ${a}_{k}$ 为其中 1 范数最大的,即 $\| {a}_{k}\|_{1} = \mathop{\max }\limits_{1 \leq  j \leq  n}\left\| {a}_{j}\right\| ,$
 
 对 $\forall x = (x_1, \cdots, x_n)^T \in \mathbb{R}^n, \quad \|x\|_{1} = 1$ 有
 
@@ -701,7 +701,7 @@ $$
 
 则称 $A$ 为 严格对角占优矩阵
 
-若 $\left| {a}_{ii}\right|  \geq  \mathop{\sum }\limits_{{j = 1\atop j \neq  i}}^{n}\left| {a}_{ij}\right| ,\;i = 1,2,\cdots ,n$
+若 $\left| {a}_{ii}\right|  \geq  \mathop{\sum }\limits_{j = 1\atop j \neq  i}^{n}\left| {a}_{ij}\right| ,\;i = 1,2,\cdots ,n$
 
 且至少有一个取严格大于号，则称 $A$ 弱对角占优
 
@@ -734,7 +734,7 @@ $$
 定义: $A \in \mathbb{R}^{n \times n}, n \geq 2$ 如果存在排列矩阵, 使得
 
 $$
-P ^ {T} A P = \left[ \begin{array}{l l} \overline {{A}} _ {1 1} & \overline {{A}} _ {1 2} \\ 0 & \overline {{A}} _ {2 2} \end{array} \right]
+P ^ {T} A P = \left[ \begin{array}{l l} \overline {A} _ {1 1} & \overline {A} _ {1 2} \\ 0 & \overline {A} _ {2 2} \end{array} \right]
 $$
 
 其中 $\overline{A}_{11}$ 为 $r×r$ 的方阵， $\overline{A}_{22}$ 为 $(n-r)\times(n-r)$ 的方阵
@@ -763,7 +763,7 @@ $$
 
 与弱对角占优矛盾
 
-情况2：设 $\left| {{x}_{1}}\right|  \leq  \left| {{x}_{2}}\right|  \leq  \cdots  \leq  \left| {{x}_{m}}\right|  < \left| {{x}_{m + 1}}\right|  = \cdots  = \left| {{x}_{n}}\right|  = 1$
+情况2：设 $\left| {x}_{1}\right|  \leq  \left| {x}_{2}\right|  \leq  \cdots  \leq  \left| {x}_{m}\right|  < \left| {x}_{m + 1}\right|  = \cdots  = \left| {x}_{n}\right|  = 1$
 
 由于 A 不可约，则存在 $a_{kl} \neq 0, \quad m + 1 \leq k \leq n$
 

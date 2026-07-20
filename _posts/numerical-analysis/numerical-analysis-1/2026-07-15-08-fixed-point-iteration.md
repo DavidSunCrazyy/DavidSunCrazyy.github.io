@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（八）：不动点迭代一般概念——收敛性、收敛阶与加速方法"
+title: "Numerical Analysis I 不动点迭代一般概念——收敛性、收敛阶与加速方法"
 permalink: /posts/numerical-analysis-1/08-fixed-point-iteration/
 categories: numerical-analysis
 tags: [numerical-analysis, fixed-point-iteration, contraction-mapping, convergence-order]
@@ -48,7 +48,7 @@ $$
 \varphi_ {1} (x) = x - x ^ {3} - 4 x ^ {2} + 10
 $$
 
-方法2. ${\varphi }_{2}\left( x\right)  = \frac{1}{2}\left( {{10} - {x}^{3}}\right)  \frac{1}{2}$
+方法2. ${\varphi }_{2}\left( x\right)  = \frac{1}{2}\left( {10} - {x}^{3}\right)  \frac{1}{2}$
 
 方法3. $\varphi_{3}(x)=\left(\frac{10}{x}-4x\right)^{\frac{1}{2}}$
 
@@ -252,10 +252,10 @@ $$
 
 $\varphi(x_k) = \varphi(x^*) + \frac{\varphi^{(p)}(\xi_k)}{p!}(x_k - x^*)^p, \quad \xi_k \text{在} x_k, x^* \text{之间}$
 
-$\Rightarrow  {x}_{k + 1} - {x}^{ * } = \varphi \left( {x}_{k}\right)  - \varphi \left( {x}^{ * }\right)  = \frac{{\varphi }^{\left( p\right) }\left( {\xi }_{k}\right) }{p!}{\left( {x}_{k} - {x}^{ * }\right) }^{p}$
+$\Rightarrow  {x}_{k + 1} - {x}^{ * } = \varphi \left( {x}_{k}\right)  - \varphi \left( {x}^{ * }\right)  = \frac{\varphi }^{\left( p\right) }\left( {\xi }_{k}\right) }{p!}{\left( {x}_{k} - {x}^{ * }\right) }^{p}$
 
 $$
-\Rightarrow \frac {e _ {k + 1}}{e _ {k} ^ {p}} = \frac {\varphi^{(p)} (\xi_ {k})}{p !}, \lim _ {k \to \infty} \xi_ {k} = x ^ {*}
+\Rightarrow \frac {e _ {k + 1}{e _ {k} ^ {p}} = \frac {\varphi^{(p)} (\xi_ {k})}{p !}, \lim _ {k \to \infty} \xi_ {k} = x ^ {*}
 $$
 
 $$
@@ -295,7 +295,7 @@ $$
 由此可得
 
 $$
-x ^ {*} \approx \frac {x _ {k} x _ {k + 2} - x _ {k + 1} ^ {2}}{x _ {k + 2} - 2 x _ {k + 1} + x _ {k}} = \overline {{x _ {k}}}\tag{5.2.1}
+x ^ {*} \approx \frac {x _ {k} x _ {k + 2} - x _ {k + 1} ^ {2}}{x _ {k + 2} - 2 x _ {k + 1} + x _ {k}} = \overline {x _ {k}}\tag{5.2.1}
 $$
 
 $\overline{x}_k$ 是 $x^*$ 的近似值 从而可得到新的序列 $\{\overline{x}_k\}$
@@ -311,10 +311,10 @@ $$
 存在，并且
 
 $$
-\lim _ {k \to \infty} \frac {\overline {{x}} _ {k} - x ^ {*}}{x _ {k} - x ^ {*}} = 0
+\lim _ {k \to \infty} \frac {\overline {x} _ {k} - x ^ {*}}{x _ {k} - x ^ {*}} = 0
 $$
 
-证明：记 ${e}_{k} = {x}_{k} - {x}^{ * }$ ,由定理条件有 $\mathop{\lim }\limits_{{k \to  \infty }}\frac{{e}_{k + 1}}{{e}_{k}} = \lambda$
+证明：记 ${e}_{k} = {x}_{k} - {x}^{ * }$ ,由定理条件有 $\mathop{\lim }\limits_{k \to  \infty }\frac{e}_{k + 1}{e}_{k} = \lambda$
 
 $$
 \begin{array}{r l} {\Delta^ {2} x _ {k}} & {= x _ {k + 2} - 2 x _ {k + 1} + x _ {k}} \\ & {= e _ {k + 2} - 2 e _ {k + 1} + e _ {k}} \\ & {= e _ {k} \left[ (\lambda + \delta_ {k + 1}) (\lambda + \delta_ {k}) - 2 (\lambda + \delta_ {k}) + 1 \right]} \\ & {= e _ {k} \left[ (\lambda - 1) ^ {2} + \mu_ {k} \right]} \end{array}
@@ -327,11 +327,11 @@ $$
 则有 $\Delta^{2}x_{k}\neq0$ 即 $\overline{x}_{k}$ 有意义.
 
 $$
-\overline {{x}} _ {k} = x _ {k} - \frac {(x _ {k + 1} - x _ {k}) ^ {2}}{\Delta^ {2} x _ {k}} = x _ {k} - \frac {(\lambda - 1 + \delta_ {k}) ^ {2}}{(\lambda - 1) ^ {2} + \mu_ {k}} e _ {k}
+\overline {x} _ {k} = x _ {k} - \frac {(x _ {k + 1} - x _ {k}) ^ {2}}{\Delta^ {2} x _ {k}} = x _ {k} - \frac {(\lambda - 1 + \delta_ {k}) ^ {2}}{(\lambda - 1) ^ {2} + \mu_ {k}} e _ {k}
 $$
 
 $$
-\lim _ {k \to \infty} \frac {\overline {{x}} _ {k} - x ^ {*}}{x _ {k} - x ^ {*}} = \lim _ {k \to \infty} \left(1 - \frac {[ \lambda - 1 + \delta_ {k} ] ^ {2}}{(\lambda - 1) ^ {2} + \mu_ {k}}\right) = 0
+\lim _ {k \to \infty} \frac {\overline {x} _ {k} - x ^ {*}}{x _ {k} - x ^ {*}} = \lim _ {k \to \infty} \left(1 - \frac {[ \lambda - 1 + \delta_ {k} ] ^ {2}}{(\lambda - 1) ^ {2} + \mu_ {k}}\right) = 0
 $$
 
 \- Steffensen 迭代法

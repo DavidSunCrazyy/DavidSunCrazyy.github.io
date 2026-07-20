@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（六）：共轭梯度法——最速下降与 Krylov 子空间方法"
+title: "Numerical Analysis I 共轭梯度法——最速下降与 Krylov 子空间方法"
 permalink: /posts/numerical-analysis-1/06-conjugate-gradient/
 categories: numerical-analysis
 tags: [numerical-analysis, conjugate-gradient, krylov-subspace, preconditioning]
@@ -30,7 +30,7 @@ $$
 
 求 $\varphi(x)$ 的极小值点，即
 
-$A{x}^{ * } = b\;\Leftrightarrow\;{x}^{ * } = \operatorname*{argmin}\limits_{{x \in  {\mathbb{R}}^{n}}} \varphi \left( x\right)$
+$A{x}^{ * } = b\;\Leftrightarrow\;{x}^{ * } = \operatorname*{argmin}\limits_{x \in  {\mathbb{R}^{n}}} \varphi \left( x\right)$
 
 证明：若 $x^{*}$ 是 $\varphi(x)$ 的极小值点，则有
 
@@ -194,7 +194,7 @@ $$
 \begin{array}{r l} {\tilde {x} ^ {(l + 1)}} & {= \underset { \begin{array}{l} x - x ^ {(0)} \in s p a n \{p ^ {(0)} \dots p ^ {(l)} \} \\ z \in s p a n \{p ^ {(0)} \dots p ^ {(l + 1)} \} \\ \alpha \in \mathbb {R} \end{array} } {\operatorname{argmin}} \varphi (x)} \\ & {= \underset { \begin{array}{l} z \in s p a n \{p ^ {(0)} \dots p ^ {(l + 1)} \} \\ \alpha \in \mathbb {R} \end{array} } {\operatorname{argmin}} \varphi (x ^ {(0)} + z + \alpha p ^ {(l)})} \end{array}
 $$
 
-对于 $z \in \operatorname{span}\left\{  {{p}^{\left( 0\right) } - \cdots  {p}^{\left( {\ell - 1}\right) }}\right\}$
+对于 $z \in \operatorname{span}\left\{  {p}^{\left( 0\right) } - \cdots  {p}^{\left( {\ell - 1}\right) }\right\}$
 
 $$
 \begin{array}{r l} & {\varphi (x ^ {(0)} + z + \alpha p ^ {(\ell)})} \\ {=} & {\frac {1}{2} (x ^ {(0)} + z + \alpha p ^ {(\ell)}) ^ {T} A (x ^ {(0)} + z + \alpha p ^ {(\ell)})} \\ & {- b ^ {T} (x ^ {(0)} + z + \alpha p ^ {(\ell)})} \\ {=} & {\varphi (x ^ {(0)} + z) + \frac {1}{2} \alpha^ {2} (p ^ {(\ell)}) ^ {T} A P ^ {(\ell)} - \alpha (b - A (x ^ {(0)} + z)) ^ {T} P ^ {(\ell)}} \\ {=} & {\varphi (x ^ {(0)} + z) + \frac {1}{2} \alpha^ {2} (p ^ {(\ell)}, A P ^ {(\ell)}) - \alpha (b - A x ^ {(\ell)}) ^ {T} P ^ {(\ell)}} \end{array}

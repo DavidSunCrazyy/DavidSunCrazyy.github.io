@@ -1,7 +1,7 @@
 ---
 note: true
 layout: post
-title: "数值分析（九）：Newton迭代法与割线法"
+title: "Numerical Analysis I Newton迭代法与割线法"
 permalink: /posts/numerical-analysis-1/09-newton-method/
 categories: numerical-analysis
 tags: [numerical-analysis, newton-method, secant-method]
